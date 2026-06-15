@@ -44,7 +44,7 @@ export default function Hero() {
           {/* Left — Text */}
           <div ref={ref} className="reveal text-white">
             <p className="section-label text-gold-400 mb-4">
-              Gurugram's Trusted Audiology Clinic
+              Precision in Diagnosis, Compassion in Care
             </p>
             <h1 className="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
               Complete<br />
