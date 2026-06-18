@@ -136,7 +136,7 @@ export default function Hero() {
                 className="absolute -top-4 -right-4 rounded-xl px-4 py-3 text-center text-sm font-semibold"
                 style={{ background: '#B8892A', color: 'white' }}
               >
-                🏥 Army Trained<br />
+                🎓 AIISH Trained<br />
                 <span className="text-xs font-normal opacity-90">Specialist</span>
               </div>
             </div>

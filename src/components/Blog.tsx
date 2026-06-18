@@ -6,7 +6,7 @@ import { useReveal } from '@/lib/useReveal'
 //
 // 1. Go to https://hashnode.com and sign in
 // 2. Write your article there (like Google Docs)
-// 3. Copy the article URL from Hashnode
+// 3. Copy the article URL from Hashnodenp
 // 4. Add a new object to the POSTS array below:
 //    {
 //      title: 'Your Article Title',
