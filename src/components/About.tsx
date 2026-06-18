@@ -3,8 +3,8 @@ import Image from 'next/image'
 import { useReveal } from '@/lib/useReveal'
 
 const saurabhCredentials = [
-  { icon: '🎓', label: 'M.Aud., BASLP', sub: 'Advanced Audiology Qualifications' },
-  { icon: '🏥', label: 'Army Hospital (R&R)', sub: 'Formerly Audiologist, New Delhi' },
+  { icon: '🎓', label: 'AIISH, Mysore', sub: 'M.Aud. & BASLP, All India Institute of Speech and Hearing' },
+  { icon: '🏥', label: 'Army Hospital (R&R)', sub: 'Civilian Audiologist, New Delhi' },
   { icon: '🎖️', label: 'ASLP Certified', sub: 'Registered Audiologist & SLP' },
   { icon: '👥', label: 'All Age Groups', sub: 'Children, Adults & Senior Citizens' },
 ]
@@ -134,10 +134,10 @@ export default function About() {
             <>
               <p>
                 Dr. Saurabh Chitoshiya is a qualified Audiologist &amp; Speech-Language
-                Pathologist holding an <strong>M.Aud. and BASLP</strong>, with specialized
-                training and experience from the prestigious{' '}
-                <strong>Army Hospital (Research &amp; Referral), New Delhi</strong> — one of
-                India's leading military medical institutions.
+                Pathologist holding an <strong>M.Aud. and BASLP from AIISH, Mysore</strong> —
+                India's premier institute for speech and hearing sciences. He brings further
+                clinical experience as a civilian audiologist at{' '}
+                <strong>Army Hospital (Research &amp; Referral), New Delhi</strong>.
               </p>
               <p>
                 As the CEO &amp; Clinical Director of Communiqué, Dr. Saurabh brings
