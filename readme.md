@@ -350,4 +350,4 @@ The website is **mobile-first** — it's designed for phones first, then scales 
 
 ---
 
-*Last updated: June 2025 — Communiqué Speech, Hearing & Balance Clinic*
+*Last updated: June 2025 — Communiqué Speech, Hearing & Balance Clinic* 
