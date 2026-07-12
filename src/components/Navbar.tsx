@@ -7,6 +7,7 @@ const navLinks = [
   { label: 'Home',        href: '#home' },
   { label: 'About',       href: '#about' },
   { label: 'Services',    href: '#services' },
+  { label: 'Hearing Aids',href: '/hearing-aids' },
   { label: 'Timings',     href: '#timings' },
   { label: 'Blog',        href: '#blog' },
   { label: 'Testimonials',href: '#testimonials' },

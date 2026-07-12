@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import { useReveal } from '@/lib/useReveal'
 
+
+
 const serviceCategories = [
   {
     id: 'hearing',
@@ -33,8 +35,8 @@ const serviceCategories = [
     id: 'hearingaid',
     icon: '🎧',
     title: 'Hearing Aid & CI Services',
-    color: '#1B4D3E',
     tagline: 'Personalised hearing solutions for everyday life',
+    learnMore: '/hearing-aids',
     services: [
       { name: 'Audiological Consultation', desc: 'Comprehensive hearing evaluation and personalised guidance.' },
       { name: 'Hearing Aid Fine Tuning', desc: 'Expert adjustments for optimal sound quality and comfort.' },
@@ -167,9 +169,16 @@ export default function Services() {
             <p className="text-sm text-gray-500">
               Packages &amp; follow-up plans available. Contact reception for details.
             </p>
-            <a href="#contact" className="btn-gold text-sm py-2.5">
-              📅 Book This Service
-            </a>
+            <div className="flex gap-3 flex-wrap">
+              {current.learnMore && (
+                <a href={current.learnMore} className="btn-outline text-sm py-2.5">
+                  Learn More →
+                </a>
+              )}
+              <a href="#contact" className="btn-gold text-sm py-2.5">
+                📅 Book This Service
+              </a>
+            </div>
           </div>
         </div>
       </div>
