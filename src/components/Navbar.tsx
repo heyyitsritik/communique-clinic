@@ -1,23 +1,21 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 
 const navLinks = [
-  { label: 'Home',        href: '#home' },
-  { label: 'About',       href: '#about' },
-  { label: 'Services',    href: '#services' },
-  { label: 'Hearing Aids',href: '/hearing-aids' },
-  { label: 'Timings',     href: '#timings' },
-  { label: 'Blog',        href: '#blog' },
-  { label: 'Testimonials',href: '#testimonials' },
-  { label: 'Contact',     href: '#contact' },
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Hearing Aids', href: '/hearing-aids' },
+  { label: 'Timings', href: '#timings' },
+  { label: 'Blog', href: '#blog' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled]     = useState(false)
-  const [menuOpen, setMenuOpen]     = useState(false)
-  const [activeSection, setActive]  = useState('home')
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -25,11 +23,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close menu on link click
   const handleNav = (href: string) => {
     setMenuOpen(false)
+    if (!href.startsWith('#')) return
+
     const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
@@ -41,7 +42,7 @@ export default function Navbar() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#home" onClick={() => handleNav('#home')} className="flex items-center gap-3">
+          <a href="#home" onClick={(e) => { e.preventDefault(); handleNav('#home') }} className="flex items-center gap-3">
             <Image
               src="/logo.png"
               alt="Communiqué Clinic Logo"
@@ -61,21 +62,29 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-5">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => { e.preventDefault(); handleNav(link.href) }}
-                className="text-sm font-medium text-teal-900 hover:text-gold-600 transition-colors"
+                onClick={(e) => {
+                  if (link.href.startsWith('#')) {
+                    e.preventDefault()
+                    handleNav(link.href)
+                  }
+                }}
+                className="text-sm font-medium text-teal-900 hover:text-gold-600 transition-colors whitespace-nowrap"
               >
                 {link.label}
               </a>
             ))}
             <a
               href="#contact"
-              onClick={(e) => { e.preventDefault(); handleNav('#contact') }}
-              className="btn-gold text-sm py-2 px-5"
+              onClick={(e) => {
+                e.preventDefault()
+                handleNav('#contact')
+              }}
+              className="btn-gold text-sm py-2 px-5 whitespace-nowrap"
             >
               Book Appointment
             </a>
@@ -114,24 +123,35 @@ export default function Navbar() {
             ✕
           </button>
           <div className="ornament mb-4"><div className="ornament-diamond" /></div>
+
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              onClick={(e) => { e.preventDefault(); handleNav(link.href) }}
+              onClick={(e) => {
+                if (link.href.startsWith('#')) {
+                  e.preventDefault()
+                  handleNav(link.href)
+                } else {
+                  setMenuOpen(false)
+                }
+              }}
               className="font-playfair text-lg text-teal-900 py-3 border-b border-cream-dark hover:text-gold-600 transition-colors"
             >
               {link.label}
             </a>
           ))}
+
           <a
             href="#contact"
-            onClick={(e) => { e.preventDefault(); handleNav('#contact') }}
+            onClick={(e) => {
+              e.preventDefault()
+              handleNav('#contact')
+            }}
             className="btn-gold mt-6 justify-center"
           >
             Book Appointment
           </a>
-          {/* Quick call buttons */}
           <a href="tel:+918796270575" className="btn-teal mt-3 justify-center text-sm">
             📞 Call Us Now
           </a>
