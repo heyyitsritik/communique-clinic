@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const types = [
   {
@@ -9,20 +10,10 @@ const types = [
     desc: 'Discreet hearing aids custom-fitted to sit deep inside the ear canal — virtually invisible. Ideal for mild to moderate hearing loss with appropriate ear canal anatomy.',
     badge: 'Most Discreet',
     badgeColor: '#1B4D3E',
-    svg: (
-      <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-        {/* Ear outline */}
-        <ellipse cx="100" cy="80" rx="55" ry="68" fill="#F0EAE0" stroke="#B8892A" strokeWidth="1.5"/>
-        <path d="M100 25 C125 25 148 45 148 75 C148 100 135 115 120 120 C110 123 105 118 108 108 C112 96 118 88 115 75 C112 62 100 55 88 60 C76 65 72 80 78 92 C82 100 85 105 80 112 C75 118 65 115 60 105 C50 88 52 55 70 40 C80 32 90 25 100 25Z" fill="#FAF6F0" stroke="#B8892A" strokeWidth="1.2"/>
-        {/* CIC device inside canal */}
-        <ellipse cx="100" cy="82" rx="14" ry="10" fill="#B8892A" opacity="0.9"/>
-        <ellipse cx="100" cy="82" rx="10" ry="7" fill="#1B4D3E"/>
-        <circle cx="100" cy="82" r="3" fill="#d4a843"/>
-        {/* Invisible label */}
-        <text x="100" y="145" textAnchor="middle" fill="#1B4D3E" fontSize="11" fontWeight="700" fontFamily="Georgia, serif">Nearly invisible</text>
-      </svg>
-    ),
+    photo: '/cic.jpeg',
+    svg: null,
   },
+  
   {
     id: 'ric',
     title: 'RIC / Rechargeable',
@@ -30,24 +21,10 @@ const types = [
     desc: 'Modern, comfortable devices where a thin wire connects the body (behind the ear) to a small speaker in the ear canal. Available in rechargeable versions — no battery changes needed.',
     badge: 'Most Popular',
     badgeColor: '#B8892A',
-    svg: (
-      <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-        {/* Behind-ear body */}
-        <rect x="128" y="30" width="28" height="58" rx="14" fill="#1B4D3E"/>
-        <rect x="132" y="38" width="20" height="8" rx="4" fill="#B8892A" opacity="0.8"/>
-        {/* Charging indicator */}
-        <text x="141" y="74" textAnchor="middle" fill="#d4a843" fontSize="14" fontWeight="900">⚡</text>
-        {/* Thin wire */}
-        <path d="M128 72 Q110 85 98 90" stroke="#B8892A" strokeWidth="2" strokeLinecap="round"/>
-        {/* Ear dome */}
-        <ellipse cx="94" cy="93" rx="12" ry="8" fill="#B8892A" opacity="0.85"/>
-        <ellipse cx="94" cy="93" rx="7" ry="5" fill="#1B4D3E"/>
-        {/* Ear outline */}
-        <path d="M60 55 C55 40 60 25 75 22 C90 19 105 28 110 44 C115 58 108 70 100 76 C94 80 88 78 86 84 C84 90 87 96 83 100 C79 104 70 100 66 92 C58 78 60 65 60 55Z" fill="#FAF6F0" stroke="#d0c8bc" strokeWidth="1.2"/>
-        <text x="100" y="145" textAnchor="middle" fill="#1B4D3E" fontSize="11" fontWeight="700" fontFamily="Georgia, serif">Rechargeable option</text>
-      </svg>
-    ),
+    photo: '/ric.jpeg',
+    svg: null,
   },
+  
   {
     id: 'bluetooth',
     title: 'Bluetooth Hearing Aids',
@@ -79,24 +56,10 @@ const types = [
     desc: 'Behind-the-ear devices with stronger amplification for moderate to severe and profound hearing loss. Robust, reliable, and built for maximum clarity.',
     badge: 'For Severe Loss',
     badgeColor: '#7c3aed',
-    svg: (
-      <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-        {/* Large BTE body */}
-        <rect x="118" y="22" width="36" height="72" rx="14" fill="#1B4D3E" stroke="#B8892A" strokeWidth="1.5"/>
-        <rect x="124" y="32" width="24" height="10" rx="5" fill="#B8892A"/>
-        <rect x="127" y="50" width="18" height="4" rx="2" fill="#d4a843" opacity="0.7"/>
-        <rect x="127" y="58" width="18" height="4" rx="2" fill="#d4a843" opacity="0.5"/>
-        <rect x="127" y="66" width="18" height="4" rx="2" fill="#d4a843" opacity="0.3"/>
-        {/* Sound waves from eartip */}
-        <path d="M118 80 Q100 88 88 88" stroke="#B8892A" strokeWidth="2.5" strokeLinecap="round"/>
-        <ellipse cx="84" cy="88" rx="10" ry="7" fill="#B8892A" opacity="0.9"/>
-        {/* Sound output waves */}
-        <path d="M62 75 Q52 80 52 88 Q52 96 62 101" stroke="#B8892A" strokeWidth="1.8" strokeLinecap="round" opacity="0.7"/>
-        <path d="M55 70 Q40 78 40 88 Q40 98 55 106" stroke="#B8892A" strokeWidth="1.4" strokeLinecap="round" opacity="0.45"/>
-        <text x="100" y="145" textAnchor="middle" fill="#1B4D3E" fontSize="11" fontWeight="700" fontFamily="Georgia, serif">Maximum amplification</text>
-      </svg>
-    ),
+    photo: '/Bte.jpeg',
+    svg: null,
   },
+
   {
     id: 'senior',
     title: 'Senior Citizen Friendly',
@@ -216,7 +179,7 @@ export default function HearingAidTypes() {
           }}
           className="aid-panel"
         >
-          {/* Illustration side */}
+          {/* Illustration / Photo side */}
           <div style={{
             background: 'linear-gradient(135deg, #1B4D3E08, #B8892A08)',
             display: 'flex',
@@ -225,8 +188,18 @@ export default function HearingAidTypes() {
             padding: 40,
             borderRight: '1px solid #F0EAE0',
           }}>
-            <div style={{ width: '100%', maxWidth: 260, aspectRatio: '4/3' }}>
-              {current.svg}
+            <div style={{ width: '100%', maxWidth: 260, aspectRatio: '1/1', position: 'relative' }}>
+              {current.photo ? (
+                <Image
+                  src={current.photo}
+                  alt={current.title}
+                  fill
+                  style={{ objectFit: 'contain' }}
+                  sizes="260px"
+                />
+              ) : (
+                current.svg
+              )}
             </div>
           </div>
 
@@ -298,8 +271,18 @@ export default function HearingAidTypes() {
                 transition: 'all 0.2s',
               }}
             >
-              <div style={{ height: 80, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: active === t.id ? 1 : 0.7 }}>
-                {t.svg}
+              <div style={{ height: 80, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: active === t.id ? 1 : 0.7 }}>
+                {t.photo ? (
+                  <Image
+                    src={t.photo}
+                    alt={t.title}
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    sizes="120px"
+                  />
+                ) : (
+                  t.svg
+                )}
               </div>
               <p style={{ color: active === t.id ? 'white' : '#1B4D3E', fontSize: 11, fontWeight: 700, margin: '8px 0 0', lineHeight: 1.3 }}>
                 {t.title}
