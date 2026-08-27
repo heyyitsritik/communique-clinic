@@ -32,23 +32,10 @@ const types = [
     desc: 'Selected models support direct phone calls, music streaming, and app-based adjustments from your smartphone. Stay connected without missing a word.',
     badge: 'Smart & Connected',
     badgeColor: '#2563eb',
-    svg: (
-      <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-        {/* Phone */}
-        <rect x="30" y="40" width="48" height="80" rx="8" fill="#1B4D3E" stroke="#B8892A" strokeWidth="1.5"/>
-        <rect x="36" y="52" width="36" height="52" rx="4" fill="#FAF6F0"/>
-        <circle cx="54" cy="112" r="4" fill="#B8892A"/>
-        {/* BT waves from phone */}
-        <path d="M82 72 Q92 65 100 72 Q108 79 100 86" stroke="#B8892A" strokeWidth="2" strokeDasharray="4 2" strokeLinecap="round"/>
-        <path d="M85 65 Q100 55 112 65 Q122 75 112 85" stroke="#B8892A" strokeWidth="1.5" strokeDasharray="4 2" strokeLinecap="round" opacity="0.6"/>
-        {/* Hearing aid */}
-        <rect x="130" y="52" width="26" height="50" rx="13" fill="#1B4D3E"/>
-        {/* BT symbol */}
-        <text x="143" y="82" textAnchor="middle" fill="#d4a843" fontSize="16" fontWeight="900">ᛒ</text>
-        <text x="100" y="145" textAnchor="middle" fill="#1B4D3E" fontSize="11" fontWeight="700" fontFamily="Georgia, serif">Stream calls & music</text>
-      </svg>
-    ),
+    photo: '/bluetooth.png',
+    svg: null,
   },
+  
   {
     id: 'power',
     title: 'Power Hearing Aids',
