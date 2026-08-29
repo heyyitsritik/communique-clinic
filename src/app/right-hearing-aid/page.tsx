@@ -26,13 +26,15 @@ export const metadata: Metadata = {
 /* ─── Data ─────────────────────────────────────────────── */
 
 const journeySteps = [
-  { num: '01', title: 'Comprehensive Hearing Assessment', desc: 'Pure tone audiometry, speech testing, tympanometry, OAE and more — so we understand exactly how your ears and brain process sound.' },
-  { num: '02', title: 'Understand Your Lifestyle', desc: 'We ask about your daily environments — home, workplace, restaurants, travel — because a retired person and a working professional need very different things from a hearing aid.' },
-  { num: '03', title: 'Personalised Recommendation', desc: 'Based on your hearing profile, lifestyle and budget, we shortlist 2–3 appropriate options — not the most expensive ones, the most suitable ones.' },
-  { num: '04', title: 'Live In-Clinic Trial', desc: 'You wear the recommended device. We test it in conversation, background noise and at a distance. You experience the difference before any decision is made.' },
-  { num: '05', title: 'Clinical Fitting & Programming', desc: 'Your hearing aid is individually programmed to your audiogram — not a generic setting. This is the step most hearing-aid shops skip entirely.' },
-  { num: '06', title: 'Follow-Up & Fine-Tuning', desc: 'Your brain needs time to adjust to amplified sound. We schedule follow-ups to refine the fit and make sure you\'re getting the most from your device.' },
-  { num: '07', title: 'Auditory Rehabilitation', desc: 'For patients who need it, we offer auditory training and communication strategies — so you don\'t just hear louder, you hear better.' },
+  { num: '01', title: 'Comprehensive Hearing Assessment', desc: 'Pure tone audiometry, speech audiometry, tympanometry, acoustic reflexes and OAE — a complete picture of your hearing sensitivity and ear health.' },
+  { num: '02', title: 'Speech & Communication Evaluation', desc: 'We assess not just what you can hear, but how well you understand speech — including in background noise. This is what most audiograms miss entirely.' },
+  { num: '03', title: 'Lifestyle & Listening Needs Assessment', desc: 'Your environments, communication partners, work requirements, TV and music habits, smartphone use, dexterity and cosmetic preferences all shape the recommendation.' },
+  { num: '04', title: 'Personalised Recommendation', desc: 'Based on your hearing profile, lifestyle and budget, we shortlist the most appropriate options — not the most expensive ones, the most suitable ones.' },
+  { num: '05', title: 'Real-World Hearing Aid Experience', desc: 'You experience the recommended device in situations that mirror your actual life — conversation, group settings, background noise, TV, music, distance and more.' },
+  { num: '06', title: 'Precision Fitting & Programming', desc: 'Your hearing aid is individually programmed to your audiogram — not a generic setting. This step is what separates clinical fitting from retail dispensing.' },
+  { num: '07', title: 'Outcome Measurement', desc: 'Where appropriate, we document aided speech performance and quality-of-life benefit — so your hearing journey is measured, not guessed.' },
+  { num: '08', title: 'Auditory Rehabilitation', desc: 'Structured listening exercises help your brain adapt to amplified sound and make the most of what your hearing aid provides — not just louder, but better.' },
+  { num: '09', title: 'Structured Long-Term Follow-Up', desc: 'Regular appointments at 1 week, 2 weeks, 1 month, 3 months and 6 months ensure your device continues to perform as your listening needs evolve.' },
 ]
 
 const aidStyles = [
@@ -509,6 +511,412 @@ export default function RightHearingAidPage() {
       </section>
 
       {/* ══════════════════════════════════════════
+          4-LEVEL ASSESSMENT BREAKDOWN
+      ══════════════════════════════════════════ */}
+      <section style={{ background: 'white', padding: '64px 18px' }}>
+        <div style={{ maxWidth: 1160, margin: 'auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 44 }}>
+            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#B8892A', marginBottom: 12 }}>
+              Assessment Before Amplification
+            </p>
+            <h2 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 'clamp(24px,3vw,36px)', color: '#1B4D3E', margin: '0 0 12px', fontWeight: 700 }}>
+              We don't just ask how much you can hear.<br />
+              <span style={{ color: '#B8892A' }}>We assess how hearing loss is affecting your life.</span>
+            </h2>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 14 }}>
+              <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+              <div style={{ width: 8, height: 8, background: '#B8892A', transform: 'rotate(45deg)' }} />
+              <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+            </div>
+            <p style={{ color: '#6b7280', maxWidth: 580, margin: 'auto', lineHeight: 1.6 }}>
+              Our assessment goes across four dimensions — because a hearing aid recommendation
+              that ignores your lifestyle is an incomplete recommendation.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 20 }} className="assess-grid">
+            {[
+              {
+                icon: '👂', color: '#1B4D3E', label: 'Level 1',
+                title: 'Hearing Sensitivity',
+                items: ['Pure Tone Audiometry (PTA)', 'Speech Audiometry', 'Tympanometry', 'Acoustic Reflexes'],
+              },
+              {
+                icon: '🗣️', color: '#2a6a5a', label: 'Level 2',
+                title: 'Speech & Communication',
+                items: ['Speech Recognition', 'Speech Understanding in Noise', 'Functional Listening Assessment'],
+              },
+              {
+                icon: '🧠', color: '#B8892A', label: 'Level 3',
+                title: 'Advanced Auditory Assessment',
+                items: ['OAE (where indicated)', 'BERA / ABR (where indicated)', 'Special tests for cochlear / retrocochlear involvement'],
+                note: 'Ordered where clinically appropriate',
+              },
+              {
+                icon: '👤', color: '#7c3aed', label: 'Level 4',
+                title: 'Lifestyle & Communication Assessment',
+                items: ['Listening environments & communication partners', 'Occupational & social requirements', 'TV, music & smartphone preferences', 'Dexterity, cosmetic preferences & expectations'],
+              },
+            ].map((a) => (
+              <div key={a.title} style={{ background: '#FAF6F0', border: `1px solid #F0EAE0`, borderRadius: 20, padding: '26px 24px', borderTop: `3px solid ${a.color}` }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                  <div style={{ width: 44, height: 44, borderRadius: 12, background: `${a.color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0 }}>
+                    {a.icon}
+                  </div>
+                  <div>
+                    <p style={{ margin: 0, fontSize: 11, fontWeight: 700, color: a.color, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{a.label}</p>
+                    <h3 style={{ margin: 0, fontFamily: 'var(--font-playfair, Georgia, serif)', color: '#1B4D3E', fontSize: 17, fontWeight: 700 }}>{a.title}</h3>
+                  </div>
+                </div>
+                <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {a.items.map((item) => (
+                    <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: '#4b5563' }}>
+                      <span style={{ color: '#B8892A', fontWeight: 700, flexShrink: 0, marginTop: 1 }}>✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                {a.note && <p style={{ margin: '12px 0 0', fontSize: 12, color: '#9ca3af', fontStyle: 'italic' }}>{a.note}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          SPEECH IN NOISE HERO
+      ══════════════════════════════════════════ */}
+      <section style={{ background: 'linear-gradient(135deg,#1B4D3E,#0f2d22)', padding: '64px 18px' }}>
+        <div style={{ maxWidth: 900, margin: 'auto', textAlign: 'center' }}>
+          <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#d4a843', marginBottom: 16 }}>
+            The Problem Most Clinics Miss
+          </p>
+          <h2 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 'clamp(26px,4vw,42px)', color: 'white', margin: '0 0 20px', fontWeight: 700, lineHeight: 1.2 }}>
+            "I can hear people.<br />
+            <span style={{ color: '#B8892A' }}>I just can't understand them in noise."</span>
+          </h2>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 24 }}>
+            <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+            <div style={{ width: 8, height: 8, background: '#B8892A', transform: 'rotate(45deg)' }} />
+            <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+          </div>
+          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 17, lineHeight: 1.7, marginBottom: 16, maxWidth: 680, margin: '0 auto 16px' }}>
+            This is one of the most common and most frustrating hearing difficulties — and a
+            standard pure-tone audiogram does not fully capture it.
+          </p>
+          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, lineHeight: 1.7, marginBottom: 36, maxWidth: 660, margin: '0 auto 36px' }}>
+            At Communiqué, your assessment includes evaluation of speech understanding in
+            challenging listening conditions where clinically indicated. This tells us
+            <strong style={{ color: '#d4a843' }}> how hearing loss is affecting your communication</strong> — not just your hearing thresholds.
+            That information directly guides technology selection, programming and rehabilitation.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, maxWidth: 680, margin: '0 auto 36px' }} className="noise-grid">
+            {[
+              { label: 'Technology Selection', icon: '🎧' },
+              { label: 'Counselling', icon: '💬' },
+              { label: 'Programming', icon: '⚙️' },
+              { label: 'Rehabilitation', icon: '🔄' },
+              { label: 'Realistic Expectations', icon: '✅' },
+              { label: 'Follow-Up Planning', icon: '📅' },
+            ].map((i) => (
+              <div key={i.label} style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 12, padding: '14px 10px', textAlign: 'center' }}>
+                <div style={{ fontSize: 22, marginBottom: 6 }}>{i.icon}</div>
+                <p style={{ margin: 0, color: 'rgba(255,255,255,0.8)', fontSize: 12, fontWeight: 600 }}>{i.label}</p>
+              </div>
+            ))}
+          </div>
+          <a href="#book" style={{ background: '#B8892A', color: 'white', padding: '14px 32px', borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: 'none', display: 'inline-block' }}>
+            Book a Speech-in-Noise Assessment
+          </a>
+        </div>
+        <style>{`@media (max-width: 600px) { .noise-grid { grid-template-columns: repeat(2,1fr) !important; } }`}</style>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          REAL WORLD TRIAL — 9 SITUATIONS
+      ══════════════════════════════════════════ */}
+      <section style={{ maxWidth: 1160, margin: 'auto', padding: '64px 18px' }}>
+        <div style={{ textAlign: 'center', marginBottom: 44 }}>
+          <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#B8892A', marginBottom: 12 }}>
+            Our Signature Feature
+          </p>
+          <h2 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 'clamp(24px,3vw,36px)', color: '#1B4D3E', margin: '0 0 12px', fontWeight: 700 }}>
+            Experience your hearing aid in the<br />
+            <span style={{ color: '#B8892A' }}>situations that matter to you.</span>
+          </h2>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 14 }}>
+            <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+            <div style={{ width: 8, height: 8, background: '#B8892A', transform: 'rotate(45deg)' }} />
+            <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+          </div>
+          <p style={{ color: '#6b7280', maxWidth: 600, margin: 'auto', lineHeight: 1.6 }}>
+            Most clinics ask one question after putting in a hearing aid: <em>"Can you hear better?"</em><br />
+            We go further. We demonstrate the device in conditions that reflect your actual life.
+          </p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16 }} className="trial-grid">
+          {[
+            { icon: '👥', title: 'One-to-One Conversation', q: 'Can you understand a person sitting across from you?' },
+            { icon: '👨‍👩‍👧', title: 'Group Conversation', q: 'Can you follow several people talking at once?' },
+            { icon: '🔊', title: 'Noisy Environment', q: 'How does speech sound when background noise is present?' },
+            { icon: '📺', title: 'Television', q: 'Can you follow dialogue without excessively raising the volume?' },
+            { icon: '🎵', title: 'Music', q: 'How natural and comfortable does music sound?' },
+            { icon: '📍', title: 'Distant Speech', q: 'How well can you access speech from a distance?' },
+            { icon: '🌳', title: 'Environmental Sounds', q: 'Can you comfortably perceive everyday sounds around you?' },
+            { icon: '🚶', title: 'Movement', q: 'How does speech sound while walking or moving around?' },
+            { icon: '📱', title: 'Smartphone & Connectivity', q: 'How does streamed phone audio or Bluetooth connectivity work?' },
+          ].map((s, i) => (
+            <div key={s.title} style={{ background: 'white', border: '1px solid #F0EAE0', borderRadius: 18, padding: '22px 20px', boxShadow: '0 4px 16px rgba(27,77,62,0.06)', display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: '#1B4D3E12', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, flexShrink: 0 }}>
+                  {s.icon}
+                </div>
+                <h3 style={{ margin: 0, fontFamily: 'var(--font-playfair, Georgia, serif)', color: '#1B4D3E', fontSize: 15, fontWeight: 700 }}>{s.title}</h3>
+              </div>
+              <p style={{ margin: 0, color: '#6b7280', fontSize: 13, lineHeight: 1.6, fontStyle: 'italic' }}>"{s.q}"</p>
+            </div>
+          ))}
+        </div>
+        <div style={{ textAlign: 'center', marginTop: 32 }}>
+          <p style={{ color: '#6b7280', fontSize: 15, marginBottom: 18 }}>
+            No purchase obligation. You decide only when you are confident.
+          </p>
+          <a href="#book" style={{ background: '#1B4D3E', color: 'white', padding: '14px 32px', borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: 'none', display: 'inline-block' }}>
+            📅 Book Your Real-World Trial
+          </a>
+        </div>
+        <style>{`@media (max-width: 768px) { .trial-grid { grid-template-columns: 1fr 1fr !important; } }
+        @media (max-width: 500px) { .trial-grid { grid-template-columns: 1fr !important; } }`}</style>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          GOOD / BETTER / BEST
+      ══════════════════════════════════════════ */}
+      <section style={{ background: 'white', padding: '64px 18px' }}>
+        <div style={{ maxWidth: 1000, margin: 'auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 44 }}>
+            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#B8892A', marginBottom: 12 }}>
+              Technology Tiers
+            </p>
+            <h2 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 'clamp(24px,3vw,36px)', color: '#1B4D3E', margin: '0 0 12px', fontWeight: 700 }}>
+              We recommend the level you need.<br />
+              <span style={{ color: '#B8892A' }}>Not simply the highest-priced option.</span>
+            </h2>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 14 }}>
+              <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+              <div style={{ width: 8, height: 8, background: '#B8892A', transform: 'rotate(45deg)' }} />
+              <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+            </div>
+            <p style={{ color: '#6b7280', maxWidth: 540, margin: 'auto', lineHeight: 1.6 }}>
+              Technology level is determined by your actual listening environments and communication needs — not by your budget ceiling.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }} className="tier-grid">
+            {[
+              {
+                tier: 'Essential',
+                label: 'For straightforward communication needs',
+                color: '#4b5563',
+                best: ['Primarily quiet environments', 'One-to-one conversation at home', 'TV and telephone use'],
+                features: ['Basic noise management', 'Comfortable amplification', 'Reliable performance in simple settings'],
+              },
+              {
+                tier: 'Advanced',
+                label: 'For moderate listening complexity',
+                color: '#1B4D3E',
+                best: ['Regular group conversations', 'Restaurants and social settings', 'Workplace communication'],
+                features: ['Stronger noise reduction', 'Directional microphone systems', 'Improved speech clarity in noise', 'Bluetooth connectivity options'],
+                highlight: true,
+              },
+              {
+                tier: 'Premium',
+                label: 'For demanding listening environments',
+                color: '#B8892A',
+                best: ['Highly active social lifestyle', 'Complex and variable noise environments', 'Frequent travel and diverse settings'],
+                features: ['Advanced AI-based processing', 'Superior speech-in-noise performance', 'Full smartphone integration', 'Automatic environment adaptation'],
+              },
+            ].map((t) => (
+              <div key={t.tier} style={{
+                background: t.highlight ? '#1B4D3E' : 'white',
+                border: `1px solid ${t.highlight ? '#1B4D3E' : '#F0EAE0'}`,
+                borderRadius: 20, padding: '28px 24px',
+                boxShadow: t.highlight ? '0 12px 40px rgba(27,77,62,0.25)' : '0 4px 16px rgba(27,77,62,0.06)',
+                transform: t.highlight ? 'translateY(-8px)' : 'none',
+                position: 'relative',
+              }}>
+                {t.highlight && (
+                  <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: '#B8892A', color: 'white', fontSize: 11, fontWeight: 700, padding: '4px 16px', borderRadius: 999, whiteSpace: 'nowrap' }}>
+                    Most Recommended
+                  </div>
+                )}
+                <h3 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 24, fontWeight: 800, margin: '0 0 4px', color: t.highlight ? 'white' : t.color }}>{t.tier}</h3>
+                <p style={{ fontSize: 13, color: t.highlight ? 'rgba(255,255,255,0.65)' : '#9ca3af', margin: '0 0 20px' }}>{t.label}</p>
+                <p style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: t.highlight ? '#d4a843' : '#B8892A', margin: '0 0 8px' }}>Best for:</p>
+                <ul style={{ margin: '0 0 20px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  {t.best.map((b) => (
+                    <li key={b} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: t.highlight ? 'rgba(255,255,255,0.8)' : '#4b5563' }}>
+                      <span style={{ color: '#B8892A', fontWeight: 700, flexShrink: 0 }}>→</span>{b}
+                    </li>
+                  ))}
+                </ul>
+                <div style={{ height: 1, background: t.highlight ? 'rgba(255,255,255,0.15)' : '#F0EAE0', marginBottom: 16 }} />
+                <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {t.features.map((f) => (
+                    <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: t.highlight ? 'rgba(255,255,255,0.75)' : '#6b7280' }}>
+                      <span style={{ color: t.highlight ? '#d4a843' : '#B8892A', fontWeight: 700, flexShrink: 0 }}>✓</span>{f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: 28 }}>
+            <p style={{ color: '#6b7280', fontSize: 14, marginBottom: 0 }}>
+              The appropriate tier is recommended after your hearing assessment and lifestyle discussion —
+              <strong style={{ color: '#1B4D3E' }}> not assumed in advance.</strong>
+            </p>
+          </div>
+        </div>
+        <style>{`@media (max-width: 768px) { .tier-grid { grid-template-columns: 1fr !important; } .tier-grid > div { transform: none !important; } }`}</style>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          FOLLOW-UP TIMELINE
+      ══════════════════════════════════════════ */}
+      <section style={{ background: '#FAF6F0', padding: '64px 18px' }}>
+        <div style={{ maxWidth: 900, margin: 'auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 44 }}>
+            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#B8892A', marginBottom: 12 }}>
+              Communiqué Hearing Success Programme
+            </p>
+            <h2 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 'clamp(22px,3vw,34px)', color: '#1B4D3E', margin: '0 0 12px', fontWeight: 700 }}>
+              Your hearing journey doesn't end<br />
+              <span style={{ color: '#B8892A' }}>when you purchase the device.</span>
+            </h2>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 14 }}>
+              <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+              <div style={{ width: 8, height: 8, background: '#B8892A', transform: 'rotate(45deg)' }} />
+              <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+            </div>
+            <p style={{ color: '#6b7280', maxWidth: 560, margin: 'auto', lineHeight: 1.6 }}>
+              A structured follow-up programme is what separates a clinical hearing-care practice
+              from a hearing-aid retail outlet.
+            </p>
+          </div>
+
+          {/* Timeline */}
+          <div style={{ position: 'relative' }}>
+            {/* Vertical line */}
+            <div style={{ position: 'absolute', left: 28, top: 28, bottom: 28, width: 2, background: 'linear-gradient(to bottom, #1B4D3E, #B8892A)', borderRadius: 2 }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+              {[
+                { time: 'Fitting Day', label: 'Initial Fitting & Programming', items: ['Device programmed to your audiogram', 'Real-ear verification where appropriate', 'Handling, insertion and care guidance', 'Expectation counselling'] },
+                { time: '1 Week', label: 'Early Adjustment Review', items: ['Listening experience in first week', 'Comfort and sound comfort check', 'Addressing adaptation difficulties', 'Fine-tuning if required'] },
+                { time: '2 Weeks', label: 'Listening Environments Check', items: ['Performance in noise and groups', 'TV and telephone use', 'Battery or charging experience', 'Further fine-tuning'] },
+                { time: '1 Month', label: 'Outcome Assessment', items: ['Speech understanding check', 'Quality-of-life questionnaire', 'Rehabilitation progress review', 'Programming refinements'] },
+                { time: '3 Months', label: 'Comprehensive Review', items: ['Full performance evaluation', 'Lifestyle changes since fitting', 'Auditory rehabilitation progress', 'Technology upgrade discussion if relevant'] },
+                { time: 'Every 6 Months', label: 'Long-Term Care Appointment', items: ['Device check and cleaning', 'Performance consistency', 'Hearing changes monitored', 'Ongoing support and guidance'] },
+              ].map((step, i) => (
+                <div key={step.time} style={{ display: 'flex', gap: 24, alignItems: 'flex-start', paddingLeft: 8 }}>
+                  <div style={{ width: 40, height: 40, borderRadius: '50%', background: i === 0 ? '#1B4D3E' : i === 5 ? '#B8892A' : 'white', border: `2px solid ${i === 0 ? '#1B4D3E' : '#B8892A'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, zIndex: 1, boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+                    <span style={{ fontSize: 12, fontWeight: 800, color: i === 0 ? 'white' : i === 5 ? 'white' : '#B8892A' }}>{i + 1}</span>
+                  </div>
+                  <div style={{ background: 'white', border: '1px solid #F0EAE0', borderRadius: 16, padding: '18px 20px', flex: 1, boxShadow: '0 2px 12px rgba(27,77,62,0.05)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10, flexWrap: 'wrap' }}>
+                      <span style={{ background: '#1B4D3E', color: 'white', fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 999 }}>{step.time}</span>
+                      <h3 style={{ margin: 0, fontFamily: 'var(--font-playfair, Georgia, serif)', color: '#1B4D3E', fontSize: 15, fontWeight: 700 }}>{step.label}</h3>
+                    </div>
+                    <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 12px' }}>
+                      {step.items.map((item) => (
+                        <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 6, fontSize: 12, color: '#6b7280' }}>
+                          <span style={{ color: '#B8892A', flexShrink: 0, marginTop: 2 }}>·</span>{item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          EXPECTATION COUNSELLING + NO PRESSURE
+      ══════════════════════════════════════════ */}
+      <section style={{ maxWidth: 1160, margin: 'auto', padding: '64px 18px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }} className="expect-grid">
+          {/* Expectation counselling */}
+          <div style={{ background: 'white', border: '1px solid #F0EAE0', borderRadius: 20, padding: '32px 28px', boxShadow: '0 4px 16px rgba(27,77,62,0.06)' }}>
+            <div style={{ fontSize: 36, marginBottom: 16 }}>🤝</div>
+            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B8892A', marginBottom: 8 }}>Expectation Counselling</p>
+            <h3 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', color: '#1B4D3E', fontSize: 22, margin: '0 0 12px', fontWeight: 700 }}>
+              We tell you what a hearing aid<br />can — and cannot — do.
+            </h3>
+            <p style={{ color: '#6b7280', fontSize: 14, lineHeight: 1.65, marginBottom: 18 }}>
+              Before fitting, we take time to explain realistic expectations — because a patient with
+              accurate expectations is more likely to succeed with their hearing aid.
+            </p>
+            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {[
+                'What improvement is realistic for your hearing profile',
+                'Which situations may remain challenging',
+                'Why background noise is difficult even with hearing aids',
+                'Why adaptation takes time and consistent use',
+                'Why follow-up programming matters',
+                'Whether one or two hearing aids is appropriate',
+                'What technology level is actually necessary',
+              ].map((item) => (
+                <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13, color: '#4b5563' }}>
+                  <span style={{ color: '#1B4D3E', fontWeight: 700, flexShrink: 0, marginTop: 1 }}>→</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div style={{ marginTop: 20, padding: '14px 16px', background: '#FAF6F0', borderRadius: 12, borderLeft: '3px solid #B8892A' }}>
+              <p style={{ margin: 0, color: '#1B4D3E', fontSize: 14, fontWeight: 600, fontStyle: 'italic' }}>
+                "They are not just trying to sell me the most expensive device."
+              </p>
+              <p style={{ margin: '6px 0 0', color: '#9ca3af', fontSize: 12 }}>
+                That perception is what we aim for with every patient.
+              </p>
+            </div>
+          </div>
+
+          {/* No pressure + family counselling */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <div style={{ background: 'linear-gradient(135deg,#1B4D3E,#153d30)', borderRadius: 20, padding: '28px 24px', flex: 1 }}>
+              <div style={{ fontSize: 32, marginBottom: 14 }}>🚫</div>
+              <h3 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', color: 'white', fontSize: 20, margin: '0 0 10px', fontWeight: 700 }}>
+                No-Pressure Consultation
+              </h3>
+              <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 14, lineHeight: 1.65, marginBottom: 16 }}>
+                You are encouraged to ask questions, compare options and experience the
+                technology before making any decision.
+              </p>
+              <p style={{ color: '#d4a843', fontSize: 15, fontWeight: 700, margin: '0 0 16px', fontStyle: 'italic' }}>
+                "Our goal is to help you make an informed decision."
+              </p>
+              <a href="#book" style={{ background: '#B8892A', color: 'white', padding: '12px 24px', borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: 'none', display: 'inline-block' }}>
+                Book with Confidence →
+              </a>
+            </div>
+            <div style={{ background: 'white', border: '1px solid #F0EAE0', borderRadius: 20, padding: '24px', boxShadow: '0 4px 16px rgba(27,77,62,0.06)' }}>
+              <div style={{ fontSize: 32, marginBottom: 12 }}>👨‍👩‍👧</div>
+              <h3 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', color: '#1B4D3E', fontSize: 18, margin: '0 0 8px', fontWeight: 700 }}>
+                Family Counselling Included
+              </h3>
+              <p style={{ color: '#6b7280', fontSize: 13, lineHeight: 1.65, margin: 0 }}>
+                We involve family members in hearing rehabilitation — teaching communication
+                strategies that improve outcomes for both the patient and the people around them.
+                Because often, it's the family who made the appointment.
+              </p>
+            </div>
+          </div>
+        </div>
+        <style>{`@media (max-width: 768px) { .expect-grid { grid-template-columns: 1fr !important; } .assess-grid { grid-template-columns: 1fr !important; } }`}</style>
+      </section>
+
+      {/* ══════════════════════════════════════════
           FAQ
       ══════════════════════════════════════════ */}
       <section style={{ background: 'white', padding: '64px 18px' }}>
@@ -533,9 +941,12 @@ export default function RightHearingAidPage() {
               Serving Dwarka Expressway · New Gurgaon · Sector 113
             </p>
             <h2 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 'clamp(22px,3vw,34px)', color: 'white', margin: '0 0 14px', fontWeight: 700, lineHeight: 1.2 }}>
-              Ready to find the hearing aid<br />
-              <span style={{ color: '#B8892A' }}>that's right for your life?</span>
+              We don't just help you hear more.<br />
+              <span style={{ color: '#B8892A' }}>We help you hear better.</span>
             </h2>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, margin: '0 0 14px', lineHeight: 1.6 }}>
+              Comprehensive assessment → Personalised trial → Precision fitting → Real-world verification → Auditory rehabilitation → Long-term follow-up
+            </p>
             <p style={{ color: 'rgba(255,255,255,0.7)', margin: '0 0 8px', fontSize: 15, lineHeight: 1.6 }}>
               📍 SCO 90, 3rd Floor, M3M Market, Sector 113, Gurugram
             </p>
