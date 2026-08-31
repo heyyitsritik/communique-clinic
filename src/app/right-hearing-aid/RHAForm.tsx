@@ -1,86 +1,78 @@
 'use client'
 import { useState } from 'react'
 
-const faqs = [
-  {
-    q: 'What is the best hearing aid in Gurgaon?',
-    a: 'There is no single hearing aid that is best for everyone. The appropriate device depends on your hearing loss, speech understanding, lifestyle, listening environments, technology requirements and budget. A proper assessment should always come before a recommendation.',
-  },
-  {
-    q: 'Do I need a hearing test before buying a hearing aid?',
-    a: 'Yes — always. A proper hearing assessment should precede any hearing-aid selection. The type, degree and configuration of your hearing loss help determine the appropriate amplification, style and technology level. Buying without an assessment is one of the most common reasons people are disappointed with their hearing aids.',
-  },
-  {
-    q: 'How much do hearing aids cost in Gurgaon?',
-    a: 'Hearing-aid prices vary substantially depending on brand, style, technology level and features. Rather than asking for a device price alone, ask for the complete cost of the hearing-care package — including fitting, programming, follow-up sessions and service support. A cheaper device with poor fitting and no follow-up can cost more in the long run.',
-  },
-  {
-    q: 'Should I buy an expensive hearing aid?',
-    a: 'Not necessarily. A more expensive hearing aid is not automatically more appropriate for your hearing loss. A person who mainly communicates in quiet environments may not benefit from every premium feature. Technology should match your actual listening needs — not your budget ceiling.',
-  },
-  {
-    q: 'Can I try a hearing aid before buying it?',
-    a: 'Yes, and you should. At Communiqué, we demonstrate the recommended device in the clinic so you can experience speech clarity, comfort, background noise handling and device handling before any commitment. Don\'t choose a hearing aid only by looking at it — experience it.',
-  },
-  {
-    q: 'Why can I hear sounds but not understand speech clearly?',
-    a: 'Speech understanding is not the same as sound detection. You can have enough hearing sensitivity to detect that someone is speaking but still struggle to understand what they\'re saying — especially in background noise. Speech audiometry and, where appropriate, speech-in-noise testing can identify this and guide the right technology recommendation.',
-  },
-  {
-    q: 'Should I buy one hearing aid or two?',
-    a: 'If both ears have hearing loss, your audiologist may recommend two hearing aids. Two devices together improve sound localisation, listening in group situations and speech understanding in noise. The decision should be made based on your individual hearing profile, not assumed either way.',
-  },
-  {
-    q: 'How long does it take to get used to hearing aids?',
-    a: 'It varies. People who have lived with untreated hearing loss for a long time may need several months to adapt fully to amplified sound. Initially, your own voice may sound different and background sounds may seem louder. Consistent use, counselling and structured follow-up significantly improve outcomes.',
-  },
-  {
-    q: 'Do hearing aids restore normal hearing?',
-    a: 'No. Hearing aids amplify and process sound to improve access to auditory information — they do not restore biological hearing. Expectations should be realistic. The goal is meaningful improvement in communication and quality of life, not perfect hearing in every situation.',
-  },
-  {
-    q: 'What makes Communiqué different from other hearing aid clinics in Gurgaon?',
-    a: 'Communiqué is a clinical audiology practice — not a hearing-aid retail outlet. We assess first, then recommend. Your hearing aid is individually programmed to your audiogram, not fitted with a generic setting. We also offer auditory rehabilitation, speech therapy, vestibular assessment and tinnitus management under one roof — which most hearing-aid-only centres do not.',
-  },
-]
+export default function RHAForm() {
+  const [form, setForm] = useState({ name: '', phone: '', concern: '', message: '' })
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
 
-export default function RHAFAQ() {
-  const [open, setOpen] = useState<number | null>(0)
+  const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+    setForm({ ...form, [e.target.name]: e.target.value })
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus('sending')
+    try {
+      const res = await fetch('https://formspree.io/f/xaqzzbzr', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...form, source: 'Right Hearing Aid Page' }),
+      })
+      setStatus(res.ok ? 'success' : 'error')
+    } catch { setStatus('error') }
+  }
+
+  const inputStyle: React.CSSProperties = {
+    width: '100%', padding: '11px 14px', border: '1px solid #E5D9C8',
+    borderRadius: 10, marginBottom: 10, fontSize: 14, background: '#FFFDF9',
+    color: '#1A1A1A', outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box',
+  }
+
+  if (status === 'success') return (
+    <div style={{ textAlign: 'center', padding: '24px 0' }}>
+      <div style={{ fontSize: 40, marginBottom: 12 }}>✅</div>
+      <p style={{ fontFamily: 'Georgia,serif', fontWeight: 700, color: '#1B4D3E', fontSize: 17, margin: '0 0 8px' }}>Request Received!</p>
+      <p style={{ color: '#6b7280', fontSize: 13 }}>We'll call you shortly to confirm your appointment.</p>
+    </div>
+  )
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, alignItems: 'start' }} className="faq-grid">
-      {faqs.map((f, i) => (
-        <div
-          key={i}
-          style={{
-            background: '#FAF6F0',
-            border: `1px solid ${open === i ? '#B8892A' : '#F0EAE0'}`,
-            borderRadius: 16,
-            overflow: 'hidden',
-            transition: 'border-color 0.2s',
-          }}
-        >
-          <button
-            onClick={() => setOpen(open === i ? null : i)}
-            style={{ width: '100%', textAlign: 'left', padding: '18px 20px', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 14 }}
-          >
-            <span style={{ fontWeight: 700, color: '#1B4D3E', fontSize: 14, fontFamily: 'var(--font-playfair, Georgia, serif)', lineHeight: 1.4 }}>
-              {f.q}
-            </span>
-            <span style={{ width: 26, height: 26, borderRadius: '50%', background: open === i ? '#1B4D3E' : '#F0EAE0', color: open === i ? 'white' : '#1B4D3E', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, fontWeight: 700, flexShrink: 0, transition: 'all 0.2s' }}>
-              {open === i ? '−' : '+'}
-            </span>
-          </button>
-          {open === i && (
-            <div style={{ padding: '0 20px 18px', color: '#6b7280', lineHeight: 1.7, fontSize: 14 }}>
-              {f.a}
-            </div>
-          )}
-        </div>
-      ))}
-      <style>{`
-        @media (max-width: 768px) { .faq-grid { grid-template-columns: 1fr !important; } }
-      `}</style>
-    </div>
+    <form onSubmit={submit}>
+      <input style={inputStyle} type="text" name="name" value={form.name} onChange={handle} placeholder="Full Name *" required />
+      <input style={inputStyle} type="tel" name="phone" value={form.phone} onChange={handle} placeholder="Mobile Number *" required />
+      <select
+        style={{ ...inputStyle, color: form.concern ? '#1A1A1A' : '#9ca3af' }}
+        name="concern" value={form.concern} onChange={handle} required
+      >
+        <option value="">Primary concern *</option>
+        <option>Difficulty hearing in conversations</option>
+        <option>Difficulty hearing in noise / groups</option>
+        <option>Ringing in ears (Tinnitus)</option>
+        <option>Child's hearing / speech concern</option>
+        <option>Hearing aid trial / fitting</option>
+        <option>Hearing aid fine-tuning</option>
+        <option>General hearing assessment</option>
+      </select>
+      <textarea
+        style={{ ...inputStyle, minHeight: 72, resize: 'vertical' }}
+        name="message" value={form.message} onChange={handle}
+        placeholder="Any additional details (optional)"
+      />
+      {status === 'error' && <p style={{ color: '#ef4444', fontSize: 12, marginBottom: 8 }}>Something went wrong. Please call us directly.</p>}
+      <button type="submit" disabled={status === 'sending'} style={{ width: '100%', background: '#1B4D3E', color: 'white', padding: '13px', borderRadius: 10, fontWeight: 700, fontSize: 15, border: 'none', cursor: 'pointer', marginBottom: 10 }}>
+        {status === 'sending' ? '⏳ Sending...' : '📅 Book Free Consultation'}
+      </button>
+      <div style={{ display: 'flex', gap: 8 }}>
+        <a href="https://wa.me/918796270575?text=Hi%2C+I'd+like+to+find+the+right+hearing+aid." target="_blank" rel="noopener noreferrer"
+          style={{ flex: 1, background: '#25D366', color: 'white', padding: '11px', borderRadius: 10, fontWeight: 700, fontSize: 13, textDecoration: 'none', textAlign: 'center' }}>
+          💬 WhatsApp
+        </a>
+        <a href="tel:+918796270575" style={{ flex: 1, background: '#FAF6F0', color: '#1B4D3E', padding: '11px', borderRadius: 10, fontWeight: 700, fontSize: 13, textDecoration: 'none', textAlign: 'center', border: '1px solid #F0EAE0' }}>
+          📞 Call
+        </a>
+      </div>
+      <p style={{ fontSize: 11, color: '#9ca3af', marginTop: 10, textAlign: 'center' }}>
+        No obligation to purchase. Your details are used only for appointment support.
+      </p>
+    </form>
   )
 }
