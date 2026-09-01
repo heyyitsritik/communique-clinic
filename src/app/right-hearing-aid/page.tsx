@@ -521,8 +521,8 @@ export default function RightHearingAidPage() {
               <div style={{ height: 1, width: 60, background: '#B8892A' }} />
             </div>
             <p style={{ color: '#6b7280', maxWidth: 680, margin: 'auto', lineHeight: 1.7, fontSize: 16 }}>
-              We invite you to live a fully immersive hearing aid experience — designed to show
-              you how vibrant life sounds again. We demonstrate the device in situations that
+              We invite you to live a fully immersive hearing aid experience —{' '}
+              <strong style={{ color: '#1B4D3E' }}>designed to show you how vibrant life sounds again.</strong> We demonstrate the device in situations that
               reflect your actual life.
             </p>
           </div>
@@ -1007,6 +1007,125 @@ export default function RightHearingAidPage() {
         </div>
       </section>
 
+      {/* ══════════════════════════════════════════
+          GUARANTEE BAND
+      ══════════════════════════════════════════ */}
+      <section style={{ background: 'linear-gradient(135deg, #1B4D3E, #153d30)', padding: '56px 18px' }}>
+        <div style={{ maxWidth: 800, margin: 'auto', textAlign: 'center' }}>
+          <div style={{ fontSize: 48, marginBottom: 20 }}>🤝</div>
+          <h2 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 'clamp(24px,3.5vw,38px)', color: 'white', margin: '0 0 16px', fontWeight: 700, lineHeight: 1.2 }}>
+            "Don't choose a hearing aid<br />
+            until you've <span style={{ color: '#B8892A' }}>experienced</span> it."
+          </h2>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 24 }}>
+            <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+            <div style={{ width: 8, height: 8, background: '#B8892A', transform: 'rotate(45deg)' }} />
+            <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+          </div>
+          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 17, lineHeight: 1.7, margin: '0 auto 12px', maxWidth: 620 }}>
+            The biggest fear most hearing-aid buyers have is spending ₹80,000 to ₹2 lakh
+            and not being happy with the result.
+          </p>
+          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, lineHeight: 1.65, margin: '0 auto 36px', maxWidth: 600 }}>
+            At Communiqué, you experience the recommended device in the clinic — in real
+            conversation, against background noise, at a distance — before any decision is made.
+            <strong style={{ color: '#d4a843' }}> No pressure. No obligation.</strong>
+          </p>
+          <a href="#book" style={{ background: '#B8892A', color: 'white', padding: '16px 36px', borderRadius: 8, fontWeight: 700, fontSize: 16, textDecoration: 'none', display: 'inline-block' }}>
+            📅 Book Your Personalised Hearing Aid Experience
+          </a>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          FAQ
+      ══════════════════════════════════════════ */}
+      <section style={{ background: 'white', padding: '64px 18px' }}>
+        <div style={{ maxWidth: 1000, margin: 'auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 44 }}>
+            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#B8892A', marginBottom: 12 }}>Common Questions</p>
+            <h2 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 'clamp(22px,3vw,34px)', color: '#1B4D3E', margin: 0, fontWeight: 700 }}>
+              Hearing aid questions — answered honestly
+            </h2>
+          </div>
+          <RHAFAQ />
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          FINAL CTA
+      ══════════════════════════════════════════ */}
+      <section style={{ maxWidth: 1160, margin: 'auto', padding: '64px 18px 80px' }}>
+        <div style={{ background: 'linear-gradient(135deg, #1B4D3E, #0f2d22)', borderRadius: 28, padding: '48px 40px', display: 'grid', gridTemplateColumns: '1fr auto', gap: 32, alignItems: 'center' }} className="final-cta-grid">
+          <div>
+            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#d4a843', marginBottom: 14 }}>
+              Serving Dwarka Expressway · New Gurgaon · Sector 113
+            </p>
+            <h2 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 'clamp(22px,3vw,34px)', color: 'white', margin: '0 0 8px', fontWeight: 700, lineHeight: 1.2 }}>
+              We don't just help you hear more.<br />
+              <span style={{ color: '#B8892A' }}>We help you hear better.</span>
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, margin: '0 0 16px', lineHeight: 1.6 }}>
+              Assessment → Lifestyle → Recommendation → Hearing Aid Experience → Realistic Expectations → Fitting → Outcomes Measurement → Auditory Rehabilitation → Long-term Follow-up
+            </p>
+            <p style={{ color: 'rgba(255,255,255,0.7)', margin: '0 0 6px', fontSize: 15 }}>
+              📍 SCO 90, 3rd Floor, M3M Market, Sector 113, Dwarka Expressway, Gurugram
+            </p>
+            <p style={{ color: 'rgba(255,255,255,0.7)', margin: 0, fontSize: 15 }}>
+              📞 <a href="tel:+918796270575" style={{ color: '#d4a843' }}>8796270575</a>
+              &nbsp;·&nbsp;
+              <a href="tel:+918700138433" style={{ color: '#d4a843' }}>8700138433</a>
+            </p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, flexShrink: 0 }}>
+            <a href="#book" style={{ background: '#B8892A', color: 'white', padding: '15px 28px', borderRadius: 10, fontWeight: 700, fontSize: 15, textDecoration: 'none', textAlign: 'center', whiteSpace: 'nowrap' }}>
+              📅 Book Assessment
+            </a>
+            <a href="https://wa.me/918796270575?text=Hi%2C+I'd+like+to+know+more+about+hearing+aids." target="_blank" rel="noopener noreferrer" style={{ background: '#25D366', color: 'white', padding: '13px 28px', borderRadius: 10, fontWeight: 700, fontSize: 15, textDecoration: 'none', textAlign: 'center', whiteSpace: 'nowrap' }}>
+              💬 WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile sticky bar */}
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }} className="trust-grid">
+  {trustPoints.map((t) => (
+    <div
+      key={t.title}
+      style={{
+        background: '#FAF6F0',
+        border: '1px solid #F0EAE0',
+        borderRadius: 20,
+        padding: '26px 24px',
+        borderLeft: '3px solid #B8892A'
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+        <div
+          style={{
+            width: 44,
+            height: 44,
+            borderRadius: 10,
+            background: '#1B4D3E12',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 20
+          }}
+        >
+          {t.icon}
+        </div>
+        <div>
+          <h3 style={{ margin: 0, fontFamily: 'var(--font-playfair, Georgia, serif)', color: '#1B4D3E', fontSize: 16, fontWeight: 700 }}>
+            {t.title}
+          </h3>
+          <p style={{ margin: '6px 0 0', color: '#6b7280', fontSize: 13 }}>{t.desc}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
     </main>
   )
 }
