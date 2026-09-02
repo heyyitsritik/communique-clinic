@@ -976,38 +976,6 @@ export default function RightHearingAidPage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          WHY COMMUNIQUÉ — TRUST POINTS
-      ══════════════════════════════════════════ */}
-      <section style={{ background: 'white', padding: '64px 18px' }}>
-        <div style={{ maxWidth: 1160, margin: 'auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 44 }}>
-            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#B8892A', marginBottom: 12 }}>Your Competitive Advantage</p>
-            <h2 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 'clamp(24px,3vw,36px)', color: '#1B4D3E', margin: '0 0 12px', fontWeight: 700 }}>
-              Why entrust your hearing to Communiqué?
-            </h2>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 14 }}>
-              <div style={{ height: 1, width: 60, background: '#B8892A' }} />
-              <div style={{ width: 8, height: 8, background: '#B8892A', transform: 'rotate(45deg)' }} />
-              <div style={{ height: 1, width: 60, background: '#B8892A' }} />
-            </div>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }} className="trust-grid">
-            {trustPoints.map((t) => (
-              <div key={t.title} style={{ background: '#FAF6F0', border: '1px solid #F0EAE0', borderRadius: 20, padding: '26px 24px', borderLeft: '3px solid #B8892A' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
-                  <div style={{ width: 44, height: 44, borderRadius: 10, background: '#1B4D3E12', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>{t.icon}</div>
-                  <div>
-                    <h3 style={{ margin: 0, fontFamily: 'var(--font-playfair, Georgia, serif)', color: '#1B4D3E', fontSize: 16, fontWeight: 700 }}>{t.title}</h3>
-                    <p style={{ margin: '6px 0 0', color: '#6b7280', fontSize: 13 }}>{t.desc}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
           GUARANTEE BAND
       ══════════════════════════════════════════ */}
       <section style={{ background: 'linear-gradient(135deg, #1B4D3E, #153d30)', padding: '56px 18px' }}>
