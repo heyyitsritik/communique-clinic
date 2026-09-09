@@ -67,8 +67,6 @@ body {
 
 /* ── Floating buttons ── */
 .float-btn {
-  position: fixed;
-  z-index: 999;
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -81,6 +79,7 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
+
 .float-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(0,0,0,0.22);
