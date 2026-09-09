@@ -12,8 +12,9 @@ export default function FloatingButtons() {
   if (!visible) return null
 
   return (
-    <div className="fixed bottom-6 right-5 z-50 flex flex-col gap-3 items-end">
+    <div className="fixed bottom-20 sm:bottom-6 right-5 z-50 flex flex-col gap-4 items-end">
       {/* WhatsApp */}
+      
       <a
         href="https://wa.me/918796270575?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Communiqu%C3%A9%20Clinic."
         target="_blank"
@@ -29,6 +30,7 @@ export default function FloatingButtons() {
       </a>
 
       {/* Call button */}
+      
       <a
         href="tel:+918796270575"
         className="float-btn text-white"
