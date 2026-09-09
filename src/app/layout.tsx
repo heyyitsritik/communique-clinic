@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
@@ -57,9 +58,23 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} scroll-smooth`}>
       <head>
-        
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TLCZT78F');`,
+          }}
+        />
+        {/* End Google Tag Manager */}
+
         {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KS8MVRN3LQ" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-KS8MVRN3LQ"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -71,7 +86,6 @@ export default function RootLayout({
           }}
         />
 
-        
         {/* Local Business Schema for Google */}
         <script
           type="application/ld+json"
@@ -105,9 +119,19 @@ export default function RootLayout({
           }}
         />
       </head>
+
       <body className="font-inter bg-cream text-gray-900 antialiased">
+        {/* Google Tag Manager (noscript) */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLCZT78F" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        />
+        {/* End Google Tag Manager (noscript) */}
+
         {children}
       </body>
     </html>
   )
 }
+
