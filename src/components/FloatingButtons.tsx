@@ -12,7 +12,7 @@ export default function FloatingButtons() {
   if (!visible) return null
 
   return (
-    <div className="fixed bottom-20 sm:bottom-6 right-5 z-50 flex flex-col gap-4 items-end">
+    <div className="fixed bottom-20 sm:bottom-6 right-5 z-50 flex flex-col gap-12 items-end">
       {/* WhatsApp */}
       
       <a
