@@ -237,11 +237,6 @@ export default function RightHearingAidPage() {
                 See Our Process →
               </a>
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20 }}>
-              {['🎓 AIISH-Trained Audiologist', '🏥 Army Hospital (R&R) Experience', '📍 Dwarka Expressway, Gurugram'].map((t) => (
-                <div key={t} style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', display: 'flex', alignItems: 'center', gap: 6 }}>{t}</div>
-              ))}
-            </div>
           </div>
 
           {/* Right — Form */}
@@ -521,8 +516,8 @@ export default function RightHearingAidPage() {
               <div style={{ height: 1, width: 60, background: '#B8892A' }} />
             </div>
             <p style={{ color: '#6b7280', maxWidth: 680, margin: 'auto', lineHeight: 1.7, fontSize: 16 }}>
-              We invite you to live a fully immersive hearing aid experience —{' '}
-              <strong style={{ color: '#1B4D3E' }}>designed to show you how vibrant life sounds again.</strong> We demonstrate the device in situations that
+              We invite you to live a fully immersive hearing aid experience — designed to show
+              you how vibrant life sounds again. We demonstrate the device in situations that
               reflect your actual life.
             </p>
           </div>
@@ -976,6 +971,38 @@ export default function RightHearingAidPage() {
       </section>
 
       {/* ══════════════════════════════════════════
+          WHY COMMUNIQUÉ — TRUST POINTS
+      ══════════════════════════════════════════ */}
+      <section style={{ background: 'white', padding: '64px 18px' }}>
+        <div style={{ maxWidth: 1160, margin: 'auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 44 }}>
+            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#B8892A', marginBottom: 12 }}>Your Competitive Advantage</p>
+            <h2 style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 'clamp(24px,3vw,36px)', color: '#1B4D3E', margin: '0 0 12px', fontWeight: 700 }}>
+              Why entrust your hearing to Communiqué?
+            </h2>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 14 }}>
+              <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+              <div style={{ width: 8, height: 8, background: '#B8892A', transform: 'rotate(45deg)' }} />
+              <div style={{ height: 1, width: 60, background: '#B8892A' }} />
+            </div>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }} className="trust-grid">
+            {trustPoints.map((t) => (
+              <div key={t.title} style={{ background: '#FAF6F0', border: '1px solid #F0EAE0', borderRadius: 20, padding: '26px 24px', borderLeft: '3px solid #B8892A' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+                  <div style={{ width: 44, height: 44, borderRadius: 10, background: '#1B4D3E12', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>{t.icon}</div>
+                  <div>
+                    <h3 style={{ margin: 0, fontFamily: 'var(--font-playfair, Georgia, serif)', color: '#1B4D3E', fontSize: 16, fontWeight: 700 }}>{t.title}</h3>
+                    <p style={{ margin: '6px 0 0', color: '#6b7280', fontSize: 13 }}>{t.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
           GUARANTEE BAND
       ══════════════════════════════════════════ */}
       <section style={{ background: 'linear-gradient(135deg, #1B4D3E, #153d30)', padding: '56px 18px' }}>
@@ -1057,43 +1084,60 @@ export default function RightHearingAidPage() {
       </section>
 
       {/* Mobile sticky bar */}
-<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }} className="trust-grid">
-  {trustPoints.map((t) => (
-    <div
-      key={t.title}
-      style={{
-        background: '#FAF6F0',
-        border: '1px solid #F0EAE0',
-        borderRadius: 20,
-        padding: '26px 24px',
-        borderLeft: '3px solid #B8892A'
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
-        <div
-          style={{
-            width: 44,
-            height: 44,
-            borderRadius: 10,
-            background: '#1B4D3E12',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 20
-          }}
-        >
-          {t.icon}
-        </div>
-        <div>
-          <h3 style={{ margin: 0, fontFamily: 'var(--font-playfair, Georgia, serif)', color: '#1B4D3E', fontSize: 16, fontWeight: 700 }}>
-            {t.title}
-          </h3>
-          <p style={{ margin: '6px 0 0', color: '#6b7280', fontSize: 13 }}>{t.desc}</p>
-        </div>
+      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: 'white', borderTop: '1px solid #F0EAE0', padding: 10, display: 'flex', gap: 8, zIndex: 50 }} className="mobile-sticky">
+        <a href="#book" style={{ flex: 1, background: '#1B4D3E', color: 'white', padding: '12px 10px', borderRadius: 8, fontWeight: 700, textAlign: 'center', textDecoration: 'none', fontSize: 14 }}>
+          Book Assessment
+        </a>
+        <a href="tel:+918796270575" style={{ flex: 1, background: '#B8892A', color: 'white', padding: '12px 10px', borderRadius: 8, fontWeight: 700, textAlign: 'center', textDecoration: 'none', fontSize: 14 }}>
+          📞 Call Now
+        </a>
       </div>
-    </div>
-  ))}
-</div>
+
+      <style>{`
+        @media (min-width: 768px) { .mobile-sticky { display: none !important; } }
+        @media (max-width: 900px) {
+          .rha-hero-grid,
+          .assess-layout,
+          .fitting-layout,
+          .home-layout { grid-template-columns: 1fr !important; }
+          .program-grid,
+          .tiers-grid,
+          .trust-grid,
+          .rehab-grid,
+          .trial-grid { grid-template-columns: 1fr 1fr !important; }
+          .lifestyle-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+          .styles-grid { grid-template-columns: 1fr !important; }
+          .outcomes-grid,
+          .expect-grid,
+          .final-cta-grid { grid-template-columns: 1fr !important; }
+          .brands-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+          .noise-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+          .assess-layout > div:last-child,
+          .fitting-layout > div:first-child,
+          .home-layout > div:last-child { height: 420px !important; }
+          .final-cta-grid > div:last-child { width: 100%; }
+          .final-cta-grid > div:last-child a { width: 100%; box-sizing: border-box; }
+        }
+        @media (max-width: 600px) {
+          .program-grid,
+          .tiers-grid,
+          .trust-grid,
+          .rehab-grid,
+          .trial-grid,
+          .styles-grid { grid-template-columns: 1fr !important; }
+          .brands-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+          .lifestyle-grid { grid-template-columns: 1fr !important; }
+          .noise-grid { grid-template-columns: 1fr 1fr !important; }
+          .rha-hero-grid { gap: 32px !important; }
+          .assess-layout > div:last-child,
+          .fitting-layout > div:first-child,
+          .home-layout > div:last-child { height: 320px !important; }
+          .final-cta-grid { padding: 32px 22px !important; }
+          .final-cta-grid > div:last-child { gap: 10px !important; }
+        }
+        @media (max-width: 767px) { body { padding-bottom: 70px; } }
+      `}</style>
+
     </main>
   )
 }

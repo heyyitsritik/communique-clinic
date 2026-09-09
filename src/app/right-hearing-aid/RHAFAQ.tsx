@@ -1,5 +1,5 @@
-
 'use client'
+
 import { useState } from 'react'
 
 const faqs = [
@@ -49,38 +49,102 @@ export default function RHAFAQ() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, alignItems: 'start' }} className="faq-grid">
-      {faqs.map((f, i) => (
-        <div
-          key={i}
-          style={{
-            background: '#FAF6F0',
-            border: `1px solid ${open === i ? '#B8892A' : '#F0EAE0'}`,
-            borderRadius: 16,
-            overflow: 'hidden',
-            transition: 'border-color 0.2s',
-          }}
-        >
-          <button
-            onClick={() => setOpen(open === i ? null : i)}
-            style={{ width: '100%', textAlign: 'left', padding: '18px 20px', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 14 }}
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: 10,
+        alignItems: 'start',
+      }}
+      className="faq-grid"
+    >
+      {faqs.map((f, i) => {
+        const isOpen = open === i
+        const answerId = `faq-answer-${i}`
+
+        return (
+          <div
+            key={f.q}
+            style={{
+              background: '#FAF6F0',
+              border: `1px solid ${isOpen ? '#B8892A' : '#F0EAE0'}`,
+              borderRadius: 16,
+              overflow: 'hidden',
+              transition: 'border-color 0.2s',
+            }}
           >
-            <span style={{ fontWeight: 700, color: '#1B4D3E', fontSize: 14, fontFamily: 'var(--font-playfair, Georgia, serif)', lineHeight: 1.4 }}>
-              {f.q}
-            </span>
-            <span style={{ width: 26, height: 26, borderRadius: '50%', background: open === i ? '#1B4D3E' : '#F0EAE0', color: open === i ? 'white' : '#1B4D3E', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, fontWeight: 700, flexShrink: 0, transition: 'all 0.2s' }}>
-              {open === i ? '−' : '+'}
-            </span>
-          </button>
-          {open === i && (
-            <div style={{ padding: '0 20px 18px', color: '#6b7280', lineHeight: 1.7, fontSize: 14 }}>
-              {f.a}
-            </div>
-          )}
-        </div>
-      ))}
+            <button
+              type="button"
+              onClick={() => setOpen(isOpen ? null : i)}
+              aria-expanded={isOpen}
+              aria-controls={answerId}
+              style={{
+                width: '100%',
+                textAlign: 'left',
+                padding: '18px 20px',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+                gap: 14,
+              }}
+            >
+              <span
+                style={{
+                  fontWeight: 700,
+                  color: '#1B4D3E',
+                  fontSize: 14,
+                  fontFamily: 'var(--font-playfair, Georgia, serif)',
+                  lineHeight: 1.4,
+                }}
+              >
+                {f.q}
+              </span>
+
+              <span
+                aria-hidden="true"
+                style={{
+                  width: 26,
+                  height: 26,
+                  borderRadius: '50%',
+                  background: isOpen ? '#1B4D3E' : '#F0EAE0',
+                  color: isOpen ? 'white' : '#1B4D3E',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 18,
+                  fontWeight: 700,
+                  flexShrink: 0,
+                  transition: 'all 0.2s',
+                }}
+              >
+                {isOpen ? '−' : '+'}
+              </span>
+            </button>
+
+            {isOpen && (
+              <div
+                id={answerId}
+                style={{
+                  padding: '0 20px 18px',
+                  color: '#6b7280',
+                  lineHeight: 1.7,
+                  fontSize: 14,
+                }}
+              >
+                {f.a}
+              </div>
+            )}
+          </div>
+        )
+      })}
+
       <style>{`
-        @media (max-width: 768px) { .faq-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 768px) {
+          .faq-grid { grid-template-columns: 1fr !important; }
+        }
       `}</style>
     </div>
   )
