@@ -25,6 +25,12 @@ const hearingAidDropdown = [
     desc: 'Assessment, lifestyle & clinical guidance',
     icon: '🎓',
   },
+  {
+    label: 'Speech Therapy',
+    href: '/speech-therapy',
+    desc: 'Professional speech therapy services',
+    icon: '💬',
+  }
 ]
 
 export default function Navbar() {
