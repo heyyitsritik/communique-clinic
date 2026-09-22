@@ -232,7 +232,7 @@ export default function SpeechTherapyPage() {
               At Communiqué, every therapy programme begins with a comprehensive assessment — because treating a symptom without understanding its cause rarely works.
             </p>
             <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 36 }}>
-              <a href="#book" style={{ background: '#1B4D3E', color: 'white', padding: '15px 28px', borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: 'none' }}>
+              <a href="tel:+918796270575" style={{ background: '#1B4D3E', color: 'white', padding: '15px 28px', borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: 'none' }}>
                 📅 Book a Speech & Language Assessment
               </a>
               <a href="https://wa.me/918796270575?text=Hi%2C+I'd+like+to+know+more+about+speech+therapy." target="_blank" rel="noopener noreferrer" style={{ background: '#25D366', color: 'white', padding: '13px 22px', borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: 'none' }}>
@@ -347,7 +347,7 @@ export default function SpeechTherapyPage() {
                   </div>
                 ))}
               </div>
-              <a href="#book" style={{ background: '#1B4D3E', color: 'white', padding: '14px 28px', borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: 'none', display: 'inline-block' }}>
+              <a href="tel:+918796270575" style={{ background: '#1B4D3E', color: 'white', padding: '14px 28px', borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: 'none', display: 'inline-block' }}>
                 📅 Book a Speech & Language Assessment
               </a>
             </div>
@@ -565,7 +565,7 @@ export default function SpeechTherapyPage() {
             </p>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, flexShrink: 0 }}>
-            <a href="#book" style={{ background: '#B8892A', color: 'white', padding: '15px 28px', borderRadius: 10, fontWeight: 700, fontSize: 15, textDecoration: 'none', textAlign: 'center', whiteSpace: 'nowrap' }}>
+            <a href="tel:+918796270575" style={{ background: '#B8892A', color: 'white', padding: '15px 28px', borderRadius: 10, fontWeight: 700, fontSize: 15, textDecoration: 'none', textAlign: 'center', whiteSpace: 'nowrap' }}>
               📅 Book Assessment
             </a>
             <a href="https://wa.me/918796270575?text=Hi%2C+I'd+like+to+know+more+about+speech+therapy." target="_blank" rel="noopener noreferrer" style={{ background: '#25D366', color: 'white', padding: '13px 28px', borderRadius: 10, fontWeight: 700, fontSize: 15, textDecoration: 'none', textAlign: 'center', whiteSpace: 'nowrap' }}>
@@ -580,7 +580,7 @@ export default function SpeechTherapyPage() {
 
       {/* MOBILE STICKY */}
       <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: 'white', borderTop: '1px solid #F0EAE0', padding: 10, display: 'flex', gap: 8, zIndex: 50 }} className="mobile-sticky">
-        <a href="#book" style={{ flex: 1, background: '#1B4D3E', color: 'white', padding: '12px 10px', borderRadius: 8, fontWeight: 700, textAlign: 'center', textDecoration: 'none', fontSize: 14 }}>
+        <a href="tel:+918796270575" style={{ flex: 1, background: '#1B4D3E', color: 'white', padding: '12px 10px', borderRadius: 8, fontWeight: 700, textAlign: 'center', textDecoration: 'none', fontSize: 14 }}>
           Book Assessment
         </a>
         <a href="https://wa.me/918796270575?text=Hi%2C+I'd+like+to+submit+a+video+for+the+1-Minute+Speech+Check." target="_blank" rel="noopener noreferrer" style={{ flex: 1, background: '#25D366', color: 'white', padding: '12px 10px', borderRadius: 8, fontWeight: 700, textAlign: 'center', textDecoration: 'none', fontSize: 14 }}>
