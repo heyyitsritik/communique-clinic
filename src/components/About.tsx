@@ -16,6 +16,13 @@ const saleCredentials = [
   { icon: '❤️', label: 'Patient-Focused Vision', sub: 'Compassionate & Accessible Care' },
 ]
 
+const anandCredentials = [
+  { icon: '🎓', label: 'MBBS, DLO (ENT)', sub: 'ENT Specialist & Surgeon' },
+  { icon: '🏥', label: 'Senior Consultant', sub: 'Aarvy Healthcare Superspeciality Hospital, Gurugram' },
+  { icon: '🩺', label: '43+ Years Experience', sub: 'Extensive ENT & Emergency Care Experience' },
+  { icon: '🏛️', label: 'Ex-HCMS', sub: 'Retired Medical Officer, Haryana Government' },
+]
+
 function TeamCard({
   photo,
   name,
@@ -187,6 +194,57 @@ export default function About() {
           credentials={saleCredentials}
           ctaLabel="Get in Touch"
           flipped={true}
+        />
+        {/* Divider */}
+        <div className="my-20 flex items-center gap-6">
+          <div className="flex-1 h-px bg-cream-dark" />
+          <div
+            className="ornament-diamond"
+            style={{
+              width: 10,
+              height: 10,
+              background: '#B8892A',
+              transform: 'rotate(45deg)',
+            }}
+          />
+          <div className="flex-1 h-px bg-cream-dark" />
+        </div>
+
+        {/* Dr. S.K. Anand */}
+        <TeamCard
+          photo="/dr-anand.jpg"
+          name="Dr. S.K. Anand"
+          designation="Senior Consultant – ENT Specialist"
+          badge="Ex-HCMS"
+          badgeSub="Haryana Government"
+          bio={
+            <>
+              <p>
+                Dr. S.K. Anand is a highly experienced <strong>ENT Surgeon</strong> with
+                over <strong>43 years of clinical experience</strong>. He currently serves
+                as Senior Consultant ENT Surgeon at{' '}
+                <strong>Aarvy Healthcare Superspeciality Hospital, Gurugram</strong>.
+              </p>
+
+              <p>
+                A retired <strong>Haryana Civil Medical Services (HCMS)</strong> Medical
+                Officer, Dr. Anand has served at various government district hospitals
+                across Haryana, including Jind, Sirsa, and Bhiwani. He has also served as
+                <strong> Medical Superintendent at Akropolis Hospital, Gurugram</strong>,
+                and previously worked at W Pratiksha Hospital, Sector 56, Gurugram,
+                from 2015 to 2023.
+              </p>
+
+              <p>
+                Throughout his career, Dr. Anand has handled thousands of ENT cases and
+                emergency procedures, while also contributing to academic teaching and
+                surgical training.
+              </p>
+            </>
+          }
+          credentials={anandCredentials}
+          ctaLabel="Book a Consultation"
+          flipped={false}
         />
       </div>
     </section>
