@@ -30,7 +30,13 @@ const hearingAidDropdown = [
     href: '/speech-therapy',
     desc: 'Professional speech therapy services',
     icon: '💬',
-  }
+  },
+  {
+    label: 'Vertigo & Balance',
+    href: '/vertigo-balance',
+    desc: 'Vestibular assessment & balance care',
+    icon: '🧭',
+  },
 ]
 
 export default function Navbar() {
