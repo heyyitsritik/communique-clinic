@@ -1,49 +1,36 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const navLinks = [
-  { label: 'Home',         href: '#home' },
-  { label: 'About',        href: '#about' },
-  { label: 'Services',     href: '#services' },
-  { label: 'Timings',      href: '#timings' },
-  { label: 'Blog',         href: '#blog' },
-  { label: 'Testimonials', href: '#testimonials' },
-  { label: 'Contact',      href: '#contact' },
+  { label: 'Home',     href: '#home' },
+  { label: 'About',    href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Contact',  href: '#contact' },
 ]
 
-const hearingAidDropdown = [
-  {
-    label: 'Hearing Aid Services',
-    href: '/hearing-aids',
-    desc: 'Styles, brands, trial & fitting',
-    icon: '🎧',
-  },
-  {
-    label: 'Browse Catalogue',
-    href: '/hearing-aids/catalogue',
-    desc: 'Signia, Widex & Bernafon — all 90 models with prices',
-    icon: '📋',
-  },
-  {
-    label: 'How to Choose the Right Hearing Aid',
-    href: '/right-hearing-aid',
-    desc: 'Assessment, lifestyle & clinical guidance',
-    icon: '🎓',
-  },
-  {
-    label: 'Speech Therapy',
-    href: '/speech-therapy',
-    desc: 'Professional speech therapy services',
-    icon: '💬',
-  },
-  {
-    label: 'Vertigo & Balance',
-    href: '/vertigo-balance',
-    desc: 'Vestibular assessment & balance care',
-    icon: '🧭',
-  },
-]
+const megaMenu = {
+  brands: [
+    { label: 'Signia',      desc: 'German engineering, lifelike sound',     href: '/hearing-aids/catalogue?brand=Signia', icon: '✦' },
+    { label: 'Widex',       desc: 'Natural sound, zero delay',              href: '/hearing-aids/catalogue?brand=Widex',  icon: '✦' },
+    { label: 'Bernafon',    desc: 'Swiss precision, all-day clarity',       href: '/hearing-aids/catalogue?brand=Bernafon', icon: '✦' },
+    { label: 'Full Catalogue', desc: 'Search & filter every model',         href: '/hearing-aids/catalogue', icon: '📋' },
+  ],
+  styles: [
+    { label: 'Behind-the-ear (BTE)',     desc: 'Powerful, easy to handle',    href: '/hearing-aids/catalogue?style=BTE' },
+    { label: 'Receiver-in-canal (RIC)',  desc: 'Discreet and natural',        href: '/hearing-aids/catalogue?style=RIC' },
+    { label: 'In-the-ear (ITE)',         desc: 'Custom-fit comfort',          href: '/hearing-aids/catalogue?style=ITE' },
+    { label: 'Completely-in-canal (CIC)',desc: 'Nearly invisible',            href: '/hearing-aids/catalogue?style=CIC' },
+  ],
+  help: [
+    { label: 'Hearing Aid Services',  desc: 'Styles, brands, trial & fitting',       href: '/hearing-aids',           icon: '🎧' },
+    { label: 'Browse Catalogue',      desc: 'All models with transparent prices',     href: '/hearing-aids/catalogue', icon: '📋' },
+    { label: 'How to Choose',         desc: 'Assessment, lifestyle & guidance',        href: '/right-hearing-aid',      icon: '🎓' },
+    { label: 'Speech Therapy',        desc: 'Professional speech therapy services',    href: '/speech-therapy',         icon: '💬' },
+    { label: 'Vertigo & Balance',     desc: 'Vestibular assessment & balance care',    href: '/vertigo-balance',        icon: '🧭' },
+  ],
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled]   = useState(false)
@@ -66,14 +53,20 @@ export default function Navbar() {
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
-  // Hover with small delay so dropdown doesn't flicker
   const onMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
     setDropOpen(true)
   }
   const onMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setDropOpen(false), 150)
+    timeoutRef.current = setTimeout(() => setDropOpen(false), 200)
   }
+
+  // Dynamic text colors based on scroll state
+  const textColor = scrolled ? 'text-teal-900' : 'text-white'
+  const textHover = scrolled ? 'hover:text-gold-600' : 'hover:text-gold-400'
+  const logoTextColor = scrolled ? 'text-teal-900' : 'text-white'
+  const subTextColor = scrolled ? 'text-gold-600' : 'text-gold-400'
+  const hamburgerBg = scrolled ? 'bg-teal-900' : 'bg-white'
 
   return (
     <>
@@ -95,39 +88,34 @@ export default function Navbar() {
               priority
             />
             <div className="hidden sm:block">
-              <p className="font-playfair font-bold text-teal-900 text-base leading-tight tracking-wide">
+              <p className={`font-playfair font-bold text-base leading-tight tracking-wide transition-colors duration-300 ${logoTextColor}`}>
                 COMMUNIQUÉ
               </p>
-              <p className="text-xs text-gold-600 tracking-wide">
+              <p className={`text-xs tracking-wide transition-colors duration-300 ${subTextColor}`}>
                 Speech, Hearing &amp; Balance Clinic
               </p>
             </div>
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-5">
-            {navLinks.map((link) =>
-              link.href.startsWith('/') ? (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-medium text-teal-900 hover:text-gold-600 transition-colors whitespace-nowrap"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); handleNav(link.href) }}
-                  className="text-sm font-medium text-teal-900 hover:text-gold-600 transition-colors whitespace-nowrap"
-                >
-                  {link.label}
-                </a>
-              )
-            )}
+          <nav className="hidden lg:flex items-center gap-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => {
+                  if (link.href.startsWith('#')) {
+                    e.preventDefault()
+                    handleNav(link.href)
+                  }
+                }}
+                className={`text-sm font-medium transition-colors whitespace-nowrap ${textColor} ${textHover}`}
+              >
+                {link.label}
+              </a>
+            ))}
 
-            {/* Hearing Aids dropdown */}
+            {/* Hearing Aids mega dropdown */}
             <div
               ref={dropRef}
               className="relative"
@@ -135,98 +123,109 @@ export default function Navbar() {
               onMouseLeave={onMouseLeave}
             >
               <button
-                className="flex items-center gap-1 text-sm font-medium text-teal-900 hover:text-gold-600 transition-colors whitespace-nowrap"
+                className={`flex items-center gap-1 text-sm font-medium transition-colors whitespace-nowrap ${textColor} ${textHover}`}
                 onClick={() => setDropOpen((v) => !v)}
                 aria-expanded={dropOpen}
               >
                 Hearing Aids
                 <svg
                   width="14" height="14" viewBox="0 0 14 14" fill="none"
-                  style={{ transition: 'transform 0.2s', transform: dropOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                  className="transition-transform duration-200"
+                  style={{ transform: dropOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
                 >
                   <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
 
-              {/* Dropdown panel */}
+              {/* Mega dropdown panel */}
               {dropOpen && (
                 <div
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 z-50"
+                  className="absolute top-full right-0 mt-3 z-50"
                   onMouseEnter={onMouseEnter}
                   onMouseLeave={onMouseLeave}
-                  style={{ width: 340 }}
+                  style={{ width: 720 }}
                 >
-                  {/* Arrow pointer */}
-                  <div style={{
-                    width: 12, height: 12, background: 'white',
-                    border: '1px solid #F0EAE0',
-                    transform: 'rotate(45deg)',
-                    margin: '0 auto -7px',
-                    borderBottom: 'none', borderRight: 'none',
-                    position: 'relative', zIndex: 1,
-                  }} />
-                  <div style={{
-                    background: 'white',
-                    borderRadius: 16,
-                    border: '1px solid #F0EAE0',
-                    boxShadow: '0 12px 40px rgba(27,77,62,0.14)',
-                    overflow: 'hidden',
-                    padding: 8,
-                  }}>
-                    {hearingAidDropdown.map((item) => (
-                      <a
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setDropOpen(false)}
-                        style={{ textDecoration: 'none' }}
-                      >
-                        <div
-                          style={{
-                            display: 'flex', alignItems: 'flex-start', gap: 14,
-                            padding: '14px 16px', borderRadius: 12,
-                            transition: 'background 0.15s',
-                            cursor: 'pointer',
-                          }}
-                          onMouseEnter={(e) => (e.currentTarget.style.background = '#FAF6F0')}
-                          onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
-                        >
-                          <div style={{
-                            width: 40, height: 40, borderRadius: 10, flexShrink: 0,
-                            background: '#1B4D3E12',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            fontSize: 20,
-                          }}>
-                            {item.icon}
-                          </div>
-                          <div>
-                            <p style={{ margin: 0, fontWeight: 700, color: '#1B4D3E', fontSize: 14, lineHeight: 1.3 }}>
-                              {item.label}
-                            </p>
-                            <p style={{ margin: '4px 0 0', color: '#9ca3af', fontSize: 12, lineHeight: 1.4 }}>
-                              {item.desc}
-                            </p>
-                          </div>
-                          <div style={{ marginLeft: 'auto', color: '#B8892A', fontSize: 16, alignSelf: 'center', flexShrink: 0 }}>
-                            →
-                          </div>
+                  {/* Arrow */}
+                  <div className="w-3 h-3 bg-white border-l border-t border-[#F0EAE0] rotate-45 ml-auto mr-12 -mb-1.5 relative z-10" />
+
+                  <div className="bg-white rounded-2xl border border-[#F0EAE0] shadow-[0_12px_40px_rgba(27,77,62,0.14)] overflow-hidden">
+                    <div className="grid grid-cols-3 gap-0">
+
+                      {/* Column 1: Shop by Brand */}
+                      <div className="p-5 border-r border-[#F0EAE0]">
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Shop by Brand</p>
+                        <div className="flex flex-col gap-1">
+                          {megaMenu.brands.map((item) => (
+                            <Link
+                              key={item.href + item.label}
+                              href={item.href}
+                              onClick={() => setDropOpen(false)}
+                              className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#FAF6F0] transition-colors group"
+                            >
+                              <span className="w-8 h-8 rounded-lg bg-[#1B4D3E]/8 flex items-center justify-center text-base flex-shrink-0 group-hover:bg-[#1B4D3E]/15 transition-colors">
+                                {item.icon}
+                              </span>
+                              <div className="min-w-0">
+                                <p className="text-sm font-semibold text-[#1B4D3E] leading-tight">{item.label}</p>
+                                <p className="text-[11px] text-gray-400 mt-0.5 leading-tight">{item.desc}</p>
+                              </div>
+                            </Link>
+                          ))}
                         </div>
-                      </a>
-                    ))}
+                      </div>
+
+                      {/* Column 2: Shop by Style */}
+                      <div className="p-5 border-r border-[#F0EAE0]">
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Shop by Style</p>
+                        <div className="flex flex-col gap-1">
+                          {megaMenu.styles.map((item) => (
+                            <Link
+                              key={item.href + item.label}
+                              href={item.href}
+                              onClick={() => setDropOpen(false)}
+                              className="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-[#FAF6F0] transition-colors group"
+                            >
+                              <span className="w-2 h-2 rounded-full bg-[#B8892A] mt-1.5 flex-shrink-0" />
+                              <div className="min-w-0">
+                                <p className="text-sm font-semibold text-[#1B4D3E] leading-tight">{item.label}</p>
+                                <p className="text-[11px] text-gray-400 mt-0.5 leading-tight">{item.desc}</p>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Column 3: Get Help */}
+                      <div className="p-5">
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Get Help</p>
+                        <div className="flex flex-col gap-1">
+                          {megaMenu.help.map((item) => (
+                            <Link
+                              key={item.href + item.label}
+                              href={item.href}
+                              onClick={() => setDropOpen(false)}
+                              className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#FAF6F0] transition-colors group"
+                            >
+                              <span className="w-8 h-8 rounded-lg bg-[#1B4D3E]/8 flex items-center justify-center text-base flex-shrink-0 group-hover:bg-[#1B4D3E]/15 transition-colors">
+                                {item.icon}
+                              </span>
+                              <div className="min-w-0">
+                                <p className="text-sm font-semibold text-[#1B4D3E] leading-tight">{item.label}</p>
+                                <p className="text-[11px] text-gray-400 mt-0.5 leading-tight">{item.desc}</p>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
 
                     {/* Bottom strip */}
-                    <div style={{
-                      margin: '4px 8px 8px',
-                      background: 'linear-gradient(135deg, #1B4D3E, #153d30)',
-                      borderRadius: 10, padding: '10px 16px',
-                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                    }}>
-                      <p style={{ margin: 0, color: 'rgba(255,255,255,0.8)', fontSize: 12 }}>
-                        Free hearing aid trial available
-                      </p>
+                    <div className="mx-4 mb-4 bg-gradient-to-br from-[#1B4D3E] to-[#153d30] rounded-xl px-5 py-3 flex items-center justify-between">
+                      <p className="text-white/80 text-xs">Free hearing aid trial available</p>
                       <a
-                        href="/hearing-aids#appointment"
-                        style={{ color: '#d4a843', fontSize: 12, fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}
+                        href="/#contact"
                         onClick={() => setDropOpen(false)}
+                        className="text-[#d4a843] text-xs font-bold hover:text-[#e8bc5a] transition-colors whitespace-nowrap"
                       >
                         Book Now →
                       </a>
@@ -247,25 +246,25 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            className="lg:hidden flex flex-col gap-1.5 p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            <span className={`block w-6 h-0.5 bg-teal-900 transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`block w-6 h-0.5 bg-teal-900 transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block w-6 h-0.5 bg-teal-900 transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            <span className={`block w-6 h-0.5 transition-all duration-300 ${hamburgerBg} ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`block w-6 h-0.5 transition-all duration-300 ${hamburgerBg} ${menuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-6 h-0.5 transition-all duration-300 ${hamburgerBg} ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
           </button>
 
         </div>
       </header>
 
       {/* Mobile Drawer */}
-      <div className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${menuOpen ? 'visible' : 'invisible'}`}>
+      <div className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${menuOpen ? 'visible' : 'invisible'}`}>
         <div
           className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${menuOpen ? 'opacity-100' : 'opacity-0'}`}
           onClick={() => setMenuOpen(false)}
         />
-        <nav className={`mobile-menu ${menuOpen ? 'open' : ''} absolute right-0 top-0 bottom-0 w-72 bg-cream shadow-2xl flex flex-col pt-20 px-8 gap-2 overflow-y-auto`}>
+        <nav className={`mobile-menu ${menuOpen ? 'open' : ''} absolute right-0 top-0 bottom-0 w-80 bg-cream shadow-2xl flex flex-col pt-20 px-6 gap-1 overflow-y-auto`}>
           <button
             className="absolute top-5 right-5 text-teal-900 text-2xl font-bold"
             onClick={() => setMenuOpen(false)}
@@ -274,27 +273,23 @@ export default function Navbar() {
           </button>
           <div className="ornament mb-4"><div className="ornament-diamond" /></div>
 
-          {navLinks.map((link) =>
-            link.href.startsWith('/') ? (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="font-playfair text-lg text-teal-900 py-3 border-b border-cream-dark hover:text-gold-600 transition-colors"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleNav(link.href) }}
-                className="font-playfair text-lg text-teal-900 py-3 border-b border-cream-dark hover:text-gold-600 transition-colors"
-              >
-                {link.label}
-              </a>
-            )
-          )}
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={(e) => {
+                if (link.href.startsWith('#')) {
+                  e.preventDefault()
+                  handleNav(link.href)
+                } else {
+                  setMenuOpen(false)
+                }
+              }}
+              className="font-playfair text-lg text-teal-900 py-3 border-b border-cream-dark hover:text-gold-600 transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
 
           {/* Mobile Hearing Aids accordion */}
           <div className="border-b border-cream-dark">
@@ -305,31 +300,72 @@ export default function Navbar() {
               Hearing Aids
               <svg
                 width="16" height="16" viewBox="0 0 14 14" fill="none"
-                style={{ transition: 'transform 0.2s', transform: mobileHAOpen ? 'rotate(180deg)' : 'rotate(0deg)', flexShrink: 0 }}
+                className="transition-transform duration-200 flex-shrink-0"
+                style={{ transform: mobileHAOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
               >
                 <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
             {mobileHAOpen && (
-              <div className="pb-3 flex flex-col gap-2 pl-2">
-                {hearingAidDropdown.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMenuOpen(false)}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: 10,
-                      padding: '10px 12px', borderRadius: 10,
-                      background: '#FAF6F0', textDecoration: 'none',
-                    }}
-                  >
-                    <span style={{ fontSize: 18 }}>{item.icon}</span>
-                    <div>
-                      <p style={{ margin: 0, fontWeight: 700, color: '#1B4D3E', fontSize: 13 }}>{item.label}</p>
-                      <p style={{ margin: 0, color: '#9ca3af', fontSize: 11 }}>{item.desc}</p>
-                    </div>
-                  </a>
-                ))}
+              <div className="pb-4 space-y-4 pl-1">
+                {/* Brands */}
+                <div>
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">By Brand</p>
+                  <div className="flex flex-col gap-1.5">
+                    {megaMenu.brands.map((item) => (
+                      <Link
+                        key={item.href + item.label}
+                        href={item.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-[#FAF6F0] hover:bg-[#F0EAE0] transition-colors"
+                      >
+                        <span className="text-base">{item.icon}</span>
+                        <div>
+                          <p className="text-sm font-semibold text-[#1B4D3E]">{item.label}</p>
+                          <p className="text-[11px] text-gray-400">{item.desc}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Styles */}
+                <div>
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">By Style</p>
+                  <div className="flex flex-wrap gap-2">
+                    {megaMenu.styles.map((item) => (
+                      <Link
+                        key={item.href + item.label}
+                        href={item.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="text-xs font-medium text-[#1B4D3E] bg-[#FAF6F0] px-3 py-2 rounded-full hover:bg-[#F0EAE0] transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Help */}
+                <div>
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Get Help</p>
+                  <div className="flex flex-col gap-1.5">
+                    {megaMenu.help.map((item) => (
+                      <Link
+                        key={item.href + item.label}
+                        href={item.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-[#FAF6F0] hover:bg-[#F0EAE0] transition-colors"
+                      >
+                        <span className="text-base">{item.icon}</span>
+                        <div>
+                          <p className="text-sm font-semibold text-[#1B4D3E]">{item.label}</p>
+                          <p className="text-[11px] text-gray-400">{item.desc}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
           </div>
