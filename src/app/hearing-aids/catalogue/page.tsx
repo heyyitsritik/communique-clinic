@@ -10,6 +10,7 @@ type Product = typeof products[0]
 const BRANDS    = ['All', 'Signia', 'Widex', 'Bernafon']
 const HEARING_LOSS = ['All', 'Mild', 'Moderate', 'Severe', 'Profound']
 const TIERS     = ['All', 'Premium', 'Advanced', 'Standard', 'Essential', 'Basic', 'Economy']
+const LIFESTYLES = ['All', 'Active Lifestyle', 'Everyday Comfort', 'Discreet Wear', 'Music & Streaming', 'TV Streaming', 'Seniors', 'Tinnitus Relief', 'Budget Friendly', 'Profound Loss']
 const TIER_ORDER: Record<string, number> = { Premium: 0, Advanced: 1, Standard: 2, Essential: 3, Basic: 4, Economy: 5 }
 
 // A product family groups products that share brand + model_family + form_factor
@@ -52,7 +53,11 @@ function formatPriceShort(p: number) {
 }
 
 // ---------- Family Card ----------
-function ProductFamilyCard({ family }: { family: ProductFamily }) {
+function ProductFamilyCard({ family, compareList, onToggleCompare }: {
+  family: ProductFamily
+  compareList: string[]
+  onToggleCompare: (slug: string) => void
+}) {
   const [selectedTierIdx, setSelectedTierIdx] = useState(0)
   const selectedTier = family.tiers[selectedTierIdx]
   // Pick the cheapest product in the selected tier as the "representative"
@@ -172,6 +177,25 @@ function ProductFamilyCard({ family }: { family: ProductFamily }) {
           )}
           <p className="text-[10px] text-gray-400 mt-1">GST-exempt</p>
         </div>
+
+        {/* Compare toggle */}
+        <label
+          className="flex items-center gap-2 mt-3 pt-2 border-t border-[#E8E0D5] cursor-pointer group/compare"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <input
+            type="checkbox"
+            checked={compareList.includes(rep.slug)}
+            onChange={() => onToggleCompare(rep.slug)}
+            disabled={!compareList.includes(rep.slug) && compareList.length >= 3}
+            className="accent-[#B8892A] w-3.5 h-3.5 rounded"
+          />
+          <span className={`text-[11px] font-medium ${
+            compareList.includes(rep.slug) ? 'text-[#B8892A]' : 'text-gray-400 group-hover/compare:text-gray-600'
+          }`}>
+            {compareList.includes(rep.slug) ? 'Comparing' : compareList.length >= 3 ? 'Max 3 selected' : 'Compare'}
+          </span>
+        </label>
       </div>
 
       {/* Footer — links to representative product */}
@@ -246,11 +270,22 @@ export default function CataloguePage() {
   const [formFactor,     setFormFactor]     = useState('All')
   const [hearingLoss,    setHearingLoss]    = useState('All')
   const [tier,           setTier]           = useState('All')
+  const [lifestyle,      setLifestyle]      = useState('All')
   const [maxPrice,       setMaxPrice]       = useState(1000000)
   const [search,         setSearch]         = useState('')
   const [showBluetooth,  setShowBluetooth]  = useState(false)
   const [showRechargeable, setShowRechargeable] = useState(false)
   const [heroSearch,     setHeroSearch]     = useState('')
+  const [sortBy,         setSortBy]         = useState<'default' | 'price-asc' | 'price-desc'>('default')
+  const [compareList,    setCompareList]    = useState<string[]>([])
+  const [showCompare,    setShowCompare]    = useState(false)
+
+  const toggleCompare = (slug: string) => {
+    setCompareList((prev) =>
+      prev.includes(slug) ? prev.filter((s) => s !== slug) : prev.length < 3 ? [...prev, slug] : prev
+    )
+  }
+  const compareProducts = compareList.map((slug) => products.find((p) => p.slug === slug)!).filter(Boolean)
   const searchInputRef = useRef<HTMLInputElement>(null)
 
   // Sync hero search → sidebar search
@@ -265,6 +300,9 @@ export default function CataloguePage() {
       if (formFactor  !== 'All' && p.form_factor     !== formFactor)  return false
       if (hearingLoss !== 'All' && p.hearing_loss_label !== hearingLoss) return false
       if (tier        !== 'All' && p.technology_tier !== tier)        return false
+      if (lifestyle   !== 'All' && !p.lifestyle_tags.some(
+        (t: string) => t === lifestyle || (lifestyle === 'Budget Friendly' && t === 'Budget-Friendly')
+      )) return false
       if (showBluetooth    && !p.bluetooth)    return false
       if (showRechargeable && !p.rechargeable) return false
       const lp = p.price_single ?? p.price_kit ?? 0
@@ -280,7 +318,7 @@ export default function CataloguePage() {
       }
       return true
     })
-  }, [brand, formFactor, hearingLoss, tier, maxPrice, search, showBluetooth, showRechargeable])
+  }, [brand, formFactor, hearingLoss, tier, lifestyle, maxPrice, search, showBluetooth, showRechargeable])
 
   // Group filtered products into families
   const families = useMemo(() => {
@@ -306,21 +344,32 @@ export default function CataloguePage() {
       tierGroup.products.push(p)
     }
     // Sort tiers within each family by TIER_ORDER
-    Array.from(map.values()).forEach((fam) => {
+    for (const fam of Array.from(map.values())) {
       fam.tiers.sort((a, b) => (TIER_ORDER[a.tier] ?? 99) - (TIER_ORDER[b.tier] ?? 99))
-    })
-    return Array.from(map.values())
-  }, [filtered])
+    }
+    const result = Array.from(map.values())
+
+    // Sort families
+    if (sortBy === 'price-asc' || sortBy === 'price-desc') {
+      result.sort((a, b) => {
+        const aPrice = Math.min(...a.tiers.flatMap(t => t.products.map(p => p.price_single ?? p.price_kit ?? Infinity)))
+        const bPrice = Math.min(...b.tiers.flatMap(t => t.products.map(p => p.price_single ?? p.price_kit ?? Infinity)))
+        return sortBy === 'price-asc' ? aPrice - bPrice : bPrice - aPrice
+      })
+    }
+
+    return result
+  }, [filtered, sortBy])
 
   const resetAll = () => {
     setBrand('All'); setFormFactor('All'); setHearingLoss('All')
-    setTier('All'); setMaxPrice(1000000); setSearch(''); setHeroSearch('')
-    setShowBluetooth(false); setShowRechargeable(false)
+    setTier('All'); setLifestyle('All'); setMaxPrice(1000000); setSearch(''); setHeroSearch('')
+    setShowBluetooth(false); setShowRechargeable(false); setSortBy('default')
   }
 
   const activeFilters = [
     brand !== 'All', formFactor !== 'All', hearingLoss !== 'All',
-    tier !== 'All', maxPrice < 1000000, showBluetooth, showRechargeable, !!search,
+    tier !== 'All', lifestyle !== 'All', maxPrice < 1000000, showBluetooth, showRechargeable, !!search,
   ].filter(Boolean).length
 
   return (
@@ -494,6 +543,16 @@ export default function CataloguePage() {
                 </div>
               </div>
 
+              {/* Lifestyle */}
+              <div className="mb-5">
+                <label className="text-xs text-gray-400 font-medium mb-2 block">Lifestyle</label>
+                <div className="flex flex-wrap gap-1.5">
+                  {LIFESTYLES.map((l) => (
+                    <FilterBtn key={l} label={l} active={lifestyle === l} onClick={() => setLifestyle(l)} />
+                  ))}
+                </div>
+              </div>
+
               {/* Max Price */}
               <div className="mb-5">
                 <label className="text-xs text-gray-400 font-medium mb-1 block">
@@ -555,7 +614,18 @@ export default function CataloguePage() {
                   </span>
                 )}
               </p>
-              <p className="text-xs text-gray-400">All prices are GST-exempt</p>
+              <div className="flex items-center gap-3">
+                <p className="text-xs text-gray-400 hidden sm:block">Sort by</p>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
+                  className="text-xs border border-[#E8E0D5] rounded-lg px-3 py-1.5 bg-white text-gray-700 focus:outline-none focus:border-[#1B4D3E] cursor-pointer"
+                >
+                  <option value="default">Relevance</option>
+                  <option value="price-asc">Price: Low → High</option>
+                  <option value="price-desc">Price: High → Low</option>
+                </select>
+              </div>
             </div>
 
             {/* Active filter chips */}
@@ -581,11 +651,28 @@ export default function CataloguePage() {
                     {tier} ✕
                   </span>
                 )}
+                {lifestyle !== 'All' && (
+                  <span onClick={() => setLifestyle('All')} className="text-xs bg-[#1B4D3E]/10 text-[#1B4D3E] px-3 py-1 rounded-full font-medium cursor-pointer hover:bg-[#1B4D3E]/20 transition">
+                    {lifestyle} ✕
+                  </span>
+                )}
                 {search && (
                   <span onClick={() => { setSearch(''); setHeroSearch('') }} className="text-xs bg-[#B8892A]/10 text-[#B8892A] px-3 py-1 rounded-full font-medium cursor-pointer hover:bg-[#B8892A]/20 transition">
                     &ldquo;{search}&rdquo; ✕
                   </span>
                 )}
+              </div>
+            )}
+
+            {/* Channel disclaimer — shown when viewing multiple brands */}
+            {brand === 'All' && families.length > 0 && (
+              <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-5 flex items-start gap-3">
+                <span className="text-amber-500 text-lg mt-0.5 flex-shrink-0">ℹ️</span>
+                <p className="text-xs text-amber-800 leading-relaxed">
+                  <strong>About channel counts:</strong> Different brands measure channels differently.
+                  For example, Signia&apos;s 48-channel processing is not directly comparable to Widex&apos;s 15-channel system — both can deliver
+                  excellent sound quality through different engineering approaches. Dr. Saurabh will help you compare what matters for your hearing profile.
+                </p>
               </div>
             )}
 
@@ -605,7 +692,7 @@ export default function CataloguePage() {
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
                 {families.map((family) => (
-                  <ProductFamilyCard key={family.key} family={family} />
+                  <ProductFamilyCard key={family.key} family={family} compareList={compareList} onToggleCompare={toggleCompare} />
                 ))}
               </div>
             )}
@@ -636,6 +723,156 @@ export default function CataloguePage() {
           </main>
         </div>
       </div>
+
+      {/* ── COMPARE BAR (sticky bottom) ── */}
+      {compareList.length > 0 && (
+        <div className="fixed bottom-0 left-0 right-0 bg-[#1B4D3E] text-white shadow-2xl z-50 border-t border-[#B8892A]/30">
+          <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3 overflow-x-auto flex-1 min-w-0">
+              <span className="text-xs text-white/60 flex-shrink-0">Compare ({compareList.length}/3):</span>
+              {compareProducts.map((p) => (
+                <span key={p.slug} className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full text-xs font-medium flex-shrink-0">
+                  {p.model_name}
+                  <button onClick={() => toggleCompare(p.slug)} className="text-white/50 hover:text-white ml-1">✕</button>
+                </span>
+              ))}
+            </div>
+            <div className="flex gap-2 flex-shrink-0">
+              <button
+                onClick={() => setCompareList([])}
+                className="text-xs text-white/60 hover:text-white transition px-3 py-1.5"
+              >
+                Clear
+              </button>
+              <button
+                onClick={() => setShowCompare(true)}
+                disabled={compareList.length < 2}
+                className={`text-xs font-bold px-5 py-2 rounded-full transition ${
+                  compareList.length >= 2
+                    ? 'bg-[#B8892A] hover:bg-[#a07824] text-white'
+                    : 'bg-white/10 text-white/40 cursor-not-allowed'
+                }`}
+              >
+                Compare {compareList.length >= 2 ? '→' : '(pick 2+)'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── COMPARE MODAL ── */}
+      {showCompare && compareProducts.length >= 2 && (
+        <div className="fixed inset-0 bg-black/60 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-6" onClick={() => setShowCompare(false)}>
+          <div
+            className="bg-white rounded-t-2xl sm:rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal header */}
+            <div className="sticky top-0 bg-white border-b border-[#E8E0D5] px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
+              <h2 className="font-playfair text-lg font-bold text-[#1B4D3E]">Side-by-Side Comparison</h2>
+              <button onClick={() => setShowCompare(false)} className="text-gray-400 hover:text-gray-600 text-xl font-bold">✕</button>
+            </div>
+
+            {/* Comparison table */}
+            <div className="px-6 py-5">
+              {/* Product headers */}
+              <div className={`grid gap-4 mb-6`} style={{ gridTemplateColumns: `140px repeat(${compareProducts.length}, 1fr)` }}>
+                <div />
+                {compareProducts.map((p) => (
+                  <div key={p.slug} className="text-center">
+                    <div className="relative w-full h-28 bg-[#FAF6F0] rounded-xl mb-2 flex items-center justify-center">
+                      <ProductImage filename={p.image_filename} alt={p.model_name} brand={p.brand} className="object-contain p-2" sizes="160px" />
+                    </div>
+                    <p className="text-[10px] text-[#B8892A] font-bold uppercase tracking-widest">{p.brand}</p>
+                    <p className="text-sm font-bold text-[#1B4D3E] leading-tight">{p.model_name}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Spec rows */}
+              {[
+                { label: 'Technology', get: (p: Product) => p.technology_tier },
+                { label: 'Form Factor', get: (p: Product) => p.form_factor },
+                { label: 'Channels', get: (p: Product) => String(p.channels) },
+                { label: 'Hearing Loss', get: (p: Product) => p.hearing_loss_label },
+                { label: 'Fitting Range', get: (p: Product) => p.fitting_range_db + ' dB' },
+                { label: 'Battery', get: (p: Product) => p.battery },
+                { label: 'Single Price', get: (p: Product) => formatPrice(p.price_single) ?? '—' },
+                { label: 'Kit Price', get: (p: Product) => formatPrice(p.price_kit) ?? '—' },
+                { label: 'Bluetooth', get: (p: Product) => p.bluetooth ? '✓' : '✗' },
+                { label: 'Rechargeable', get: (p: Product) => p.rechargeable ? '✓' : '✗' },
+                { label: 'Tinnitus', get: (p: Product) => p.tinnitus_feature ? '✓' : '✗' },
+                { label: 'App Control', get: (p: Product) => p.smartphone_app ? '✓' : '✗' },
+                { label: 'Warranty', get: (p: Product) => p.warranty_years + ' years' },
+              ].map((row, i) => (
+                <div
+                  key={row.label}
+                  className={`grid gap-4 py-2.5 px-2 rounded-lg ${i % 2 === 0 ? 'bg-[#FAF6F0]' : ''}`}
+                  style={{ gridTemplateColumns: `140px repeat(${compareProducts.length}, 1fr)` }}
+                >
+                  <p className="text-xs text-gray-400 font-medium self-center">{row.label}</p>
+                  {compareProducts.map((p) => (
+                    <p key={p.slug} className="text-sm text-[#1B4D3E] font-semibold text-center self-center">
+                      {row.get(p)}
+                    </p>
+                  ))}
+                </div>
+              ))}
+
+              {/* Key features row */}
+              <div className="grid gap-4 py-3 mt-2" style={{ gridTemplateColumns: `140px repeat(${compareProducts.length}, 1fr)` }}>
+                <p className="text-xs text-gray-400 font-medium">Key Features</p>
+                {compareProducts.map((p) => (
+                  <ul key={p.slug} className="space-y-1">
+                    {p.key_features.slice(0, 5).map((f) => (
+                      <li key={f} className="text-xs text-gray-600 flex items-start gap-1.5">
+                        <span className="text-[#B8892A] mt-0.5">✓</span>{f}
+                      </li>
+                    ))}
+                  </ul>
+                ))}
+              </div>
+
+              {/* Lifestyle row */}
+              <div className="grid gap-4 py-3 border-t border-[#E8E0D5]" style={{ gridTemplateColumns: `140px repeat(${compareProducts.length}, 1fr)` }}>
+                <p className="text-xs text-gray-400 font-medium">Ideal For</p>
+                {compareProducts.map((p) => (
+                  <div key={p.slug} className="flex flex-wrap gap-1">
+                    {p.lifestyle_tags.length > 0
+                      ? p.lifestyle_tags.map((t) => (
+                          <span key={t} className="text-[10px] bg-[#1B4D3E]/10 text-[#1B4D3E] px-2 py-0.5 rounded-full">{t}</span>
+                        ))
+                      : <span className="text-xs text-gray-400">—</span>
+                    }
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <div className="grid gap-4 pt-4 border-t border-[#E8E0D5] mt-3" style={{ gridTemplateColumns: `140px repeat(${compareProducts.length}, 1fr)` }}>
+                <div />
+                {compareProducts.map((p) => (
+                  <div key={p.slug} className="flex flex-col gap-2">
+                    <Link
+                      href={`/hearing-aids/${p.slug}`}
+                      className="bg-[#1B4D3E] text-white text-center text-xs font-semibold py-2.5 rounded-full hover:bg-[#163e32] transition"
+                    >
+                      View Details
+                    </Link>
+                    <a
+                      href={`https://wa.me/918796270575?text=Hi, I'm interested in the ${encodeURIComponent(p.model_name)}.`}
+                      target="_blank" rel="noopener noreferrer"
+                      className="bg-[#25D366] text-white text-center text-xs font-semibold py-2.5 rounded-full hover:bg-[#1ebe5a] transition"
+                    >
+                      💬 WhatsApp
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
