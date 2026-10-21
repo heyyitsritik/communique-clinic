@@ -11,82 +11,16 @@ const BRANDS    = ['All', 'Signia', 'Widex', 'Bernafon']
 const HEARING_LOSS = ['All', 'Mild', 'Moderate', 'Severe', 'Profound']
 const TIERS     = ['All', 'Premium', 'Advanced', 'Standard', 'Essential', 'Basic', 'Economy']
 
-// Style picker data — each card has its own gradient + large background SVG
+// Style picker — each card uses a real product image as background
 const STYLES = [
-  { key: 'All',      label: 'All Styles',  sublabel: '90 devices',          gradient: 'from-slate-600 to-slate-800' },
-  { key: 'RIC',      label: 'RIC',         sublabel: 'Receiver-in-canal',   gradient: 'from-teal-700 to-emerald-900' },
-  { key: 'BTE',      label: 'BTE',         sublabel: 'Behind the ear',      gradient: 'from-indigo-700 to-indigo-900' },
-  { key: 'Slim-RIC', label: 'Slim‑RIC',    sublabel: 'Slim receiver',       gradient: 'from-violet-700 to-purple-900' },
-  { key: 'ITE',      label: 'ITE',         sublabel: 'In the ear',          gradient: 'from-amber-700 to-amber-900' },
-  { key: 'ITC',      label: 'ITC',         sublabel: 'In the canal',        gradient: 'from-rose-700 to-rose-900' },
-  { key: 'CIC',      label: 'CIC',         sublabel: 'Completely in canal', gradient: 'from-cyan-700 to-cyan-900' },
+  { key: 'All',      label: 'All Styles',  sublabel: '90 devices',          image: '/products/signia-orion-cg.jpg' },
+  { key: 'RIC',      label: 'RIC',         sublabel: 'Receiver-in-canal',   image: '/products/signia-pure-cg-ax.jpg' },
+  { key: 'BTE',      label: 'BTE',         sublabel: 'Behind the ear',      image: '/products/signia-intuis-4.jpg' },
+  { key: 'Slim-RIC', label: 'Slim‑RIC',    sublabel: 'Slim receiver',       image: '/products/signia-styletto-ax.jpg' },
+  { key: 'ITE',      label: 'ITE',         sublabel: 'In the ear',          image: '/products/widex-allure-ite.jpg' },
+  { key: 'ITC',      label: 'ITC',         sublabel: 'In the canal',        image: '/products/signia-insio-cg-ax.jpg' },
+  { key: 'CIC',      label: 'CIC',         sublabel: 'Completely in canal', image: '/products/widex-moment-cic.jpg' },
 ]
-
-// Large background SVG silhouettes (decorative, shown faded behind text)
-const StyleBgSVG: Record<string, React.ReactNode> = {
-  All: (
-    <svg viewBox="0 0 120 80" fill="none" className="absolute right-0 top-1/2 -translate-y-1/2 h-[110%] opacity-[0.12]">
-      <path d="M60 10 C40 10 30 25 30 40 C30 55 40 70 60 70 C80 70 90 55 90 40 C90 25 80 10 60 10Z" fill="white"/>
-      <ellipse cx="60" cy="40" rx="12" ry="14" fill="white" opacity="0.6"/>
-    </svg>
-  ),
-  RIC: (
-    <svg viewBox="0 0 120 80" fill="none" className="absolute right-1 top-1/2 -translate-y-1/2 h-[120%] opacity-[0.12]">
-      {/* Behind-ear housing */}
-      <rect x="50" y="5" width="16" height="36" rx="8" fill="white"/>
-      {/* Thin wire */}
-      <path d="M58 41 Q58 55 72 65" stroke="white" strokeWidth="3" strokeLinecap="round"/>
-      {/* Receiver dome */}
-      <circle cx="74" cy="67" r="8" fill="white"/>
-    </svg>
-  ),
-  BTE: (
-    <svg viewBox="0 0 120 80" fill="none" className="absolute right-1 top-1/2 -translate-y-1/2 h-[120%] opacity-[0.12]">
-      {/* Ear hook curve */}
-      <path d="M52 8 Q42 8 40 20 Q38 35 40 48 Q42 58 52 60" stroke="white" strokeWidth="5" strokeLinecap="round" fill="none"/>
-      {/* Housing */}
-      <rect x="52" y="6" width="18" height="42" rx="9" fill="white"/>
-      {/* Tube + earmold */}
-      <path d="M52 48 L46 70" stroke="white" strokeWidth="4" strokeLinecap="round"/>
-      <ellipse cx="44" cy="72" rx="7" ry="5" fill="white"/>
-    </svg>
-  ),
-  'Slim-RIC': (
-    <svg viewBox="0 0 120 80" fill="none" className="absolute right-1 top-1/2 -translate-y-1/2 h-[120%] opacity-[0.12]">
-      {/* Ultra-slim housing */}
-      <rect x="52" y="5" width="12" height="40" rx="6" fill="white"/>
-      {/* Hair-thin wire */}
-      <path d="M58 45 Q60 58 74 66" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-      {/* Tiny receiver */}
-      <circle cx="76" cy="68" r="6" fill="white"/>
-    </svg>
-  ),
-  ITE: (
-    <svg viewBox="0 0 120 80" fill="none" className="absolute right-1 top-1/2 -translate-y-1/2 h-[120%] opacity-[0.12]">
-      {/* Ear-shaped shell */}
-      <path d="M40 30 Q40 8 65 8 Q90 8 90 30 Q90 58 65 72 Q40 58 40 30Z" fill="white"/>
-      {/* Faceplate */}
-      <ellipse cx="65" cy="30" rx="14" ry="12" fill="white" opacity="0.5"/>
-    </svg>
-  ),
-  ITC: (
-    <svg viewBox="0 0 120 80" fill="none" className="absolute right-1 top-1/2 -translate-y-1/2 h-[120%] opacity-[0.12]">
-      {/* Smaller canal shape */}
-      <path d="M45 32 Q45 12 65 12 Q85 12 85 32 Q85 56 65 68 Q45 56 45 32Z" fill="white"/>
-      {/* Pull string */}
-      <line x1="65" y1="24" x2="65" y2="6" stroke="white" strokeWidth="3" strokeLinecap="round"/>
-    </svg>
-  ),
-  CIC: (
-    <svg viewBox="0 0 120 80" fill="none" className="absolute right-1 top-1/2 -translate-y-1/2 h-[120%] opacity-[0.12]">
-      {/* Tiny CIC shape */}
-      <path d="M50 36 Q50 18 65 18 Q80 18 80 36 Q80 56 65 66 Q50 56 50 36Z" fill="white"/>
-      {/* Removal filament */}
-      <path d="M65 30 Q65 18 63 6" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
-      <circle cx="62" cy="5" r="3" fill="white"/>
-    </svg>
-  ),
-}
 
 // Lowest price in the catalogue for the hero stat
 const lowestPrice = Math.min(
@@ -210,29 +144,40 @@ function FilterBtn({ label, active, onClick }: { label: string; active: boolean;
   )
 }
 
-// ---------- Style card (premium gradient) ----------
+// ---------- Style card (product image background) ----------
 function StylePill({ s, active, onClick }: { s: typeof STYLES[0]; active: boolean; onClick: () => void }) {
   return (
     <button
       onClick={onClick}
-      className={`group relative flex flex-col justify-end overflow-hidden rounded-2xl transition-all duration-300 cursor-pointer min-w-[120px] h-[88px] px-4 py-3
+      className={`group relative flex flex-col justify-end overflow-hidden rounded-xl transition-all duration-300 cursor-pointer min-w-[110px] h-[72px]
         ${active
-          ? `bg-gradient-to-br ${s.gradient} shadow-xl ring-2 ring-[#B8892A] scale-[1.03]`
-          : `bg-gradient-to-br ${s.gradient} opacity-60 hover:opacity-90 hover:shadow-lg hover:scale-[1.02]`
+          ? 'shadow-xl ring-2 ring-[#B8892A] scale-[1.03]'
+          : 'opacity-70 hover:opacity-100 hover:shadow-lg hover:scale-[1.02]'
         }`}
     >
-      {/* Background device silhouette */}
-      {StyleBgSVG[s.key]}
+      {/* Product image background */}
+      <img
+        src={s.image}
+        alt={s.label}
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
 
-      {/* Text — bottom-left aligned */}
-      <div className="relative z-10 text-left">
-        <p className="text-white font-bold text-sm leading-tight tracking-wide">{s.label}</p>
-        <p className="text-white/60 text-[10px] leading-tight mt-0.5 whitespace-nowrap">{s.sublabel}</p>
+      {/* Dark overlay — darker when active for text readability */}
+      <div className={`absolute inset-0 transition-all duration-300 ${
+        active
+          ? 'bg-gradient-to-t from-black/80 via-black/50 to-black/30'
+          : 'bg-gradient-to-t from-black/70 via-black/40 to-black/20 group-hover:from-black/75 group-hover:via-black/45'
+      }`} />
+
+      {/* Text — bottom-left */}
+      <div className="relative z-10 text-left px-3 py-2.5">
+        <p className="text-white font-bold text-[13px] leading-tight tracking-wide drop-shadow-sm">{s.label}</p>
+        <p className="text-white/70 text-[9px] leading-tight mt-0.5 whitespace-nowrap drop-shadow-sm">{s.sublabel}</p>
       </div>
 
       {/* Gold bar at bottom when active */}
       {active && (
-        <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#B8892A]" />
+        <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#B8892A] z-20" />
       )}
     </button>
   )
