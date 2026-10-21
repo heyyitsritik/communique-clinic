@@ -377,6 +377,132 @@ export default async function ProductPage({ params }: PageProps) {
           </div>
         )}
 
+        {/* ── 9-STAGE CLINICAL JOURNEY ── */}
+        <div className="mt-16">
+          <div className="mb-8 text-center">
+            <p className="text-[#B8892A] text-xs font-bold uppercase tracking-widest mb-2">The CommuniQ Advantage</p>
+            <h2 className="font-playfair text-xl md:text-2xl font-bold text-[#1B4D3E]">
+              Your 9-Stage Hearing Care Journey
+            </h2>
+            <p className="text-gray-500 text-sm mt-2 max-w-xl mx-auto">
+              Every {product.brand} hearing aid from Communiqué includes our complete clinical care program — not just a device, but a medically supervised path to better hearing.
+            </p>
+          </div>
+
+          <div className="relative max-w-3xl mx-auto">
+            {/* Vertical line connector */}
+            <div className="absolute left-6 md:left-8 top-8 bottom-8 w-px bg-gradient-to-b from-[#1B4D3E] via-[#B8892A] to-[#1B4D3E] opacity-20" />
+
+            {[
+              {
+                step: 1,
+                title: 'Comprehensive Assessment',
+                desc: 'Pure Tone Audiometry, Speech Audiometry, and Speech-in-Noise testing at our Gurugram clinic — or upload your existing audiogram.',
+                icon: '🩺',
+                tag: 'At Clinic',
+              },
+              {
+                step: 2,
+                title: 'Lifestyle & Needs Analysis',
+                desc: 'We map your daily sound environments — work, social, music, TV — to identify the features that matter most for your life.',
+                icon: '🎯',
+                tag: null,
+              },
+              {
+                step: 3,
+                title: 'Personalised Recommendations',
+                desc: `Based on your audiogram and lifestyle profile, Dr. Saurabh recommends the best-matched ${product.brand} models for your hearing loss.`,
+                icon: '📋',
+                tag: null,
+              },
+              {
+                step: 4,
+                title: 'Personal Hearing Experience',
+                desc: 'Try your recommended hearing aids in real-world conditions — at our clinic or in the comfort of your home.',
+                icon: '🎧',
+                tag: 'Clinic or Home',
+              },
+              {
+                step: 5,
+                title: 'Prescription & Order',
+                desc: 'Your audiologist finalises the prescription. We place the order with the exact configuration for your hearing profile.',
+                icon: '📝',
+                tag: null,
+              },
+              {
+                step: 6,
+                title: 'Fitting & Programming',
+                desc: 'Real-ear measurement and fine-tuned programming using your audiogram data — at our clinic or via a home visit.',
+                icon: '⚙️',
+                tag: 'Clinic or Home',
+              },
+              {
+                step: 7,
+                title: 'Follow-up Fine-tuning',
+                desc: 'Scheduled follow-ups to adjust gain, noise reduction, and feedback settings as your brain adapts to amplified sound.',
+                icon: '🔧',
+                tag: null,
+              },
+              {
+                step: 8,
+                title: 'Benefit Assessment',
+                desc: 'Objective measurement of hearing improvement — aided audiometry and speech-in-noise retesting to quantify your progress.',
+                icon: '📊',
+                tag: null,
+              },
+              {
+                step: 9,
+                title: 'Auditory Rehabilitation',
+                desc: 'Personalised rehabilitation exercises based on your benefit assessment — ensuring you get the maximum value from your hearing aids.',
+                icon: '🏆',
+                tag: 'Ongoing',
+              },
+            ].map((s) => (
+              <div key={s.step} className="relative flex items-start gap-4 md:gap-6 mb-6 last:mb-0 group">
+                {/* Step number circle */}
+                <div className="relative z-10 flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white border-2 border-[#E8E0D5] group-hover:border-[#B8892A] transition-colors flex flex-col items-center justify-center shadow-sm">
+                  <span className="text-lg md:text-xl leading-none">{s.icon}</span>
+                  <span className="text-[8px] md:text-[9px] font-bold text-gray-400 leading-none mt-0.5">{s.step}/9</span>
+                </div>
+
+                {/* Content card */}
+                <div className="flex-1 bg-white rounded-xl border border-[#E8E0D5] group-hover:border-[#B8892A]/30 group-hover:shadow-md transition-all p-4 md:p-5">
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-sm md:text-base font-bold text-[#1B4D3E]">{s.title}</h3>
+                    {s.tag && (
+                      <span className="text-[9px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full bg-[#1B4D3E]/10 text-[#1B4D3E]">
+                        {s.tag}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs md:text-sm text-gray-500 leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Stepper CTA */}
+          <div className="mt-8 text-center">
+            <p className="text-xs text-gray-400 mb-3">All 9 stages included with every hearing aid purchase</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href="/#contact"
+                className="bg-[#1B4D3E] text-white font-semibold px-7 py-3 rounded-full hover:bg-[#163e32] transition text-sm"
+              >
+                📅 Start Your Journey
+              </a>
+              <a
+                href={`https://wa.me/918796270575?text=Hi, I'd like to know more about the 9-stage hearing care program for the ${encodeURIComponent(product.model_name)}.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#25D366] text-white font-semibold px-7 py-3 rounded-full hover:bg-[#1ebe5a] transition text-sm"
+              >
+                💬 Ask on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* Back link */}
         <div className="mt-10 text-center">
           <Link href="/hearing-aids/catalogue" className="text-[#B8892A] text-sm font-medium hover:underline">
