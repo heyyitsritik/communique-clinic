@@ -67,39 +67,155 @@ export default async function ProductPage({ params }: PageProps) {
 
       <div className="max-w-6xl mx-auto px-4 py-10">
         <div className="grid md:grid-cols-2 gap-10 items-start">
-          {/* Image Panel */}
-          <div className="bg-white rounded-2xl border border-[#E8E0D5] p-8 flex flex-col items-center">
-            <div className="relative w-full max-w-xs h-64 mb-6">
-              <ProductImage
-                filename={product.image_filename}
-                alt={product.model_name}
-                brand={product.brand}
-                className="object-contain"
-                sizes="320px"
-                priority
-              />
+          {/* Image Panel + At a Glance */}
+          <div className="flex flex-col gap-6">
+            {/* Product Image */}
+            <div className="bg-white rounded-2xl border border-[#E8E0D5] p-8 flex flex-col items-center">
+              <div className="relative w-full max-w-xs h-64 mb-6">
+                <ProductImage
+                  filename={product.image_filename}
+                  alt={product.model_name}
+                  brand={product.brand}
+                  className="object-contain"
+                  sizes="320px"
+                  priority
+                />
+              </div>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {product.bluetooth && (
+                  <span className="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-100 font-medium">
+                    📶 Bluetooth
+                  </span>
+                )}
+                {product.rechargeable && (
+                  <span className="text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full border border-amber-100 font-medium">
+                    ⚡ Rechargeable
+                  </span>
+                )}
+                {product.tinnitus_feature && (
+                  <span className="text-xs bg-purple-50 text-purple-700 px-3 py-1 rounded-full border border-purple-100 font-medium">
+                    🔕 Tinnitus Therapy
+                  </span>
+                )}
+                {product.smartphone_app && (
+                  <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full border border-green-100 font-medium">
+                    📱 Smartphone App
+                  </span>
+                )}
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {product.bluetooth && (
-                <span className="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-100 font-medium">
-                  📶 Bluetooth
-                </span>
-              )}
-              {product.rechargeable && (
-                <span className="text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full border border-amber-100 font-medium">
-                  ⚡ Rechargeable
-                </span>
-              )}
-              {product.tinnitus_feature && (
-                <span className="text-xs bg-purple-50 text-purple-700 px-3 py-1 rounded-full border border-purple-100 font-medium">
-                  🔕 Tinnitus Therapy
-                </span>
-              )}
-              {product.smartphone_app && (
-                <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full border border-green-100 font-medium">
-                  📱 Smartphone App
-                </span>
-              )}
+
+            {/* At a Glance */}
+            <div>
+              <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mb-1">At a Glance</p>
+              <h3 className="font-playfair text-lg font-bold text-[#1B4D3E] mb-4">
+                The facts that <span className="bg-[#B8892A]/15 px-1.5 rounded">decide it</span>
+              </h3>
+              <div className="grid grid-cols-2 gap-3">
+                {/* Hearing Loss */}
+                <div className="bg-white rounded-xl border border-[#E8E0D5] p-4">
+                  <div className="w-8 h-8 rounded-full bg-[#1B4D3E]/10 flex items-center justify-center mb-2">
+                    <span className="text-sm">🦻</span>
+                  </div>
+                  <p className="text-[10px] text-gray-400 uppercase tracking-wide font-medium">Hearing Loss Covered</p>
+                  <p className="text-sm font-bold text-[#1B4D3E] mt-0.5">{product.hearing_loss_label}</p>
+                  <p className="text-[11px] text-gray-400 mt-0.5">Fits up to {product.fitting_range_db} dB losses</p>
+                </div>
+
+                {/* Channels */}
+                <div className="bg-white rounded-xl border border-[#E8E0D5] p-4">
+                  <div className="w-8 h-8 rounded-full bg-[#1B4D3E]/10 flex items-center justify-center mb-2">
+                    <span className="text-sm">⚙️</span>
+                  </div>
+                  <p className="text-[10px] text-gray-400 uppercase tracking-wide font-medium">Channels</p>
+                  <p className="text-sm font-bold text-[#1B4D3E] mt-0.5">{product.channels}</p>
+                  <p className="text-[11px] text-gray-400 mt-0.5">Processing bands for finer tuning</p>
+                </div>
+
+                {/* Rechargeable */}
+                <div className="bg-white rounded-xl border border-[#E8E0D5] p-4">
+                  <div className="w-8 h-8 rounded-full bg-[#1B4D3E]/10 flex items-center justify-center mb-2">
+                    <span className="text-sm">🔋</span>
+                  </div>
+                  <p className="text-[10px] text-gray-400 uppercase tracking-wide font-medium">Rechargeable</p>
+                  <p className="text-sm font-bold text-[#1B4D3E] mt-0.5">{product.rechargeable ? 'Yes' : 'No'}</p>
+                  <p className="text-[11px] text-gray-400 mt-0.5">{product.battery}</p>
+                </div>
+
+                {/* Streaming */}
+                <div className="bg-white rounded-xl border border-[#E8E0D5] p-4">
+                  <div className="w-8 h-8 rounded-full bg-[#1B4D3E]/10 flex items-center justify-center mb-2">
+                    <span className="text-sm">📱</span>
+                  </div>
+                  <p className="text-[10px] text-gray-400 uppercase tracking-wide font-medium">Phone Streaming</p>
+                  <p className="text-sm font-bold text-[#1B4D3E] mt-0.5">
+                    {product.bluetooth ? 'Bluetooth Ready' : 'Not available'}
+                  </p>
+                  <p className="text-[11px] text-gray-400 mt-0.5">
+                    {product.bluetooth ? 'Direct streaming to phone' : 'Wired accessories only'}
+                  </p>
+                </div>
+
+                {/* Style */}
+                <div className="bg-white rounded-xl border border-[#E8E0D5] p-4">
+                  <div className="w-8 h-8 rounded-full bg-[#1B4D3E]/10 flex items-center justify-center mb-2">
+                    <span className="text-sm">👂</span>
+                  </div>
+                  <p className="text-[10px] text-gray-400 uppercase tracking-wide font-medium">Style</p>
+                  <p className="text-sm font-bold text-[#1B4D3E] mt-0.5">{product.form_factor}</p>
+                  <p className="text-[11px] text-gray-400 mt-0.5">
+                    {product.form_factor === 'RIC' ? 'Slim, discreet, behind the ear'
+                      : product.form_factor === 'BTE' ? 'Behind the ear, robust'
+                      : product.form_factor === 'Slim-RIC' ? 'Ultra-slim receiver-in-canal'
+                      : product.form_factor === 'ITE' ? 'Custom-fit, in the ear'
+                      : product.form_factor === 'ITC' ? 'Small, in the canal'
+                      : product.form_factor === 'CIC' ? 'Nearly invisible, deep canal'
+                      : 'Custom wearing style'}
+                  </p>
+                </div>
+
+                {/* Warranty */}
+                <div className="bg-white rounded-xl border border-[#E8E0D5] p-4">
+                  <div className="w-8 h-8 rounded-full bg-[#1B4D3E]/10 flex items-center justify-center mb-2">
+                    <span className="text-sm">🛡️</span>
+                  </div>
+                  <p className="text-[10px] text-gray-400 uppercase tracking-wide font-medium">Warranty</p>
+                  <p className="text-sm font-bold text-[#1B4D3E] mt-0.5">{product.warranty_years} years</p>
+                  <p className="text-[11px] text-gray-400 mt-0.5">Full manufacturer coverage</p>
+                </div>
+
+                {/* Tinnitus — full width */}
+                {product.tinnitus_feature && (
+                  <div className="col-span-2 bg-white rounded-xl border border-[#E8E0D5] p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center flex-shrink-0">
+                        <span className="text-sm">🔕</span>
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-gray-400 uppercase tracking-wide font-medium">Tinnitus Support</p>
+                        <p className="text-sm font-bold text-[#1B4D3E] mt-0.5">Yes</p>
+                        <p className="text-[11px] text-gray-400 mt-0.5">Built-in therapy signals to help manage tinnitus symptoms</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* App control — full width if no tinnitus, otherwise it already fits */}
+                {product.smartphone_app && !product.tinnitus_feature && (
+                  <div className="col-span-2 bg-white rounded-xl border border-[#E8E0D5] p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
+                        <span className="text-sm">📲</span>
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-gray-400 uppercase tracking-wide font-medium">App Control</p>
+                        <p className="text-sm font-bold text-[#1B4D3E] mt-0.5">Smartphone App</p>
+                        <p className="text-[11px] text-gray-400 mt-0.5">Adjust volume, programs, and settings from your phone</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
@@ -139,21 +255,6 @@ export default async function ProductPage({ params }: PageProps) {
                   </div>
                 )}
               </div>
-            </div>
-
-            {/* Specs */}
-            <div className="grid grid-cols-2 gap-3 mb-6">
-              {[
-                { label: 'Channels / Bands', value: product.channels },
-                { label: 'Battery', value: product.battery },
-                { label: 'Fitting Range', value: product.fitting_range_db + ' dB' },
-                { label: 'Warranty', value: product.warranty_years + ' years' },
-              ].map((s) => (
-                <div key={s.label} className="bg-white rounded-xl border border-[#E8E0D5] p-3">
-                  <p className="text-xs text-gray-400 mb-1">{s.label}</p>
-                  <p className="text-sm font-semibold text-[#1B4D3E]">{s.value}</p>
-                </div>
-              ))}
             </div>
 
             {/* Key Features */}
