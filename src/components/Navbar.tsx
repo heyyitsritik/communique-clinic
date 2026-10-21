@@ -20,6 +20,12 @@ const hearingAidDropdown = [
     icon: '🎧',
   },
   {
+    label: 'Browse Catalogue',
+    href: '/hearing-aids/catalogue',
+    desc: 'Signia, Widex & Bernafon — all 90 models with prices',
+    icon: '📋',
+  },
+  {
     label: 'How to Choose the Right Hearing Aid',
     href: '/right-hearing-aid',
     desc: 'Assessment, lifestyle & clinical guidance',
