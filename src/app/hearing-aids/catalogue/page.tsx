@@ -11,68 +11,97 @@ const BRANDS    = ['All', 'Signia', 'Widex', 'Bernafon']
 const HEARING_LOSS = ['All', 'Mild', 'Moderate', 'Severe', 'Profound']
 const TIERS     = ['All', 'Premium', 'Advanced', 'Standard', 'Essential', 'Basic', 'Economy']
 
-// SVG icons for each hearing aid style
-const StyleIcons: Record<string, React.ReactNode> = {
+// Premium device silhouette SVGs — distinct line-art per form factor
+const StyleSVG: Record<string, React.ReactNode> = {
   All: (
-    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
-      <ellipse cx="20" cy="22" rx="8" ry="10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
-      <path d="M14 16c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
-      <circle cx="20" cy="22" r="2.5" fill="currentColor"/>
+    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
+      {/* BTE silhouette */}
+      <path d="M20 12 Q17 10 16 14 Q15 20 16 26 Q17 30 20 31" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" fill="none"/>
+      <rect x="21" y="10" width="7" height="17" rx="3.5" stroke="currentColor" strokeWidth="1.8"/>
+      {/* RIC wire + receiver */}
+      <path d="M28 27 Q32 30 33 35" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeDasharray="2 1.5"/>
+      <circle cx="33" cy="37" r="2.5" stroke="currentColor" strokeWidth="1.6"/>
+      {/* ITE shell hint */}
+      <ellipse cx="40" cy="38" rx="5" ry="6" stroke="currentColor" strokeWidth="1.6" opacity="0.45"/>
     </svg>
   ),
   RIC: (
-    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
-      <rect x="14" y="8" width="12" height="16" rx="6" stroke="currentColor" strokeWidth="2.2"/>
-      <path d="M20 24v6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
-      <circle cx="20" cy="32" r="2" fill="currentColor"/>
+    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
+      {/* Main body — slim vertical pill behind ear */}
+      <rect x="22" y="8" width="8" height="18" rx="4" stroke="currentColor" strokeWidth="1.9"/>
+      {/* Thin wire curving down */}
+      <path d="M26 26 Q26 33 32 38" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeDasharray="2 1.8"/>
+      {/* Receiver in canal */}
+      <circle cx="32" cy="40" r="3" stroke="currentColor" strokeWidth="1.8"/>
+      <circle cx="32" cy="40" r="1" fill="currentColor"/>
     </svg>
   ),
   BTE: (
-    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
-      <path d="M15 8c0 0-4 3-4 9s3 8 3 8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
-      <rect x="18" y="7" width="9" height="18" rx="4.5" stroke="currentColor" strokeWidth="2.2"/>
-      <path d="M18 25l-3 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
-      <circle cx="15" cy="31" r="2" fill="currentColor"/>
+    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
+      {/* Curved body following ear contour */}
+      <path d="M22 9 Q18 9 17 14 Q16 21 17 27 Q18 32 22 33" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none"/>
+      {/* Main housing */}
+      <rect x="22" y="8" width="9" height="22" rx="4.5" stroke="currentColor" strokeWidth="1.9"/>
+      {/* Earmold tube going down */}
+      <path d="M22 30 L19 42" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      <ellipse cx="18" cy="44" rx="2.5" ry="1.8" stroke="currentColor" strokeWidth="1.6"/>
     </svg>
   ),
   'Slim-RIC': (
-    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
-      <rect x="16" y="7" width="8" height="18" rx="4" stroke="currentColor" strokeWidth="2.2"/>
-      <path d="M20 25v7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="2 2"/>
-      <circle cx="20" cy="33" r="1.8" fill="currentColor"/>
+    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
+      {/* Very slim body */}
+      <rect x="23" y="8" width="6" height="20" rx="3" stroke="currentColor" strokeWidth="1.8"/>
+      {/* Ultra-thin wire */}
+      <path d="M26 28 Q27 35 33 40" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1.5 1.8"/>
+      {/* Small receiver */}
+      <circle cx="33" cy="42" r="2.5" stroke="currentColor" strokeWidth="1.6"/>
+      <circle cx="33" cy="42" r="0.9" fill="currentColor"/>
+      {/* Slim indicator line */}
+      <line x1="31" y1="10" x2="31" y2="26" stroke="currentColor" strokeWidth="0.8" opacity="0.4"/>
     </svg>
   ),
   ITE: (
-    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
-      <ellipse cx="20" cy="22" rx="9" ry="11" stroke="currentColor" strokeWidth="2.2"/>
-      <ellipse cx="20" cy="22" rx="4" ry="5" stroke="currentColor" strokeWidth="1.8"/>
-      <circle cx="20" cy="14" r="1.5" fill="currentColor"/>
+    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
+      {/* Ear canal outer shell — larger */}
+      <path d="M18 20 Q18 10 28 10 Q38 10 38 20 Q38 34 28 42 Q18 34 18 20Z" stroke="currentColor" strokeWidth="1.9" fill="none"/>
+      {/* Faceplate */}
+      <ellipse cx="28" cy="20" rx="7" ry="6" stroke="currentColor" strokeWidth="1.6"/>
+      {/* Vent hole */}
+      <circle cx="28" cy="20" r="1.8" fill="currentColor" opacity="0.5"/>
     </svg>
   ),
   ITC: (
-    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
-      <ellipse cx="20" cy="23" rx="7" ry="9" stroke="currentColor" strokeWidth="2.2"/>
-      <ellipse cx="20" cy="23" rx="3" ry="4" stroke="currentColor" strokeWidth="1.8"/>
-      <circle cx="20" cy="16" r="1.5" fill="currentColor"/>
+    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
+      {/* Smaller canal device */}
+      <path d="M20 22 Q20 13 28 13 Q36 13 36 22 Q36 33 28 40 Q20 33 20 22Z" stroke="currentColor" strokeWidth="1.9" fill="none"/>
+      {/* Faceplate smaller */}
+      <ellipse cx="28" cy="22" rx="5.5" ry="5" stroke="currentColor" strokeWidth="1.6"/>
+      {/* Removal handle */}
+      <line x1="28" y1="17" x2="28" y2="12" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+      <circle cx="28" cy="22" r="1.5" fill="currentColor" opacity="0.5"/>
     </svg>
   ),
   CIC: (
-    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
-      <ellipse cx="20" cy="24" rx="5.5" ry="7" stroke="currentColor" strokeWidth="2.2"/>
-      <circle cx="20" cy="18" r="1.5" fill="currentColor"/>
-      <path d="M20 10v5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="1.5 2"/>
+    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
+      {/* Tiny completely-in-canal */}
+      <path d="M22 26 Q22 17 28 17 Q34 17 34 26 Q34 35 28 40 Q22 35 22 26Z" stroke="currentColor" strokeWidth="1.9" fill="none"/>
+      {/* Very small faceplate */}
+      <ellipse cx="28" cy="26" rx="4" ry="3.5" stroke="currentColor" strokeWidth="1.6"/>
+      {/* Thin removal string */}
+      <path d="M28 22 Q28 16 27 12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1 1.5"/>
+      <circle cx="27" cy="11" r="1.2" fill="currentColor" opacity="0.6"/>
     </svg>
   ),
 }
 
 const STYLES = [
-  { key: 'All',      label: 'All',       sublabel: 'styles' },
+  { key: 'All',      label: 'All',       sublabel: 'All styles' },
   { key: 'RIC',      label: 'RIC',       sublabel: 'Receiver-in-canal' },
   { key: 'BTE',      label: 'BTE',       sublabel: 'Behind the ear' },
-  { key: 'Slim-RIC', label: 'Slim-RIC',  sublabel: 'Slim receiver' },
+  { key: 'Slim-RIC', label: 'Slim‑RIC',  sublabel: 'Slim receiver' },
   { key: 'ITE',      label: 'ITE',       sublabel: 'In the ear' },
   { key: 'ITC',      label: 'ITC',       sublabel: 'In the canal' },
-  { key: 'CIC',      label: 'CIC',       sublabel: 'Completely-in-canal' },
+  { key: 'CIC',      label: 'CIC',       sublabel: 'Completely in canal' },
 ]
 
 // Lowest price in the catalogue for the hero stat
@@ -181,23 +210,6 @@ function ProductCard({ product }: { product: Product }) {
   )
 }
 
-// ---------- Style pill (visual) ----------
-function StylePill({ s, active, onClick }: { s: typeof STYLES[0]; active: boolean; onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      className={`flex flex-col items-center gap-1.5 px-4 py-3 rounded-2xl border-2 transition-all text-center min-w-[76px] ${
-        active
-          ? 'border-[#1B4D3E] bg-[#1B4D3E] text-white shadow-md'
-          : 'border-[#E8E0D5] bg-white text-gray-500 hover:border-[#1B4D3E]/40 hover:text-[#1B4D3E]'
-      }`}
-    >
-      {StyleIcons[s.key]}
-      <span className="text-[11px] font-bold leading-tight whitespace-nowrap">{s.label}</span>
-    </button>
-  )
-}
-
 // ---------- Filter button ----------
 function FilterBtn({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
@@ -210,6 +222,40 @@ function FilterBtn({ label, active, onClick }: { label: string; active: boolean;
       }`}
     >
       {label}
+    </button>
+  )
+}
+
+// ---------- Style card (premium) ----------
+function StylePill({ s, active, onClick }: { s: typeof STYLES[0]; active: boolean; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`group relative flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 transition-all duration-200 text-center min-w-[96px] cursor-pointer
+        ${active
+          ? 'border-[#1B4D3E] bg-[#1B4D3E] text-white shadow-lg scale-[1.04]'
+          : 'border-[#E8E0D5] bg-white text-gray-400 hover:border-[#B8892A]/60 hover:text-[#1B4D3E] hover:shadow-md hover:scale-[1.02]'
+        }`}
+    >
+      {/* Icon */}
+      <div className={`transition-colors duration-200 ${active ? 'text-white' : 'text-gray-400 group-hover:text-[#1B4D3E]'}`}>
+        {StyleSVG[s.key]}
+      </div>
+
+      {/* Label */}
+      <div>
+        <p className={`text-[13px] font-bold leading-tight tracking-wide ${active ? 'text-white' : 'text-gray-700'}`}>
+          {s.label}
+        </p>
+        <p className={`text-[10px] leading-tight mt-0.5 whitespace-nowrap ${active ? 'text-white/70' : 'text-gray-400'}`}>
+          {s.sublabel}
+        </p>
+      </div>
+
+      {/* Gold accent bar — shows on hover or active */}
+      <div className={`absolute bottom-0 left-4 right-4 h-[2.5px] rounded-full transition-all duration-200
+        ${active ? 'bg-[#B8892A] opacity-100' : 'bg-[#B8892A] opacity-0 group-hover:opacity-60'}`}
+      />
     </button>
   )
 }
@@ -524,7 +570,7 @@ export default function CataloguePage() {
                 )}
                 {search && (
                   <span onClick={() => { setSearch(''); setHeroSearch('') }} className="text-xs bg-[#B8892A]/10 text-[#B8892A] px-3 py-1 rounded-full font-medium cursor-pointer hover:bg-[#B8892A]/20 transition">
-                    "{search}" ✕
+                    &ldquo;{search}&rdquo; ✕
                   </span>
                 )}
               </div>
@@ -556,7 +602,7 @@ export default function CataloguePage() {
               <p className="text-[#B8892A] text-xs font-bold uppercase tracking-widest mb-2">Free Consultation</p>
               <h3 className="font-playfair text-2xl font-bold mb-2">Not sure which one is right for you?</h3>
               <p className="text-white/60 text-sm mb-6 max-w-md mx-auto">
-                Book a free consultation with Dr. Saurabh — he'll match the right device to your hearing loss, lifestyle and budget.
+                Book a free consultation with Dr. Saurabh — he&apos;ll match the right device to your hearing loss, lifestyle and budget.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
