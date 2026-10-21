@@ -201,7 +201,7 @@ function ProductFamilyCard({ family, compareList, onToggleCompare }: {
       {/* Footer — links to representative product */}
       <Link
         href={`/hearing-aids/${rep.slug}`}
-        className="bg-[#1B4D3E] text-white text-center text-xs font-semibold py-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 block"
+        className="bg-[#1B4D3E] text-white text-center text-xs font-semibold py-2.5 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 block"
       >
         View Details →
       </Link>
@@ -230,7 +230,7 @@ function StylePill({ s, active, onClick }: { s: typeof STYLES[0]; active: boolea
   return (
     <button
       onClick={onClick}
-      className={`group relative flex flex-col justify-end overflow-hidden rounded-xl transition-all duration-300 cursor-pointer min-w-[110px] h-[72px]
+      className={`group relative flex flex-col justify-end overflow-hidden rounded-xl transition-all duration-300 cursor-pointer min-w-[90px] sm:min-w-[110px] h-[60px] sm:h-[72px]
         ${active
           ? 'shadow-xl ring-2 ring-[#B8892A] scale-[1.03]'
           : 'opacity-70 hover:opacity-100 hover:shadow-lg hover:scale-[1.02]'
@@ -279,6 +279,7 @@ export default function CataloguePage() {
   const [sortBy,         setSortBy]         = useState<'default' | 'price-asc' | 'price-desc'>('default')
   const [compareList,    setCompareList]    = useState<string[]>([])
   const [showCompare,    setShowCompare]    = useState(false)
+  const [showFilters,    setShowFilters]    = useState(false)
 
   const toggleCompare = (slug: string) => {
     setCompareList((prev) =>
@@ -343,10 +344,10 @@ export default function CataloguePage() {
       }
       tierGroup.products.push(p)
     }
-    // Sort tiers within each family by TIER_ORDER
-    for (const fam of Array.from(map.values())) {
+    // Sort tiers by TIER_ORDER
+    map.forEach((fam) => {
       fam.tiers.sort((a, b) => (TIER_ORDER[a.tier] ?? 99) - (TIER_ORDER[b.tier] ?? 99))
-    }
+    })
     const result = Array.from(map.values())
 
     // Sort families
@@ -376,7 +377,7 @@ export default function CataloguePage() {
     <div className="min-h-screen bg-[#FAF6F0]">
 
       {/* ── HERO ── */}
-      <div className="bg-[#1B4D3E] text-white pt-24 pb-10 px-4 overflow-hidden">
+      <div className="bg-[#1B4D3E] text-white pt-16 sm:pt-24 pb-8 sm:pb-10 px-4 overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-center gap-10">
 
@@ -390,15 +391,15 @@ export default function CataloguePage() {
               </p>
 
               {/* Headline */}
-              <h1 className="font-playfair text-3xl md:text-5xl font-bold mb-3 leading-tight">
+              <h1 className="font-playfair text-2xl sm:text-3xl md:text-5xl font-bold mb-3 leading-tight">
                 Every hearing aid,<br className="hidden md:block" /> with its price.
               </h1>
-              <p className="text-white/60 text-base md:text-lg mb-8 max-w-xl">
+              <p className="text-white/60 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-xl">
                 Signia, Widex and Bernafon — browse all models with transparent pricing. All GST-exempt.
               </p>
 
               {/* Stats row */}
-              <div className="flex flex-wrap gap-6 mb-10 text-sm">
+              <div className="flex flex-wrap gap-4 sm:gap-6 mb-6 sm:mb-10 text-sm">
                 {[
                   { val: products.length, label: 'hearing aids' },
                   { val: '3', label: 'brands' },
@@ -418,14 +419,14 @@ export default function CataloguePage() {
                 <input
                   ref={searchInputRef}
                   type="text"
-                  placeholder="Search by model, brand, or style — e.g. rechargeable, RIC, Widex…"
+                  placeholder="Search model, brand, style…"
                   value={heroSearch}
                   onChange={(e) => setHeroSearch(e.target.value)}
-                  className="w-full bg-white text-gray-800 placeholder-gray-400 text-sm rounded-2xl pl-11 pr-32 py-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-[#B8892A]"
+                  className="w-full bg-white text-gray-800 placeholder-gray-400 text-sm rounded-2xl pl-11 pr-24 sm:pr-32 py-3.5 sm:py-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-[#B8892A]"
                 />
                 <button
                   onClick={() => { setSearch(heroSearch); document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' }) }}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#B8892A] hover:bg-[#a07824] text-white text-sm font-bold px-5 py-2 rounded-xl transition"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#B8892A] hover:bg-[#a07824] text-white text-xs sm:text-sm font-bold px-3 sm:px-5 py-2 rounded-xl transition"
                 >
                   Search →
                 </button>
@@ -488,7 +489,17 @@ export default function CataloguePage() {
 
           {/* Sidebar */}
           <aside className="lg:w-60 flex-shrink-0">
-            <div className="bg-white rounded-2xl border border-[#E8E0D5] p-5 sticky top-24">
+            {/* Mobile filter toggle */}
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="lg:hidden w-full flex items-center justify-between bg-white rounded-2xl border border-[#E8E0D5] p-4 mb-3"
+            >
+              <span className="font-bold text-[#1B4D3E] text-sm uppercase tracking-wide">
+                Filters {activeFilters > 0 && <span className="text-[#B8892A]">({activeFilters})</span>}
+              </span>
+              <span className={`text-gray-400 transition-transform duration-200 ${showFilters ? 'rotate-180' : ''}`}>▼</span>
+            </button>
+            <div className={`bg-white rounded-2xl border border-[#E8E0D5] p-5 sticky top-24 ${showFilters ? 'block' : 'hidden lg:block'}`}>
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-bold text-[#1B4D3E] text-sm uppercase tracking-wide">Filters</h2>
                 {activeFilters > 0 && (
@@ -698,7 +709,7 @@ export default function CataloguePage() {
             )}
 
             {/* CTA */}
-            <div className="mt-14 bg-[#1B4D3E] rounded-2xl p-8 text-white text-center">
+            <div className="mt-10 sm:mt-14 bg-[#1B4D3E] rounded-2xl p-5 sm:p-8 text-white text-center">
               <p className="text-[#B8892A] text-xs font-bold uppercase tracking-widest mb-2">Free Consultation</p>
               <h3 className="font-playfair text-2xl font-bold mb-2">Not sure which one is right for you?</h3>
               <p className="text-white/60 text-sm mb-6 max-w-md mx-auto">
@@ -727,34 +738,36 @@ export default function CataloguePage() {
       {/* ── COMPARE BAR (sticky bottom) ── */}
       {compareList.length > 0 && (
         <div className="fixed bottom-0 left-0 right-0 bg-[#1B4D3E] text-white shadow-2xl z-50 border-t border-[#B8892A]/30">
-          <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3 overflow-x-auto flex-1 min-w-0">
-              <span className="text-xs text-white/60 flex-shrink-0">Compare ({compareList.length}/3):</span>
-              {compareProducts.map((p) => (
-                <span key={p.slug} className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full text-xs font-medium flex-shrink-0">
-                  {p.model_name}
-                  <button onClick={() => toggleCompare(p.slug)} className="text-white/50 hover:text-white ml-1">✕</button>
-                </span>
-              ))}
-            </div>
-            <div className="flex gap-2 flex-shrink-0">
-              <button
-                onClick={() => setCompareList([])}
-                className="text-xs text-white/60 hover:text-white transition px-3 py-1.5"
-              >
-                Clear
-              </button>
-              <button
-                onClick={() => setShowCompare(true)}
-                disabled={compareList.length < 2}
-                className={`text-xs font-bold px-5 py-2 rounded-full transition ${
-                  compareList.length >= 2
-                    ? 'bg-[#B8892A] hover:bg-[#a07824] text-white'
-                    : 'bg-white/10 text-white/40 cursor-not-allowed'
-                }`}
-              >
-                Compare {compareList.length >= 2 ? '→' : '(pick 2+)'}
-              </button>
+          <div className="max-w-5xl mx-auto px-4 py-3">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+              <div className="flex items-center gap-2 overflow-x-auto flex-1 min-w-0 pb-1 sm:pb-0">
+                <span className="text-[11px] sm:text-xs text-white/60 flex-shrink-0">Compare ({compareList.length}/3):</span>
+                {compareProducts.map((p) => (
+                  <span key={p.slug} className="flex items-center gap-1 bg-white/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium flex-shrink-0 max-w-[140px] sm:max-w-none">
+                    <span className="truncate">{p.model_name}</span>
+                    <button onClick={() => toggleCompare(p.slug)} className="text-white/50 hover:text-white ml-0.5">✕</button>
+                  </span>
+                ))}
+              </div>
+              <div className="flex gap-2 flex-shrink-0 justify-end">
+                <button
+                  onClick={() => setCompareList([])}
+                  className="text-xs text-white/60 hover:text-white transition px-3 py-1.5"
+                >
+                  Clear
+                </button>
+                <button
+                  onClick={() => setShowCompare(true)}
+                  disabled={compareList.length < 2}
+                  className={`text-xs font-bold px-5 py-2 rounded-full transition ${
+                    compareList.length >= 2
+                      ? 'bg-[#B8892A] hover:bg-[#a07824] text-white'
+                      : 'bg-white/10 text-white/40 cursor-not-allowed'
+                  }`}
+                >
+                  Compare {compareList.length >= 2 ? '→' : '(pick 2+)'}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -768,106 +781,108 @@ export default function CataloguePage() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal header */}
-            <div className="sticky top-0 bg-white border-b border-[#E8E0D5] px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
-              <h2 className="font-playfair text-lg font-bold text-[#1B4D3E]">Side-by-Side Comparison</h2>
-              <button onClick={() => setShowCompare(false)} className="text-gray-400 hover:text-gray-600 text-xl font-bold">✕</button>
+            <div className="sticky top-0 bg-white border-b border-[#E8E0D5] px-4 sm:px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
+              <h2 className="font-playfair text-base sm:text-lg font-bold text-[#1B4D3E]">Side-by-Side Comparison</h2>
+              <button onClick={() => setShowCompare(false)} className="text-gray-400 hover:text-gray-600 text-xl font-bold p-1">✕</button>
             </div>
 
-            {/* Comparison table */}
-            <div className="px-6 py-5">
-              {/* Product headers */}
-              <div className={`grid gap-4 mb-6`} style={{ gridTemplateColumns: `140px repeat(${compareProducts.length}, 1fr)` }}>
-                <div />
-                {compareProducts.map((p) => (
-                  <div key={p.slug} className="text-center">
-                    <div className="relative w-full h-28 bg-[#FAF6F0] rounded-xl mb-2 flex items-center justify-center">
-                      <ProductImage filename={p.image_filename} alt={p.model_name} brand={p.brand} className="object-contain p-2" sizes="160px" />
-                    </div>
-                    <p className="text-[10px] text-[#B8892A] font-bold uppercase tracking-widest">{p.brand}</p>
-                    <p className="text-sm font-bold text-[#1B4D3E] leading-tight">{p.model_name}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Spec rows */}
-              {[
-                { label: 'Technology', get: (p: Product) => p.technology_tier },
-                { label: 'Form Factor', get: (p: Product) => p.form_factor },
-                { label: 'Channels', get: (p: Product) => String(p.channels) },
-                { label: 'Hearing Loss', get: (p: Product) => p.hearing_loss_label },
-                { label: 'Fitting Range', get: (p: Product) => p.fitting_range_db + ' dB' },
-                { label: 'Battery', get: (p: Product) => p.battery },
-                { label: 'Single Price', get: (p: Product) => formatPrice(p.price_single) ?? '—' },
-                { label: 'Kit Price', get: (p: Product) => formatPrice(p.price_kit) ?? '—' },
-                { label: 'Bluetooth', get: (p: Product) => p.bluetooth ? '✓' : '✗' },
-                { label: 'Rechargeable', get: (p: Product) => p.rechargeable ? '✓' : '✗' },
-                { label: 'Tinnitus', get: (p: Product) => p.tinnitus_feature ? '✓' : '✗' },
-                { label: 'App Control', get: (p: Product) => p.smartphone_app ? '✓' : '✗' },
-                { label: 'Warranty', get: (p: Product) => p.warranty_years + ' years' },
-              ].map((row, i) => (
-                <div
-                  key={row.label}
-                  className={`grid gap-4 py-2.5 px-2 rounded-lg ${i % 2 === 0 ? 'bg-[#FAF6F0]' : ''}`}
-                  style={{ gridTemplateColumns: `140px repeat(${compareProducts.length}, 1fr)` }}
-                >
-                  <p className="text-xs text-gray-400 font-medium self-center">{row.label}</p>
+            {/* Comparison table — scrollable wrapper for mobile */}
+            <div className="px-4 sm:px-6 py-5 overflow-x-auto">
+              <div className="min-w-[480px]">
+                {/* Product headers */}
+                <div className={`grid gap-3 sm:gap-4 mb-6`} style={{ gridTemplateColumns: `100px repeat(${compareProducts.length}, 1fr)` }}>
+                  <div />
                   {compareProducts.map((p) => (
-                    <p key={p.slug} className="text-sm text-[#1B4D3E] font-semibold text-center self-center">
-                      {row.get(p)}
-                    </p>
+                    <div key={p.slug} className="text-center">
+                      <div className="relative w-full h-20 sm:h-28 bg-[#FAF6F0] rounded-xl mb-2 flex items-center justify-center">
+                        <ProductImage filename={p.image_filename} alt={p.model_name} brand={p.brand} className="object-contain p-2" sizes="160px" />
+                      </div>
+                      <p className="text-[10px] text-[#B8892A] font-bold uppercase tracking-widest">{p.brand}</p>
+                      <p className="text-xs sm:text-sm font-bold text-[#1B4D3E] leading-tight">{p.model_name}</p>
+                    </div>
                   ))}
                 </div>
-              ))}
 
-              {/* Key features row */}
-              <div className="grid gap-4 py-3 mt-2" style={{ gridTemplateColumns: `140px repeat(${compareProducts.length}, 1fr)` }}>
-                <p className="text-xs text-gray-400 font-medium">Key Features</p>
-                {compareProducts.map((p) => (
-                  <ul key={p.slug} className="space-y-1">
-                    {p.key_features.slice(0, 5).map((f) => (
-                      <li key={f} className="text-xs text-gray-600 flex items-start gap-1.5">
-                        <span className="text-[#B8892A] mt-0.5">✓</span>{f}
-                      </li>
+                {/* Spec rows */}
+                {[
+                  { label: 'Technology', get: (p: Product) => p.technology_tier },
+                  { label: 'Form Factor', get: (p: Product) => p.form_factor },
+                  { label: 'Channels', get: (p: Product) => String(p.channels) },
+                  { label: 'Hearing Loss', get: (p: Product) => p.hearing_loss_label },
+                  { label: 'Fitting Range', get: (p: Product) => p.fitting_range_db + ' dB' },
+                  { label: 'Battery', get: (p: Product) => p.battery },
+                  { label: 'Single Price', get: (p: Product) => formatPrice(p.price_single) ?? '—' },
+                  { label: 'Kit Price', get: (p: Product) => formatPrice(p.price_kit) ?? '—' },
+                  { label: 'Bluetooth', get: (p: Product) => p.bluetooth ? '✓' : '✗' },
+                  { label: 'Rechargeable', get: (p: Product) => p.rechargeable ? '✓' : '✗' },
+                  { label: 'Tinnitus', get: (p: Product) => p.tinnitus_feature ? '✓' : '✗' },
+                  { label: 'App Control', get: (p: Product) => p.smartphone_app ? '✓' : '✗' },
+                  { label: 'Warranty', get: (p: Product) => p.warranty_years + ' years' },
+                ].map((row, i) => (
+                  <div
+                    key={row.label}
+                    className={`grid gap-3 sm:gap-4 py-2 sm:py-2.5 px-2 rounded-lg ${i % 2 === 0 ? 'bg-[#FAF6F0]' : ''}`}
+                    style={{ gridTemplateColumns: `100px repeat(${compareProducts.length}, 1fr)` }}
+                  >
+                    <p className="text-[11px] sm:text-xs text-gray-400 font-medium self-center">{row.label}</p>
+                    {compareProducts.map((p) => (
+                      <p key={p.slug} className="text-xs sm:text-sm text-[#1B4D3E] font-semibold text-center self-center">
+                        {row.get(p)}
+                      </p>
                     ))}
-                  </ul>
-                ))}
-              </div>
-
-              {/* Lifestyle row */}
-              <div className="grid gap-4 py-3 border-t border-[#E8E0D5]" style={{ gridTemplateColumns: `140px repeat(${compareProducts.length}, 1fr)` }}>
-                <p className="text-xs text-gray-400 font-medium">Ideal For</p>
-                {compareProducts.map((p) => (
-                  <div key={p.slug} className="flex flex-wrap gap-1">
-                    {p.lifestyle_tags.length > 0
-                      ? p.lifestyle_tags.map((t) => (
-                          <span key={t} className="text-[10px] bg-[#1B4D3E]/10 text-[#1B4D3E] px-2 py-0.5 rounded-full">{t}</span>
-                        ))
-                      : <span className="text-xs text-gray-400">—</span>
-                    }
                   </div>
                 ))}
-              </div>
 
-              {/* CTA */}
-              <div className="grid gap-4 pt-4 border-t border-[#E8E0D5] mt-3" style={{ gridTemplateColumns: `140px repeat(${compareProducts.length}, 1fr)` }}>
-                <div />
-                {compareProducts.map((p) => (
-                  <div key={p.slug} className="flex flex-col gap-2">
-                    <Link
-                      href={`/hearing-aids/${p.slug}`}
-                      className="bg-[#1B4D3E] text-white text-center text-xs font-semibold py-2.5 rounded-full hover:bg-[#163e32] transition"
-                    >
-                      View Details
-                    </Link>
-                    <a
-                      href={`https://wa.me/918796270575?text=Hi, I'm interested in the ${encodeURIComponent(p.model_name)}.`}
-                      target="_blank" rel="noopener noreferrer"
-                      className="bg-[#25D366] text-white text-center text-xs font-semibold py-2.5 rounded-full hover:bg-[#1ebe5a] transition"
-                    >
-                      💬 WhatsApp
-                    </a>
-                  </div>
-                ))}
+                {/* Key features row */}
+                <div className="grid gap-3 sm:gap-4 py-3 mt-2" style={{ gridTemplateColumns: `100px repeat(${compareProducts.length}, 1fr)` }}>
+                  <p className="text-[11px] sm:text-xs text-gray-400 font-medium">Key Features</p>
+                  {compareProducts.map((p) => (
+                    <ul key={p.slug} className="space-y-1">
+                      {p.key_features.slice(0, 5).map((f) => (
+                        <li key={f} className="text-[11px] sm:text-xs text-gray-600 flex items-start gap-1.5">
+                          <span className="text-[#B8892A] mt-0.5">✓</span>{f}
+                        </li>
+                      ))}
+                    </ul>
+                  ))}
+                </div>
+
+                {/* Lifestyle row */}
+                <div className="grid gap-3 sm:gap-4 py-3 border-t border-[#E8E0D5]" style={{ gridTemplateColumns: `100px repeat(${compareProducts.length}, 1fr)` }}>
+                  <p className="text-[11px] sm:text-xs text-gray-400 font-medium">Ideal For</p>
+                  {compareProducts.map((p) => (
+                    <div key={p.slug} className="flex flex-wrap gap-1">
+                      {p.lifestyle_tags.length > 0
+                        ? p.lifestyle_tags.map((t) => (
+                            <span key={t} className="text-[9px] sm:text-[10px] bg-[#1B4D3E]/10 text-[#1B4D3E] px-2 py-0.5 rounded-full">{t}</span>
+                          ))
+                        : <span className="text-xs text-gray-400">—</span>
+                      }
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <div className="grid gap-3 sm:gap-4 pt-4 border-t border-[#E8E0D5] mt-3" style={{ gridTemplateColumns: `100px repeat(${compareProducts.length}, 1fr)` }}>
+                  <div />
+                  {compareProducts.map((p) => (
+                    <div key={p.slug} className="flex flex-col gap-2">
+                      <Link
+                        href={`/hearing-aids/${p.slug}`}
+                        className="bg-[#1B4D3E] text-white text-center text-[11px] sm:text-xs font-semibold py-2 sm:py-2.5 rounded-full hover:bg-[#163e32] transition"
+                      >
+                        View Details
+                      </Link>
+                      <a
+                        href={`https://wa.me/918796270575?text=Hi, I'm interested in the ${encodeURIComponent(p.model_name)}.`}
+                        target="_blank" rel="noopener noreferrer"
+                        className="bg-[#25D366] text-white text-center text-[11px] sm:text-xs font-semibold py-2 sm:py-2.5 rounded-full hover:bg-[#1ebe5a] transition"
+                      >
+                        💬 WhatsApp
+                      </a>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

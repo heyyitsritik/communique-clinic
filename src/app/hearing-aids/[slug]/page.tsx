@@ -55,18 +55,18 @@ export default async function ProductPage({ params }: PageProps) {
   return (
     <div className="min-h-screen bg-[#FAF6F0]">
       {/* Breadcrumb */}
-      <div className="bg-[#1B4D3E] text-white/70 text-sm py-3 px-4">
-        <div className="max-w-6xl mx-auto flex items-center gap-2">
+      <div className="bg-[#1B4D3E] text-white/70 text-xs sm:text-sm py-3 px-4">
+        <div className="max-w-6xl mx-auto flex items-center gap-1.5 sm:gap-2 overflow-x-auto">
           <Link href="/" className="hover:text-white transition">Home</Link>
           <span>/</span>
-          <Link href="/hearing-aids/catalogue" className="hover:text-white transition">Hearing Aids</Link>
-          <span>/</span>
-          <span className="text-white">{product.model_name}</span>
+          <Link href="/hearing-aids/catalogue" className="hover:text-white transition flex-shrink-0">Hearing Aids</Link>
+          <span className="flex-shrink-0">/</span>
+          <span className="text-white truncate">{product.model_name}</span>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-10">
-        <div className="grid md:grid-cols-2 gap-10 items-start">
+      <div className="max-w-6xl mx-auto px-4 py-6 sm:py-10">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-10 items-start">
           {/* Image Panel + At a Glance */}
           <div className="flex flex-col gap-6">
             {/* Product Image */}
@@ -111,7 +111,7 @@ export default async function ProductPage({ params }: PageProps) {
               <h3 className="font-playfair text-lg font-bold text-[#1B4D3E] mb-4">
                 The facts that <span className="bg-[#B8892A]/15 px-1.5 rounded">decide it</span>
               </h3>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* Hearing Loss */}
                 <div className="bg-white rounded-xl border border-[#E8E0D5] p-4">
                   <div className="w-8 h-8 rounded-full bg-[#1B4D3E]/10 flex items-center justify-center mb-2">
@@ -222,8 +222,8 @@ export default async function ProductPage({ params }: PageProps) {
           {/* Details Panel */}
           <div>
             <p className="text-[#B8892A] text-sm font-semibold uppercase tracking-wide mb-1">{product.brand}</p>
-            <h1 className="font-playfair text-2xl md:text-3xl font-bold text-[#1B4D3E] mb-2">{product.model_name}</h1>
-            <div className="flex items-center gap-3 mb-4">
+            <h1 className="font-playfair text-xl sm:text-2xl md:text-3xl font-bold text-[#1B4D3E] mb-2">{product.model_name}</h1>
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
               <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#1B4D3E] text-white">
                 {product.technology_tier}
               </span>
@@ -234,9 +234,9 @@ export default async function ProductPage({ params }: PageProps) {
             <p className="text-gray-600 mb-6 leading-relaxed">{product.short_desc}</p>
 
             {/* Pricing */}
-            <div className="bg-[#FAF6F0] rounded-xl border border-[#E8E0D5] p-5 mb-6">
+            <div className="bg-[#FAF6F0] rounded-xl border border-[#E8E0D5] p-4 sm:p-5 mb-6">
               <p className="text-xs text-gray-400 uppercase tracking-wide font-medium mb-3">Pricing (GST-exempt)</p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {product.price_single && (
                   <div>
                     <p className="text-xs text-gray-500 mb-1">Single Unit</p>
