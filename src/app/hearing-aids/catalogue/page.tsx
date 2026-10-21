@@ -11,98 +11,82 @@ const BRANDS    = ['All', 'Signia', 'Widex', 'Bernafon']
 const HEARING_LOSS = ['All', 'Mild', 'Moderate', 'Severe', 'Profound']
 const TIERS     = ['All', 'Premium', 'Advanced', 'Standard', 'Essential', 'Basic', 'Economy']
 
-// Premium device silhouette SVGs — distinct line-art per form factor
-const StyleSVG: Record<string, React.ReactNode> = {
+// Style picker data — each card has its own gradient + large background SVG
+const STYLES = [
+  { key: 'All',      label: 'All Styles',  sublabel: '90 devices',          gradient: 'from-slate-600 to-slate-800' },
+  { key: 'RIC',      label: 'RIC',         sublabel: 'Receiver-in-canal',   gradient: 'from-teal-700 to-emerald-900' },
+  { key: 'BTE',      label: 'BTE',         sublabel: 'Behind the ear',      gradient: 'from-indigo-700 to-indigo-900' },
+  { key: 'Slim-RIC', label: 'Slim‑RIC',    sublabel: 'Slim receiver',       gradient: 'from-violet-700 to-purple-900' },
+  { key: 'ITE',      label: 'ITE',         sublabel: 'In the ear',          gradient: 'from-amber-700 to-amber-900' },
+  { key: 'ITC',      label: 'ITC',         sublabel: 'In the canal',        gradient: 'from-rose-700 to-rose-900' },
+  { key: 'CIC',      label: 'CIC',         sublabel: 'Completely in canal', gradient: 'from-cyan-700 to-cyan-900' },
+]
+
+// Large background SVG silhouettes (decorative, shown faded behind text)
+const StyleBgSVG: Record<string, React.ReactNode> = {
   All: (
-    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
-      {/* BTE silhouette */}
-      <path d="M20 12 Q17 10 16 14 Q15 20 16 26 Q17 30 20 31" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" fill="none"/>
-      <rect x="21" y="10" width="7" height="17" rx="3.5" stroke="currentColor" strokeWidth="1.8"/>
-      {/* RIC wire + receiver */}
-      <path d="M28 27 Q32 30 33 35" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeDasharray="2 1.5"/>
-      <circle cx="33" cy="37" r="2.5" stroke="currentColor" strokeWidth="1.6"/>
-      {/* ITE shell hint */}
-      <ellipse cx="40" cy="38" rx="5" ry="6" stroke="currentColor" strokeWidth="1.6" opacity="0.45"/>
+    <svg viewBox="0 0 120 80" fill="none" className="absolute right-0 top-1/2 -translate-y-1/2 h-[110%] opacity-[0.12]">
+      <path d="M60 10 C40 10 30 25 30 40 C30 55 40 70 60 70 C80 70 90 55 90 40 C90 25 80 10 60 10Z" fill="white"/>
+      <ellipse cx="60" cy="40" rx="12" ry="14" fill="white" opacity="0.6"/>
     </svg>
   ),
   RIC: (
-    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
-      {/* Main body — slim vertical pill behind ear */}
-      <rect x="22" y="8" width="8" height="18" rx="4" stroke="currentColor" strokeWidth="1.9"/>
-      {/* Thin wire curving down */}
-      <path d="M26 26 Q26 33 32 38" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeDasharray="2 1.8"/>
-      {/* Receiver in canal */}
-      <circle cx="32" cy="40" r="3" stroke="currentColor" strokeWidth="1.8"/>
-      <circle cx="32" cy="40" r="1" fill="currentColor"/>
+    <svg viewBox="0 0 120 80" fill="none" className="absolute right-1 top-1/2 -translate-y-1/2 h-[120%] opacity-[0.12]">
+      {/* Behind-ear housing */}
+      <rect x="50" y="5" width="16" height="36" rx="8" fill="white"/>
+      {/* Thin wire */}
+      <path d="M58 41 Q58 55 72 65" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+      {/* Receiver dome */}
+      <circle cx="74" cy="67" r="8" fill="white"/>
     </svg>
   ),
   BTE: (
-    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
-      {/* Curved body following ear contour */}
-      <path d="M22 9 Q18 9 17 14 Q16 21 17 27 Q18 32 22 33" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none"/>
-      {/* Main housing */}
-      <rect x="22" y="8" width="9" height="22" rx="4.5" stroke="currentColor" strokeWidth="1.9"/>
-      {/* Earmold tube going down */}
-      <path d="M22 30 L19 42" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      <ellipse cx="18" cy="44" rx="2.5" ry="1.8" stroke="currentColor" strokeWidth="1.6"/>
+    <svg viewBox="0 0 120 80" fill="none" className="absolute right-1 top-1/2 -translate-y-1/2 h-[120%] opacity-[0.12]">
+      {/* Ear hook curve */}
+      <path d="M52 8 Q42 8 40 20 Q38 35 40 48 Q42 58 52 60" stroke="white" strokeWidth="5" strokeLinecap="round" fill="none"/>
+      {/* Housing */}
+      <rect x="52" y="6" width="18" height="42" rx="9" fill="white"/>
+      {/* Tube + earmold */}
+      <path d="M52 48 L46 70" stroke="white" strokeWidth="4" strokeLinecap="round"/>
+      <ellipse cx="44" cy="72" rx="7" ry="5" fill="white"/>
     </svg>
   ),
   'Slim-RIC': (
-    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
-      {/* Very slim body */}
-      <rect x="23" y="8" width="6" height="20" rx="3" stroke="currentColor" strokeWidth="1.8"/>
-      {/* Ultra-thin wire */}
-      <path d="M26 28 Q27 35 33 40" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1.5 1.8"/>
-      {/* Small receiver */}
-      <circle cx="33" cy="42" r="2.5" stroke="currentColor" strokeWidth="1.6"/>
-      <circle cx="33" cy="42" r="0.9" fill="currentColor"/>
-      {/* Slim indicator line */}
-      <line x1="31" y1="10" x2="31" y2="26" stroke="currentColor" strokeWidth="0.8" opacity="0.4"/>
+    <svg viewBox="0 0 120 80" fill="none" className="absolute right-1 top-1/2 -translate-y-1/2 h-[120%] opacity-[0.12]">
+      {/* Ultra-slim housing */}
+      <rect x="52" y="5" width="12" height="40" rx="6" fill="white"/>
+      {/* Hair-thin wire */}
+      <path d="M58 45 Q60 58 74 66" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+      {/* Tiny receiver */}
+      <circle cx="76" cy="68" r="6" fill="white"/>
     </svg>
   ),
   ITE: (
-    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
-      {/* Ear canal outer shell — larger */}
-      <path d="M18 20 Q18 10 28 10 Q38 10 38 20 Q38 34 28 42 Q18 34 18 20Z" stroke="currentColor" strokeWidth="1.9" fill="none"/>
+    <svg viewBox="0 0 120 80" fill="none" className="absolute right-1 top-1/2 -translate-y-1/2 h-[120%] opacity-[0.12]">
+      {/* Ear-shaped shell */}
+      <path d="M40 30 Q40 8 65 8 Q90 8 90 30 Q90 58 65 72 Q40 58 40 30Z" fill="white"/>
       {/* Faceplate */}
-      <ellipse cx="28" cy="20" rx="7" ry="6" stroke="currentColor" strokeWidth="1.6"/>
-      {/* Vent hole */}
-      <circle cx="28" cy="20" r="1.8" fill="currentColor" opacity="0.5"/>
+      <ellipse cx="65" cy="30" rx="14" ry="12" fill="white" opacity="0.5"/>
     </svg>
   ),
   ITC: (
-    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
-      {/* Smaller canal device */}
-      <path d="M20 22 Q20 13 28 13 Q36 13 36 22 Q36 33 28 40 Q20 33 20 22Z" stroke="currentColor" strokeWidth="1.9" fill="none"/>
-      {/* Faceplate smaller */}
-      <ellipse cx="28" cy="22" rx="5.5" ry="5" stroke="currentColor" strokeWidth="1.6"/>
-      {/* Removal handle */}
-      <line x1="28" y1="17" x2="28" y2="12" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-      <circle cx="28" cy="22" r="1.5" fill="currentColor" opacity="0.5"/>
+    <svg viewBox="0 0 120 80" fill="none" className="absolute right-1 top-1/2 -translate-y-1/2 h-[120%] opacity-[0.12]">
+      {/* Smaller canal shape */}
+      <path d="M45 32 Q45 12 65 12 Q85 12 85 32 Q85 56 65 68 Q45 56 45 32Z" fill="white"/>
+      {/* Pull string */}
+      <line x1="65" y1="24" x2="65" y2="6" stroke="white" strokeWidth="3" strokeLinecap="round"/>
     </svg>
   ),
   CIC: (
-    <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10">
-      {/* Tiny completely-in-canal */}
-      <path d="M22 26 Q22 17 28 17 Q34 17 34 26 Q34 35 28 40 Q22 35 22 26Z" stroke="currentColor" strokeWidth="1.9" fill="none"/>
-      {/* Very small faceplate */}
-      <ellipse cx="28" cy="26" rx="4" ry="3.5" stroke="currentColor" strokeWidth="1.6"/>
-      {/* Thin removal string */}
-      <path d="M28 22 Q28 16 27 12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1 1.5"/>
-      <circle cx="27" cy="11" r="1.2" fill="currentColor" opacity="0.6"/>
+    <svg viewBox="0 0 120 80" fill="none" className="absolute right-1 top-1/2 -translate-y-1/2 h-[120%] opacity-[0.12]">
+      {/* Tiny CIC shape */}
+      <path d="M50 36 Q50 18 65 18 Q80 18 80 36 Q80 56 65 66 Q50 56 50 36Z" fill="white"/>
+      {/* Removal filament */}
+      <path d="M65 30 Q65 18 63 6" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+      <circle cx="62" cy="5" r="3" fill="white"/>
     </svg>
   ),
 }
-
-const STYLES = [
-  { key: 'All',      label: 'All',       sublabel: 'All styles' },
-  { key: 'RIC',      label: 'RIC',       sublabel: 'Receiver-in-canal' },
-  { key: 'BTE',      label: 'BTE',       sublabel: 'Behind the ear' },
-  { key: 'Slim-RIC', label: 'Slim‑RIC',  sublabel: 'Slim receiver' },
-  { key: 'ITE',      label: 'ITE',       sublabel: 'In the ear' },
-  { key: 'ITC',      label: 'ITC',       sublabel: 'In the canal' },
-  { key: 'CIC',      label: 'CIC',       sublabel: 'Completely in canal' },
-]
 
 // Lowest price in the catalogue for the hero stat
 const lowestPrice = Math.min(
@@ -226,36 +210,30 @@ function FilterBtn({ label, active, onClick }: { label: string; active: boolean;
   )
 }
 
-// ---------- Style card (premium) ----------
+// ---------- Style card (premium gradient) ----------
 function StylePill({ s, active, onClick }: { s: typeof STYLES[0]; active: boolean; onClick: () => void }) {
   return (
     <button
       onClick={onClick}
-      className={`group relative flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 transition-all duration-200 text-center min-w-[96px] cursor-pointer
+      className={`group relative flex flex-col justify-end overflow-hidden rounded-2xl transition-all duration-300 cursor-pointer min-w-[120px] h-[88px] px-4 py-3
         ${active
-          ? 'border-[#1B4D3E] bg-[#1B4D3E] text-white shadow-lg scale-[1.04]'
-          : 'border-[#E8E0D5] bg-white text-gray-400 hover:border-[#B8892A]/60 hover:text-[#1B4D3E] hover:shadow-md hover:scale-[1.02]'
+          ? `bg-gradient-to-br ${s.gradient} shadow-xl ring-2 ring-[#B8892A] scale-[1.03]`
+          : `bg-gradient-to-br ${s.gradient} opacity-60 hover:opacity-90 hover:shadow-lg hover:scale-[1.02]`
         }`}
     >
-      {/* Icon */}
-      <div className={`transition-colors duration-200 ${active ? 'text-white' : 'text-gray-400 group-hover:text-[#1B4D3E]'}`}>
-        {StyleSVG[s.key]}
+      {/* Background device silhouette */}
+      {StyleBgSVG[s.key]}
+
+      {/* Text — bottom-left aligned */}
+      <div className="relative z-10 text-left">
+        <p className="text-white font-bold text-sm leading-tight tracking-wide">{s.label}</p>
+        <p className="text-white/60 text-[10px] leading-tight mt-0.5 whitespace-nowrap">{s.sublabel}</p>
       </div>
 
-      {/* Label */}
-      <div>
-        <p className={`text-[13px] font-bold leading-tight tracking-wide ${active ? 'text-white' : 'text-gray-700'}`}>
-          {s.label}
-        </p>
-        <p className={`text-[10px] leading-tight mt-0.5 whitespace-nowrap ${active ? 'text-white/70' : 'text-gray-400'}`}>
-          {s.sublabel}
-        </p>
-      </div>
-
-      {/* Gold accent bar — shows on hover or active */}
-      <div className={`absolute bottom-0 left-4 right-4 h-[2.5px] rounded-full transition-all duration-200
-        ${active ? 'bg-[#B8892A] opacity-100' : 'bg-[#B8892A] opacity-0 group-hover:opacity-60'}`}
-      />
+      {/* Gold bar at bottom when active */}
+      {active && (
+        <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#B8892A]" />
+      )}
     </button>
   )
 }
