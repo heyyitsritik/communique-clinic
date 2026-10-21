@@ -10,10 +10,21 @@ type Product = typeof products[0]
 const BRANDS    = ['All', 'Signia', 'Widex', 'Bernafon']
 const HEARING_LOSS = ['All', 'Mild', 'Moderate', 'Severe', 'Profound']
 const TIERS     = ['All', 'Premium', 'Advanced', 'Standard', 'Essential', 'Basic', 'Economy']
+const TIER_ORDER: Record<string, number> = { Premium: 0, Advanced: 1, Standard: 2, Essential: 3, Basic: 4, Economy: 5 }
+
+// A product family groups products that share brand + model_family + form_factor
+type ProductFamily = {
+  key: string
+  brand: string
+  model_family: string
+  form_factor: string
+  image_filename: string
+  tiers: { tier: string; products: Product[] }[]
+}
 
 // Style picker — each card uses a real product image as background
 const STYLES = [
-  { key: 'All',      label: 'All Styles',  sublabel: '90 devices',          image: '/products/signia-orion-cg.jpg' },
+  { key: 'All',      label: 'All Styles',  sublabel: `${products.length} devices`,  image: '/products/signia-pure-cg-ix.jpg' },
   { key: 'RIC',      label: 'RIC',         sublabel: 'Receiver-in-canal',   image: '/products/signia-pure-cg-ax.jpg' },
   { key: 'BTE',      label: 'BTE',         sublabel: 'Behind the ear',      image: '/products/signia-intuis-4.jpg' },
   { key: 'Slim-RIC', label: 'Slim‑RIC',    sublabel: 'Slim receiver',       image: '/products/signia-styletto-ax.jpg' },
@@ -40,25 +51,32 @@ function formatPriceShort(p: number) {
   return '₹' + p
 }
 
-// ---------- Card ----------
-function ProductCard({ product }: { product: Product }) {
+// ---------- Family Card ----------
+function ProductFamilyCard({ family }: { family: ProductFamily }) {
+  const [selectedTierIdx, setSelectedTierIdx] = useState(0)
+  const selectedTier = family.tiers[selectedTierIdx]
+  // Pick the cheapest product in the selected tier as the "representative"
+  const rep = selectedTier.products.reduce((best, p) => {
+    const bPrice = best.price_single ?? best.price_kit ?? Infinity
+    const pPrice = p.price_single ?? p.price_kit ?? Infinity
+    return pPrice < bPrice ? p : best
+  }, selectedTier.products[0])
+  const variantCount = selectedTier.products.length
+
   return (
-    <Link
-      href={`/hearing-aids/${product.slug}`}
-      className="group flex flex-col bg-white rounded-2xl border border-[#E8E0D5] hover:border-[#B8892A] hover:shadow-xl transition-all duration-200 overflow-hidden"
-    >
+    <div className="group flex flex-col bg-white rounded-2xl border border-[#E8E0D5] hover:border-[#B8892A] hover:shadow-xl transition-all duration-200 overflow-hidden">
       {/* Image */}
       <div className="relative h-48 bg-gradient-to-br from-[#FAF6F0] to-[#F0EAE0] flex items-center justify-center overflow-hidden">
         <ProductImage
-          filename={product.image_filename}
-          alt={product.model_name}
-          brand={product.brand}
+          filename={family.image_filename}
+          alt={family.model_family}
+          brand={family.brand}
           className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
         />
-        <span className="absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full bg-[#1B4D3E] text-white shadow-sm">
-          {product.technology_tier}
+        <span className="absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full bg-[#1B4D3E]/90 text-white shadow-sm">
+          {family.form_factor}
         </span>
-        {product.rechargeable && (
+        {rep.rechargeable && (
           <span className="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-amber-50 text-amber-700 font-semibold border border-amber-200">
             ⚡ Rechargeable
           </span>
@@ -67,51 +85,87 @@ function ProductCard({ product }: { product: Product }) {
 
       {/* Body */}
       <div className="flex flex-col flex-1 p-4">
-        <p className="text-[11px] text-[#B8892A] font-bold uppercase tracking-widest mb-1">{product.brand}</p>
-        <h3 className="font-semibold text-[#1B4D3E] text-sm leading-snug mb-1.5 group-hover:text-[#B8892A] transition-colors line-clamp-2">
-          {product.model_name}
+        <p className="text-[11px] text-[#B8892A] font-bold uppercase tracking-widest mb-1">{family.brand}</p>
+        <h3 className="font-semibold text-[#1B4D3E] text-sm leading-snug mb-2">
+          {family.model_family}
         </h3>
-        <p className="text-xs text-gray-500 mb-3 leading-relaxed line-clamp-2 flex-1">{product.short_desc}</p>
 
-        {/* Tags row */}
-        <div className="flex flex-wrap gap-1 mb-3">
-          <span className="text-[11px] bg-[#FAF6F0] text-gray-500 px-2 py-0.5 rounded-full border border-[#E8E0D5]">
-            {product.form_factor}
-          </span>
-          <span className="text-[11px] bg-[#FAF6F0] text-gray-500 px-2 py-0.5 rounded-full border border-[#E8E0D5]">
-            {product.hearing_loss_label}
-          </span>
-          {product.bluetooth && (
-            <span className="text-[11px] bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full border border-blue-100">
-              📶 BT
+        {/* Tier selector buttons */}
+        {family.tiers.length > 1 && (
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {family.tiers.map((t, i) => (
+              <button
+                key={t.tier}
+                onClick={() => setSelectedTierIdx(i)}
+                className={`text-[11px] px-2.5 py-1 rounded-full font-semibold transition-all ${
+                  i === selectedTierIdx
+                    ? 'bg-[#1B4D3E] text-white shadow-sm'
+                    : 'bg-[#FAF6F0] text-gray-500 border border-[#E8E0D5] hover:border-[#1B4D3E] hover:text-[#1B4D3E]'
+                }`}
+              >
+                {t.tier}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Single tier badge if only one */}
+        {family.tiers.length === 1 && (
+          <div className="mb-3">
+            <span className="text-[11px] bg-[#1B4D3E]/10 text-[#1B4D3E] px-2.5 py-1 rounded-full font-semibold">
+              {selectedTier.tier}
             </span>
+          </div>
+        )}
+
+        {/* Specs row — plain text labels, not tappable */}
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3 text-[11px] text-gray-400">
+          <span>{rep.hearing_loss_label}</span>
+          <span className="text-gray-300">·</span>
+          <span>{rep.channels}ch</span>
+          {rep.bluetooth && (
+            <>
+              <span className="text-gray-300">·</span>
+              <span className="text-blue-400">Bluetooth</span>
+            </>
           )}
-          {product.tinnitus_feature && (
-            <span className="text-[11px] bg-purple-50 text-purple-600 px-2 py-0.5 rounded-full border border-purple-100">
-              🔕 Tinnitus
-            </span>
+          {rep.tinnitus_feature && (
+            <>
+              <span className="text-gray-300">·</span>
+              <span className="text-purple-400">Tinnitus</span>
+            </>
+          )}
+          {variantCount > 1 && (
+            <>
+              <span className="text-gray-300">·</span>
+              <span>{variantCount} variants</span>
+            </>
           )}
         </div>
 
         {/* Price */}
-        <div className="border-t border-[#E8E0D5] pt-3">
-          {product.price_single ? (
+        <div className="border-t border-[#E8E0D5] pt-3 mt-auto">
+          {rep.price_single ? (
             <div className="flex items-end justify-between">
               <div>
-                <p className="text-[10px] text-gray-400 uppercase tracking-wide">Single unit</p>
-                <p className="text-lg font-bold text-[#1B4D3E] leading-none">{formatPrice(product.price_single)}</p>
+                <p className="text-[10px] text-gray-400 uppercase tracking-wide">
+                  {variantCount > 1 ? 'From (single)' : 'Single unit'}
+                </p>
+                <p className="text-lg font-bold text-[#1B4D3E] leading-none">{formatPrice(rep.price_single)}</p>
               </div>
-              {product.price_kit && (
+              {rep.price_kit && (
                 <div className="text-right">
                   <p className="text-[10px] text-gray-400 uppercase tracking-wide">Kit (pair)</p>
-                  <p className="text-sm font-bold text-[#B8892A]">{formatPrice(product.price_kit)}</p>
+                  <p className="text-sm font-bold text-[#B8892A]">{formatPrice(rep.price_kit)}</p>
                 </div>
               )}
             </div>
-          ) : product.price_kit ? (
+          ) : rep.price_kit ? (
             <div>
-              <p className="text-[10px] text-gray-400 uppercase tracking-wide">Kit (pair + charger)</p>
-              <p className="text-lg font-bold text-[#B8892A]">{formatPrice(product.price_kit)}</p>
+              <p className="text-[10px] text-gray-400 uppercase tracking-wide">
+                {variantCount > 1 ? 'Kit from' : 'Kit (pair + charger)'}
+              </p>
+              <p className="text-lg font-bold text-[#B8892A]">{formatPrice(rep.price_kit)}</p>
             </div>
           ) : (
             <p className="text-xs text-gray-400 italic">Price on enquiry</p>
@@ -120,11 +174,14 @@ function ProductCard({ product }: { product: Product }) {
         </div>
       </div>
 
-      {/* Hover footer */}
-      <div className="bg-[#1B4D3E] text-white text-center text-xs font-semibold py-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+      {/* Footer — links to representative product */}
+      <Link
+        href={`/hearing-aids/${rep.slug}`}
+        className="bg-[#1B4D3E] text-white text-center text-xs font-semibold py-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 block"
+      >
         View Details →
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 }
 
@@ -201,6 +258,7 @@ export default function CataloguePage() {
     if (heroSearch) setSearch(heroSearch)
   }, [heroSearch])
 
+  // Filter individual products first
   const filtered = useMemo(() => {
     return products.filter((p) => {
       if (brand       !== 'All' && p.brand          !== brand)       return false
@@ -223,6 +281,36 @@ export default function CataloguePage() {
       return true
     })
   }, [brand, formFactor, hearingLoss, tier, maxPrice, search, showBluetooth, showRechargeable])
+
+  // Group filtered products into families
+  const families = useMemo(() => {
+    const map = new Map<string, ProductFamily>()
+    for (const p of filtered) {
+      const key = `${p.brand}|${p.model_family}|${p.form_factor}`
+      if (!map.has(key)) {
+        map.set(key, {
+          key,
+          brand: p.brand,
+          model_family: p.model_family,
+          form_factor: p.form_factor,
+          image_filename: p.image_filename,
+          tiers: [],
+        })
+      }
+      const fam = map.get(key)!
+      let tierGroup = fam.tiers.find((t) => t.tier === p.technology_tier)
+      if (!tierGroup) {
+        tierGroup = { tier: p.technology_tier, products: [] }
+        fam.tiers.push(tierGroup)
+      }
+      tierGroup.products.push(p)
+    }
+    // Sort tiers within each family by TIER_ORDER
+    Array.from(map.values()).forEach((fam) => {
+      fam.tiers.sort((a, b) => (TIER_ORDER[a.tier] ?? 99) - (TIER_ORDER[b.tier] ?? 99))
+    })
+    return Array.from(map.values())
+  }, [filtered])
 
   const resetAll = () => {
     setBrand('All'); setFormFactor('All'); setHearingLoss('All')
@@ -298,9 +386,9 @@ export default function CataloguePage() {
             {/* Right: floating brand cards */}
             <div className="hidden md:flex flex-col gap-3 flex-shrink-0 w-56">
               {[
-                { brand: 'Signia', count: 34, tag: 'AI-powered', color: 'from-purple-900/40 to-purple-800/20' },
-                { brand: 'Widex', count: 31, tag: 'Natural sound', color: 'from-blue-900/40 to-blue-800/20' },
-                { brand: 'Bernafon', count: 25, tag: 'Swiss made', color: 'from-emerald-900/40 to-emerald-800/20' },
+                { brand: 'Signia', count: products.filter(p => p.brand === 'Signia').length, tag: 'AI-powered', color: 'from-purple-900/40 to-purple-800/20' },
+                { brand: 'Widex', count: products.filter(p => p.brand === 'Widex').length, tag: 'Natural sound', color: 'from-blue-900/40 to-blue-800/20' },
+                { brand: 'Bernafon', count: products.filter(p => p.brand === 'Bernafon').length, tag: 'Swiss made', color: 'from-emerald-900/40 to-emerald-800/20' },
               ].map((b) => (
                 <div
                   key={b.brand}
@@ -310,11 +398,11 @@ export default function CataloguePage() {
                     <p className="font-bold text-white text-sm">{b.brand}</p>
                     <span className="text-[10px] text-white/50 bg-white/10 px-2 py-0.5 rounded-full">{b.tag}</span>
                   </div>
-                  <p className="text-white/40 text-xs">{b.count} models available</p>
+                  <p className="text-white/40 text-xs">{b.count} products available</p>
                   <div className="mt-2 h-1 bg-white/10 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-[#B8892A] rounded-full"
-                      style={{ width: `${(b.count / 90) * 100}%` }}
+                      style={{ width: `${(b.count / products.length) * 100}%` }}
                     />
                   </div>
                 </div>
@@ -457,8 +545,10 @@ export default function CataloguePage() {
             {/* Result bar */}
             <div className="flex items-center justify-between mb-5 flex-wrap gap-2">
               <p className="text-sm text-gray-600">
-                <span className="font-bold text-[#1B4D3E] text-base">{filtered.length}</span>
-                <span className="text-gray-400"> / {products.length}</span> hearing aids
+                <span className="font-bold text-[#1B4D3E] text-base">{families.length}</span>
+                <span className="text-gray-400"> model{families.length !== 1 ? 's' : ''}</span>
+                <span className="text-gray-300 mx-1">·</span>
+                <span className="text-gray-400">{filtered.length} variants</span>
                 {activeFilters > 0 && (
                   <span className="ml-2 text-xs text-[#B8892A] font-semibold">
                     · {activeFilters} filter{activeFilters > 1 ? 's' : ''} active
@@ -500,7 +590,7 @@ export default function CataloguePage() {
             )}
 
             {/* Cards */}
-            {filtered.length === 0 ? (
+            {families.length === 0 ? (
               <div className="text-center py-24 text-gray-400">
                 <p className="text-5xl mb-4">🔍</p>
                 <p className="font-semibold text-gray-500 text-lg">No results found</p>
@@ -514,8 +604,8 @@ export default function CataloguePage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                {filtered.map((product) => (
-                  <ProductCard key={product.slug} product={product} />
+                {families.map((family) => (
+                  <ProductFamilyCard key={family.key} family={family} />
                 ))}
               </div>
             )}
