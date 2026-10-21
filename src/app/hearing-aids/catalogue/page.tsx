@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useRef, useEffect } from 'react'
+import React, { useState, useMemo, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import ProductImage from '@/components/ProductImage'
 import products from '@/data/products.json'
@@ -11,16 +11,71 @@ const BRANDS    = ['All', 'Signia', 'Widex', 'Bernafon']
 const HEARING_LOSS = ['All', 'Mild', 'Moderate', 'Severe', 'Profound']
 const TIERS     = ['All', 'Premium', 'Advanced', 'Standard', 'Essential', 'Basic', 'Economy']
 
+// SVG icons for each hearing aid style
+const StyleIcons: Record<string, React.ReactNode> = {
+  All: (
+    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
+      <ellipse cx="20" cy="22" rx="8" ry="10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
+      <path d="M14 16c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
+      <circle cx="20" cy="22" r="2.5" fill="currentColor"/>
+    </svg>
+  ),
+  RIC: (
+    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
+      <rect x="14" y="8" width="12" height="16" rx="6" stroke="currentColor" strokeWidth="2.2"/>
+      <path d="M20 24v6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
+      <circle cx="20" cy="32" r="2" fill="currentColor"/>
+    </svg>
+  ),
+  BTE: (
+    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
+      <path d="M15 8c0 0-4 3-4 9s3 8 3 8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
+      <rect x="18" y="7" width="9" height="18" rx="4.5" stroke="currentColor" strokeWidth="2.2"/>
+      <path d="M18 25l-3 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
+      <circle cx="15" cy="31" r="2" fill="currentColor"/>
+    </svg>
+  ),
+  'Slim-RIC': (
+    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
+      <rect x="16" y="7" width="8" height="18" rx="4" stroke="currentColor" strokeWidth="2.2"/>
+      <path d="M20 25v7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="2 2"/>
+      <circle cx="20" cy="33" r="1.8" fill="currentColor"/>
+    </svg>
+  ),
+  ITE: (
+    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
+      <ellipse cx="20" cy="22" rx="9" ry="11" stroke="currentColor" strokeWidth="2.2"/>
+      <ellipse cx="20" cy="22" rx="4" ry="5" stroke="currentColor" strokeWidth="1.8"/>
+      <circle cx="20" cy="14" r="1.5" fill="currentColor"/>
+    </svg>
+  ),
+  ITC: (
+    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
+      <ellipse cx="20" cy="23" rx="7" ry="9" stroke="currentColor" strokeWidth="2.2"/>
+      <ellipse cx="20" cy="23" rx="3" ry="4" stroke="currentColor" strokeWidth="1.8"/>
+      <circle cx="20" cy="16" r="1.5" fill="currentColor"/>
+    </svg>
+  ),
+  CIC: (
+    <svg viewBox="0 0 40 40" fill="none" className="w-7 h-7">
+      <ellipse cx="20" cy="24" rx="5.5" ry="7" stroke="currentColor" strokeWidth="2.2"/>
+      <circle cx="20" cy="18" r="1.5" fill="currentColor"/>
+      <path d="M20 10v5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="1.5 2"/>
+    </svg>
+  ),
+}
+
 const STYLES = [
-  { key: 'All',      label: 'All styles', emoji: '👂' },
-  { key: 'RIC',      label: 'Receiver-in-canal', emoji: '🎧' },
-  { key: 'BTE',      label: 'Behind the ear',    emoji: '🔊' },
-  { key: 'Slim-RIC', label: 'Slim RIC',          emoji: '✨' },
-  { key: 'ITE',      label: 'In the ear',         emoji: '🔵' },
-  { key: 'ITC',      label: 'In the canal',       emoji: '⚪' },
-  { key: 'CIC',      label: 'Completely-in-canal',emoji: '🟡' },
+  { key: 'All',      label: 'All',       sublabel: 'styles' },
+  { key: 'RIC',      label: 'RIC',       sublabel: 'Receiver-in-canal' },
+  { key: 'BTE',      label: 'BTE',       sublabel: 'Behind the ear' },
+  { key: 'Slim-RIC', label: 'Slim-RIC',  sublabel: 'Slim receiver' },
+  { key: 'ITE',      label: 'ITE',       sublabel: 'In the ear' },
+  { key: 'ITC',      label: 'ITC',       sublabel: 'In the canal' },
+  { key: 'CIC',      label: 'CIC',       sublabel: 'Completely-in-canal' },
 ]
 
+// Lowest price in the catalogue for the hero stat
 const lowestPrice = Math.min(
   ...products
     .map((p) => p.price_single ?? p.price_kit ?? Infinity)
@@ -38,12 +93,14 @@ function formatPriceShort(p: number) {
   return '₹' + p
 }
 
+// ---------- Card ----------
 function ProductCard({ product }: { product: Product }) {
   return (
     <Link
       href={`/hearing-aids/${product.slug}`}
       className="group flex flex-col bg-white rounded-2xl border border-[#E8E0D5] hover:border-[#B8892A] hover:shadow-xl transition-all duration-200 overflow-hidden"
     >
+      {/* Image */}
       <div className="relative h-48 bg-gradient-to-br from-[#FAF6F0] to-[#F0EAE0] flex items-center justify-center overflow-hidden">
         <ProductImage
           filename={product.image_filename}
@@ -61,6 +118,7 @@ function ProductCard({ product }: { product: Product }) {
         )}
       </div>
 
+      {/* Body */}
       <div className="flex flex-col flex-1 p-4">
         <p className="text-[11px] text-[#B8892A] font-bold uppercase tracking-widest mb-1">{product.brand}</p>
         <h3 className="font-semibold text-[#1B4D3E] text-sm leading-snug mb-1.5 group-hover:text-[#B8892A] transition-colors line-clamp-2">
@@ -68,6 +126,7 @@ function ProductCard({ product }: { product: Product }) {
         </h3>
         <p className="text-xs text-gray-500 mb-3 leading-relaxed line-clamp-2 flex-1">{product.short_desc}</p>
 
+        {/* Tags row */}
         <div className="flex flex-wrap gap-1 mb-3">
           <span className="text-[11px] bg-[#FAF6F0] text-gray-500 px-2 py-0.5 rounded-full border border-[#E8E0D5]">
             {product.form_factor}
@@ -87,6 +146,7 @@ function ProductCard({ product }: { product: Product }) {
           )}
         </div>
 
+        {/* Price */}
         <div className="border-t border-[#E8E0D5] pt-3">
           {product.price_single ? (
             <div className="flex items-end justify-between">
@@ -113,6 +173,7 @@ function ProductCard({ product }: { product: Product }) {
         </div>
       </div>
 
+      {/* Hover footer */}
       <div className="bg-[#1B4D3E] text-white text-center text-xs font-semibold py-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
         View Details →
       </div>
@@ -120,22 +181,24 @@ function ProductCard({ product }: { product: Product }) {
   )
 }
 
+// ---------- Style pill (visual) ----------
 function StylePill({ s, active, onClick }: { s: typeof STYLES[0]; active: boolean; onClick: () => void }) {
   return (
     <button
       onClick={onClick}
-      className={`flex flex-col items-center gap-1 px-4 py-3 rounded-2xl border-2 transition-all text-center min-w-[80px] ${
+      className={`flex flex-col items-center gap-1.5 px-4 py-3 rounded-2xl border-2 transition-all text-center min-w-[76px] ${
         active
           ? 'border-[#1B4D3E] bg-[#1B4D3E] text-white shadow-md'
-          : 'border-[#E8E0D5] bg-white text-gray-600 hover:border-[#1B4D3E]/40'
+          : 'border-[#E8E0D5] bg-white text-gray-500 hover:border-[#1B4D3E]/40 hover:text-[#1B4D3E]'
       }`}
     >
-      <span className="text-xl">{s.emoji}</span>
-      <span className="text-[11px] font-semibold leading-tight whitespace-nowrap">{s.key === 'All' ? 'All' : s.key}</span>
+      {StyleIcons[s.key]}
+      <span className="text-[11px] font-bold leading-tight whitespace-nowrap">{s.label}</span>
     </button>
   )
 }
 
+// ---------- Filter button ----------
 function FilterBtn({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
     <button
@@ -151,28 +214,30 @@ function FilterBtn({ label, active, onClick }: { label: string; active: boolean;
   )
 }
 
+// ---------- Page ----------
 export default function CataloguePage() {
-  const [brand,            setBrand]            = useState('All')
-  const [formFactor,       setFormFactor]       = useState('All')
-  const [hearingLoss,      setHearingLoss]      = useState('All')
-  const [tier,             setTier]             = useState('All')
-  const [maxPrice,         setMaxPrice]         = useState(1000000)
-  const [search,           setSearch]           = useState('')
-  const [showBluetooth,    setShowBluetooth]    = useState(false)
+  const [brand,          setBrand]          = useState('All')
+  const [formFactor,     setFormFactor]     = useState('All')
+  const [hearingLoss,    setHearingLoss]    = useState('All')
+  const [tier,           setTier]           = useState('All')
+  const [maxPrice,       setMaxPrice]       = useState(1000000)
+  const [search,         setSearch]         = useState('')
+  const [showBluetooth,  setShowBluetooth]  = useState(false)
   const [showRechargeable, setShowRechargeable] = useState(false)
-  const [heroSearch,       setHeroSearch]       = useState('')
+  const [heroSearch,     setHeroSearch]     = useState('')
   const searchInputRef = useRef<HTMLInputElement>(null)
 
+  // Sync hero search → sidebar search
   useEffect(() => {
     if (heroSearch) setSearch(heroSearch)
   }, [heroSearch])
 
   const filtered = useMemo(() => {
     return products.filter((p) => {
-      if (brand       !== 'All' && p.brand             !== brand)       return false
-      if (formFactor  !== 'All' && p.form_factor        !== formFactor)  return false
+      if (brand       !== 'All' && p.brand          !== brand)       return false
+      if (formFactor  !== 'All' && p.form_factor     !== formFactor)  return false
       if (hearingLoss !== 'All' && p.hearing_loss_label !== hearingLoss) return false
-      if (tier        !== 'All' && p.technology_tier    !== tier)        return false
+      if (tier        !== 'All' && p.technology_tier !== tier)        return false
       if (showBluetooth    && !p.bluetooth)    return false
       if (showRechargeable && !p.rechargeable) return false
       const lp = p.price_single ?? p.price_kit ?? 0
@@ -204,64 +269,101 @@ export default function CataloguePage() {
   return (
     <div className="min-h-screen bg-[#FAF6F0]">
 
-      {/* HERO */}
-      <div className="bg-[#1B4D3E] text-white pt-24 pb-10 px-4">
+      {/* ── HERO ── */}
+      <div className="bg-[#1B4D3E] text-white pt-24 pb-10 px-4 overflow-hidden">
         <div className="max-w-5xl mx-auto">
-          <p className="text-white/50 text-xs mb-6">
-            <Link href="/" className="hover:text-white/80 transition">Home</Link>
-            <span className="mx-2">/</span>
-            <span className="text-white/80">Hearing Aid Catalogue</span>
-          </p>
+          <div className="flex flex-col md:flex-row md:items-center gap-10">
 
-          <h1 className="font-playfair text-3xl md:text-5xl font-bold mb-3 leading-tight">
-            Every hearing aid,<br className="hidden md:block" /> with its price.
-          </h1>
-          <p className="text-white/60 text-base md:text-lg mb-8 max-w-xl">
-            Signia, Widex and Bernafon — browse all models with transparent pricing. All GST-exempt.
-          </p>
+            {/* Left: text + search */}
+            <div className="flex-1 min-w-0">
+              {/* Breadcrumb */}
+              <p className="text-white/50 text-xs mb-6">
+                <Link href="/" className="hover:text-white/80 transition">Home</Link>
+                <span className="mx-2">/</span>
+                <span className="text-white/80">Hearing Aid Catalogue</span>
+              </p>
 
-          <div className="flex flex-wrap gap-6 mb-10 text-sm">
-            {[
-              { val: products.length, label: 'hearing aids' },
-              { val: '3', label: 'brands' },
-              { val: '6', label: 'wearing styles' },
-              { val: `from ${formatPriceShort(lowestPrice)}`, label: 'per unit' },
-            ].map((s) => (
-              <div key={s.label} className="flex items-center gap-2 text-white/80">
-                <span className="font-bold text-white text-lg">{s.val}</span>
-                <span className="text-white/50">{s.label}</span>
+              {/* Headline */}
+              <h1 className="font-playfair text-3xl md:text-5xl font-bold mb-3 leading-tight">
+                Every hearing aid,<br className="hidden md:block" /> with its price.
+              </h1>
+              <p className="text-white/60 text-base md:text-lg mb-8 max-w-xl">
+                Signia, Widex and Bernafon — browse all models with transparent pricing. All GST-exempt.
+              </p>
+
+              {/* Stats row */}
+              <div className="flex flex-wrap gap-6 mb-10 text-sm">
+                {[
+                  { val: products.length, label: 'hearing aids' },
+                  { val: '3', label: 'brands' },
+                  { val: '6', label: 'wearing styles' },
+                  { val: `from ${formatPriceShort(lowestPrice)}`, label: 'per unit' },
+                ].map((s) => (
+                  <div key={s.label} className="flex items-center gap-2 text-white/80">
+                    <span className="font-bold text-white text-lg">{s.val}</span>
+                    <span className="text-white/50">{s.label}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          <div className="relative max-w-2xl">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg">🔍</span>
-            <input
-              ref={searchInputRef}
-              type="text"
-              placeholder="Search by model, brand, or style — e.g. rechargeable, RIC, Widex…"
-              value={heroSearch}
-              onChange={(e) => setHeroSearch(e.target.value)}
-              className="w-full bg-white text-gray-800 placeholder-gray-400 text-sm rounded-2xl pl-11 pr-32 py-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-[#B8892A]"
-            />
-            <button
-              onClick={() => {
-                setSearch(heroSearch)
-                document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#B8892A] hover:bg-[#a07824] text-white text-sm font-bold px-5 py-2 rounded-xl transition"
-            >
-              Search →
-            </button>
+              {/* Search bar */}
+              <div className="relative max-w-2xl">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg">🔍</span>
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  placeholder="Search by model, brand, or style — e.g. rechargeable, RIC, Widex…"
+                  value={heroSearch}
+                  onChange={(e) => setHeroSearch(e.target.value)}
+                  className="w-full bg-white text-gray-800 placeholder-gray-400 text-sm rounded-2xl pl-11 pr-32 py-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-[#B8892A]"
+                />
+                <button
+                  onClick={() => { setSearch(heroSearch); document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' }) }}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#B8892A] hover:bg-[#a07824] text-white text-sm font-bold px-5 py-2 rounded-xl transition"
+                >
+                  Search →
+                </button>
+              </div>
+            </div>
+
+            {/* Right: floating brand cards */}
+            <div className="hidden md:flex flex-col gap-3 flex-shrink-0 w-56">
+              {[
+                { brand: 'Signia', count: 34, tag: 'AI-powered', color: 'from-purple-900/40 to-purple-800/20' },
+                { brand: 'Widex', count: 31, tag: 'Natural sound', color: 'from-blue-900/40 to-blue-800/20' },
+                { brand: 'Bernafon', count: 25, tag: 'Swiss made', color: 'from-emerald-900/40 to-emerald-800/20' },
+              ].map((b) => (
+                <div
+                  key={b.brand}
+                  className={`bg-gradient-to-br ${b.color} border border-white/10 rounded-2xl px-5 py-4 backdrop-blur-sm`}
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <p className="font-bold text-white text-sm">{b.brand}</p>
+                    <span className="text-[10px] text-white/50 bg-white/10 px-2 py-0.5 rounded-full">{b.tag}</span>
+                  </div>
+                  <p className="text-white/40 text-xs">{b.count} models available</p>
+                  <div className="mt-2 h-1 bg-white/10 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-[#B8892A] rounded-full"
+                      style={{ width: `${(b.count / 90) * 100}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
+              <p className="text-white/30 text-[10px] text-center mt-1">
+                All prices GST-exempt · Free trial available
+              </p>
+            </div>
+
           </div>
         </div>
       </div>
 
-      {/* STYLE STRIP */}
+      {/* ── STYLE PICKER ── */}
       <div className="bg-white border-b border-[#E8E0D5] px-4 py-5">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-3">Filter by wearing style</p>
-          <div className="flex gap-3 overflow-x-auto pb-1">
+          <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide">
             {STYLES.map((s) => (
               <StylePill
                 key={s.key}
@@ -274,7 +376,7 @@ export default function CataloguePage() {
         </div>
       </div>
 
-      {/* MAIN */}
+      {/* ── MAIN ── */}
       <div className="max-w-5xl mx-auto px-4 py-10" id="results">
         <div className="flex flex-col lg:flex-row gap-8">
 
@@ -284,12 +386,16 @@ export default function CataloguePage() {
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-bold text-[#1B4D3E] text-sm uppercase tracking-wide">Filters</h2>
                 {activeFilters > 0 && (
-                  <button onClick={resetAll} className="text-xs text-[#B8892A] font-semibold hover:underline">
+                  <button
+                    onClick={resetAll}
+                    className="text-xs text-[#B8892A] font-semibold hover:underline"
+                  >
                     Clear ({activeFilters})
                   </button>
                 )}
               </div>
 
+              {/* Search (synced with hero) */}
               <div className="mb-5">
                 <label className="text-xs text-gray-400 font-medium mb-1 block">Search</label>
                 <input
@@ -301,6 +407,7 @@ export default function CataloguePage() {
                 />
               </div>
 
+              {/* Brand */}
               <div className="mb-5">
                 <label className="text-xs text-gray-400 font-medium mb-2 block">Brand</label>
                 <div className="flex flex-wrap gap-1.5">
@@ -310,6 +417,7 @@ export default function CataloguePage() {
                 </div>
               </div>
 
+              {/* Hearing Loss */}
               <div className="mb-5">
                 <label className="text-xs text-gray-400 font-medium mb-2 block">Hearing Loss</label>
                 <div className="flex flex-wrap gap-1.5">
@@ -319,6 +427,7 @@ export default function CataloguePage() {
                 </div>
               </div>
 
+              {/* Technology Tier */}
               <div className="mb-5">
                 <label className="text-xs text-gray-400 font-medium mb-2 block">Technology Level</label>
                 <div className="flex flex-wrap gap-1.5">
@@ -328,6 +437,7 @@ export default function CataloguePage() {
                 </div>
               </div>
 
+              {/* Max Price */}
               <div className="mb-5">
                 <label className="text-xs text-gray-400 font-medium mb-1 block">
                   Budget: <span className="text-[#1B4D3E] font-bold">{formatPriceShort(maxPrice)}</span>
@@ -346,10 +456,11 @@ export default function CataloguePage() {
                 </div>
               </div>
 
+              {/* Toggles */}
               <div className="space-y-2.5 mb-5">
                 {[
-                  { label: '📶 Bluetooth only',    val: showBluetooth,    set: setShowBluetooth },
-                  { label: '⚡ Rechargeable only', val: showRechargeable, set: setShowRechargeable },
+                  { label: '📶 Bluetooth only',      val: showBluetooth,    set: setShowBluetooth },
+                  { label: '⚡ Rechargeable only',   val: showRechargeable, set: setShowRechargeable },
                 ].map(({ label, val, set }) => (
                   <label key={label} className="flex items-center gap-2 cursor-pointer">
                     <input
@@ -374,6 +485,7 @@ export default function CataloguePage() {
 
           {/* Grid */}
           <main className="flex-1 min-w-0">
+            {/* Result bar */}
             <div className="flex items-center justify-between mb-5 flex-wrap gap-2">
               <p className="text-sm text-gray-600">
                 <span className="font-bold text-[#1B4D3E] text-base">{filtered.length}</span>
@@ -387,6 +499,7 @@ export default function CataloguePage() {
               <p className="text-xs text-gray-400">All prices are GST-exempt</p>
             </div>
 
+            {/* Active filter chips */}
             {activeFilters > 0 && (
               <div className="flex flex-wrap gap-2 mb-5">
                 {brand !== 'All' && (
@@ -417,6 +530,7 @@ export default function CataloguePage() {
               </div>
             )}
 
+            {/* Cards */}
             {filtered.length === 0 ? (
               <div className="text-center py-24 text-gray-400">
                 <p className="text-5xl mb-4">🔍</p>

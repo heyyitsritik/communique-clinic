@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import FloatingButtons from '@/components/FloatingButtons'
+import Footer from '@/components/Footer'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -114,6 +115,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* End Google Tag Manager (noscript) */}
 
         {children}
+        <Footer />
         <FloatingButtons />
       </body>
     </html>
