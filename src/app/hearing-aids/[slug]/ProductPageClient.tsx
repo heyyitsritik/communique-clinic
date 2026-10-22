@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
 import ProductImage from '@/components/ProductImage'
 import FitCheckModal from '@/components/FitCheckModal'
@@ -34,14 +34,131 @@ function formatPrice(p: number | null) {
   return '₹' + p.toLocaleString('en-IN')
 }
 
+const TIER_LABEL: Record<string, string> = {
+  Premium: 'Premium option',
+  Advanced: 'Premium option',
+  Standard: 'Mid-range',
+  Essential: 'More affordable',
+  Basic: 'More affordable',
+  Economy: 'More affordable',
+}
+
+function RecommendationCarousel({ title, items }: { title: string; items: Product[] }) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  const scroll = (dir: 'left' | 'right') => {
+    if (!scrollRef.current) return
+    const amount = scrollRef.current.offsetWidth * 0.7
+    scrollRef.current.scrollBy({ left: dir === 'left' ? -amount : amount, behavior: 'smooth' })
+  }
+
+  if (items.length === 0) return null
+
+  return (
+    <div className="mt-14">
+      <h2 className="font-playfair text-xl md:text-2xl font-bold text-[#1B4D3E] mb-5">{title}</h2>
+
+      <div className="relative group">
+        {/* Scroll buttons */}
+        <button
+          onClick={() => scroll('left')}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white border border-[#E8E0D5] shadow-md flex items-center justify-center text-gray-500 hover:text-[#1B4D3E] hover:border-[#B8892A] transition opacity-0 group-hover:opacity-100 -translate-x-3"
+          aria-label="Scroll left"
+        >
+          ‹
+        </button>
+        <button
+          onClick={() => scroll('right')}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white border border-[#E8E0D5] shadow-md flex items-center justify-center text-gray-500 hover:text-[#1B4D3E] hover:border-[#B8892A] transition opacity-0 group-hover:opacity-100 translate-x-3"
+          aria-label="Scroll right"
+        >
+          ›
+        </button>
+
+        {/* Cards */}
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2 -mx-1 px-1"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {items.map((p) => {
+            const price = p.price_single ?? p.price_kit
+            const priceLabel = p.price_single ? 'per device' : 'pair'
+            const tierTag = TIER_LABEL[p.technology_tier] || p.technology_tier
+
+            return (
+              <Link
+                key={p.slug}
+                href={`/hearing-aids/${p.slug}`}
+                className="flex-shrink-0 w-[220px] sm:w-[240px] snap-start bg-white rounded-2xl border border-[#E8E0D5] hover:border-[#B8892A]/40 hover:shadow-lg transition-all group/card"
+              >
+                {/* Image */}
+                <div className="relative h-40 flex items-center justify-center p-4">
+                  <div className="relative w-28 h-28">
+                    <ProductImage
+                      filename={p.image_filename}
+                      alt={p.model_name}
+                      brand={p.brand}
+                      className="object-contain"
+                      sizes="120px"
+                    />
+                  </div>
+                  {/* Brand icon */}
+                  <div className="absolute bottom-2 right-3">
+                    <span className={`w-6 h-6 rounded-full flex items-center justify-center text-white text-[10px] font-bold ${
+                      p.brand === 'Signia' ? 'bg-red-500' : p.brand === 'Widex' ? 'bg-teal-600' : 'bg-amber-600'
+                    }`}>
+                      {p.brand[0]}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Info */}
+                <div className="px-4 pb-4">
+                  <span className={`inline-block text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full mb-2 ${
+                    tierTag === 'Premium option'
+                      ? 'bg-[#B8892A]/15 text-[#B8892A]'
+                      : tierTag === 'Mid-range'
+                      ? 'bg-[#1B4D3E]/10 text-[#1B4D3E]'
+                      : 'bg-gray-100 text-gray-500'
+                  }`}>
+                    {tierTag}
+                  </span>
+                  <p className="font-semibold text-sm text-[#1B4D3E] group-hover/card:text-[#B8892A] transition leading-snug">
+                    {p.brand} {p.model_name}
+                  </p>
+                  <p className="text-[11px] text-gray-400 mt-0.5">
+                    Tier {p.technology_tier} · {p.channels} channels · {p.form_factor}
+                  </p>
+                  {price ? (
+                    <p className="mt-2 text-base font-bold text-[#1B4D3E]">
+                      {formatPrice(price)} <span className="text-[11px] font-normal text-gray-400">{priceLabel}</span>
+                    </p>
+                  ) : (
+                    <p className="mt-2 text-xs text-gray-400 italic">Price on enquiry</p>
+                  )}
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function ProductPageClient({
   product,
   familyProducts,
   sharedTraits,
+  moreBrand,
+  similarOther,
 }: {
   product: Product
   familyProducts: Product[]
   sharedTraits: string[]
+  moreBrand: Product[]
+  similarOther: Product[]
 }) {
   const [modalOpen, setModalOpen] = useState(false)
 
@@ -502,6 +619,16 @@ export default function ProductPageClient({
             </div>
           </div>
         </div>
+
+        {/* ── RECOMMENDATION CAROUSELS ── */}
+        <RecommendationCarousel
+          title={`More from ${product.brand}`}
+          items={moreBrand}
+        />
+        <RecommendationCarousel
+          title="Similar options from other brands"
+          items={similarOther}
+        />
 
         {/* Back link */}
         <div className="mt-10 text-center">

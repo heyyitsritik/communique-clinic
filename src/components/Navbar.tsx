@@ -27,18 +27,26 @@ const megaMenu = {
     { label: 'Hearing Aid Services',  desc: 'Styles, brands, trial & fitting',       href: '/hearing-aids',           icon: '🎧' },
     { label: 'Browse Catalogue',      desc: 'All models with transparent prices',     href: '/hearing-aids/catalogue', icon: '📋' },
     { label: 'How to Choose',         desc: 'Assessment, lifestyle & guidance',        href: '/right-hearing-aid',      icon: '🎓' },
-    { label: 'Speech Therapy',        desc: 'Professional speech therapy services',    href: '/speech-therapy',         icon: '💬' },
-    { label: 'Vertigo & Balance',     desc: 'Vestibular assessment & balance care',    href: '/vertigo-balance',        icon: '🧭' },
   ],
 }
+
+const servicesMenu = [
+  { label: 'Hearing Aid Services', desc: 'Styles, brands, trial & fitting',     href: '/hearing-aids',     icon: '🎧' },
+  { label: 'Speech Therapy',       desc: 'Professional speech therapy services', href: '/speech-therapy',   icon: '💬' },
+  { label: 'Vertigo & Balance',    desc: 'Vestibular assessment & balance care', href: '/vertigo-balance',  icon: '🧭' },
+]
 
 export default function Navbar() {
   const [scrolled, setScrolled]   = useState(false)
   const [menuOpen, setMenuOpen]   = useState(false)
   const [dropOpen, setDropOpen]   = useState(false)
+  const [svcDropOpen, setSvcDropOpen] = useState(false)
   const [mobileHAOpen, setMobileHAOpen] = useState(false)
+  const [mobileSvcOpen, setMobileSvcOpen] = useState(false)
   const dropRef = useRef<HTMLDivElement>(null)
+  const svcDropRef = useRef<HTMLDivElement>(null)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const svcTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -49,6 +57,7 @@ export default function Navbar() {
   const handleNav = (href: string) => {
     setMenuOpen(false)
     setDropOpen(false)
+    setSvcDropOpen(false)
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
@@ -59,6 +68,14 @@ export default function Navbar() {
   }
   const onMouseLeave = () => {
     timeoutRef.current = setTimeout(() => setDropOpen(false), 200)
+  }
+
+  const onSvcMouseEnter = () => {
+    if (svcTimeoutRef.current) clearTimeout(svcTimeoutRef.current)
+    setSvcDropOpen(true)
+  }
+  const onSvcMouseLeave = () => {
+    svcTimeoutRef.current = setTimeout(() => setSvcDropOpen(false), 200)
   }
 
   // Dynamic text colors based on scroll state
@@ -99,21 +116,80 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => {
-                  if (link.href.startsWith('#')) {
-                    e.preventDefault()
-                    handleNav(link.href)
-                  }
-                }}
-                className={`text-sm font-medium transition-colors whitespace-nowrap ${textColor} ${textHover}`}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.label === 'Services' ? (
+                /* Services dropdown */
+                <div
+                  key={link.href}
+                  ref={svcDropRef}
+                  className="relative"
+                  onMouseEnter={onSvcMouseEnter}
+                  onMouseLeave={onSvcMouseLeave}
+                >
+                  <button
+                    className={`flex items-center gap-1 text-sm font-medium transition-colors whitespace-nowrap ${textColor} ${textHover}`}
+                    onClick={() => setSvcDropOpen((v) => !v)}
+                    aria-expanded={svcDropOpen}
+                  >
+                    Services
+                    <svg
+                      width="14" height="14" viewBox="0 0 14 14" fill="none"
+                      className="transition-transform duration-200"
+                      style={{ transform: svcDropOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                    >
+                      <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+
+                  {svcDropOpen && (
+                    <div
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-3 z-50"
+                      onMouseEnter={onSvcMouseEnter}
+                      onMouseLeave={onSvcMouseLeave}
+                      style={{ width: 280 }}
+                    >
+                      {/* Arrow */}
+                      <div className="w-3 h-3 bg-white border-l border-t border-[#F0EAE0] rotate-45 mx-auto -mb-1.5 relative z-10" />
+
+                      <div className="bg-white rounded-2xl border border-[#F0EAE0] shadow-[0_12px_40px_rgba(27,77,62,0.14)] overflow-hidden p-4">
+                        <div className="flex flex-col gap-1">
+                          {servicesMenu.map((item) => (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              onClick={() => setSvcDropOpen(false)}
+                              className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#FAF6F0] transition-colors group"
+                            >
+                              <span className="w-8 h-8 rounded-lg bg-[#1B4D3E]/8 flex items-center justify-center text-base flex-shrink-0 group-hover:bg-[#1B4D3E]/15 transition-colors">
+                                {item.icon}
+                              </span>
+                              <div className="min-w-0">
+                                <p className="text-sm font-semibold text-[#1B4D3E] leading-tight">{item.label}</p>
+                                <p className="text-[11px] text-gray-400 mt-0.5 leading-tight">{item.desc}</p>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => {
+                    if (link.href.startsWith('#')) {
+                      e.preventDefault()
+                      handleNav(link.href)
+                    }
+                  }}
+                  className={`text-sm font-medium transition-colors whitespace-nowrap ${textColor} ${textHover}`}
+                >
+                  {link.label}
+                </a>
+              )
+            )}
 
             {/* Hearing Aids mega dropdown */}
             <div
@@ -273,23 +349,62 @@ export default function Navbar() {
           </button>
           <div className="ornament mb-4"><div className="ornament-diamond" /></div>
 
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => {
-                if (link.href.startsWith('#')) {
-                  e.preventDefault()
-                  handleNav(link.href)
-                } else {
-                  setMenuOpen(false)
-                }
-              }}
-              className="font-playfair text-lg text-teal-900 py-3 border-b border-cream-dark hover:text-gold-600 transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.label === 'Services' ? (
+              /* Mobile Services accordion */
+              <div key={link.href} className="border-b border-cream-dark">
+                <button
+                  onClick={() => setMobileSvcOpen((v) => !v)}
+                  className="w-full flex items-center justify-between py-3 font-playfair text-lg text-teal-900 hover:text-gold-600 transition-colors"
+                >
+                  Services
+                  <svg
+                    width="16" height="16" viewBox="0 0 14 14" fill="none"
+                    className="transition-transform duration-200 flex-shrink-0"
+                    style={{ transform: mobileSvcOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                  >
+                    <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                {mobileSvcOpen && (
+                  <div className="pb-4 pl-1">
+                    <div className="flex flex-col gap-1.5">
+                      {servicesMenu.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setMenuOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-[#FAF6F0] hover:bg-[#F0EAE0] transition-colors"
+                        >
+                          <span className="text-base">{item.icon}</span>
+                          <div>
+                            <p className="text-sm font-semibold text-[#1B4D3E]">{item.label}</p>
+                            <p className="text-[11px] text-gray-400">{item.desc}</p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => {
+                  if (link.href.startsWith('#')) {
+                    e.preventDefault()
+                    handleNav(link.href)
+                  } else {
+                    setMenuOpen(false)
+                  }
+                }}
+                className="font-playfair text-lg text-teal-900 py-3 border-b border-cream-dark hover:text-gold-600 transition-colors"
+              >
+                {link.label}
+              </a>
+            )
+          )}
 
           {/* Mobile Hearing Aids accordion */}
           <div className="border-b border-cream-dark">

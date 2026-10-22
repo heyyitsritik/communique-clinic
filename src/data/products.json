@@ -25,9 +25,21 @@
     ],
     "key_features": [
       "IX platform",
-      "48 channels",
-      "Instant fit ITE",
-      "Bluetooth LE Audio",
+      "48 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "TruEar 360° spatial awareness",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Ocean Waves / Static / Notch)",
+      "Motion sensor hearing",
+      "Extended dynamic range",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "Earbud-style ITE design",
       "Active lifestyle design"
     ],
     "short_desc": "Premium instant-fit ITE earbud-style hearing aid for active lifestyles.",
@@ -59,9 +71,14 @@
     ],
     "key_features": [
       "IX platform",
-      "16 channels",
-      "Instant fit ITE",
-      "Bluetooth LE Audio"
+      "16 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Earbud-style ITE design",
+      "Active lifestyle design"
     ],
     "short_desc": "Entry-level instant-fit ITE hearing aid with active earbud design.",
     "image_filename": "signia-active-ix.jpg"
@@ -89,8 +106,9 @@
       "Budget-Friendly"
     ],
     "key_features": [
-      "8 channels",
-      "BTE"
+      "8 processing channels",
+      "Basic amplification",
+      "BTE design"
     ],
     "short_desc": "Affordable BTE with 8 channels for moderate-severe hearing loss.",
     "image_filename": "signia-fast.jpg"
@@ -118,7 +136,8 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "4 channels",
+      "4 processing channels",
+      "Basic amplification",
       "Most affordable option"
     ],
     "short_desc": "Signia's most affordable hearing aid for basic hearing needs.",
@@ -147,8 +166,9 @@
       "Budget-Friendly"
     ],
     "key_features": [
-      "6 channels",
-      "BTE"
+      "6 processing channels",
+      "Basic amplification",
+      "BTE design"
     ],
     "short_desc": "Budget BTE for moderate-severe hearing loss.",
     "image_filename": "signia-fun.jpg"
@@ -176,8 +196,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "4 channels",
-      "Basic amplification"
+      "4 processing channels",
+      "Basic amplification",
+      "Simple volume control",
+      "Affordable entry-level"
     ],
     "short_desc": "Entry-level BTE hearing aid at the most affordable price point.",
     "image_filename": "signia-fun.jpg"
@@ -205,8 +227,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "4 channels",
-      "Basic amplification"
+      "4 processing channels",
+      "Basic amplification",
+      "Simple volume control",
+      "Affordable entry-level"
     ],
     "short_desc": "Entry-level BTE hearing aid at the most affordable price point.",
     "image_filename": "signia-fun.jpg"
@@ -238,12 +262,20 @@
       "Discreet Wear"
     ],
     "key_features": [
-      "48 channels",
       "AX platform",
-      "Custom in-the-canal fit",
-      "Bluetooth",
-      "Rechargeable",
-      "Tinnitus therapy"
+      "48 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing 3.0",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Notch / Static)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "HD Music programme",
+      "Custom-moulded ITC",
+      "Rechargeable"
     ],
     "short_desc": "Premium custom-fit ITC with 48-channel AX processing, rechargeable and Bluetooth.",
     "image_filename": "signia-insio-cg-ax.jpg"
@@ -275,9 +307,17 @@
       "Discreet Wear"
     ],
     "key_features": [
-      "32 channels",
-      "Custom ITC fit",
-      "Bluetooth",
+      "AX platform",
+      "32 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static)",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC",
       "Rechargeable"
     ],
     "short_desc": "Advanced custom-fit ITC — 32 channels, rechargeable, Bluetooth.",
@@ -309,9 +349,14 @@
       "Discreet Wear"
     ],
     "key_features": [
-      "24 channels",
-      "Custom ITC fit",
-      "Bluetooth",
+      "AX platform",
+      "24 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC",
       "Rechargeable"
     ],
     "short_desc": "Standard custom-fit ITC — 24 channels, rechargeable, Bluetooth.",
@@ -343,9 +388,13 @@
       "Discreet Wear"
     ],
     "key_features": [
-      "16 channels",
-      "Custom ITC fit",
-      "Bluetooth",
+      "AX platform",
+      "16 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC",
       "Rechargeable"
     ],
     "short_desc": "Essential custom-fit ITC — rechargeable with Bluetooth.",
@@ -377,9 +426,12 @@
       "Discreet Wear"
     ],
     "key_features": [
-      "16 channels",
-      "Custom ITC fit",
-      "Bluetooth",
+      "AX platform",
+      "16 processing channels",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC",
       "Rechargeable"
     ],
     "short_desc": "Entry-level custom-fit ITC — rechargeable with Bluetooth at great value.",
@@ -411,10 +463,22 @@
     ],
     "key_features": [
       "IX platform",
-      "48 channels",
-      "Custom CIC",
-      "Rechargeable",
-      "Bluetooth"
+      "48 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "TruEar 360° spatial awareness",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Ocean Waves / Static / Notch)",
+      "Motion sensor hearing",
+      "Extended dynamic range",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded CIC/ITC",
+      "Rechargeable"
     ],
     "short_desc": "Custom rechargeable CIC with IX platform and 48-channel sound processing.",
     "image_filename": "signia-insio-cg-ix.jpg"
@@ -445,10 +509,20 @@
     ],
     "key_features": [
       "IX platform",
-      "36 channels",
-      "Custom CIC",
-      "Rechargeable",
-      "Bluetooth"
+      "36 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static / Notch)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded CIC/ITC",
+      "Rechargeable"
     ],
     "short_desc": "Custom rechargeable CIC with IX platform and 36-channel sound processing.",
     "image_filename": "signia-insio-cg-ix.jpg"
@@ -478,10 +552,17 @@
     ],
     "key_features": [
       "IX platform",
-      "32 channels",
-      "Custom CIC",
-      "Rechargeable",
-      "Bluetooth"
+      "32 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded CIC/ITC",
+      "Rechargeable"
     ],
     "short_desc": "Custom rechargeable CIC with IX platform and 32-channel sound processing.",
     "image_filename": "signia-insio-cg-ix.jpg"
@@ -511,10 +592,15 @@
     ],
     "key_features": [
       "IX platform",
-      "24 channels",
-      "Custom CIC",
-      "Rechargeable",
-      "Bluetooth"
+      "24 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded CIC/ITC",
+      "Rechargeable"
     ],
     "short_desc": "Custom rechargeable CIC with IX platform and 24-channel sound processing.",
     "image_filename": "signia-insio-cg-ix.jpg"
@@ -544,10 +630,14 @@
     ],
     "key_features": [
       "IX platform",
-      "16 channels",
-      "Custom CIC",
-      "Rechargeable",
-      "Bluetooth"
+      "16 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded CIC/ITC",
+      "Rechargeable"
     ],
     "short_desc": "Custom rechargeable CIC with IX platform and 16-channel sound processing.",
     "image_filename": "signia-insio-cg-ix.jpg"
@@ -578,9 +668,21 @@
     ],
     "key_features": [
       "IX platform",
-      "48 channels",
-      "Custom ITC/ITE/CIC/IIC",
-      "Bluetooth"
+      "48 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "TruEar 360° spatial awareness",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Ocean Waves / Static / Notch)",
+      "Motion sensor hearing",
+      "Extended dynamic range",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC/ITE/CIC/IIC"
     ],
     "short_desc": "Custom-molded IX platform hearing aid available in ITC, ITE, CIC and IIC styles.",
     "image_filename": "signia-insio-ix.jpg"
@@ -611,9 +713,19 @@
     ],
     "key_features": [
       "IX platform",
-      "36 channels",
-      "Custom ITC/ITE/CIC/IIC",
-      "Bluetooth"
+      "36 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static / Notch)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC/ITE/CIC/IIC"
     ],
     "short_desc": "Custom-molded IX platform hearing aid available in ITC, ITE, CIC and IIC styles.",
     "image_filename": "signia-insio-ix.jpg"
@@ -643,9 +755,16 @@
     ],
     "key_features": [
       "IX platform",
-      "32 channels",
-      "Custom ITC/ITE/CIC/IIC",
-      "Bluetooth"
+      "32 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC/ITE/CIC/IIC"
     ],
     "short_desc": "Custom-molded IX platform hearing aid available in ITC, ITE, CIC and IIC styles.",
     "image_filename": "signia-insio-ix.jpg"
@@ -675,9 +794,14 @@
     ],
     "key_features": [
       "IX platform",
-      "24 channels",
-      "Custom ITC/ITE/CIC/IIC",
-      "Bluetooth"
+      "24 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC/ITE/CIC/IIC"
     ],
     "short_desc": "Custom-molded IX platform hearing aid available in ITC, ITE, CIC and IIC styles.",
     "image_filename": "signia-insio-ix.jpg"
@@ -707,9 +831,13 @@
     ],
     "key_features": [
       "IX platform",
-      "16 channels",
-      "Custom ITC/ITE/CIC/IIC",
-      "Bluetooth"
+      "16 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC/ITE/CIC/IIC"
     ],
     "short_desc": "Custom-molded IX platform hearing aid available in ITC, ITE, CIC and IIC styles.",
     "image_filename": "signia-insio-ix.jpg"
@@ -738,10 +866,19 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "NX platform",
-      "48 channels",
-      "Custom ITC/ITE",
-      "Bluetooth"
+      "AX platform",
+      "48 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing 3.0",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Notch / Static)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "HD Music programme",
+      "Custom-moulded ITC/ITE"
     ],
     "short_desc": "Custom NX platform hearing aid with 48-channel processing.",
     "image_filename": "signia-insio-nx.jpg"
@@ -770,10 +907,17 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "NX platform",
-      "36 channels",
-      "Custom ITC/ITE",
-      "Bluetooth"
+      "AX platform",
+      "32 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static)",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC/ITE"
     ],
     "short_desc": "Custom NX platform hearing aid with 36-channel processing.",
     "image_filename": "signia-insio-nx.jpg"
@@ -802,10 +946,14 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "NX platform",
-      "32 channels",
-      "Custom ITC/ITE",
-      "Bluetooth"
+      "AX platform",
+      "24 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC/ITE"
     ],
     "short_desc": "Custom NX platform hearing aid with 32-channel processing.",
     "image_filename": "signia-insio-nx.jpg"
@@ -834,10 +982,13 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "NX platform",
-      "24 channels",
-      "Custom ITC/ITE",
-      "Bluetooth"
+      "AX platform",
+      "16 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC/ITE"
     ],
     "short_desc": "Custom NX platform hearing aid with 24-channel processing.",
     "image_filename": "signia-insio-nx.jpg"
@@ -866,10 +1017,12 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "NX platform",
-      "16 channels",
-      "Custom ITC/ITE",
-      "Bluetooth"
+      "AX platform",
+      "16 processing channels",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Custom-moulded ITC/ITE"
     ],
     "short_desc": "Custom NX platform hearing aid with 16-channel processing.",
     "image_filename": "signia-insio-nx.jpg"
@@ -898,9 +1051,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "12 channels",
       "primax platform",
-      "Simple operation"
+      "12 processing channels",
+      "SpeechFocus directionality",
+      "Feedback cancellation",
+      "eWindScreen",
+      "Simple one-button operation"
     ],
     "short_desc": "Affordable primax platform hearing aid with 12-channel processing.",
     "image_filename": "signia-intuis-3.jpg"
@@ -929,9 +1085,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "12 channels",
       "primax platform",
-      "Simple operation"
+      "12 processing channels",
+      "SpeechFocus directionality",
+      "Feedback cancellation",
+      "eWindScreen",
+      "Simple one-button operation"
     ],
     "short_desc": "Affordable primax platform hearing aid with 12-channel processing.",
     "image_filename": "signia-intuis-3.jpg"
@@ -960,9 +1119,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "12 channels",
       "primax platform",
-      "Simple operation"
+      "12 processing channels",
+      "SpeechFocus directionality",
+      "Feedback cancellation",
+      "eWindScreen",
+      "Simple one-button operation"
     ],
     "short_desc": "Affordable primax platform hearing aid with 12-channel processing.",
     "image_filename": "signia-intuis-3.jpg"
@@ -991,9 +1153,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "12 channels",
       "primax platform",
-      "Simple operation"
+      "12 processing channels",
+      "SpeechFocus directionality",
+      "Feedback cancellation",
+      "eWindScreen",
+      "Simple one-button operation"
     ],
     "short_desc": "Affordable primax platform hearing aid with 12-channel processing.",
     "image_filename": "signia-intuis-3.jpg"
@@ -1022,9 +1187,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "12 channels",
       "primax platform",
-      "Simple operation"
+      "12 processing channels",
+      "SpeechFocus directionality",
+      "Feedback cancellation",
+      "eWindScreen",
+      "Simple one-button operation"
     ],
     "short_desc": "Affordable primax platform hearing aid with 12-channel processing.",
     "image_filename": "signia-intuis-3.jpg"
@@ -1053,9 +1221,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "12 channels",
       "primax platform",
-      "Simple operation"
+      "12 processing channels",
+      "SpeechFocus directionality",
+      "Feedback cancellation",
+      "eWindScreen",
+      "Simple one-button operation"
     ],
     "short_desc": "Affordable primax platform hearing aid with 12-channel processing.",
     "image_filename": "signia-intuis-3.jpg"
@@ -1084,9 +1255,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "12 channels",
       "primax platform",
-      "Simple operation"
+      "12 processing channels",
+      "SpeechFocus directionality",
+      "Feedback cancellation",
+      "eWindScreen",
+      "Simple one-button operation"
     ],
     "short_desc": "Affordable primax platform hearing aid with 12-channel processing.",
     "image_filename": "signia-intuis-3.jpg"
@@ -1115,10 +1289,13 @@
       "Profound Loss"
     ],
     "key_features": [
-      "16 channels",
-      "BTE power",
-      "Fits up to 120 dB",
-      "SpeechMaster"
+      "16 processing channels",
+      "SpeechMaster",
+      "Adaptive directionality",
+      "Feedback cancellation",
+      "eWindScreen",
+      "Fits severe to profound loss (up to 120 dB)",
+      "BTE Power design"
     ],
     "short_desc": "Top-tier BTE with 16 channels for profound hearing loss up to 120 dB.",
     "image_filename": "signia-intuis-4.jpg"
@@ -1147,9 +1324,12 @@
       "Profound Loss"
     ],
     "key_features": [
-      "12 channels",
-      "BTE power",
-      "Fits profound loss"
+      "12 processing channels",
+      "SpeechMaster",
+      "Adaptive directionality",
+      "Feedback cancellation",
+      "BTE Power design",
+      "Fits severe to profound loss"
     ],
     "short_desc": "Advanced BTE for profound hearing loss with 12 channels.",
     "image_filename": "signia-intuis-4.jpg"
@@ -1178,8 +1358,10 @@
       "Profound Loss"
     ],
     "key_features": [
-      "8 channels",
-      "BTE power",
+      "8 processing channels",
+      "Basic directionality",
+      "Feedback cancellation",
+      "BTE Power design",
       "Reliable for severe-profound loss"
     ],
     "short_desc": "Standard BTE for profound hearing loss at a mid-range price.",
@@ -1209,8 +1391,9 @@
       "Profound Loss"
     ],
     "key_features": [
-      "8 channels",
-      "BTE power"
+      "8 processing channels",
+      "Feedback cancellation",
+      "BTE Power design"
     ],
     "short_desc": "Essential BTE for profound hearing loss — simple and reliable.",
     "image_filename": "signia-intuis-4.jpg"
@@ -1239,8 +1422,9 @@
       "Profound Loss"
     ],
     "key_features": [
-      "8 channels",
-      "BTE power"
+      "8 processing channels",
+      "Feedback cancellation",
+      "BTE Power design"
     ],
     "short_desc": "Entry-level BTE for profound hearing loss — affordable and dependable.",
     "image_filename": "signia-intuis-4.jpg"
@@ -1269,8 +1453,9 @@
       "Profound Loss"
     ],
     "key_features": [
-      "6 channels",
-      "BTE power"
+      "6 processing channels",
+      "Feedback cancellation",
+      "BTE Power design"
     ],
     "short_desc": "Economy BTE for profound loss — Signia reliability at the lowest price.",
     "image_filename": "signia-intuis-4.jpg"
@@ -1301,10 +1486,22 @@
     ],
     "key_features": [
       "IX platform",
-      "48 channels",
-      "Bluetooth LE Audio",
+      "48 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "TruEar 360° spatial awareness",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Ocean Waves / Static / Notch)",
+      "Motion sensor hearing",
+      "Extended dynamic range",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
       "Rechargeable BTE",
-      "Robust design"
+      "Robust design for active use"
     ],
     "short_desc": "Powerful IX platform BTE with 48-channel processing for moderate to severe hearing loss.",
     "image_filename": "signia-motion-cg-ix.jpg"
@@ -1335,10 +1532,20 @@
     ],
     "key_features": [
       "IX platform",
-      "36 channels",
-      "Bluetooth LE Audio",
+      "36 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static / Notch)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
       "Rechargeable BTE",
-      "Robust design"
+      "Robust design for active use"
     ],
     "short_desc": "Powerful IX platform BTE with 36-channel processing for moderate to severe hearing loss.",
     "image_filename": "signia-motion-cg-ix.jpg"
@@ -1368,10 +1575,17 @@
     ],
     "key_features": [
       "IX platform",
-      "32 channels",
-      "Bluetooth LE Audio",
+      "32 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
       "Rechargeable BTE",
-      "Robust design"
+      "Robust design for active use"
     ],
     "short_desc": "Powerful IX platform BTE with 32-channel processing for moderate to severe hearing loss.",
     "image_filename": "signia-motion-cg-ix.jpg"
@@ -1401,10 +1615,15 @@
     ],
     "key_features": [
       "IX platform",
-      "24 channels",
-      "Bluetooth LE Audio",
+      "24 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
       "Rechargeable BTE",
-      "Robust design"
+      "Robust design for active use"
     ],
     "short_desc": "Powerful IX platform BTE with 24-channel processing for moderate to severe hearing loss.",
     "image_filename": "signia-motion-cg-ix.jpg"
@@ -1434,10 +1653,14 @@
     ],
     "key_features": [
       "IX platform",
-      "16 channels",
-      "Bluetooth LE Audio",
+      "16 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
       "Rechargeable BTE",
-      "Robust design"
+      "Robust design for active use"
     ],
     "short_desc": "Powerful IX platform BTE with 16-channel processing for moderate to severe hearing loss.",
     "image_filename": "signia-motion-cg-ix.jpg"
@@ -1466,10 +1689,20 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "X platform",
-      "48 channels",
+      "AX platform",
+      "48 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing 3.0",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Notch / Static)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "HD Music programme",
       "Rechargeable BTE",
-      "Bluetooth"
+      "Robust design for active use"
     ],
     "short_desc": "X platform rechargeable BTE with 48-channel processing.",
     "image_filename": "signia-motion-cg-x.jpg"
@@ -1498,10 +1731,18 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "X platform",
-      "36 channels",
+      "AX platform",
+      "32 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static)",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
       "Rechargeable BTE",
-      "Bluetooth"
+      "Robust design for active use"
     ],
     "short_desc": "X platform rechargeable BTE with 36-channel processing.",
     "image_filename": "signia-motion-cg-x.jpg"
@@ -1530,10 +1771,15 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "X platform",
-      "32 channels",
+      "AX platform",
+      "24 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
       "Rechargeable BTE",
-      "Bluetooth"
+      "Robust design for active use"
     ],
     "short_desc": "X platform rechargeable BTE with 32-channel processing.",
     "image_filename": "signia-motion-cg-x.jpg"
@@ -1562,10 +1808,14 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "X platform",
-      "24 channels",
+      "AX platform",
+      "16 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
       "Rechargeable BTE",
-      "Bluetooth"
+      "Robust design for active use"
     ],
     "short_desc": "X platform rechargeable BTE with 24-channel processing.",
     "image_filename": "signia-motion-cg-x.jpg"
@@ -1594,10 +1844,13 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "X platform",
-      "16 channels",
+      "AX platform",
+      "16 processing channels",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
       "Rechargeable BTE",
-      "Bluetooth"
+      "Robust design for active use"
     ],
     "short_desc": "X platform rechargeable BTE with 16-channel processing.",
     "image_filename": "signia-motion-cg-x.jpg"
@@ -1625,9 +1878,16 @@
       "Seniors"
     ],
     "key_features": [
-      "16 channels",
-      "BTE",
-      "SpeechMaster"
+      "16 frequency channels",
+      "TruEar directionality",
+      "Adaptive compression",
+      "Speech & noise management",
+      "Automatic directionality",
+      "SoundSmoothing",
+      "eWindScreen",
+      "Tinnitus therapy",
+      "Smart Optimizer",
+      "IP68 rated"
     ],
     "short_desc": "Mid-range BTE with 16 channels for severe hearing loss.",
     "image_filename": "signia-orion-cg.jpg"
@@ -1655,8 +1915,14 @@
       "Seniors"
     ],
     "key_features": [
-      "12 channels",
-      "BTE"
+      "12 frequency channels",
+      "TruEar directionality",
+      "Adaptive compression",
+      "Speech & noise management",
+      "Adaptive directionality",
+      "Smart Optimizer",
+      "InSituGram fitting",
+      "IP68 rated"
     ],
     "short_desc": "Essential BTE for moderate-severe hearing loss.",
     "image_filename": "signia-orion-cg.jpg"
@@ -1684,8 +1950,12 @@
       "Seniors"
     ],
     "key_features": [
-      "8 channels",
-      "BTE"
+      "8 frequency channels",
+      "Adaptive compression",
+      "Basic noise management",
+      "Feedback cancellation",
+      "InSituGram fitting",
+      "IP68 rated"
     ],
     "short_desc": "Basic BTE for severe hearing loss.",
     "image_filename": "signia-orion-cg.jpg"
@@ -1713,8 +1983,11 @@
       "Seniors"
     ],
     "key_features": [
-      "8 channels",
-      "BTE"
+      "8 frequency channels",
+      "Adaptive compression",
+      "Basic noise management",
+      "Feedback cancellation",
+      "IP68 rated"
     ],
     "short_desc": "Economy BTE for severe hearing loss.",
     "image_filename": "signia-orion-cg.jpg"
@@ -1743,9 +2016,14 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "16 channels",
-      "Rechargeable",
-      "Simple operation"
+      "12 frequency channels",
+      "TruEar directionality",
+      "Adaptive compression",
+      "Speech & noise management",
+      "Adaptive directionality",
+      "Smart Optimizer",
+      "InSituGram fitting",
+      "IP68 rated"
     ],
     "short_desc": "Affordable rechargeable RIC with 16-channel processing for everyday use.",
     "image_filename": "signia-orion-cg.jpg"
@@ -1774,9 +2052,14 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "16 channels",
-      "Rechargeable",
-      "Simple operation"
+      "12 frequency channels",
+      "TruEar directionality",
+      "Adaptive compression",
+      "Speech & noise management",
+      "Adaptive directionality",
+      "Smart Optimizer",
+      "InSituGram fitting",
+      "IP68 rated"
     ],
     "short_desc": "Affordable rechargeable RIC with 16-channel processing for everyday use.",
     "image_filename": "signia-orion-cg.jpg"
@@ -1805,9 +2088,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "12 channels",
-      "Rechargeable",
-      "Simple operation"
+      "8 frequency channels",
+      "Adaptive compression",
+      "Basic noise management",
+      "Feedback cancellation",
+      "InSituGram fitting",
+      "IP68 rated"
     ],
     "short_desc": "Affordable rechargeable RIC with 12-channel processing for everyday use.",
     "image_filename": "signia-orion-cg.jpg"
@@ -1836,10 +2122,14 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "16 channels",
-      "Rechargeable",
-      "Telecoil",
-      "Power BTE"
+      "12 frequency channels",
+      "TruEar directionality",
+      "Adaptive compression",
+      "Speech & noise management",
+      "Adaptive directionality",
+      "Smart Optimizer",
+      "InSituGram fitting",
+      "IP68 rated"
     ],
     "short_desc": "Rechargeable power BTE with telecoil for severe hearing loss.",
     "image_filename": "signia-orion-cg.jpg"
@@ -1868,10 +2158,14 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "16 channels",
-      "Rechargeable",
-      "Telecoil",
-      "Power BTE"
+      "12 frequency channels",
+      "TruEar directionality",
+      "Adaptive compression",
+      "Speech & noise management",
+      "Adaptive directionality",
+      "Smart Optimizer",
+      "InSituGram fitting",
+      "IP68 rated"
     ],
     "short_desc": "Rechargeable power BTE with telecoil for severe hearing loss.",
     "image_filename": "signia-orion-cg.jpg"
@@ -1900,9 +2194,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "8 channels",
-      "Rechargeable",
-      "Simple operation"
+      "8 frequency channels",
+      "Adaptive compression",
+      "Basic noise management",
+      "Feedback cancellation",
+      "InSituGram fitting",
+      "IP68 rated"
     ],
     "short_desc": "Affordable rechargeable RIC with 8-channel processing for everyday use.",
     "image_filename": "signia-orion-cg.jpg"
@@ -1960,9 +2257,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "8 channels",
-      "Basic amplification",
-      "Simple operation"
+      "8 processing channels",
+      "Feedback cancellation",
+      "Simple one-button operation",
+      "Reliable everyday amplification"
     ],
     "short_desc": "Budget-friendly basic hearing aid for everyday use.",
     "image_filename": "signia-prompt.jpg"
@@ -1990,9 +2288,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "8 channels",
-      "Basic amplification",
-      "Simple operation"
+      "8 processing channels",
+      "Feedback cancellation",
+      "Simple one-button operation",
+      "Reliable everyday amplification"
     ],
     "short_desc": "Budget-friendly basic hearing aid for everyday use.",
     "image_filename": "signia-prompt.jpg"
@@ -2020,9 +2319,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "8 channels",
-      "Basic amplification",
-      "Simple operation"
+      "8 processing channels",
+      "Feedback cancellation",
+      "Simple one-button operation",
+      "Reliable everyday amplification"
     ],
     "short_desc": "Budget-friendly basic hearing aid for everyday use.",
     "image_filename": "signia-prompt.jpg"
@@ -2050,9 +2350,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "8 channels",
-      "Basic amplification",
-      "Simple operation"
+      "8 processing channels",
+      "Feedback cancellation",
+      "Simple one-button operation",
+      "Reliable everyday amplification"
     ],
     "short_desc": "Budget-friendly basic hearing aid for everyday use.",
     "image_filename": "signia-prompt.jpg"
@@ -2080,9 +2381,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "8 channels",
-      "Basic amplification",
-      "Simple operation"
+      "8 processing channels",
+      "Feedback cancellation",
+      "Simple one-button operation",
+      "Reliable everyday amplification"
     ],
     "short_desc": "Budget-friendly basic hearing aid for everyday use.",
     "image_filename": "signia-prompt.jpg"
@@ -2112,11 +2414,20 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "48 channels",
       "AX platform",
-      "Bluetooth MFi & ASHA",
-      "Tinnitus therapy",
-      "312 battery"
+      "48 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing 3.0",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Notch / Static)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "HD Music programme",
+      "Disposable 312 battery",
+      "Slim RIC design"
     ],
     "short_desc": "Premium RIC with 48 channels on disposable 312 battery — ideal for those who prefer battery-powered.",
     "image_filename": "signia-pure-312-ax.jpg"
@@ -2146,10 +2457,18 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "32 channels",
       "AX platform",
-      "Bluetooth MFi & ASHA",
-      "Tinnitus therapy"
+      "32 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static)",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
+      "Disposable 312 battery",
+      "Slim RIC design"
     ],
     "short_desc": "Advanced 312-battery RIC with 32 channels and Bluetooth.",
     "image_filename": "signia-pure-312-ax.jpg"
@@ -2178,9 +2497,15 @@
       "TV Streaming"
     ],
     "key_features": [
-      "24 channels",
       "AX platform",
-      "Bluetooth"
+      "24 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Disposable 312 battery",
+      "Slim RIC design"
     ],
     "short_desc": "Standard 312-battery RIC with 24 channels and Bluetooth.",
     "image_filename": "signia-pure-312-ax.jpg"
@@ -2209,8 +2534,14 @@
       "TV Streaming"
     ],
     "key_features": [
-      "16 channels",
-      "Bluetooth"
+      "AX platform",
+      "16 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Disposable 312 battery",
+      "Slim RIC design"
     ],
     "short_desc": "Essential 312-battery RIC with Bluetooth.",
     "image_filename": "signia-pure-312-ax.jpg"
@@ -2239,8 +2570,13 @@
       "TV Streaming"
     ],
     "key_features": [
-      "16 channels",
-      "Bluetooth"
+      "AX platform",
+      "16 processing channels",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Disposable 312 battery",
+      "Slim RIC design"
     ],
     "short_desc": "Entry-level 312-battery RIC from Signia with Bluetooth.",
     "image_filename": "signia-pure-312-ax.jpg"
@@ -2271,12 +2607,19 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "48 channels",
       "AX platform",
+      "48 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
       "Own Voice Processing 3.0",
-      "Bluetooth MFi & ASHA",
-      "Tinnitus therapy",
-      "Signia App"
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Notch / Static)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "HD Music programme",
+      "Rechargeable RIC"
     ],
     "short_desc": "Signia's flagship RIC with 48 channels and cutting-edge AX sound processing.",
     "image_filename": "signia-pure-cg-ax.jpg"
@@ -2307,11 +2650,17 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "32 channels",
       "AX platform",
+      "32 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
       "Own Voice Processing",
-      "Bluetooth MFi & ASHA",
-      "Tinnitus therapy"
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static)",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
+      "Rechargeable RIC"
     ],
     "short_desc": "Advanced rechargeable RIC with 32 channels and full Bluetooth.",
     "image_filename": "signia-pure-cg-ax.jpg"
@@ -2341,9 +2690,14 @@
       "TV Streaming"
     ],
     "key_features": [
-      "24 channels",
       "AX platform",
-      "Bluetooth MFi & ASHA"
+      "24 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Rechargeable RIC"
     ],
     "short_desc": "Standard rechargeable RIC with 24 channels and Bluetooth.",
     "image_filename": "signia-pure-cg-ax.jpg"
@@ -2373,9 +2727,13 @@
       "TV Streaming"
     ],
     "key_features": [
-      "16 channels",
-      "Bluetooth MFi & ASHA",
-      "Rechargeable"
+      "AX platform",
+      "16 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Rechargeable RIC"
     ],
     "short_desc": "Essential rechargeable RIC with Bluetooth at an accessible price.",
     "image_filename": "signia-pure-cg-ax.jpg"
@@ -2405,9 +2763,12 @@
       "TV Streaming"
     ],
     "key_features": [
-      "16 channels",
-      "Bluetooth MFi & ASHA",
-      "Rechargeable"
+      "AX platform",
+      "16 processing channels",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Rechargeable RIC"
     ],
     "short_desc": "Entry-level rechargeable RIC with Bluetooth — great value from Signia.",
     "image_filename": "signia-pure-cg-ax.jpg"
@@ -2438,10 +2799,22 @@
     ],
     "key_features": [
       "IX platform",
-      "48 channels",
+      "48 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "TruEar 360° spatial awareness",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Ocean Waves / Static / Notch)",
+      "Motion sensor hearing",
+      "Extended dynamic range",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
       "Bone Conduction Technology",
-      "Bluetooth LE Audio",
-      "Rechargeable"
+      "Rechargeable RIC"
     ],
     "short_desc": "IX platform RIC with bone conduction technology for enhanced sound transmission.",
     "image_filename": "signia-pure-cg-ix.jpg"
@@ -2472,10 +2845,20 @@
     ],
     "key_features": [
       "IX platform",
-      "36 channels",
+      "36 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static / Notch)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
       "Bone Conduction Technology",
-      "Bluetooth LE Audio",
-      "Rechargeable"
+      "Rechargeable RIC"
     ],
     "short_desc": "IX platform RIC with bone conduction technology for enhanced sound transmission.",
     "image_filename": "signia-pure-cg-ix.jpg"
@@ -2505,10 +2888,17 @@
     ],
     "key_features": [
       "IX platform",
-      "32 channels",
+      "32 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
       "Bone Conduction Technology",
-      "Bluetooth LE Audio",
-      "Rechargeable"
+      "Rechargeable RIC"
     ],
     "short_desc": "IX platform RIC with bone conduction technology for enhanced sound transmission.",
     "image_filename": "signia-pure-cg-ix.jpg"
@@ -2538,10 +2928,15 @@
     ],
     "key_features": [
       "IX platform",
-      "24 channels",
+      "24 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
       "Bone Conduction Technology",
-      "Bluetooth LE Audio",
-      "Rechargeable"
+      "Rechargeable RIC"
     ],
     "short_desc": "IX platform RIC with bone conduction technology for enhanced sound transmission.",
     "image_filename": "signia-pure-cg-ix.jpg"
@@ -2571,10 +2966,14 @@
     ],
     "key_features": [
       "IX platform",
-      "16 channels",
+      "16 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
       "Bone Conduction Technology",
-      "Bluetooth LE Audio",
-      "Rechargeable"
+      "Rechargeable RIC"
     ],
     "short_desc": "IX platform RIC with bone conduction technology for enhanced sound transmission.",
     "image_filename": "signia-pure-cg-ix.jpg"
@@ -2606,10 +3005,22 @@
     ],
     "key_features": [
       "IX platform",
-      "48 channels",
-      "Bluetooth LE Audio",
-      "Rechargeable",
-      "Own Voice Processing 4.0"
+      "48 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "TruEar 360° spatial awareness",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Ocean Waves / Static / Notch)",
+      "Motion sensor hearing",
+      "Extended dynamic range",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "Rechargeable RIC",
+      "Slim sleek design"
     ],
     "short_desc": "Latest IX platform RIC with 48-channel processing and rechargeable convenience.",
     "image_filename": "signia-pure-cg-ix.jpg"
@@ -2641,10 +3052,20 @@
     ],
     "key_features": [
       "IX platform",
-      "36 channels",
-      "Bluetooth LE Audio",
-      "Rechargeable",
-      "Own Voice Processing 4.0"
+      "36 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static / Notch)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "Rechargeable RIC",
+      "Slim sleek design"
     ],
     "short_desc": "Latest IX platform RIC with 36-channel processing and rechargeable convenience.",
     "image_filename": "signia-pure-cg-ix.jpg"
@@ -2675,10 +3096,17 @@
     ],
     "key_features": [
       "IX platform",
-      "32 channels",
-      "Bluetooth LE Audio",
-      "Rechargeable",
-      "Own Voice Processing 4.0"
+      "32 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
+      "Rechargeable RIC",
+      "Slim sleek design"
     ],
     "short_desc": "Latest IX platform RIC with 32-channel processing and rechargeable convenience.",
     "image_filename": "signia-pure-cg-ix.jpg"
@@ -2709,10 +3137,15 @@
     ],
     "key_features": [
       "IX platform",
-      "24 channels",
-      "Bluetooth LE Audio",
-      "Rechargeable",
-      "Own Voice Processing 4.0"
+      "24 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Rechargeable RIC",
+      "Slim sleek design"
     ],
     "short_desc": "Latest IX platform RIC with 24-channel processing and rechargeable convenience.",
     "image_filename": "signia-pure-cg-ix.jpg"
@@ -2743,10 +3176,14 @@
     ],
     "key_features": [
       "IX platform",
-      "16 channels",
-      "Bluetooth LE Audio",
-      "Rechargeable",
-      "Own Voice Processing 4.0"
+      "16 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Rechargeable RIC",
+      "Slim sleek design"
     ],
     "short_desc": "Latest IX platform RIC with 16-channel processing and rechargeable convenience.",
     "image_filename": "signia-pure-cg-ix.jpg"
@@ -2774,8 +3211,9 @@
       "Budget-Friendly"
     ],
     "key_features": [
-      "8 channels",
-      "BTE"
+      "8 processing channels",
+      "Basic amplification",
+      "BTE design"
     ],
     "short_desc": "Budget BTE with 8 channels for severe hearing loss.",
     "image_filename": "signia-run.jpg"
@@ -2803,8 +3241,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "6 channels",
-      "Basic amplification"
+      "6 processing channels",
+      "Basic amplification",
+      "Simple controls",
+      "Affordable entry-level"
     ],
     "short_desc": "Affordable basic BTE hearing aid.",
     "image_filename": "signia-run.jpg"
@@ -2832,8 +3272,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "6 channels",
-      "Basic amplification"
+      "6 processing channels",
+      "Basic amplification",
+      "Simple controls",
+      "Affordable entry-level"
     ],
     "short_desc": "Affordable basic BTE hearing aid.",
     "image_filename": "signia-run.jpg"
@@ -2861,8 +3303,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "6 channels",
-      "Basic amplification"
+      "6 processing channels",
+      "Basic amplification",
+      "Simple controls",
+      "Affordable entry-level"
     ],
     "short_desc": "Affordable basic BTE hearing aid.",
     "image_filename": "signia-run.jpg"
@@ -2893,10 +3337,23 @@
     ],
     "key_features": [
       "IX platform",
-      "48 channels",
-      "Instant fit CIC",
+      "48 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "TruEar 360° spatial awareness",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Ocean Waves / Static / Notch)",
+      "Motion sensor hearing",
+      "Extended dynamic range",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "Instant-fit CIC",
       "Rechargeable",
-      "Nearly invisible"
+      "Nearly invisible in ear"
     ],
     "short_desc": "Nearly invisible instant-fit CIC with IX platform and 48-channel processing.",
     "image_filename": "signia-silk-cg-ix.jpg"
@@ -2927,10 +3384,21 @@
     ],
     "key_features": [
       "IX platform",
-      "36 channels",
-      "Instant fit CIC",
+      "36 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static / Notch)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "Instant-fit CIC",
       "Rechargeable",
-      "Nearly invisible"
+      "Nearly invisible in ear"
     ],
     "short_desc": "Nearly invisible instant-fit CIC with IX platform and 36-channel processing.",
     "image_filename": "signia-silk-cg-ix.jpg"
@@ -2960,10 +3428,18 @@
     ],
     "key_features": [
       "IX platform",
-      "32 channels",
-      "Instant fit CIC",
+      "32 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
+      "Instant-fit CIC",
       "Rechargeable",
-      "Nearly invisible"
+      "Nearly invisible in ear"
     ],
     "short_desc": "Nearly invisible instant-fit CIC with IX platform and 32-channel processing.",
     "image_filename": "signia-silk-cg-ix.jpg"
@@ -2993,10 +3469,16 @@
     ],
     "key_features": [
       "IX platform",
-      "24 channels",
-      "Instant fit CIC",
+      "24 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Instant-fit CIC",
       "Rechargeable",
-      "Nearly invisible"
+      "Nearly invisible in ear"
     ],
     "short_desc": "Nearly invisible instant-fit CIC with IX platform and 24-channel processing.",
     "image_filename": "signia-silk-cg-ix.jpg"
@@ -3026,10 +3508,15 @@
     ],
     "key_features": [
       "IX platform",
-      "16 channels",
-      "Instant fit CIC",
+      "16 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Instant-fit CIC",
       "Rechargeable",
-      "Nearly invisible"
+      "Nearly invisible in ear"
     ],
     "short_desc": "Nearly invisible instant-fit CIC with IX platform and 16-channel processing.",
     "image_filename": "signia-silk-cg-ix.jpg"
@@ -3058,10 +3545,20 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "X platform",
-      "48 channels",
-      "Instant fit CIC",
-      "Nearly invisible"
+      "AX platform",
+      "48 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing 3.0",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Notch / Static)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "HD Music programme",
+      "Instant-fit CIC",
+      "Nearly invisible in ear"
     ],
     "short_desc": "Nearly invisible X platform CIC with 48-channel processing.",
     "image_filename": "signia-silk-x.jpg"
@@ -3090,10 +3587,18 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "X platform",
-      "36 channels",
-      "Instant fit CIC",
-      "Nearly invisible"
+      "AX platform",
+      "32 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static)",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
+      "Instant-fit CIC",
+      "Nearly invisible in ear"
     ],
     "short_desc": "Nearly invisible X platform CIC with 36-channel processing.",
     "image_filename": "signia-silk-x.jpg"
@@ -3122,10 +3627,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "X platform",
-      "32 channels",
-      "Instant fit CIC",
-      "Nearly invisible"
+      "AX platform",
+      "24 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Instant-fit CIC",
+      "Nearly invisible in ear"
     ],
     "short_desc": "Nearly invisible X platform CIC with 32-channel processing.",
     "image_filename": "signia-silk-x.jpg"
@@ -3154,10 +3664,14 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "X platform",
-      "24 channels",
-      "Instant fit CIC",
-      "Nearly invisible"
+      "AX platform",
+      "16 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Instant-fit CIC",
+      "Nearly invisible in ear"
     ],
     "short_desc": "Nearly invisible X platform CIC with 24-channel processing.",
     "image_filename": "signia-silk-x.jpg"
@@ -3186,10 +3700,13 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "X platform",
-      "16 channels",
-      "Instant fit CIC",
-      "Nearly invisible"
+      "AX platform",
+      "16 processing channels",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Instant-fit CIC",
+      "Nearly invisible in ear"
     ],
     "short_desc": "Nearly invisible X platform CIC with 16-channel processing.",
     "image_filename": "signia-silk-x.jpg"
@@ -3218,9 +3735,13 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "12 channels",
+      "12 processing channels",
+      "Split processing technology",
       "Bluetooth connectivity",
-      "Smartphone app compatible"
+      "Signia App compatible",
+      "IP68 water & dust resistant",
+      "Wireless fitting",
+      "Contemporary slim design"
     ],
     "short_desc": "Affordable Signia hearing aid with Bluetooth connectivity and 12-channel processing.",
     "image_filename": "signia-sirion-connect.jpg"
@@ -3249,9 +3770,13 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "12 channels",
+      "12 processing channels",
+      "Split processing technology",
       "Bluetooth connectivity",
-      "Smartphone app compatible"
+      "Signia App compatible",
+      "IP68 water & dust resistant",
+      "Wireless fitting",
+      "Contemporary slim design"
     ],
     "short_desc": "Affordable Signia hearing aid with Bluetooth connectivity and 12-channel processing.",
     "image_filename": "signia-sirion-connect.jpg"
@@ -3280,9 +3805,13 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "12 channels",
+      "12 processing channels",
+      "Split processing technology",
       "Bluetooth connectivity",
-      "Smartphone app compatible"
+      "Signia App compatible",
+      "IP68 water & dust resistant",
+      "Wireless fitting",
+      "Contemporary slim design"
     ],
     "short_desc": "Affordable Signia hearing aid with Bluetooth connectivity and 12-channel processing.",
     "image_filename": "signia-sirion-connect.jpg"
@@ -3313,12 +3842,20 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Augmented Xperience (AX) platform",
-      "48 channels",
-      "Bluetooth streaming",
-      "Slim stylish design",
+      "AX platform",
+      "48 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
       "Own Voice Processing 3.0",
-      "Tinnitus therapy"
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Notch / Static)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "HD Music programme",
+      "Slim fashion-forward SLIM-RIC design",
+      "Rechargeable"
     ],
     "short_desc": "Signia's most advanced slim hearing aid combining premium sound with a sleek fashion-forward design.",
     "image_filename": "signia-styletto-ax.jpg"
@@ -3349,11 +3886,18 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "32 channels",
-      "Bluetooth streaming",
-      "Slim stylish design",
+      "AX platform",
+      "32 processing channels",
+      "Augmented Focus™ split processing",
+      "Dynamic Soundscape Processing 2.0",
       "Own Voice Processing",
-      "Tinnitus therapy"
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static)",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
+      "Slim fashion-forward SLIM-RIC design",
+      "Rechargeable"
     ],
     "short_desc": "Advanced slim RIC with 32 channels and full Bluetooth in a fashion-forward form.",
     "image_filename": "signia-styletto-ax.jpg"
@@ -3383,10 +3927,15 @@
       "TV Streaming"
     ],
     "key_features": [
-      "24 channels",
-      "Bluetooth streaming",
-      "Slim stylish design",
-      "Own Voice Processing"
+      "AX platform",
+      "24 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Own Voice Processing",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Slim fashion-forward SLIM-RIC design",
+      "Rechargeable"
     ],
     "short_desc": "Standard-tier slim RIC with 24 channels and Bluetooth in Signia's iconic slim design.",
     "image_filename": "signia-styletto-ax.jpg"
@@ -3416,9 +3965,14 @@
       "TV Streaming"
     ],
     "key_features": [
-      "16 channels",
-      "Bluetooth streaming",
-      "Slim stylish design"
+      "AX platform",
+      "16 processing channels",
+      "Dynamic Soundscape Processing 2.0",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Slim fashion-forward SLIM-RIC design",
+      "Rechargeable"
     ],
     "short_desc": "Entry-level slim RIC offering Signia's distinctive design with Bluetooth connectivity.",
     "image_filename": "signia-styletto-ax.jpg"
@@ -3448,9 +4002,13 @@
       "TV Streaming"
     ],
     "key_features": [
-      "16 channels",
-      "Bluetooth streaming",
-      "Slim stylish design"
+      "AX platform",
+      "16 processing channels",
+      "Bluetooth MFi & ASHA streaming",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Slim fashion-forward SLIM-RIC design",
+      "Rechargeable"
     ],
     "short_desc": "Most accessible Styletto AX — slim design with Bluetooth at an entry price.",
     "image_filename": "signia-styletto-ax.jpg"
@@ -3481,12 +4039,23 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Integrated Xperience (IX) platform",
-      "48 channels",
-      "Bluetooth LE Audio",
-      "Slim stylish design",
+      "IX platform",
+      "48 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
       "Own Voice Processing 4.0",
-      "Tinnitus therapy"
+      "TruEar 360° spatial awareness",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Ocean Waves / Static / Notch)",
+      "Motion sensor hearing",
+      "Extended dynamic range",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "Slim fashion-forward SLIM-RIC design",
+      "Rechargeable"
     ],
     "short_desc": "Signia's latest IX platform slim hearing aid with 48-channel processing and Bluetooth LE Audio.",
     "image_filename": "signia-styletto-ix.jpg"
@@ -3517,12 +4086,21 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Integrated Xperience (IX) platform",
-      "36 channels",
-      "Bluetooth LE Audio",
-      "Slim stylish design",
+      "IX platform",
+      "36 processing channels",
+      "RealTime Conversation Enhancement",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
       "Own Voice Processing 4.0",
-      "Tinnitus therapy"
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Tinnitus therapy (Static / Notch)",
+      "Motion sensor hearing",
+      "Auto EchoShield",
+      "e2e wireless 4.0 binaural link",
+      "Slim fashion-forward SLIM-RIC design",
+      "Rechargeable"
     ],
     "short_desc": "Signia's latest IX platform slim hearing aid with 36-channel processing and Bluetooth LE Audio.",
     "image_filename": "signia-styletto-ix.jpg"
@@ -3552,11 +4130,18 @@
       "TV Streaming"
     ],
     "key_features": [
-      "Integrated Xperience (IX) platform",
-      "32 channels",
-      "Bluetooth LE Audio",
-      "Slim stylish design",
-      "Own Voice Processing 4.0"
+      "IX platform",
+      "32 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Augmented Focus™ split processing",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App with AI Assistant",
+      "Motion sensor hearing",
+      "e2e wireless 4.0 binaural link",
+      "Slim fashion-forward SLIM-RIC design",
+      "Rechargeable"
     ],
     "short_desc": "Signia's latest IX platform slim hearing aid with 32-channel processing and Bluetooth LE Audio.",
     "image_filename": "signia-styletto-ix.jpg"
@@ -3586,11 +4171,16 @@
       "TV Streaming"
     ],
     "key_features": [
-      "Integrated Xperience (IX) platform",
-      "24 channels",
-      "Bluetooth LE Audio",
-      "Slim stylish design",
-      "Own Voice Processing 4.0"
+      "IX platform",
+      "24 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "HandsFree calling",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Slim fashion-forward SLIM-RIC design",
+      "Rechargeable"
     ],
     "short_desc": "Signia's latest IX platform slim hearing aid with 24-channel processing and Bluetooth LE Audio.",
     "image_filename": "signia-styletto-ix.jpg"
@@ -3620,11 +4210,15 @@
       "TV Streaming"
     ],
     "key_features": [
-      "Integrated Xperience (IX) platform",
-      "16 channels",
-      "Bluetooth LE Audio",
-      "Slim stylish design",
-      "Own Voice Processing 4.0"
+      "IX platform",
+      "16 processing channels",
+      "Dynamic Soundscape Processing 3.0",
+      "Own Voice Processing 4.0",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Signia App",
+      "e2e wireless 4.0 binaural link",
+      "Slim fashion-forward SLIM-RIC design",
+      "Rechargeable"
     ],
     "short_desc": "Signia's latest IX platform slim hearing aid with 16-channel processing and Bluetooth LE Audio.",
     "image_filename": "signia-styletto-ix.jpg"
@@ -3655,12 +4249,20 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "15 channels",
-      "LE Audio + MFi + ASHA Bluetooth",
-      "ZEN tinnitus therapy",
-      "AI Quick Assistant",
-      "4-year warranty",
-      "SoundSense Learn AI"
+      "W1 chip — 4× processing power",
+      "PureSound with ZeroDelay (<0.5 ms)",
+      "15 frequency channels",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "AI Sound Personalisation (crowd-sourced)",
+      "Sound Classifier (speech / noise / music)",
+      "Dedicated streaming audio processor",
+      "Adaptive feedback suppression",
+      "Directional speech enhancement",
+      "Speech Enhancer Pro",
+      "ZEN Fractal tinnitus therapy",
+      "Allure App with AI tools",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex's flagship ALLURE RIC with AI sound, LE Audio Bluetooth and 4-year warranty.",
     "image_filename": "widex-allure.jpg"
@@ -3691,10 +4293,20 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "15 channels",
-      "LE Audio + MFi + ASHA",
-      "ZEN tinnitus",
-      "4-year warranty"
+      "W1 chip — 4× processing power",
+      "PureSound with ZeroDelay (<0.5 ms)",
+      "15 frequency channels",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "AI Sound Personalisation (crowd-sourced)",
+      "Sound Classifier (speech / noise / music)",
+      "Dedicated streaming audio processor",
+      "Adaptive feedback suppression",
+      "Directional speech enhancement",
+      "Speech Enhancer Pro",
+      "ZEN Fractal tinnitus therapy",
+      "Allure App with AI tools",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Flagship ALLURE BTE with LE Audio and AI-powered sound.",
     "image_filename": "widex-allure-bte.jpg"
@@ -3725,11 +4337,20 @@
       "Discreet Wear"
     ],
     "key_features": [
-      "15 channels",
-      "LE Audio + MFi + ASHA",
-      "ZEN tinnitus",
-      "Custom in-ear fit",
-      "4-year warranty"
+      "W1 chip — 4× processing power",
+      "PureSound with ZeroDelay (<0.5 ms)",
+      "15 frequency channels",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "AI Sound Personalisation (crowd-sourced)",
+      "Sound Classifier (speech / noise / music)",
+      "Dedicated streaming audio processor",
+      "Adaptive feedback suppression",
+      "Directional speech enhancement",
+      "Speech Enhancer Pro",
+      "ZEN Fractal tinnitus therapy",
+      "Allure App with AI tools",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Flagship ALLURE in custom in-the-ear format with LE Audio.",
     "image_filename": "widex-allure-ite.jpg"
@@ -3760,10 +4381,17 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "12 channels",
-      "LE Audio + MFi + ASHA",
-      "ZEN tinnitus",
-      "4-year warranty"
+      "W1 chip — 4× processing power",
+      "PureSound with ZeroDelay",
+      "12 frequency channels",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "AI Sound Personalisation",
+      "Sound Classifier",
+      "Dedicated streaming processor",
+      "ZEN Fractal tinnitus therapy",
+      "Allure App with AI tools",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Advanced ALLURE RIC with 12 channels and full LE Audio Bluetooth.",
     "image_filename": "widex-allure.jpg"
@@ -3793,9 +4421,14 @@
       "TV Streaming"
     ],
     "key_features": [
-      "10 channels",
-      "LE Audio + MFi + ASHA",
-      "2-year warranty"
+      "W1 chip",
+      "PureSound with ZeroDelay",
+      "10 frequency channels",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Sound Classifier",
+      "Allure App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Standard ALLURE RIC with 10 channels and LE Audio Bluetooth.",
     "image_filename": "widex-allure.jpg"
@@ -3825,9 +4458,13 @@
       "TV Streaming"
     ],
     "key_features": [
-      "8 channels",
-      "LE Audio + MFi + ASHA",
-      "2-year warranty"
+      "W1 chip",
+      "PureSound with ZeroDelay",
+      "8 frequency channels",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Allure App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Entry ALLURE RIC with LE Audio Bluetooth at an accessible price.",
     "image_filename": "widex-allure.jpg"
@@ -3857,8 +4494,13 @@
       "TV Streaming"
     ],
     "key_features": [
-      "8 channels",
-      "LE Audio + MFi + ASHA"
+      "W1 chip",
+      "PureSound with ZeroDelay",
+      "8 frequency channels",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Allure App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Entry ALLURE BTE with LE Audio Bluetooth.",
     "image_filename": "widex-allure-bte.jpg"
@@ -3888,10 +4530,17 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Allure PureSound",
-      "15 channels",
-      "Bluetooth streaming",
-      "AI Sound Assistant"
+      "W1 chip — 4× processing power",
+      "PureSound with ZeroDelay",
+      "12 frequency channels",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "AI Sound Personalisation",
+      "Sound Classifier",
+      "Dedicated streaming processor",
+      "ZEN Fractal tinnitus therapy",
+      "Allure App with AI tools",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex ALLURE BTE with AI-driven sound processing and Bluetooth connectivity.",
     "image_filename": "widex-allure-bte.jpg"
@@ -3921,10 +4570,17 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Allure PureSound",
-      "12 channels",
-      "Bluetooth streaming",
-      "AI Sound Assistant"
+      "W1 chip — 4× processing power",
+      "PureSound with ZeroDelay",
+      "12 frequency channels",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "AI Sound Personalisation",
+      "Sound Classifier",
+      "Dedicated streaming processor",
+      "ZEN Fractal tinnitus therapy",
+      "Allure App with AI tools",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex ALLURE ITE with AI-driven sound processing and Bluetooth connectivity.",
     "image_filename": "widex-allure-ite.jpg"
@@ -3954,10 +4610,14 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Allure PureSound",
-      "10 channels",
-      "Bluetooth streaming",
-      "AI Sound Assistant"
+      "W1 chip",
+      "PureSound with ZeroDelay",
+      "10 frequency channels",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Sound Classifier",
+      "Allure App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex ALLURE BTE with AI-driven sound processing and Bluetooth connectivity.",
     "image_filename": "widex-allure-bte.jpg"
@@ -3987,10 +4647,14 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Allure PureSound",
-      "10 channels",
-      "Bluetooth streaming",
-      "AI Sound Assistant"
+      "W1 chip",
+      "PureSound with ZeroDelay",
+      "10 frequency channels",
+      "Bluetooth LE Audio / MFi / ASHA",
+      "Sound Classifier",
+      "Allure App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex ALLURE ITE with AI-driven sound processing and Bluetooth connectivity.",
     "image_filename": "widex-allure-ite.jpg"
@@ -4021,9 +4685,11 @@
     ],
     "key_features": [
       "Allure PureSound",
-      "8 channels",
+      "8 frequency channels",
       "Bluetooth streaming",
-      "AI Sound Assistant"
+      "AI Sound Assistant",
+      "Allure App",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex ALLURE ITE with AI-driven sound processing and Bluetooth connectivity.",
     "image_filename": "widex-allure-ite.jpg"
@@ -4052,10 +4718,11 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "6 channels",
-      "MFi Bluetooth",
-      "ZEN tinnitus",
-      "312 battery"
+      "6 frequency channels",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Mid-range RIC with MFi Bluetooth and ZEN tinnitus therapy.",
     "image_filename": "widex-enjoy.jpg"
@@ -4084,9 +4751,10 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "4 channels",
-      "Bluetooth",
-      "ZEN tinnitus"
+      "4 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing"
     ],
     "short_desc": "Entry 312-battery RIC with Bluetooth and ZEN tinnitus.",
     "image_filename": "widex-enjoy.jpg"
@@ -4115,9 +4783,10 @@
       "Seniors"
     ],
     "key_features": [
-      "4 channels",
-      "BTE Power",
-      "Fits up to 110 dB"
+      "4 frequency channels",
+      "BTE Power design",
+      "Fits severe to profound loss",
+      "Automatic sound processing"
     ],
     "short_desc": "Economy power BTE for severe-profound loss at low cost.",
     "image_filename": "widex-enjoy.jpg"
@@ -4146,8 +4815,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "6 channels"
+      "6 frequency channels",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY RIC for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-ric.jpg"
@@ -4176,8 +4848,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "6 channels"
+      "6 frequency channels",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY RIC for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-ric.jpg"
@@ -4206,8 +4881,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "6 channels"
+      "6 frequency channels",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY RIC for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-ric.jpg"
@@ -4236,8 +4914,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "6 channels"
+      "6 frequency channels",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY BTE for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-bte.jpg"
@@ -4266,8 +4947,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "6 channels"
+      "6 frequency channels",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY BTE for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-bte.jpg"
@@ -4296,8 +4980,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "6 channels"
+      "6 frequency channels",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY BTE for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-bte.jpg"
@@ -4326,8 +5013,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "6 channels"
+      "6 frequency channels",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY BTE for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-bte.jpg"
@@ -4356,8 +5046,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "6 channels"
+      "6 frequency channels",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY ITC for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-itc.jpg"
@@ -4386,8 +5079,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "6 channels"
+      "6 frequency channels",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY CIC for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-cic.jpg"
@@ -4416,8 +5112,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "6 channels"
+      "6 frequency channels",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY CIC for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-cic.jpg"
@@ -4447,7 +5146,9 @@
     ],
     "key_features": [
       "ENJOY platform",
-      "4 channels"
+      "4 frequency channels",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY RIC for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-ric.jpg"
@@ -4477,7 +5178,9 @@
     ],
     "key_features": [
       "ENJOY platform",
-      "4 channels"
+      "4 frequency channels",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY BTE for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-bte.jpg"
@@ -4507,7 +5210,9 @@
     ],
     "key_features": [
       "ENJOY platform",
-      "4 channels"
+      "4 frequency channels",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY BTE for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-bte.jpg"
@@ -4537,7 +5242,9 @@
     ],
     "key_features": [
       "ENJOY platform",
-      "4 channels"
+      "4 frequency channels",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY BTE for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-bte.jpg"
@@ -4567,7 +5274,9 @@
     ],
     "key_features": [
       "ENJOY platform",
-      "4 channels"
+      "4 frequency channels",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY BTE for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-bte.jpg"
@@ -4597,7 +5306,9 @@
     ],
     "key_features": [
       "ENJOY platform",
-      "4 channels"
+      "4 frequency channels",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY ITC for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-itc.jpg"
@@ -4627,7 +5338,9 @@
     ],
     "key_features": [
       "ENJOY platform",
-      "4 channels"
+      "4 frequency channels",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY CIC for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-cic.jpg"
@@ -4657,7 +5370,9 @@
     ],
     "key_features": [
       "ENJOY platform",
-      "4 channels"
+      "4 frequency channels",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Widex ENJOY CIC for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-cic.jpg"
@@ -4686,8 +5401,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "4 channels"
+      "4 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing"
     ],
     "short_desc": "Widex ENJOY BTE for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-bte.jpg"
@@ -4716,8 +5433,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "4 channels"
+      "4 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing"
     ],
     "short_desc": "Widex ENJOY BTE for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-bte.jpg"
@@ -4746,8 +5465,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "ENJOY platform",
-      "4 channels"
+      "4 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Automatic sound processing"
     ],
     "short_desc": "Widex ENJOY ITC for natural sound at an accessible price.",
     "image_filename": "widex-enjoy-itc.jpg"
@@ -4777,10 +5498,15 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "15 channels",
-      "SoundSense Learn AI",
-      "MFi Bluetooth",
-      "ZEN tinnitus"
+      "SoundSense Learn AI personalisation",
+      "15 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App with real-time tuning",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Premium Evoke RIC with AI personalised sound and ZEN tinnitus.",
     "image_filename": "widex-evoke.jpg"
@@ -4810,10 +5536,14 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "12 channels",
       "SoundSense Learn AI",
-      "MFi Bluetooth",
-      "ZEN tinnitus"
+      "12 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Advanced Evoke RIC with AI learning and MFi Bluetooth.",
     "image_filename": "widex-evoke.jpg"
@@ -4842,9 +5572,11 @@
       "TV Streaming"
     ],
     "key_features": [
-      "10 channels",
       "SoundSense Learn",
-      "MFi Bluetooth"
+      "10 frequency channels",
+      "SoundClass Technology",
+      "Bluetooth MFi",
+      "EVOKE App"
     ],
     "short_desc": "Standard Evoke RIC with SoundSense and Bluetooth.",
     "image_filename": "widex-evoke.jpg"
@@ -4872,8 +5604,10 @@
       "Budget-Friendly"
     ],
     "key_features": [
-      "6 channels",
-      "SoundSense"
+      "SoundSense technology",
+      "6 frequency channels",
+      "Automatic sound processing",
+      "TONELINK App"
     ],
     "short_desc": "Entry Evoke RIC — trusted Widex sound at a lower price.",
     "image_filename": "widex-evoke.jpg"
@@ -4901,10 +5635,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "15 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI personalisation",
+      "15 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App with real-time tuning",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke RIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-ric.jpg"
@@ -4932,10 +5671,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "15 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI personalisation",
+      "15 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App with real-time tuning",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke RIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-ric.jpg"
@@ -4963,10 +5707,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "15 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI personalisation",
+      "15 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App with real-time tuning",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke RIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-ric.jpg"
@@ -4994,10 +5743,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "15 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI personalisation",
+      "15 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App with real-time tuning",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke BTE with machine learning for personalized sound.",
     "image_filename": "widex-evoke-bte.jpg"
@@ -5025,10 +5779,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "15 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI personalisation",
+      "15 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App with real-time tuning",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke ITC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-itc.jpg"
@@ -5056,10 +5815,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "15 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI personalisation",
+      "15 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App with real-time tuning",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke CIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-cic.jpg"
@@ -5087,10 +5851,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "15 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI personalisation",
+      "15 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App with real-time tuning",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke CIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-cic.jpg"
@@ -5118,10 +5887,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "15 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI personalisation",
+      "15 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App with real-time tuning",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke BTE with machine learning for personalized sound.",
     "image_filename": "widex-evoke-bte.jpg"
@@ -5149,10 +5923,14 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "12 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI",
+      "12 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke RIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-ric.jpg"
@@ -5180,10 +5958,14 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "12 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI",
+      "12 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke RIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-ric.jpg"
@@ -5211,10 +5993,14 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "12 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI",
+      "12 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke RIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-ric.jpg"
@@ -5242,10 +6028,14 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "12 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI",
+      "12 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke BTE with machine learning for personalized sound.",
     "image_filename": "widex-evoke-bte.jpg"
@@ -5273,10 +6063,14 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "12 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI",
+      "12 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke ITC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-itc.jpg"
@@ -5304,10 +6098,14 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "12 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI",
+      "12 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke CIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-cic.jpg"
@@ -5335,10 +6133,14 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "12 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI",
+      "12 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke CIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-cic.jpg"
@@ -5366,10 +6168,14 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "12 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn AI",
+      "12 frequency channels",
+      "Fluid Sound Analyzer",
+      "SoundClass Technology",
+      "Bluetooth MFi streaming",
+      "ZEN Fractal tinnitus therapy",
+      "EVOKE App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex Evoke BTE with machine learning for personalized sound.",
     "image_filename": "widex-evoke-bte.jpg"
@@ -5397,10 +6203,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "10 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn",
+      "10 frequency channels",
+      "SoundClass Technology",
+      "Bluetooth MFi",
+      "EVOKE App"
     ],
     "short_desc": "Widex Evoke RIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-ric.jpg"
@@ -5428,10 +6235,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "10 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn",
+      "10 frequency channels",
+      "SoundClass Technology",
+      "Bluetooth MFi",
+      "EVOKE App"
     ],
     "short_desc": "Widex Evoke RIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-ric.jpg"
@@ -5459,10 +6267,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "10 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn",
+      "10 frequency channels",
+      "SoundClass Technology",
+      "Bluetooth MFi",
+      "EVOKE App"
     ],
     "short_desc": "Widex Evoke RIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-ric.jpg"
@@ -5490,10 +6299,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "10 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn",
+      "10 frequency channels",
+      "SoundClass Technology",
+      "Bluetooth MFi",
+      "EVOKE App"
     ],
     "short_desc": "Widex Evoke BTE with machine learning for personalized sound.",
     "image_filename": "widex-evoke-bte.jpg"
@@ -5521,10 +6331,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "10 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn",
+      "10 frequency channels",
+      "SoundClass Technology",
+      "Bluetooth MFi",
+      "EVOKE App"
     ],
     "short_desc": "Widex Evoke ITC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-itc.jpg"
@@ -5552,10 +6363,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "10 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn",
+      "10 frequency channels",
+      "SoundClass Technology",
+      "Bluetooth MFi",
+      "EVOKE App"
     ],
     "short_desc": "Widex Evoke CIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-cic.jpg"
@@ -5583,10 +6395,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "10 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn",
+      "10 frequency channels",
+      "SoundClass Technology",
+      "Bluetooth MFi",
+      "EVOKE App"
     ],
     "short_desc": "Widex Evoke CIC with machine learning for personalized sound.",
     "image_filename": "widex-evoke-cic.jpg"
@@ -5614,10 +6427,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Evoke SoundSense technology",
-      "10 channels",
-      "Machine learning",
-      "Bluetooth"
+      "SoundSense Learn",
+      "10 frequency channels",
+      "SoundClass Technology",
+      "Bluetooth MFi",
+      "EVOKE App"
     ],
     "short_desc": "Widex Evoke BTE with machine learning for personalized sound.",
     "image_filename": "widex-evoke-bte.jpg"
@@ -5895,11 +6709,14 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "6 channels",
-      "Bluetooth",
-      "ZEN tinnitus",
-      "Rechargeable",
-      "Tonelink App"
+      "TruAcoustics™ ear canal optimisation",
+      "6 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MAGNIFY App (iOS & Android)",
+      "TONELINK App",
+      "Nano-coated moisture protection",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Mid-range rechargeable RIC with Bluetooth and tinnitus therapy.",
     "image_filename": "widex-magnify.jpg"
@@ -5928,9 +6745,13 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "6 channels",
-      "Bluetooth",
-      "ZEN tinnitus"
+      "TruAcoustics™ ear canal optimisation",
+      "6 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MAGNIFY App (iOS & Android)",
+      "TONELINK App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Mid-range 312-battery RIC with Bluetooth and tinnitus therapy.",
     "image_filename": "widex-magnify.jpg"
@@ -5960,10 +6781,11 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "4 channels",
-      "Bluetooth",
-      "ZEN tinnitus",
-      "Rechargeable"
+      "4 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Nano-coated moisture protection",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Entry rechargeable RIC with Bluetooth and tinnitus therapy.",
     "image_filename": "widex-magnify.jpg"
@@ -5991,8 +6813,9 @@
       "Budget-Friendly"
     ],
     "key_features": [
-      "4 channels",
-      "RIC size 10"
+      "4 frequency channels",
+      "Basic amplification",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Economy RIC for moderate-severe loss — affordable Widex quality.",
     "image_filename": "widex-magnify.jpg"
@@ -6021,9 +6844,13 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "6 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "6 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MAGNIFY App (iOS & Android)",
+      "TONELINK App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY RIC with 6-channel processing for clear sound.",
     "image_filename": "widex-magnify-ric.jpg"
@@ -6052,9 +6879,14 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "6 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "6 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MAGNIFY App (iOS & Android)",
+      "TONELINK App",
+      "Nano-coated moisture protection",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex MAGNIFY BTE with 6-channel processing for clear sound.",
     "image_filename": "widex-magnify-bte.jpg"
@@ -6083,9 +6915,13 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "6 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "6 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MAGNIFY App (iOS & Android)",
+      "TONELINK App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY BTE with 6-channel processing for clear sound.",
     "image_filename": "widex-magnify-bte.jpg"
@@ -6114,9 +6950,13 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "6 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "6 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MAGNIFY App (iOS & Android)",
+      "TONELINK App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY BTE with 6-channel processing for clear sound.",
     "image_filename": "widex-magnify-bte.jpg"
@@ -6145,9 +6985,13 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "6 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "6 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MAGNIFY App (iOS & Android)",
+      "TONELINK App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY ITC with 6-channel processing for clear sound.",
     "image_filename": "widex-magnify-itc.jpg"
@@ -6176,9 +7020,13 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "6 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "6 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MAGNIFY App (iOS & Android)",
+      "TONELINK App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY CIC with 6-channel processing for clear sound.",
     "image_filename": "widex-magnify-cic.jpg"
@@ -6207,9 +7055,13 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "6 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "6 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MAGNIFY App (iOS & Android)",
+      "TONELINK App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY CIC with 6-channel processing for clear sound.",
     "image_filename": "widex-magnify-cic.jpg"
@@ -6238,9 +7090,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "4 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "4 frequency channels",
+      "MAGNIFY App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY RIC with 4-channel processing for clear sound.",
     "image_filename": "widex-magnify-ric.jpg"
@@ -6269,9 +7122,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "4 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "4 frequency channels",
+      "MAGNIFY App",
+      "Nano-coated moisture protection",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex MAGNIFY BTE with 4-channel processing for clear sound.",
     "image_filename": "widex-magnify-bte.jpg"
@@ -6300,9 +7155,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "4 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "4 frequency channels",
+      "MAGNIFY App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY BTE with 4-channel processing for clear sound.",
     "image_filename": "widex-magnify-bte.jpg"
@@ -6331,9 +7187,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "4 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "4 frequency channels",
+      "MAGNIFY App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY BTE with 4-channel processing for clear sound.",
     "image_filename": "widex-magnify-bte.jpg"
@@ -6362,9 +7219,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "4 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "4 frequency channels",
+      "MAGNIFY App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY ITC with 4-channel processing for clear sound.",
     "image_filename": "widex-magnify-itc.jpg"
@@ -6393,9 +7251,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "4 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "4 frequency channels",
+      "MAGNIFY App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY CIC with 4-channel processing for clear sound.",
     "image_filename": "widex-magnify-cic.jpg"
@@ -6424,9 +7283,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "4 channels",
-      "TruAcoustics"
+      "TruAcoustics™ ear canal optimisation",
+      "4 frequency channels",
+      "MAGNIFY App",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY CIC with 4-channel processing for clear sound.",
     "image_filename": "widex-magnify-cic.jpg"
@@ -6455,9 +7315,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "4 channels",
-      "TruAcoustics"
+      "4 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY BTE with 4-channel processing for clear sound.",
     "image_filename": "widex-magnify-bte.jpg"
@@ -6486,9 +7347,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "4 channels",
-      "TruAcoustics"
+      "4 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY ITC with 4-channel processing for clear sound.",
     "image_filename": "widex-magnify-itc.jpg"
@@ -6517,9 +7379,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "4 channels",
-      "TruAcoustics"
+      "4 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY CIC with 4-channel processing for clear sound.",
     "image_filename": "widex-magnify-cic.jpg"
@@ -6548,9 +7411,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "MAGNIFY platform",
-      "4 channels",
-      "TruAcoustics"
+      "4 frequency channels",
+      "Bluetooth streaming",
+      "ZEN Fractal tinnitus therapy",
+      "Nano-coated moisture protection"
     ],
     "short_desc": "Widex MAGNIFY CIC with 4-channel processing for clear sound.",
     "image_filename": "widex-magnify-cic.jpg"
@@ -6581,11 +7445,16 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "15 channels",
-      "PureSound technology",
-      "MFi + ASHA Bluetooth",
-      "ZEN tinnitus",
-      "Slim stylish design"
+      "PureSound with ZeroDelay technology",
+      "15 frequency channels",
+      "SoundSense Learn AI personalisation",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App (custom programmes)",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex's premium slim RIC with PureSound and Bluetooth streaming.",
     "image_filename": "widex-moment-smartric.jpg"
@@ -6616,11 +7485,16 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "15 channels",
-      "PureSound",
-      "MFi + ASHA Bluetooth",
-      "ZEN tinnitus",
-      "Rechargeable Li-ion"
+      "PureSound with ZeroDelay technology",
+      "15 frequency channels",
+      "SoundSense Learn AI personalisation",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App (custom programmes)",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Premium rechargeable RIC with 15-channel PureSound processing.",
     "image_filename": "widex-moment-sric.jpg"
@@ -6650,11 +7524,15 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "15 channels",
-      "PureSound",
-      "MFi + ASHA",
-      "ZEN tinnitus",
-      "312 battery"
+      "PureSound with ZeroDelay technology",
+      "15 frequency channels",
+      "SoundSense Learn AI personalisation",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App (custom programmes)",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Premium 312-battery RIC with 15-channel PureSound.",
     "image_filename": "widex-moment-ric312.jpg"
@@ -6685,11 +7563,16 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "15 channels",
-      "PureSound",
-      "MFi + ASHA",
-      "ZEN tinnitus",
-      "Rechargeable"
+      "PureSound with ZeroDelay technology",
+      "15 frequency channels",
+      "SoundSense Learn AI personalisation",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App (custom programmes)",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Premium rechargeable BTE with 15-channel PureSound.",
     "image_filename": "widex-moment-bte.jpg"
@@ -6719,11 +7602,15 @@
       "Discreet Wear"
     ],
     "key_features": [
-      "15 channels",
-      "PureSound",
-      "MFi + ASHA",
-      "ZEN tinnitus",
-      "CIC invisible"
+      "PureSound with ZeroDelay technology",
+      "15 frequency channels",
+      "SoundSense Learn AI personalisation",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App (custom programmes)",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Premium CIC with PureSound and Bluetooth — nearly invisible.",
     "image_filename": "widex-moment-cic.jpg"
@@ -6754,10 +7641,15 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "12 channels",
-      "PureSound",
-      "MFi + ASHA",
-      "ZEN tinnitus"
+      "PureSound with ZeroDelay",
+      "12 frequency channels",
+      "SoundSense Learn AI",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Advanced slim RIC with PureSound and full Bluetooth.",
     "image_filename": "widex-moment-smartric.jpg"
@@ -6788,10 +7680,15 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "12 channels",
-      "PureSound",
-      "MFi + ASHA",
-      "ZEN tinnitus"
+      "PureSound with ZeroDelay",
+      "12 frequency channels",
+      "SoundSense Learn AI",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Advanced rechargeable RIC with 12-channel PureSound.",
     "image_filename": "widex-moment-sric.jpg"
@@ -6821,9 +7718,13 @@
       "TV Streaming"
     ],
     "key_features": [
-      "10 channels",
-      "PureSound",
-      "MFi + ASHA"
+      "PureSound with ZeroDelay",
+      "10 frequency channels",
+      "SoundSense Learn",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Standard slim RIC with PureSound and Bluetooth.",
     "image_filename": "widex-moment-smartric.jpg"
@@ -6853,9 +7754,13 @@
       "TV Streaming"
     ],
     "key_features": [
-      "10 channels",
-      "PureSound",
-      "MFi + ASHA"
+      "PureSound with ZeroDelay",
+      "10 frequency channels",
+      "SoundSense Learn",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Standard rechargeable RIC with PureSound and Bluetooth.",
     "image_filename": "widex-moment-sric.jpg"
@@ -6885,9 +7790,11 @@
       "TV Streaming"
     ],
     "key_features": [
-      "6 channels",
-      "PureSound",
-      "MFi + ASHA"
+      "PureSound technology",
+      "6 frequency channels",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Entry slim RIC with PureSound at an accessible price.",
     "image_filename": "widex-moment-smartric.jpg"
@@ -6917,9 +7824,11 @@
       "TV Streaming"
     ],
     "key_features": [
-      "6 channels",
-      "PureSound",
-      "MFi + ASHA"
+      "PureSound technology",
+      "6 frequency channels",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Entry rechargeable RIC with PureSound.",
     "image_filename": "widex-moment-sric.jpg"
@@ -6948,9 +7857,10 @@
       "TV Streaming"
     ],
     "key_features": [
-      "6 channels",
-      "PureSound",
-      "MFi + ASHA"
+      "PureSound technology",
+      "6 frequency channels",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App"
     ],
     "short_desc": "Entry 312-battery RIC with PureSound.",
     "image_filename": "widex-moment-ric312.jpg"
@@ -6980,10 +7890,11 @@
       "TV Streaming"
     ],
     "key_features": [
-      "6 channels",
-      "PureSound",
-      "MFi + ASHA",
-      "Rechargeable"
+      "PureSound technology",
+      "6 frequency channels",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Entry rechargeable BTE with PureSound.",
     "image_filename": "widex-moment-bte.jpg"
@@ -7012,10 +7923,16 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "PureSound technology",
-      "15 channels",
-      "BTE 13",
-      "Bluetooth"
+      "PureSound with ZeroDelay technology",
+      "15 frequency channels",
+      "SoundSense Learn AI personalisation",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App (custom programmes)",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex MOMENT BTE with 13 battery and 15-channel processing.",
     "image_filename": "widex-moment-bte.jpg"
@@ -7043,9 +7960,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "PureSound technology",
-      "15 channels",
-      "Mini BTE 312"
+      "PureSound with ZeroDelay technology",
+      "15 frequency channels",
+      "SoundSense Learn AI personalisation",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App (custom programmes)",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Compact Widex MOMENT Mini BTE 312 with 15-channel processing.",
     "image_filename": "widex-moment-bte.jpg"
@@ -7074,9 +7997,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "PureSound technology",
-      "15 channels",
-      "Custom ITC"
+      "PureSound with ZeroDelay technology",
+      "15 frequency channels",
+      "SoundSense Learn AI personalisation",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App (custom programmes)",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Custom Widex MOMENT ITC with 15-channel PureSound processing.",
     "image_filename": "widex-moment-itc.jpg"
@@ -7104,9 +8033,15 @@
       "Discreet Wear"
     ],
     "key_features": [
-      "PureSound technology",
-      "15 channels",
-      "Smallest CIC Micro"
+      "PureSound with ZeroDelay technology",
+      "15 frequency channels",
+      "SoundSense Learn AI personalisation",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App (custom programmes)",
+      "Location-based auto programmes",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex's smallest CIC Micro with 15-channel PureSound processing.",
     "image_filename": "widex-moment-cic.jpg"
@@ -7135,10 +8070,14 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "PureSound technology",
-      "12 channels",
-      "ZeroDelay processing",
-      "Bluetooth"
+      "PureSound with ZeroDelay",
+      "12 frequency channels",
+      "SoundSense Learn AI",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex MOMENT RIC 312 with PureSound technology and natural sound quality.",
     "image_filename": "widex-moment-ric.jpg"
@@ -7167,10 +8106,15 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "PureSound technology",
-      "12 channels",
-      "Rechargeable BTE",
-      "Bluetooth"
+      "PureSound with ZeroDelay",
+      "12 frequency channels",
+      "SoundSense Learn AI",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex MOMENT rechargeable BTE with PureSound for natural sound.",
     "image_filename": "widex-moment-bte.jpg"
@@ -7199,10 +8143,15 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "PureSound technology",
-      "12 channels",
-      "BTE 13",
-      "Bluetooth"
+      "PureSound with ZeroDelay",
+      "12 frequency channels",
+      "SoundSense Learn AI",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex MOMENT BTE with 13 battery and 12-channel processing.",
     "image_filename": "widex-moment-bte.jpg"
@@ -7230,9 +8179,14 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "PureSound technology",
-      "12 channels",
-      "Mini BTE 312"
+      "PureSound with ZeroDelay",
+      "12 frequency channels",
+      "SoundSense Learn AI",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Compact Widex MOMENT Mini BTE 312 with 12-channel processing.",
     "image_filename": "widex-moment-bte.jpg"
@@ -7261,9 +8215,14 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "PureSound technology",
-      "12 channels",
-      "Custom ITC"
+      "PureSound with ZeroDelay",
+      "12 frequency channels",
+      "SoundSense Learn AI",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Custom Widex MOMENT ITC with 12-channel PureSound processing.",
     "image_filename": "widex-moment-itc.jpg"
@@ -7291,9 +8250,14 @@
       "Discreet Wear"
     ],
     "key_features": [
-      "PureSound technology",
-      "12 channels",
-      "Nearly invisible CIC"
+      "PureSound with ZeroDelay",
+      "12 frequency channels",
+      "SoundSense Learn AI",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Nearly invisible Widex MOMENT CIC with 12-channel processing.",
     "image_filename": "widex-moment-cic.jpg"
@@ -7321,9 +8285,14 @@
       "Discreet Wear"
     ],
     "key_features": [
-      "PureSound technology",
-      "12 channels",
-      "Smallest CIC Micro"
+      "PureSound with ZeroDelay",
+      "12 frequency channels",
+      "SoundSense Learn AI",
+      "Fluid Sound Analyzer",
+      "Bluetooth MFi + ASHA streaming",
+      "ZEN Fractal tinnitus therapy",
+      "MOMENT App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex's smallest CIC Micro with 12-channel PureSound processing.",
     "image_filename": "widex-moment-cic.jpg"
@@ -7352,10 +8321,12 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "PureSound technology",
-      "10 channels",
-      "ZeroDelay processing",
-      "Bluetooth"
+      "PureSound with ZeroDelay",
+      "10 frequency channels",
+      "SoundSense Learn",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex MOMENT RIC 312 with PureSound technology and natural sound quality.",
     "image_filename": "widex-moment-ric.jpg"
@@ -7384,10 +8355,13 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "PureSound technology",
-      "10 channels",
-      "Rechargeable BTE",
-      "Bluetooth"
+      "PureSound with ZeroDelay",
+      "10 frequency channels",
+      "SoundSense Learn",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex MOMENT rechargeable BTE with PureSound for natural sound.",
     "image_filename": "widex-moment-bte.jpg"
@@ -7416,10 +8390,13 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "PureSound technology",
-      "10 channels",
-      "BTE 13",
-      "Bluetooth"
+      "PureSound with ZeroDelay",
+      "10 frequency channels",
+      "SoundSense Learn",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex MOMENT BTE with 13 battery and 10-channel processing.",
     "image_filename": "widex-moment-bte.jpg"
@@ -7447,9 +8424,12 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "PureSound technology",
-      "10 channels",
-      "Mini BTE 312"
+      "PureSound with ZeroDelay",
+      "10 frequency channels",
+      "SoundSense Learn",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Compact Widex MOMENT Mini BTE 312 with 10-channel processing.",
     "image_filename": "widex-moment-bte.jpg"
@@ -7478,9 +8458,12 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "PureSound technology",
-      "10 channels",
-      "Custom ITC"
+      "PureSound with ZeroDelay",
+      "10 frequency channels",
+      "SoundSense Learn",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Custom Widex MOMENT ITC with 10-channel PureSound processing.",
     "image_filename": "widex-moment-itc.jpg"
@@ -7508,9 +8491,12 @@
       "Discreet Wear"
     ],
     "key_features": [
-      "PureSound technology",
-      "10 channels",
-      "Nearly invisible CIC"
+      "PureSound with ZeroDelay",
+      "10 frequency channels",
+      "SoundSense Learn",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Nearly invisible Widex MOMENT CIC with 10-channel processing.",
     "image_filename": "widex-moment-cic.jpg"
@@ -7538,9 +8524,12 @@
       "Discreet Wear"
     ],
     "key_features": [
-      "PureSound technology",
-      "10 channels",
-      "Smallest CIC Micro"
+      "PureSound with ZeroDelay",
+      "10 frequency channels",
+      "SoundSense Learn",
+      "Bluetooth MFi + ASHA",
+      "MOMENT App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Widex's smallest CIC Micro with 10-channel PureSound processing.",
     "image_filename": "widex-moment-cic.jpg"
@@ -7570,9 +8559,10 @@
     ],
     "key_features": [
       "PureSound technology",
-      "8 channels",
-      "BTE 13",
-      "Bluetooth"
+      "8 frequency channels",
+      "Bluetooth streaming",
+      "MOMENT App",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Widex MOMENT BTE with 13 battery and 8-channel processing.",
     "image_filename": "widex-moment-bte.jpg"
@@ -7601,8 +8591,9 @@
     ],
     "key_features": [
       "PureSound technology",
-      "8 channels",
-      "Mini BTE 312"
+      "8 frequency channels",
+      "Bluetooth streaming",
+      "MOMENT App"
     ],
     "short_desc": "Compact Widex MOMENT Mini BTE 312 with 8-channel processing.",
     "image_filename": "widex-moment-bte.jpg"
@@ -7632,8 +8623,9 @@
     ],
     "key_features": [
       "PureSound technology",
-      "8 channels",
-      "Custom ITC"
+      "8 frequency channels",
+      "Bluetooth streaming",
+      "MOMENT App"
     ],
     "short_desc": "Custom Widex MOMENT ITC with 8-channel PureSound processing.",
     "image_filename": "widex-moment-itc.jpg"
@@ -7662,8 +8654,9 @@
     ],
     "key_features": [
       "PureSound technology",
-      "8 channels",
-      "Nearly invisible CIC"
+      "8 frequency channels",
+      "Bluetooth streaming",
+      "MOMENT App"
     ],
     "short_desc": "Nearly invisible Widex MOMENT CIC with 8-channel processing.",
     "image_filename": "widex-moment-cic.jpg"
@@ -7692,8 +8685,9 @@
     ],
     "key_features": [
       "PureSound technology",
-      "8 channels",
-      "Smallest CIC Micro"
+      "8 frequency channels",
+      "Bluetooth streaming",
+      "MOMENT App"
     ],
     "short_desc": "Widex's smallest CIC Micro with 8-channel PureSound processing.",
     "image_filename": "widex-moment-cic.jpg"
@@ -7723,12 +8717,14 @@
       "TV Streaming"
     ],
     "key_features": [
-      "24 bands",
-      "Hybrid Technology",
-      "Bluetooth",
-      "IP68",
-      "Charger Plus",
-      "CIC/IIC options"
+      "Hybrid Technology™ dual processing",
+      "24 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA streaming",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant",
+      "Charger Plus portable charging"
     ],
     "short_desc": "Premium Alpha 9 with Hybrid Tech, 24 bands, and full Bluetooth.",
     "image_filename": "bernafon-alpha.jpg"
@@ -7757,9 +8753,14 @@
       "TV Streaming"
     ],
     "key_features": [
-      "24 bands",
-      "Hybrid Technology",
-      "Bluetooth"
+      "Hybrid Technology™ dual processing",
+      "24 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA streaming",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant",
+      "Charger Plus portable charging"
     ],
     "short_desc": "Alpha 9 on 312 battery — premium Hybrid Tech without charger.",
     "image_filename": "bernafon-alpha.jpg"
@@ -7788,9 +8789,14 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "24 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™ dual processing",
+      "24 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA streaming",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant",
+      "Charger Plus portable charging"
     ],
     "short_desc": "Bernafon Alpha 9 with Hybrid Technology and 24-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -7819,9 +8825,14 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "24 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™ dual processing",
+      "24 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA streaming",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant",
+      "Charger Plus portable charging"
     ],
     "short_desc": "Bernafon Alpha 9 with Hybrid Technology and 24-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -7850,9 +8861,14 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "24 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™ dual processing",
+      "24 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA streaming",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant",
+      "Charger Plus portable charging"
     ],
     "short_desc": "Bernafon Alpha 9 with Hybrid Technology and 24-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -7881,9 +8897,14 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "24 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™ dual processing",
+      "24 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA streaming",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant",
+      "Charger Plus portable charging"
     ],
     "short_desc": "Bernafon Alpha 9 with Hybrid Technology and 24-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -7912,9 +8933,14 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "24 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™ dual processing",
+      "24 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA streaming",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant",
+      "Charger Plus portable charging"
     ],
     "short_desc": "Bernafon Alpha 9 with Hybrid Technology and 24-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -7944,10 +8970,13 @@
       "TV Streaming"
     ],
     "key_features": [
-      "20 bands",
-      "Hybrid Technology",
-      "Bluetooth",
-      "IP68"
+      "Hybrid Technology™",
+      "20 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Advanced Alpha 7 with 20-band processing and Bluetooth.",
     "image_filename": "bernafon-alpha.jpg"
@@ -7976,9 +9005,13 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "20 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "20 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Bernafon Alpha 7 with Hybrid Technology and 20-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8007,9 +9040,13 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "20 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "20 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Bernafon Alpha 7 with Hybrid Technology and 20-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8038,9 +9075,13 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "20 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "20 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Bernafon Alpha 7 with Hybrid Technology and 20-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8069,9 +9110,13 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "20 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "20 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Bernafon Alpha 7 with Hybrid Technology and 20-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8100,9 +9145,13 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "20 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "20 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Bernafon Alpha 7 with Hybrid Technology and 20-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8132,9 +9181,11 @@
       "TV Streaming"
     ],
     "key_features": [
-      "18 bands",
-      "Hybrid Technology",
-      "Bluetooth"
+      "Hybrid Technology™",
+      "18 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Standard Alpha 5 with Hybrid Tech and Bluetooth.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8162,9 +9213,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "18 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "18 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Alpha 5 with Hybrid Technology and 18-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8192,9 +9245,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "18 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "18 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Alpha 5 with Hybrid Technology and 18-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8222,9 +9277,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "18 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "18 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Alpha 5 with Hybrid Technology and 18-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8252,9 +9309,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "18 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "18 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Alpha 5 with Hybrid Technology and 18-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8282,9 +9341,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "18 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "18 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Alpha 5 with Hybrid Technology and 18-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8314,9 +9375,11 @@
       "TV Streaming"
     ],
     "key_features": [
-      "14 bands",
-      "Bluetooth",
-      "Rechargeable"
+      "14 frequency bands",
+      "Basic directionality",
+      "Bluetooth streaming",
+      "Bernafon App",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Essential Alpha 3 rechargeable RITE with Bluetooth.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8344,8 +9407,11 @@
       "Budget-Friendly"
     ],
     "key_features": [
-      "14 bands",
-      "312 battery"
+      "14 frequency bands",
+      "Basic directionality",
+      "Bluetooth streaming",
+      "Bernafon App",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Essential Alpha 3 on 312 battery — reliable and affordable.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8373,9 +9439,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "14 fitting bands",
-      "Bluetooth streaming"
+      "14 frequency bands",
+      "Basic directionality",
+      "Bluetooth streaming",
+      "Bernafon App",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Alpha 3 with Hybrid Technology and 14-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8403,9 +9471,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "14 fitting bands",
-      "Bluetooth streaming"
+      "14 frequency bands",
+      "Basic directionality",
+      "Bluetooth streaming",
+      "Bernafon App",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Alpha 3 with Hybrid Technology and 14-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8433,9 +9503,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "14 fitting bands",
-      "Bluetooth streaming"
+      "14 frequency bands",
+      "Basic directionality",
+      "Bluetooth streaming",
+      "Bernafon App",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Alpha 3 with Hybrid Technology and 14-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8463,9 +9535,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "14 fitting bands",
-      "Bluetooth streaming"
+      "14 frequency bands",
+      "Basic directionality",
+      "Bluetooth streaming",
+      "Bernafon App",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Alpha 3 with Hybrid Technology and 14-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8493,9 +9567,11 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "14 fitting bands",
-      "Bluetooth streaming"
+      "14 frequency bands",
+      "Basic directionality",
+      "Bluetooth streaming",
+      "Bernafon App",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Alpha 3 with Hybrid Technology and 14-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8524,9 +9600,10 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "12 bands",
-      "Bluetooth",
-      "Rechargeable"
+      "12 frequency bands",
+      "Bluetooth streaming",
+      "Rechargeable lithium-ion",
+      "Bernafon App"
     ],
     "short_desc": "Entry Alpha rechargeable RITE with Bluetooth at great value.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8554,9 +9631,10 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "12 fitting bands",
-      "Bluetooth streaming"
+      "12 frequency bands",
+      "Bluetooth streaming",
+      "Rechargeable lithium-ion",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Alpha 1 with Hybrid Technology and 12-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8584,9 +9662,10 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "12 fitting bands",
-      "Bluetooth streaming"
+      "12 frequency bands",
+      "Bluetooth streaming",
+      "Rechargeable lithium-ion",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Alpha 1 with Hybrid Technology and 12-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8614,9 +9693,10 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "12 fitting bands",
-      "Bluetooth streaming"
+      "12 frequency bands",
+      "Bluetooth streaming",
+      "Rechargeable lithium-ion",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Alpha 1 with Hybrid Technology and 12-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8644,9 +9724,10 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "12 fitting bands",
-      "Bluetooth streaming"
+      "12 frequency bands",
+      "Bluetooth streaming",
+      "Rechargeable lithium-ion",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Alpha 1 with Hybrid Technology and 12-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8674,9 +9755,10 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "12 fitting bands",
-      "Bluetooth streaming"
+      "12 frequency bands",
+      "Bluetooth streaming",
+      "Rechargeable lithium-ion",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Alpha 1 with Hybrid Technology and 12-band processing.",
     "image_filename": "bernafon-alpha.jpg"
@@ -8706,12 +9788,16 @@
       "TV Streaming"
     ],
     "key_features": [
-      "24 bands",
-      "Hybrid Technology",
-      "Bluetooth",
-      "IP68",
-      "Charger Plus",
-      "RITE + 312 options"
+      "Hybrid Technology™ advanced processing",
+      "24 frequency bands",
+      "Hybrid Sound Care™ wind/contact noise protection",
+      "Automatic & adaptive directionality",
+      "Bluetooth MFi + ASHA streaming",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant",
+      "Charger Plus portable charging",
+      "Noise reduction up to 10 dB"
     ],
     "short_desc": "Top-tier Bernafon Alpha XT with Hybrid Tech and 24-band processing.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -8740,10 +9826,16 @@
       "TV Streaming"
     ],
     "key_features": [
-      "24 bands",
-      "Hybrid Technology",
-      "Bluetooth",
-      "IP68"
+      "Hybrid Technology™ advanced processing",
+      "24 frequency bands",
+      "Hybrid Sound Care™ wind/contact noise protection",
+      "Automatic & adaptive directionality",
+      "Bluetooth MFi + ASHA streaming",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant",
+      "Charger Plus portable charging",
+      "Noise reduction up to 10 dB"
     ],
     "short_desc": "Alpha XT 9 with 312 battery — Hybrid Tech at premium level.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -8772,9 +9864,16 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "24 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™ advanced processing",
+      "24 frequency bands",
+      "Hybrid Sound Care™ wind/contact noise protection",
+      "Automatic & adaptive directionality",
+      "Bluetooth MFi + ASHA streaming",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant",
+      "Charger Plus portable charging",
+      "Noise reduction up to 10 dB"
     ],
     "short_desc": "Bernafon Alpha XT with Hybrid Technology and 24-band processing.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -8803,9 +9902,16 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "24 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™ advanced processing",
+      "24 frequency bands",
+      "Hybrid Sound Care™ wind/contact noise protection",
+      "Automatic & adaptive directionality",
+      "Bluetooth MFi + ASHA streaming",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant",
+      "Charger Plus portable charging",
+      "Noise reduction up to 10 dB"
     ],
     "short_desc": "Bernafon Alpha XT with Hybrid Technology and 24-band processing.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -8835,10 +9941,14 @@
       "TV Streaming"
     ],
     "key_features": [
-      "20 bands",
-      "Hybrid Technology",
-      "Bluetooth",
-      "IP68"
+      "Hybrid Technology™",
+      "20 frequency bands",
+      "Hybrid Sound Care™",
+      "Automatic & adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Advanced Alpha XT with 20-band Hybrid Tech.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -8867,9 +9977,14 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "20 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "20 frequency bands",
+      "Hybrid Sound Care™",
+      "Automatic & adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Bernafon Alpha XT with Hybrid Technology and 20-band processing.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -8898,9 +10013,14 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "20 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "20 frequency bands",
+      "Hybrid Sound Care™",
+      "Automatic & adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Bernafon Alpha XT with Hybrid Technology and 20-band processing.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -8929,9 +10049,14 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "20 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "20 frequency bands",
+      "Hybrid Sound Care™",
+      "Automatic & adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Bernafon Alpha XT with Hybrid Technology and 20-band processing.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -8960,9 +10085,14 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "20 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "20 frequency bands",
+      "Hybrid Sound Care™",
+      "Automatic & adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "Tinnitus SoundSupport",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Bernafon Alpha XT with Hybrid Technology and 20-band processing.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -8992,10 +10122,12 @@
       "TV Streaming"
     ],
     "key_features": [
-      "18 bands",
-      "Hybrid Technology",
-      "Bluetooth",
-      "IP68"
+      "Hybrid Technology™",
+      "18 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Standard Alpha XT with 18-band Hybrid Technology.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -9024,9 +10156,12 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "18 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "18 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Bernafon Alpha XT with Hybrid Technology and 18-band processing.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -9055,9 +10190,12 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "18 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "18 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Bernafon Alpha XT with Hybrid Technology and 18-band processing.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -9086,9 +10224,12 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "18 fitting bands",
-      "Bluetooth streaming"
+      "Hybrid Technology™",
+      "18 frequency bands",
+      "Adaptive directionality",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "IP68 water & dust resistant"
     ],
     "short_desc": "Bernafon Alpha XT with Hybrid Technology and 18-band processing.",
     "image_filename": "bernafon-alpha-xt.jpg"
@@ -9118,11 +10259,18 @@
       "TV Streaming"
     ],
     "key_features": [
-      "24 bands",
-      "LE Audio + MFi + ASHA Bluetooth",
-      "IP68 waterproof",
-      "Charger Plus",
-      "2-hour quick charge"
+      "DNN 2.0 deep neural network processing",
+      "24 frequency channels",
+      "Smart Noise Reduction ML 2.0 (up to 12 dB)",
+      "Smart Directionality (100% effectiveness)",
+      "Smart Sensor motion-based intent detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Hands-free calling (iPhone 11+)",
+      "Tinnitus SoundSupport",
+      "Bernafon App (volume / EQ / telecare)",
+      "IP68 water & dust resistant",
+      "2-hour quick charge (24 hrs use)",
+      "Wind noise reduction"
     ],
     "short_desc": "Bernafon's flagship premium RITE with LE Audio, IP68, and 24-band processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9152,10 +10300,16 @@
       "TV Streaming"
     ],
     "key_features": [
-      "20 bands",
+      "DNN 2.0 deep neural network processing",
+      "20 frequency channels",
+      "Smart Noise Reduction ML 2.0",
+      "Smart Directionality (80% effectiveness)",
+      "Smart Sensor motion detection",
       "Bluetooth LE Audio + MFi + ASHA",
-      "IP68",
-      "Rechargeable"
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Advanced Bernafon RITE with 20-band processing and LE Audio.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9185,10 +10339,15 @@
       "TV Streaming"
     ],
     "key_features": [
-      "18 bands",
+      "DNN 2.0 processing",
+      "18 frequency channels",
+      "Smart Noise Reduction",
+      "Smart Directionality (60% effectiveness)",
       "Bluetooth MFi + ASHA",
-      "IP68",
-      "Rechargeable"
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Standard Bernafon RITE with 18-band processing and Bluetooth.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9218,10 +10377,12 @@
       "TV Streaming"
     ],
     "key_features": [
-      "14 bands",
+      "14 frequency channels",
+      "Basic noise reduction",
       "Bluetooth MFi + ASHA",
-      "IP68",
-      "Rechargeable"
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Entry Bernafon RITE with 14-band processing and Bluetooth.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9251,10 +10412,18 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "24 fitting bands",
-      "Smart Noise Reduction"
+      "DNN 2.0 deep neural network processing",
+      "24 frequency channels",
+      "Smart Noise Reduction ML 2.0 (up to 12 dB)",
+      "Smart Directionality (100% effectiveness)",
+      "Smart Sensor motion-based intent detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Hands-free calling (iPhone 11+)",
+      "Tinnitus SoundSupport",
+      "Bernafon App (volume / EQ / telecare)",
+      "IP68 water & dust resistant",
+      "2-hour quick charge (24 hrs use)",
+      "Wind noise reduction"
     ],
     "short_desc": "Bernafon's premium Encanta 400 Pro with 24-band AI-driven sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9284,10 +10453,18 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "24 fitting bands",
-      "Smart Noise Reduction"
+      "DNN 2.0 deep neural network processing",
+      "24 frequency channels",
+      "Smart Noise Reduction ML 2.0 (up to 12 dB)",
+      "Smart Directionality (100% effectiveness)",
+      "Smart Sensor motion-based intent detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Hands-free calling (iPhone 11+)",
+      "Tinnitus SoundSupport",
+      "Bernafon App (volume / EQ / telecare)",
+      "IP68 water & dust resistant",
+      "2-hour quick charge (24 hrs use)",
+      "Wind noise reduction"
     ],
     "short_desc": "Bernafon's premium Encanta 400 Pro with 24-band AI-driven sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9317,10 +10494,18 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "24 fitting bands",
-      "Smart Noise Reduction"
+      "DNN 2.0 deep neural network processing",
+      "24 frequency channels",
+      "Smart Noise Reduction ML 2.0 (up to 12 dB)",
+      "Smart Directionality (100% effectiveness)",
+      "Smart Sensor motion-based intent detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Hands-free calling (iPhone 11+)",
+      "Tinnitus SoundSupport",
+      "Bernafon App (volume / EQ / telecare)",
+      "IP68 water & dust resistant",
+      "2-hour quick charge (24 hrs use)",
+      "Wind noise reduction"
     ],
     "short_desc": "Bernafon's premium Encanta 400 Pro with 24-band AI-driven sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9350,10 +10535,18 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "24 fitting bands",
-      "Smart Noise Reduction"
+      "DNN 2.0 deep neural network processing",
+      "24 frequency channels",
+      "Smart Noise Reduction ML 2.0 (up to 12 dB)",
+      "Smart Directionality (100% effectiveness)",
+      "Smart Sensor motion-based intent detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Hands-free calling (iPhone 11+)",
+      "Tinnitus SoundSupport",
+      "Bernafon App (volume / EQ / telecare)",
+      "IP68 water & dust resistant",
+      "2-hour quick charge (24 hrs use)",
+      "Wind noise reduction"
     ],
     "short_desc": "Bernafon's premium Encanta 400 Pro with 24-band AI-driven sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9383,10 +10576,18 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "24 fitting bands",
-      "Smart Noise Reduction"
+      "DNN 2.0 deep neural network processing",
+      "24 frequency channels",
+      "Smart Noise Reduction ML 2.0 (up to 12 dB)",
+      "Smart Directionality (100% effectiveness)",
+      "Smart Sensor motion-based intent detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Hands-free calling (iPhone 11+)",
+      "Tinnitus SoundSupport",
+      "Bernafon App (volume / EQ / telecare)",
+      "IP68 water & dust resistant",
+      "2-hour quick charge (24 hrs use)",
+      "Wind noise reduction"
     ],
     "short_desc": "Bernafon's premium Encanta 400 Pro with 24-band AI-driven sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9416,10 +10617,18 @@
       "Tinnitus Relief"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "24 fitting bands",
-      "Smart Noise Reduction"
+      "DNN 2.0 deep neural network processing",
+      "24 frequency channels",
+      "Smart Noise Reduction ML 2.0 (up to 12 dB)",
+      "Smart Directionality (100% effectiveness)",
+      "Smart Sensor motion-based intent detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Hands-free calling (iPhone 11+)",
+      "Tinnitus SoundSupport",
+      "Bernafon App (volume / EQ / telecare)",
+      "IP68 water & dust resistant",
+      "2-hour quick charge (24 hrs use)",
+      "Wind noise reduction"
     ],
     "short_desc": "Bernafon's premium Encanta 400 Pro with 24-band AI-driven sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9448,9 +10657,16 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "20 fitting bands"
+      "DNN 2.0 deep neural network processing",
+      "20 frequency channels",
+      "Smart Noise Reduction ML 2.0",
+      "Smart Directionality (80% effectiveness)",
+      "Smart Sensor motion detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 300 Engage with 20-band AI-powered sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9479,9 +10695,16 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "20 fitting bands"
+      "DNN 2.0 deep neural network processing",
+      "20 frequency channels",
+      "Smart Noise Reduction ML 2.0",
+      "Smart Directionality (80% effectiveness)",
+      "Smart Sensor motion detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 300 Engage with 20-band AI-powered sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9510,9 +10733,16 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "20 fitting bands"
+      "DNN 2.0 deep neural network processing",
+      "20 frequency channels",
+      "Smart Noise Reduction ML 2.0",
+      "Smart Directionality (80% effectiveness)",
+      "Smart Sensor motion detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 300 Engage with 20-band AI-powered sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9541,9 +10771,16 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "20 fitting bands"
+      "DNN 2.0 deep neural network processing",
+      "20 frequency channels",
+      "Smart Noise Reduction ML 2.0",
+      "Smart Directionality (80% effectiveness)",
+      "Smart Sensor motion detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 300 Engage with 20-band AI-powered sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9572,9 +10809,16 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "20 fitting bands"
+      "DNN 2.0 deep neural network processing",
+      "20 frequency channels",
+      "Smart Noise Reduction ML 2.0",
+      "Smart Directionality (80% effectiveness)",
+      "Smart Sensor motion detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 300 Engage with 20-band AI-powered sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9603,9 +10847,16 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "20 fitting bands"
+      "DNN 2.0 deep neural network processing",
+      "20 frequency channels",
+      "Smart Noise Reduction ML 2.0",
+      "Smart Directionality (80% effectiveness)",
+      "Smart Sensor motion detection",
+      "Bluetooth LE Audio + MFi + ASHA",
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 300 Engage with 20-band AI-powered sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9633,9 +10884,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "18 fitting bands"
+      "DNN 2.0 processing",
+      "18 frequency channels",
+      "Smart Noise Reduction",
+      "Smart Directionality (60% effectiveness)",
+      "Bluetooth MFi + ASHA",
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 200 Go with 18-band sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9663,9 +10920,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "18 fitting bands"
+      "DNN 2.0 processing",
+      "18 frequency channels",
+      "Smart Noise Reduction",
+      "Smart Directionality (60% effectiveness)",
+      "Bluetooth MFi + ASHA",
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 200 Go with 18-band sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9693,9 +10956,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "18 fitting bands"
+      "DNN 2.0 processing",
+      "18 frequency channels",
+      "Smart Noise Reduction",
+      "Smart Directionality (60% effectiveness)",
+      "Bluetooth MFi + ASHA",
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 200 Go with 18-band sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9723,9 +10992,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "18 fitting bands"
+      "DNN 2.0 processing",
+      "18 frequency channels",
+      "Smart Noise Reduction",
+      "Smart Directionality (60% effectiveness)",
+      "Bluetooth MFi + ASHA",
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 200 Go with 18-band sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9753,9 +11028,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "18 fitting bands"
+      "DNN 2.0 processing",
+      "18 frequency channels",
+      "Smart Noise Reduction",
+      "Smart Directionality (60% effectiveness)",
+      "Bluetooth MFi + ASHA",
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 200 Go with 18-band sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9783,9 +11064,15 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "Encanta platform",
-      "AI Machine Learning 2.0",
-      "18 fitting bands"
+      "DNN 2.0 processing",
+      "18 frequency channels",
+      "Smart Noise Reduction",
+      "Smart Directionality (60% effectiveness)",
+      "Bluetooth MFi + ASHA",
+      "Tinnitus SoundSupport",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 200 Go with 18-band sound processing.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9814,8 +11101,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Encanta platform",
-      "14 fitting bands"
+      "14 frequency channels",
+      "Basic noise reduction",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 100 Connect with 14-band processing at an accessible price.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9844,8 +11135,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Encanta platform",
-      "14 fitting bands"
+      "14 frequency channels",
+      "Basic noise reduction",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 100 Connect with 14-band processing at an accessible price.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9874,8 +11169,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Encanta platform",
-      "14 fitting bands"
+      "14 frequency channels",
+      "Basic noise reduction",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 100 Connect with 14-band processing at an accessible price.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9904,8 +11203,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Encanta platform",
-      "14 fitting bands"
+      "14 frequency channels",
+      "Basic noise reduction",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 100 Connect with 14-band processing at an accessible price.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9934,8 +11237,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Encanta platform",
-      "14 fitting bands"
+      "14 frequency channels",
+      "Basic noise reduction",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 100 Connect with 14-band processing at an accessible price.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9964,8 +11271,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Encanta platform",
-      "14 fitting bands"
+      "14 frequency channels",
+      "Basic noise reduction",
+      "Bluetooth MFi + ASHA",
+      "Bernafon App",
+      "IP68 water & dust resistant",
+      "Rechargeable lithium-ion"
     ],
     "short_desc": "Bernafon Encanta 100 Connect with 14-band processing at an accessible price.",
     "image_filename": "bernafon-encanta.jpg"
@@ -9994,10 +11305,11 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "14 bands",
-      "Bluetooth ASHA",
-      "Rechargeable",
-      "Desk Charger"
+      "14 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Mid-range Entra rechargeable RITE with Bluetooth ASHA.",
     "image_filename": "bernafon-entra.jpg"
@@ -10026,10 +11338,11 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "12 bands",
-      "Bluetooth ASHA",
-      "Rechargeable",
-      "Desk Charger"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Entry Entra rechargeable RITE with Bluetooth ASHA.",
     "image_filename": "bernafon-entra.jpg"
@@ -10057,9 +11370,11 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "10 bands",
-      "Bluetooth iOS",
-      "312 battery"
+      "14 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Mid-range miniRITE with Bluetooth iOS connectivity.",
     "image_filename": "bernafon-entra.jpg"
@@ -10088,9 +11403,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "14 fitting bands",
-      "Bluetooth"
+      "Hybrid Technology™",
+      "14 frequency bands",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Entra B 20 entry-level hearing aid with Bluetooth.",
     "image_filename": "bernafon-entra-b.jpg"
@@ -10119,9 +11435,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "14 fitting bands",
-      "Bluetooth"
+      "Hybrid Technology™",
+      "14 frequency bands",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Entra B 20 entry-level hearing aid with Bluetooth.",
     "image_filename": "bernafon-entra-b.jpg"
@@ -10150,9 +11467,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "14 fitting bands",
-      "Bluetooth"
+      "Hybrid Technology™",
+      "14 frequency bands",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Entra B 20 entry-level hearing aid with Bluetooth.",
     "image_filename": "bernafon-entra-b.jpg"
@@ -10181,9 +11499,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "14 fitting bands",
-      "Bluetooth"
+      "Hybrid Technology™",
+      "14 frequency bands",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Entra B 20 entry-level hearing aid with Bluetooth.",
     "image_filename": "bernafon-entra-b.jpg"
@@ -10212,9 +11531,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "14 fitting bands",
-      "Bluetooth"
+      "Hybrid Technology™",
+      "14 frequency bands",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Entra B 20 entry-level hearing aid with Bluetooth.",
     "image_filename": "bernafon-entra-b.jpg"
@@ -10243,9 +11563,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "14 fitting bands",
-      "Bluetooth"
+      "Hybrid Technology™",
+      "14 frequency bands",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Entra B 20 entry-level hearing aid with Bluetooth.",
     "image_filename": "bernafon-entra-b.jpg"
@@ -10273,9 +11594,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "10 fitting bands",
-      "Entry-level",
-      "Bluetooth"
+      "Hybrid Technology™",
+      "14 frequency bands",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon's most affordable entry-level hearing aid.",
     "image_filename": "bernafon-entra-a.jpg"
@@ -10303,9 +11625,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "10 fitting bands",
-      "Entry-level",
-      "Bluetooth"
+      "Hybrid Technology™",
+      "14 frequency bands",
+      "Bluetooth streaming",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon's most affordable entry-level hearing aid.",
     "image_filename": "bernafon-entra-a.jpg"
@@ -10333,9 +11656,11 @@
       "Budget-Friendly"
     ],
     "key_features": [
-      "8 bands",
-      "312 battery",
-      "miniRITE"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Entry-level miniRITE — affordable and reliable Bernafon quality.",
     "image_filename": "bernafon-entra.jpg"
@@ -10364,9 +11689,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "12 fitting bands",
-      "Bluetooth"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Entra B 10 entry-level hearing aid with Bluetooth.",
     "image_filename": "bernafon-entra-b.jpg"
@@ -10395,9 +11722,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "12 fitting bands",
-      "Bluetooth"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Entra B 10 entry-level hearing aid with Bluetooth.",
     "image_filename": "bernafon-entra-b.jpg"
@@ -10426,9 +11755,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "12 fitting bands",
-      "Bluetooth"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Entra B 10 entry-level hearing aid with Bluetooth.",
     "image_filename": "bernafon-entra-b.jpg"
@@ -10457,9 +11788,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "12 fitting bands",
-      "Bluetooth"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Entra B 10 entry-level hearing aid with Bluetooth.",
     "image_filename": "bernafon-entra-b.jpg"
@@ -10488,9 +11821,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "12 fitting bands",
-      "Bluetooth"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Entra B 10 entry-level hearing aid with Bluetooth.",
     "image_filename": "bernafon-entra-b.jpg"
@@ -10519,9 +11854,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "Hybrid Technology",
-      "12 fitting bands",
-      "Bluetooth"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Entra B 10 entry-level hearing aid with Bluetooth.",
     "image_filename": "bernafon-entra-b.jpg"
@@ -10549,9 +11886,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "8 fitting bands",
-      "Entry-level",
-      "Bluetooth"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon's most affordable entry-level hearing aid.",
     "image_filename": "bernafon-entra-a.jpg"
@@ -10579,9 +11918,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "8 fitting bands",
-      "Entry-level",
-      "Bluetooth"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon's most affordable entry-level hearing aid.",
     "image_filename": "bernafon-entra-a.jpg"
@@ -10609,9 +11950,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "8 fitting bands",
-      "Entry-level",
-      "Bluetooth"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon's most affordable entry-level hearing aid.",
     "image_filename": "bernafon-entra-a.jpg"
@@ -10639,9 +11982,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "8 fitting bands",
-      "Entry-level",
-      "Bluetooth"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon's most affordable entry-level hearing aid.",
     "image_filename": "bernafon-entra-a.jpg"
@@ -10669,9 +12014,11 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "8 fitting bands",
-      "Entry-level",
-      "Bluetooth"
+      "12 frequency bands",
+      "Bluetooth ASHA streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon's most affordable entry-level hearing aid.",
     "image_filename": "bernafon-entra-a.jpg"
@@ -10700,11 +12047,12 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "14 bands",
+      "True Environment Processing™",
+      "14 frequency bands",
       "Ultra Power BTE",
-      "Bluetooth",
-      "Fits up to 120 dB",
-      "675 battery"
+      "Fits severe to profound loss (up to 120 dB)",
+      "Bluetooth streaming",
+      "675 battery for extended use"
     ],
     "short_desc": "Advanced ultra-power BTE for profound hearing loss — fits up to 120 dB.",
     "image_filename": "bernafon-leox.jpg"
@@ -10733,10 +12081,12 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "14 bands",
-      "Super Power BTE",
-      "Bluetooth",
-      "Fits up to 110 dB"
+      "True Environment Processing™",
+      "14 frequency bands",
+      "Ultra Power BTE",
+      "Fits severe to profound loss (up to 120 dB)",
+      "Bluetooth streaming",
+      "675 battery for extended use"
     ],
     "short_desc": "Advanced super-power BTE for severe-profound loss with Bluetooth.",
     "image_filename": "bernafon-leox.jpg"
@@ -10764,9 +12114,10 @@
       "Profound Loss"
     ],
     "key_features": [
-      "10 bands",
+      "10 frequency bands",
       "Ultra Power BTE",
-      "Fits up to 120 dB"
+      "Fits severe to profound loss (up to 120 dB)",
+      "675 battery for extended use"
     ],
     "short_desc": "Standard ultra-power BTE for profound loss — affordable and powerful.",
     "image_filename": "bernafon-leox.jpg"
@@ -10794,9 +12145,10 @@
       "Everyday Comfort"
     ],
     "key_features": [
-      "True Environment Processing",
-      "10 fitting bands",
-      "Super Power BTE"
+      "True Environment Processing™",
+      "10 frequency bands",
+      "Super Power BTE",
+      "Fits severe to profound loss"
     ],
     "short_desc": "Bernafon's powerful BTE for severe to profound hearing loss.",
     "image_filename": "bernafon-leox.jpg"
@@ -10826,11 +12178,12 @@
       "TV Streaming"
     ],
     "key_features": [
-      "10 bands",
-      "True Environment Processing",
-      "Bluetooth",
-      "Desk Charger",
-      "Rechargeable"
+      "True Environment Processing™",
+      "10 frequency bands",
+      "Bluetooth streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Mid-range Viron RITE with True Environment Processing and Bluetooth.",
     "image_filename": "bernafon-viron.jpg"
@@ -10858,9 +12211,12 @@
       "Music & Streaming"
     ],
     "key_features": [
-      "10 bands",
-      "True Environment Processing",
-      "Bluetooth"
+      "True Environment Processing™",
+      "10 frequency bands",
+      "Bluetooth streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Viron 3 on 312 battery with Bluetooth.",
     "image_filename": "bernafon-viron.jpg"
@@ -10889,9 +12245,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "True Environment Processing",
-      "10 fitting bands",
-      "Bluetooth"
+      "True Environment Processing™",
+      "10 frequency bands",
+      "Bluetooth streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Viron 3 with True Environment Processing.",
     "image_filename": "bernafon-viron.jpg"
@@ -10920,9 +12279,12 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "True Environment Processing",
-      "10 fitting bands",
-      "Bluetooth"
+      "True Environment Processing™",
+      "10 frequency bands",
+      "Bluetooth streaming",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Bernafon App"
     ],
     "short_desc": "Bernafon Viron 3 with True Environment Processing.",
     "image_filename": "bernafon-viron.jpg"
@@ -10950,9 +12312,10 @@
       "Active Lifestyle"
     ],
     "key_features": [
-      "8 bands",
-      "Rechargeable",
-      "Desk Charger"
+      "8 frequency bands",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Basic amplification"
     ],
     "short_desc": "Entry Viron rechargeable RITE — simple and reliable.",
     "image_filename": "bernafon-viron.jpg"
@@ -10981,9 +12344,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "True Environment Processing",
-      "8 fitting bands",
-      "Bluetooth"
+      "8 frequency bands",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Basic amplification"
     ],
     "short_desc": "Bernafon Viron 1 with True Environment Processing.",
     "image_filename": "bernafon-viron.jpg"
@@ -11012,9 +12376,10 @@
       "Budget Friendly"
     ],
     "key_features": [
-      "True Environment Processing",
-      "8 fitting bands",
-      "Bluetooth"
+      "8 frequency bands",
+      "Rechargeable lithium-ion",
+      "Desk charger included",
+      "Basic amplification"
     ],
     "short_desc": "Bernafon Viron 1 with True Environment Processing.",
     "image_filename": "bernafon-viron.jpg"

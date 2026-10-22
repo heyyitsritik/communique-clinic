@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useState, useMemo, useRef, useEffect } from 'react'
+import React, { useState, useMemo, useRef, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import ProductImage from '@/components/ProductImage'
 import products from '@/data/products.json'
@@ -264,10 +265,22 @@ function StylePill({ s, active, onClick }: { s: typeof STYLES[0]; active: boolea
   )
 }
 
-// ---------- Page ----------
-export default function CataloguePage() {
-  const [brand,          setBrand]          = useState('All')
-  const [formFactor,     setFormFactor]     = useState('All')
+// ---------- Page (inner, reads URL search params) ----------
+const STYLE_KEYS = STYLES.map((s) => s.key)
+
+function CataloguePageInner() {
+  const searchParams = useSearchParams()
+
+  // Read initial filter values from URL query params (?brand=Signia, ?style=BTE)
+  const initialBrand = searchParams.get('brand')
+  const initialStyle = searchParams.get('style')
+
+  const [brand,          setBrand]          = useState(() =>
+    initialBrand && BRANDS.includes(initialBrand) ? initialBrand : 'All'
+  )
+  const [formFactor,     setFormFactor]     = useState(() =>
+    initialStyle && STYLE_KEYS.includes(initialStyle) ? initialStyle : 'All'
+  )
   const [hearingLoss,    setHearingLoss]    = useState('All')
   const [tier,           setTier]           = useState('All')
   const [lifestyle,      setLifestyle]      = useState('All')
@@ -344,17 +357,19 @@ export default function CataloguePage() {
       }
       tierGroup.products.push(p)
     }
-    // Sort tiers by TIER_ORDER
+    // Sort tiers within each family by TIER_ORDER
     map.forEach((fam) => {
       fam.tiers.sort((a, b) => (TIER_ORDER[a.tier] ?? 99) - (TIER_ORDER[b.tier] ?? 99))
     })
     const result = Array.from(map.values())
 
-    // Sort families
+    // Sort families by the price shown on the card (cheapest product in the first/top tier)
     if (sortBy === 'price-asc' || sortBy === 'price-desc') {
       result.sort((a, b) => {
-        const aPrice = Math.min(...a.tiers.flatMap(t => t.products.map(p => p.price_single ?? p.price_kit ?? Infinity)))
-        const bPrice = Math.min(...b.tiers.flatMap(t => t.products.map(p => p.price_single ?? p.price_kit ?? Infinity)))
+        const aFirstTier = a.tiers[0]?.products ?? []
+        const bFirstTier = b.tiers[0]?.products ?? []
+        const aPrice = Math.min(...aFirstTier.map(p => p.price_single ?? p.price_kit ?? Infinity))
+        const bPrice = Math.min(...bFirstTier.map(p => p.price_single ?? p.price_kit ?? Infinity))
         return sortBy === 'price-asc' ? aPrice - bPrice : bPrice - aPrice
       })
     }
@@ -889,5 +904,14 @@ export default function CataloguePage() {
         </div>
       )}
     </div>
+  )
+}
+
+// ---------- Page (wrapped in Suspense for useSearchParams) ----------
+export default function CataloguePage() {
+  return (
+    <Suspense>
+      <CataloguePageInner />
+    </Suspense>
   )
 }

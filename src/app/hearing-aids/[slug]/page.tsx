@@ -40,11 +40,64 @@ export default async function ProductPage({ params }: PageProps) {
     familyProducts.every((p) => p.smartphone_app) ? 'Smartphone App' : null,
   ].filter(Boolean) as string[]
 
+  // ── Recommendation carousels ──
+  // "More from [Brand]" — other families from the same brand, pick one product per family
+  // prioritise: same form factor > same tier > highest tier
+  const sameBrandFamilies = new Map<string, typeof product>()
+  products
+    .filter((p) => p.brand === product.brand && p.model_family !== product.model_family)
+    .sort((a, b) => {
+      // Prefer same form factor
+      const aFF = a.form_factor === product.form_factor ? 0 : 1
+      const bFF = b.form_factor === product.form_factor ? 0 : 1
+      if (aFF !== bFF) return aFF - bFF
+      // Then prefer same tier
+      const aTier = a.technology_tier === product.technology_tier ? 0 : 1
+      const bTier = b.technology_tier === product.technology_tier ? 0 : 1
+      if (aTier !== bTier) return aTier - bTier
+      // Then highest tier first
+      return (TIER_ORDER[a.technology_tier] ?? 99) - (TIER_ORDER[b.technology_tier] ?? 99)
+    })
+    .forEach((p) => {
+      const key = `${p.model_family}|${p.form_factor}`
+      if (!sameBrandFamilies.has(key)) sameBrandFamilies.set(key, p)
+    })
+  const moreBrand = Array.from(sameBrandFamilies.values()).slice(0, 10)
+
+  // "Similar options from other brands" — different brands, match form factor + similar tier/price
+  const otherBrandFamilies = new Map<string, typeof product>()
+  const productPrice = product.price_single ?? product.price_kit ?? 0
+  products
+    .filter((p) => p.brand !== product.brand)
+    .sort((a, b) => {
+      // Prefer same form factor
+      const aFF = a.form_factor === product.form_factor ? 0 : 1
+      const bFF = b.form_factor === product.form_factor ? 0 : 1
+      if (aFF !== bFF) return aFF - bFF
+      // Then prefer same tier
+      const aTier = a.technology_tier === product.technology_tier ? 0 : 1
+      const bTier = b.technology_tier === product.technology_tier ? 0 : 1
+      if (aTier !== bTier) return aTier - bTier
+      // Then closest price
+      const aPrice = a.price_single ?? a.price_kit ?? 0
+      const bPrice = b.price_single ?? b.price_kit ?? 0
+      return Math.abs(aPrice - productPrice) - Math.abs(bPrice - productPrice)
+    })
+    .forEach((p) => {
+      const key = `${p.brand}|${p.model_family}|${p.form_factor}`
+      if (!otherBrandFamilies.has(key)) otherBrandFamilies.set(key, p)
+    })
+  const similarOther = Array.from(otherBrandFamilies.values()).slice(0, 10)
+
   return (
     <ProductPageClient
-      product={product}
-      familyProducts={familyProducts}
-      sharedTraits={sharedTraits}
+      {...({
+        product,
+        familyProducts,
+        sharedTraits,
+        moreBrand,
+        similarOther,
+      } as any)}
     />
   )
 }
