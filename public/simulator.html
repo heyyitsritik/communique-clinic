@@ -1211,24 +1211,24 @@ function applyDSP() {
       aidFilters[i].gain.setTargetAtTime(i<=2?lo*0.72:hi*0.72, t, 0.03);
       aidFilters[i].Q.setTargetAtTime(0.85, t, 0.03);
     } else if (tier==='essential') {
-      aidFilters[i].gain.setTargetAtTime(i<=1?l*0.65:(i<=4?l*0.80:l*0.75), t, 0.03);
-      aidFilters[i].Q.setTargetAtTime(1.1, t, 0.03);
+      aidFilters[i].gain.setTargetAtTime(i<=1?l*0.45:(i<=4?l*0.62:l*0.50), t, 0.03);
+      aidFilters[i].Q.setTargetAtTime(0.95, t, 0.03);
     } else {
-      aidFilters[i].gain.setTargetAtTime(i<=1?l*0.62:l*0.85, t, 0.03);
-      aidFilters[i].Q.setTargetAtTime(1.3, t, 0.03);
+      aidFilters[i].gain.setTargetAtTime(i<=1?l*0.65:l*0.88, t, 0.03);
+      aidFilters[i].Q.setTargetAtTime(1.4, t, 0.03);
     }
   });
-  dirFilter.gain.setTargetAtTime(tier==='advanced'?4.5:tier==='essential'?2.5:0, t, 0.03);
-  noiseFilter.gain.setTargetAtTime(tier==='advanced'?-10:tier==='essential'?-5:0, t, 0.03);
+  dirFilter.gain.setTargetAtTime(tier==='advanced'?5.5:tier==='essential'?1.8:0, t, 0.03);
+  noiseFilter.gain.setTargetAtTime(tier==='advanced'?-12:tier==='essential'?-3.5:0, t, 0.03);
   if (tier==='advanced') {
-    compressor.threshold.setTargetAtTime(-28,t,0.03); compressor.knee.setTargetAtTime(12,t,0.03);
-    compressor.ratio.setTargetAtTime(4.5,t,0.03); compressor.attack.setTargetAtTime(0.005,t,0.03);
-    compressor.release.setTargetAtTime(0.15,t,0.03); makeupGain.gain.setTargetAtTime(1.38,t,0.03);
+    compressor.threshold.setTargetAtTime(-30,t,0.03); compressor.knee.setTargetAtTime(14,t,0.03);
+    compressor.ratio.setTargetAtTime(5.0,t,0.03); compressor.attack.setTargetAtTime(0.003,t,0.03);
+    compressor.release.setTargetAtTime(0.12,t,0.03); makeupGain.gain.setTargetAtTime(1.45,t,0.03);
   } else if (tier==='essential') {
-    compressor.threshold.setTargetAtTime(-24,t,0.03); compressor.knee.setTargetAtTime(10,t,0.03);
-    compressor.ratio.setTargetAtTime(3.2,t,0.03); compressor.attack.setTargetAtTime(0.01,t,0.03);
-    compressor.release.setTargetAtTime(0.2,t,0.03);
-    makeupGain.gain.setTargetAtTime(1.48+Math.min(0.25,speechAvg*0.003),t,0.03);
+    compressor.threshold.setTargetAtTime(-20,t,0.03); compressor.knee.setTargetAtTime(8,t,0.03);
+    compressor.ratio.setTargetAtTime(2.5,t,0.03); compressor.attack.setTargetAtTime(0.015,t,0.03);
+    compressor.release.setTargetAtTime(0.25,t,0.03);
+    makeupGain.gain.setTargetAtTime(1.20+Math.min(0.15,speechAvg*0.002),t,0.03);
   } else if (tier==='basic') {
     compressor.threshold.setTargetAtTime(-16,t,0.03); compressor.knee.setTargetAtTime(6,t,0.03);
     compressor.ratio.setTargetAtTime(2.0,t,0.03); compressor.attack.setTargetAtTime(0.015,t,0.03);
@@ -1444,8 +1444,8 @@ function calcAided() {
   return loss.map((l, i) => {
     if (tier==='unaided') return l;
     if (tier==='basic') { const lo=(loss[0]+loss[1]+loss[2])/3,hi=(loss[3]+loss[4]+loss[5])/3; return Math.max(8,l-(i<=2?lo*0.72:hi*0.72)); }
-    if (tier==='essential') { return Math.max(5,l-(i<=1?l*0.65:(i<=4?l*0.80:l*0.75))); }
-    return Math.max(5,l-(i<=1?l*0.62:l*0.85));
+    if (tier==='essential') { return Math.max(10,l-(i<=1?l*0.45:(i<=4?l*0.62:l*0.50))); }
+    return Math.max(5,l-(i<=1?l*0.65:l*0.88));
   });
 }
 
@@ -1524,8 +1524,8 @@ function calcWDRC() {
   return [30,40,50,60,70,80,90].map(d => {
     if (tier==='unaided') return d-20;
     if (tier==='basic') return d+5;
-    if (tier==='essential') return d>65?65+(d-65)*0.4:d+10;
-    return d>55?55+(d-55)*0.25:d+15;
+    if (tier==='essential') return d>60?60+(d-60)*0.5:d+7;
+    return d>50?50+(d-50)*0.22:d+18;
   });
 }
 
