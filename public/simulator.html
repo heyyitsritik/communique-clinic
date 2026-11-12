@@ -1208,10 +1208,10 @@ function applyDSP() {
     if (tier==='unaided') { aidFilters[i].gain.setTargetAtTime(0, t, 0.03); aidFilters[i].Q.setTargetAtTime(1.2, t, 0.03); }
     else if (tier==='basic') {
       const lo=(loss[0]+loss[1]+loss[2])/3, hi=(loss[3]+loss[4]+loss[5])/3;
-      aidFilters[i].gain.setTargetAtTime(i<=2?lo*0.72:hi*0.72, t, 0.03);
+      aidFilters[i].gain.setTargetAtTime(i<=2?lo*0.62:hi*0.62, t, 0.03);
       aidFilters[i].Q.setTargetAtTime(0.85, t, 0.03);
     } else if (tier==='essential') {
-      aidFilters[i].gain.setTargetAtTime(i<=1?l*0.45:(i<=4?l*0.62:l*0.50), t, 0.03);
+      aidFilters[i].gain.setTargetAtTime(i<=1?l*0.55:(i<=4?l*0.72:l*0.58), t, 0.03);
       aidFilters[i].Q.setTargetAtTime(0.95, t, 0.03);
     } else {
       aidFilters[i].gain.setTargetAtTime(i<=1?l*0.65:l*0.88, t, 0.03);
@@ -1443,8 +1443,8 @@ function getChartColors() {
 function calcAided() {
   return loss.map((l, i) => {
     if (tier==='unaided') return l;
-    if (tier==='basic') { const lo=(loss[0]+loss[1]+loss[2])/3,hi=(loss[3]+loss[4]+loss[5])/3; return Math.max(8,l-(i<=2?lo*0.72:hi*0.72)); }
-    if (tier==='essential') { return Math.max(10,l-(i<=1?l*0.45:(i<=4?l*0.62:l*0.50))); }
+    if (tier==='basic') { const lo=(loss[0]+loss[1]+loss[2])/3,hi=(loss[3]+loss[4]+loss[5])/3; return Math.max(8,l-(i<=2?lo*0.62:hi*0.62)); }
+    if (tier==='essential') { return Math.max(10,l-(i<=1?l*0.55:(i<=4?l*0.72:l*0.58))); }
     return Math.max(5,l-(i<=1?l*0.65:l*0.88));
   });
 }
