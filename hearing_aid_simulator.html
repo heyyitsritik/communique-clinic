@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Hearing Aid Demonstration & Educational Simulator</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        teal: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Range Slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #0d9488;
+            cursor: pointer;
+            margin-top: -5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: transform 0.1s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        @media print {
+            body { background: white !important; color: black !important; }
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header Navigation -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-teal-600 text-white p-2.5 rounded-xl shadow-md">
+                    <i class="fa-solid fa-ear-listen text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg text-slate-900 leading-tight">Communiqué <span class="text-xs font-semibold px-2 py-0.5 rounded bg-teal-100 text-teal-800 ml-1">Hearing Aid Simulator</span></h1>
+                    <p class="text-xs text-slate-500">Communiqué Speech, Hearing and Balance Clinic • Patient Counseling Tool</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="window.print()" class="inline-flex items-center px-3 py-2 border border-slate-300 text-xs font-medium rounded-lg text-slate-700 bg-white hover:bg-slate-50 shadow-sm transition">
+                    <i class="fa-solid fa-print mr-1.5 text-slate-500"></i> Print Counseling Sheet
+                </button>
+                <button onclick="openAppointmentModal()" class="inline-flex items-center px-4 py-2 border border-transparent text-xs font-semibold rounded-lg text-white bg-teal-600 hover:bg-teal-700 shadow-sm transition">
+                    <i class="fa-solid fa-calendar-check mr-2"></i> Book Evaluation
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- App Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full space-y-6">
+
+        <!-- Top Status Banner & Acoustic Scene Indicator -->
+        <div class="bg-slate-900 text-white rounded-2xl p-4 shadow-md flex flex-wrap items-center justify-between gap-4 border border-slate-800 no-print">
+            <div class="flex items-center space-x-4">
+                <button id="btn-master-play" onclick="toggleAudio()" class="bg-teal-500 hover:bg-teal-600 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow transition flex items-center space-x-2">
+                    <i id="master-play-icon" class="fa-solid fa-play"></i>
+                    <span id="master-play-text">Start Audio Simulation</span>
+                </button>
+
+                <div class="flex items-center space-x-2 text-xs text-slate-300 bg-slate-800 px-3 py-2 rounded-lg border border-slate-700">
+                    <i class="fa-solid fa-volume-high text-teal-400"></i>
+                    <span>Output Vol:</span>
+                    <input type="range" id="master-volume" min="0" max="1" step="0.01" value="0.8" class="w-20" oninput="updateMasterVolume(this.value)">
+                </div>
+            </div>
+
+            <!-- Real-time Automatic Acoustic Scene Classification Indicator -->
+            <div class="flex items-center space-x-3">
+                <span class="text-xs text-slate-400 font-medium">Automatic Acoustic Scene:</span>
+                <span id="scene-classifier-badge" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-teal-900/80 text-teal-200 border border-teal-700 shadow-sm">
+                    <i id="scene-icon" class="fa-solid fa-comments mr-2 text-teal-400"></i>
+                    <span id="scene-label">Speech in Quiet</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- 4 CORE TECHNOLOGY TIER SELECTION STRIP (Crucial Requirement) -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm no-print">
+            <div class="flex items-center justify-between mb-3">
+                <div>
+                    <h2 class="text-base font-bold text-slate-900">Select Technology Processing Level</h2>
+                    <p class="text-xs text-slate-500">Toggle in real-time while sound plays to demonstrate technology benefits to patients</p>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+                    Active Mode: <span id="active-mode-display-text" class="text-teal-700 font-bold">4. Advanced Hearing Aid</span>
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <!-- Tier 1: Unaided -->
+                <button id="tier-btn-unaided" onclick="selectTier('unaided')" class="tier-card border-2 border-slate-200 rounded-xl p-4 text-left transition hover:border-slate-300 relative bg-white">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Tier 1</span>
+                        <i class="fa-solid fa-ear-deaf text-slate-400 text-lg"></i>
+                    </div>
+                    <div class="font-bold text-sm text-slate-900 mb-1">No Amplification</div>
+                    <p class="text-[11px] text-slate-500 leading-snug">Unaided hearing loss profile. Shows exact attenuation of high frequencies.</p>
+                    <div class="mt-3 text-[10px] font-semibold text-red-600 bg-red-50 px-2 py-1 rounded inline-block">No Processing / Impaired</div>
+                </button>
+
+                <!-- Tier 2: Basic -->
+                <button id="tier-btn-basic" onclick="selectTier('basic')" class="tier-card border-2 border-slate-200 rounded-xl p-4 text-left transition hover:border-slate-300 relative bg-white">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Tier 2</span>
+                        <i class="fa-solid fa-sliders text-amber-500 text-lg"></i>
+                    </div>
+                    <div class="font-bold text-sm text-slate-900 mb-1">Basic Hearing Aid</div>
+                    <p class="text-[11px] text-slate-500 leading-snug">2-Band broad amplification with omnidirectional microphone & static gain.</p>
+                    <div class="mt-3 text-[10px] font-semibold text-amber-700 bg-amber-50 px-2 py-1 rounded inline-block">Basic Compression</div>
+                </button>
+
+                <!-- Tier 3: Essential -->
+                <button id="tier-btn-essential" onclick="selectTier('essential')" class="tier-card border-2 border-slate-200 rounded-xl p-4 text-left transition hover:border-slate-300 relative bg-white">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tier 3</span>
+                        <i class="fa-solid fa-bullseye text-blue-500 text-lg"></i>
+                    </div>
+                    <div class="font-bold text-sm text-slate-900 mb-1">Essential Hearing Aid</div>
+                    <p class="text-[11px] text-slate-500 leading-snug">4-Channel DSP, front beamforming directional mic, feedback shield, -6dB noise reduction.</p>
+                    <div class="mt-3 text-[10px] font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded inline-block">Static Directional + NR</div>
+                </button>
+
+                <!-- Tier 4: Advanced -->
+                <button id="tier-btn-advanced" onclick="selectTier('advanced')" class="tier-card border-2 border-teal-600 bg-teal-50/50 rounded-xl p-4 text-left transition relative shadow-sm">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-teal-700 uppercase tracking-wider">Tier 4</span>
+                        <i class="fa-solid fa-wand-magic-sparkles text-teal-600 text-lg"></i>
+                    </div>
+                    <div class="font-bold text-sm text-teal-950 mb-1">Advanced Hearing Aid</div>
+                    <p class="text-[11px] text-teal-900 leading-snug">Multi-band DSP, dynamic binaural beamforming, AI noise suppression & wind shield.</p>
+                    <div class="mt-3 text-[10px] font-bold text-teal-800 bg-teal-100 px-2 py-1 rounded inline-block">Adaptive AI DSP</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- MAIN TWO-COLUMN DASHBOARD -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 no-print">
+
+            <!-- LEFT COLUMN: Audiogram Builder & Audio Scenarios (5 Cols) -->
+            <div class="lg:col-span-5 space-y-6">
+
+                <!-- Audio Source & Scenario Selector -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="font-bold text-sm text-slate-900 flex items-center">
+                        <i class="fa-solid fa-compact-disc text-teal-600 mr-2"></i> Audio Source & Scenario Library
+                    </h3>
+
+                    <!-- Source Selector Tabs -->
+                    <div class="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl text-xs font-medium text-slate-600">
+                        <button id="tab-src-preset" onclick="switchSourceTab('preset')" class="py-2 rounded-lg bg-white text-slate-900 shadow-sm font-semibold">Pre-loaded Scenarios</button>
+                        <button id="tab-src-file" onclick="switchSourceTab('file')" class="py-2 rounded-lg hover:text-slate-900">Custom Audio</button>
+                        <button id="tab-src-mic" onclick="switchSourceTab('mic')" class="py-2 rounded-lg hover:text-slate-900">Live Mic</button>
+                    </div>
+
+                    <!-- Presets Panel -->
+                    <div id="panel-src-preset" class="grid grid-cols-2 gap-2">
+                        <button onclick="selectAudioScenario('restaurant', this)" class="scenario-btn active border-2 border-teal-600 bg-teal-50 p-2.5 rounded-xl text-left text-xs transition flex items-center space-x-2.5">
+                            <i class="fa-solid fa-utensils text-teal-600 text-base"></i>
+                            <div>
+                                <div class="font-bold text-teal-950">Cafe & Speech Noise</div>
+                                <div class="text-[10px] text-slate-500">Crowd background chatter</div>
+                            </div>
+                        </button>
+                        <button onclick="selectAudioScenario('traffic', this)" class="scenario-btn border-2 border-slate-200 hover:border-slate-300 p-2.5 rounded-xl text-left text-xs transition flex items-center space-x-2.5">
+                            <i class="fa-solid fa-car text-slate-500 text-base"></i>
+                            <div>
+                                <div class="font-bold text-slate-800">Traffic & Street</div>
+                                <div class="text-[10px] text-slate-500">Low rumble + wind noise</div>
+                            </div>
+                        </button>
+                        <button onclick="selectAudioScenario('conversation', this)" class="scenario-btn border-2 border-slate-200 hover:border-slate-300 p-2.5 rounded-xl text-left text-xs transition flex items-center space-x-2.5">
+                            <i class="fa-solid fa-house-user text-slate-500 text-base"></i>
+                            <div>
+                                <div class="font-bold text-slate-800">Quiet Living Room</div>
+                                <div class="text-[10px] text-slate-500">Soft speech conversation</div>
+                            </div>
+                        </button>
+                        <button onclick="selectAudioScenario('music', this)" class="scenario-btn border-2 border-slate-200 hover:border-slate-300 p-2.5 rounded-xl text-left text-xs transition flex items-center space-x-2.5">
+                            <i class="fa-solid fa-guitar text-slate-500 text-base"></i>
+                            <div>
+                                <div class="font-bold text-slate-800">Acoustic Music</div>
+                                <div class="text-[10px] text-slate-500">Full spectral dynamics</div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Custom File Panel -->
+                    <div id="panel-src-file" class="hidden space-y-2">
+                        <label class="block text-xs font-semibold text-slate-700">Upload audio file (MP3, WAV, M4A)</label>
+                        <input type="file" id="user-audio-file" accept="audio/*" class="block w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 border border-slate-200 rounded-lg cursor-pointer">
+                    </div>
+
+                    <!-- Live Mic Panel -->
+                    <div id="panel-src-mic" class="hidden text-center py-2 space-y-2">
+                        <i class="fa-solid fa-microphone-lines text-3xl text-teal-600"></i>
+                        <p class="text-xs text-slate-600">Speak into your device microphone to hear your own voice processed in real time through the selected hearing aid tier.</p>
+                        <p class="text-[11px] text-amber-800 bg-amber-50 p-2 rounded-lg border border-amber-200"><i class="fa-solid fa-headphones mr-1"></i> Headphones required to avoid audio feedback.</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Audiogram Configuration -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-bold text-sm text-slate-900 flex items-center">
+                            <i class="fa-solid fa-sliders text-teal-600 mr-2"></i> Audiogram Threshold Configuration
+                        </h3>
+                        <div class="flex items-center space-x-1 text-xs">
+                            <button id="btn-ear-left" onclick="setEarMode('left')" class="px-2 py-1 rounded bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold">Left Ear</button>
+                            <button id="btn-ear-right" onclick="setEarMode('right')" class="px-2 py-1 rounded bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold">Right Ear</button>
+                            <button id="btn-ear-binaural" onclick="setEarMode('binaural')" class="px-2 py-1 rounded bg-teal-600 text-white font-semibold shadow-sm">Binaural</button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Preset Loss Profiles -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-500 mb-1.5">Common Audiometric Presets:</label>
+                        <div class="grid grid-cols-2 gap-1.5 text-xs">
+                            <button onclick="applyAudiogramPreset('normal')" class="p-2 rounded-lg border border-slate-200 hover:border-slate-300 bg-slate-50 text-left font-medium">1. Normal Hearing</button>
+                            <button onclick="applyAudiogramPreset('mild-high')" class="p-2 rounded-lg border border-slate-200 hover:border-slate-300 bg-slate-50 text-left font-medium">2. Mild High-Freq Loss</button>
+                            <button onclick="applyAudiogramPreset('sloping')" class="p-2 rounded-lg border border-teal-600 bg-teal-50 text-left font-bold text-teal-900">3. Sloping Mod-Severe</button>
+                            <button onclick="applyAudiogramPreset('cookie')" class="p-2 rounded-lg border border-slate-200 hover:border-slate-300 bg-slate-50 text-left font-medium">4. Cookie-Cutter Loss</button>
+                            <button onclick="applyAudiogramPreset('flat')" class="p-2 rounded-lg border border-slate-200 hover:border-slate-300 bg-slate-50 text-left font-medium">5. Flat Moderate Loss</button>
+                            <button onclick="applyAudiogramPreset('profound')" class="p-2 rounded-lg border border-slate-200 hover:border-slate-300 bg-slate-50 text-left font-medium">6. Severe High Loss</button>
+                        </div>
+                    </div>
+
+                    <!-- Individual Frequency Sliders -->
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-slate-700">Frequency Threshold Sliders (dB HL)</span>
+                            <span class="text-[10px] text-slate-400">0 dB (Normal) to 90 dB (Severe)</span>
+                        </div>
+                        <div class="grid grid-cols-6 gap-2 text-center">
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-500 block mb-1">250Hz</span>
+                                <input type="range" id="slider-250" min="0" max="90" value="15" class="h-20 w-full accent-red-500" oninput="updateAudiogramFromSliders()">
+                                <span id="lbl-250" class="text-[10px] font-bold text-slate-700 mt-1 block">15 dB</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-500 block mb-1">500Hz</span>
+                                <input type="range" id="slider-500" min="0" max="90" value="20" class="h-20 w-full accent-red-500" oninput="updateAudiogramFromSliders()">
+                                <span id="lbl-500" class="text-[10px] font-bold text-slate-700 mt-1 block">20 dB</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-500 block mb-1">1kHz</span>
+                                <input type="range" id="slider-1000" min="0" max="90" value="35" class="h-20 w-full accent-red-500" oninput="updateAudiogramFromSliders()">
+                                <span id="lbl-1000" class="text-[10px] font-bold text-slate-700 mt-1 block">35 dB</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-500 block mb-1">2kHz</span>
+                                <input type="range" id="slider-2000" min="0" max="90" value="55" class="h-20 w-full accent-red-500" oninput="updateAudiogramFromSliders()">
+                                <span id="lbl-2000" class="text-[10px] font-bold text-slate-700 mt-1 block">55 dB</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-500 block mb-1">4kHz</span>
+                                <input type="range" id="slider-4000" min="0" max="90" value="70" class="h-20 w-full accent-red-500" oninput="updateAudiogramFromSliders()">
+                                <span id="lbl-4000" class="text-[10px] font-bold text-slate-700 mt-1 block">70 dB</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-500 block mb-1">8kHz</span>
+                                <input type="range" id="slider-8000" min="0" max="90" value="80" class="h-20 w-full accent-red-500" oninput="updateAudiogramFromSliders()">
+                                <span id="lbl-8000" class="text-[10px] font-bold text-slate-700 mt-1 block">80 dB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Charts, Visualizers & Real-Time Dynamic Curves (7 Cols) -->
+            <div class="lg:col-span-7 space-y-6">
+
+                <!-- Interactive Audiogram Plotting & Visualizer -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-bold text-base text-slate-900">Interactive Audiogram & Prescription Response</h3>
+                            <p class="text-xs text-slate-500">Loss Curve (Red) vs. Prescription Gain Response (Teal) per Tier</p>
+                        </div>
+                        <div class="flex items-center space-x-3 text-xs font-semibold">
+                            <div class="flex items-center space-x-1">
+                                <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                                <span>Unaided Loss</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <span class="w-3 h-3 rounded-full bg-teal-600"></span>
+                                <span>Aided Target</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative w-full h-64 bg-slate-50 rounded-xl p-2 border border-slate-200">
+                        <canvas id="chart-audiogram"></canvas>
+                    </div>
+                </div>
+
+                <!-- Dual Visualizers: Real-time Spectrum + Dynamic Range Compression Curve -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <!-- Visualizer 1: Frequency Spectrum FFT -->
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-xs font-bold text-slate-800 flex items-center">
+                                <i class="fa-solid fa-wave-square text-teal-600 mr-1.5"></i> Live Spectrum Analyzer
+                            </h4>
+                            <span class="text-[10px] text-slate-400">FFT Output</span>
+                        </div>
+                        <div class="h-32 bg-slate-950 rounded-xl overflow-hidden border border-slate-800 relative">
+                            <canvas id="canvas-spectrum" class="w-full h-full"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Visualizer 2: Dynamic Range Compression (WDRC) Curve Chart -->
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-xs font-bold text-slate-800 flex items-center">
+                                <i class="fa-solid fa-compress text-teal-600 mr-1.5"></i> Dynamic WDRC Curve
+                            </h4>
+                            <span class="text-[10px] text-slate-400">Input vs Output dB</span>
+                        </div>
+                        <div class="h-32 bg-slate-50 rounded-xl p-1 border border-slate-200 relative">
+                            <canvas id="chart-compression"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Active Technology Features Badge Summary -->
+                <div class="bg-slate-900 text-white rounded-2xl p-4 border border-slate-800 space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-teal-400 flex items-center">
+                        <i class="fa-solid fa-microchip mr-2"></i> Active Tier DSP Features Engaged:
+                    </h4>
+                    <div id="active-features-chips" class="flex flex-wrap gap-2 text-xs">
+                        <!-- Dynamic Chips populated by JS -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FULL-WIDTH SIDE-BY-SIDE FEATURE COMPARISON TABLE (Patient Counseling Tool) -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4 no-print">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center">
+                        <i class="fa-solid fa-table-columns text-teal-600 mr-2.5"></i> Multi-Tier Technology Level Comparison
+                    </h2>
+                    <p class="text-xs text-slate-500">Comprehensive clinical breakdown to help patients select the optimal hearing aid feature level</p>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700 uppercase font-bold border-b border-slate-200">
+                            <th class="p-3">Performance Dimension</th>
+                            <th class="p-3 text-slate-600">1. No Amplification</th>
+                            <th class="p-3 text-amber-700">2. Basic</th>
+                            <th class="p-3 text-blue-700">3. Essential</th>
+                            <th class="p-3 text-teal-800 bg-teal-50">4. Advanced AI</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-slate-600">
+                        <tr>
+                            <td class="p-3 font-semibold text-slate-900">Sound & Speech Clarity</td>
+                            <td class="p-3 text-red-600"><i class="fa-solid fa-xmark mr-1"></i> Muffled / High Frequency Loss</td>
+                            <td class="p-3"><i class="fa-solid fa-star text-amber-500"></i> Standard Boost</td>
+                            <td class="p-3"><i class="fa-solid fa-star text-blue-500"></i><i class="fa-solid fa-star text-blue-500"></i> 4-Channel Precision</td>
+                            <td class="p-3 bg-teal-50/50 font-semibold text-teal-900"><i class="fa-solid fa-star text-teal-600"></i><i class="fa-solid fa-star text-teal-600"></i><i class="fa-solid fa-star text-teal-600"></i> HD Multi-Band AI</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold text-slate-900">Speech-in-Noise Understanding</td>
+                            <td class="p-3 text-red-600"><i class="fa-solid fa-xmark mr-1"></i> Very Difficult</td>
+                            <td class="p-3">Challenging in crowds</td>
+                            <td class="p-3 text-blue-800 font-medium">Good (Front Directional)</td>
+                            <td class="p-3 bg-teal-50/50 font-semibold text-teal-900"><i class="fa-solid fa-circle-check text-teal-600 mr-1"></i> Excellent (Narrow Binaural)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold text-slate-900">Listening Effort & Fatigue</td>
+                            <td class="p-3 text-red-600">Severe exhaustion</td>
+                            <td class="p-3">Moderate effort</td>
+                            <td class="p-3">Reduced fatigue</td>
+                            <td class="p-3 bg-teal-50/50 font-semibold text-teal-900">Minimal listening effort</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold text-slate-900">Background Noise Suppression</td>
+                            <td class="p-3">None</td>
+                            <td class="p-3">None (Omnidirectional)</td>
+                            <td class="p-3 font-medium text-blue-800">-6dB Static Filter</td>
+                            <td class="p-3 bg-teal-50/50 font-semibold text-teal-900"><i class="fa-solid fa-bolt text-teal-600 mr-1"></i> Adaptive Deep Neural AI (-12dB)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold text-slate-900">Wind & Impulse Sound Management</td>
+                            <td class="p-3">Natural wind buffeting</td>
+                            <td class="p-3">Amplified harshness</td>
+                            <td class="p-3">Standard suppression</td>
+                            <td class="p-3 bg-teal-50/50 font-semibold text-teal-900"><i class="fa-solid fa-wind text-teal-600 mr-1"></i> Dual-Mic WindShield + Transient Suppressor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- PRINTABLE PATIENT COUNSELING TAKEAWAY REPORT (Only visible when printing) -->
+        <div class="hidden print-only bg-white p-8 space-y-6">
+            <div class="border-b border-slate-300 pb-4 flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-900">Clinical Audiology Patient Consultation Report</h1>
+                    <p class="text-sm text-slate-600">Customized Hearing Aid Technology Recommendation</p>
+                </div>
+                <div class="text-right text-xs text-slate-500">
+                    <p>Date: <span id="print-date"></span></p>
+                    <p>Clinic: Communiqué Speech, Hearing and Balance Clinic</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+                <div class="border border-slate-200 p-4 rounded-lg">
+                    <h3 class="font-bold text-sm text-slate-900 mb-2">Patient Audiometric Summary</h3>
+                    <ul class="text-xs space-y-1 text-slate-700">
+                        <li><strong>250 Hz:</strong> <span id="p-250"></span> dB HL</li>
+                        <li><strong>500 Hz:</strong> <span id="p-500"></span> dB HL</li>
+                        <li><strong>1000 Hz:</strong> <span id="p-1000"></span> dB HL</li>
+                        <li><strong>2000 Hz:</strong> <span id="p-2000"></span> dB HL</li>
+                        <li><strong>4000 Hz:</strong> <span id="p-4000"></span> dB HL</li>
+                        <li><strong>8000 Hz:</strong> <span id="p-8000"></span> dB HL</li>
+                    </ul>
+                </div>
+
+                <div class="border border-teal-200 bg-teal-50/30 p-4 rounded-lg">
+                    <h3 class="font-bold text-sm text-teal-900 mb-2">Recommended Technology Level</h3>
+                    <p class="text-base font-bold text-teal-700" id="print-recommended-tier">Tier 4: Advanced Hearing Aid</p>
+                    <p class="text-xs text-slate-600 mt-2">Provides maximum clarity in noisy environments, dynamic multi-channel processing, automatic wind noise shield, and reduced listening effort.</p>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-300 pt-4 text-xs text-slate-500">
+                <p>This report is generated for counseling purposes during audiometric demonstration. Final fitting parameters will be confirmed via Real Ear Measurement (REM).</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Appointment Modal -->
+    <div id="appointment-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden no-print">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 relative">
+            <button onclick="closeAppointmentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-5">
+                <div class="w-12 h-12 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900">Schedule Clinical Consultation</h3>
+                <p class="text-xs text-slate-500">Schedule your in-person diagnostic audiogram & personalized hearing aid trial.</p>
+            </div>
+
+            <form onsubmit="handleAppointmentSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Patient Full Name</label>
+                    <input type="text" required placeholder="Jane Doe" class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Contact Email / Phone</label>
+                    <input type="text" required placeholder="patient@example.com" class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Preferred Hearing Aid Tier Interest</label>
+                    <select class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none">
+                        <option>Tier 4: Advanced AI Hearing Aid</option>
+                        <option>Tier 3: Essential Hearing Aid</option>
+                        <option>Tier 2: Basic Hearing Aid</option>
+                        <option>Comprehensive Hearing Evaluation</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs py-3 rounded-xl shadow transition mt-2">
+                    Confirm Appointment Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- AUDIO DSP & SIMULATION ENGINE -->
+    <script>
+        // Audiometric Frequencies
+        const FREQUENCIES = [250, 500, 1000, 2000, 4000, 8000];
+        
+        // Active Loss State (dB HL)
+        let audiogramLoss = [15, 20, 35, 55, 70, 80];
+        let currentEarMode = 'binaural'; // 'left', 'right', 'binaural'
+
+        // Core Tier State: 'unaided', 'basic', 'essential', 'advanced'
+        let currentTier = 'advanced';
+        let currentSourceType = 'preset'; // 'preset', 'file', 'mic'
+        let currentScenarioKey = 'restaurant';
+        let isPlaying = false;
+
+        // Web Audio API Nodes
+        let audioCtx = null;
+        let masterGainNode = null;
+        let sourceNode = null;
+        let micStream = null;
+        let audioElement = new Audio();
+        audioElement.crossOrigin = "anonymous";
+        audioElement.loop = true;
+
+        // Multi-Band Processing Filters
+        let lossFilterNodes = [];
+        let aidGainNodes = [];
+        let tierMakeupGainNode = null;
+        let compressorNode = null;
+        let noiseFilterNode = null;
+        let directionalFilterNode = null;
+        let analyserNode = null;
+
+        // Chart References
+        let audiogramChart = null;
+        let compressionChart = null;
+        let animFrameId = null;
+
+        window.onload = function() {
+            document.getElementById('print-date').innerText = new Date().toLocaleDateString();
+            initAudiogramChart();
+            initCompressionChart();
+            initSpectrumCanvas();
+            updateAudiogramFromSliders();
+            selectTier('advanced');
+        };
+
+        // Initialize Audio Context & DSP Network
+        function initAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+
+                masterGainNode = audioCtx.createGain();
+                masterGainNode.gain.value = parseFloat(document.getElementById('master-volume').value);
+
+                analyserNode = audioCtx.createAnalyser();
+                analyserNode.fftSize = 256;
+
+                // Highpass / Lowpass filter simulating directional beamforming microphone
+                directionalFilterNode = audioCtx.createBiquadFilter();
+                directionalFilterNode.type = 'peaking';
+                directionalFilterNode.frequency.value = 2500;
+                directionalFilterNode.gain.value = 0;
+
+                // Static / Adaptive Noise Reduction Filter
+                noiseFilterNode = audioCtx.createBiquadFilter();
+                noiseFilterNode.type = 'lowshelf';
+                noiseFilterNode.frequency.value = 400;
+                noiseFilterNode.gain.value = 0;
+
+                // Dynamic WDRC Compressor
+                compressorNode = audioCtx.createDynamicsCompressor();
+
+                // Calibrated Post-Compression Makeup Gain Node for matched loudness across tiers
+                tierMakeupGainNode = audioCtx.createGain();
+                tierMakeupGainNode.gain.value = 1.0;
+
+                // Build 6-band Loss and Gain Filters
+                lossFilterNodes = FREQUENCIES.map(freq => {
+                    let f = audioCtx.createBiquadFilter();
+                    f.type = 'peaking';
+                    f.frequency.value = freq;
+                    f.Q.value = 1.2;
+                    f.gain.value = 0;
+                    return f;
+                });
+
+                aidGainNodes = FREQUENCIES.map(freq => {
+                    let f = audioCtx.createBiquadFilter();
+                    f.type = 'peaking';
+                    f.frequency.value = freq;
+                    f.Q.value = 1.2;
+                    f.gain.value = 0;
+                    return f;
+                });
+
+                // Connect Loss Filter Chain
+                for (let i = 0; i < lossFilterNodes.length - 1; i++) {
+                    lossFilterNodes[i].connect(lossFilterNodes[i + 1]);
+                }
+
+                // Connect Aid Gain Chain
+                for (let i = 0; i < aidGainNodes.length - 1; i++) {
+                    aidGainNodes[i].connect(aidGainNodes[i + 1]);
+                }
+
+                reconnectAudioGraph();
+            }
+
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        // Reconnect Web Audio Graph based on active DSP parameters
+        function reconnectAudioGraph() {
+            if (!audioCtx) return;
+
+            updateDSPParameters();
+
+            try {
+                if (sourceNode) sourceNode.disconnect();
+                directionalFilterNode.disconnect();
+                noiseFilterNode.disconnect();
+                lossFilterNodes[lossFilterNodes.length - 1].disconnect();
+                aidGainNodes[aidGainNodes.length - 1].disconnect();
+                compressorNode.disconnect();
+                tierMakeupGainNode.disconnect();
+            } catch (e) {}
+
+            if (sourceNode) {
+                sourceNode.connect(directionalFilterNode);
+            }
+
+            directionalFilterNode.connect(noiseFilterNode);
+            noiseFilterNode.connect(lossFilterNodes[0]);
+            lossFilterNodes[lossFilterNodes.length - 1].connect(aidGainNodes[0]);
+            aidGainNodes[aidGainNodes.length - 1].connect(compressorNode);
+            compressorNode.connect(tierMakeupGainNode);
+            tierMakeupGainNode.connect(masterGainNode);
+            masterGainNode.connect(analyserNode);
+            analyserNode.connect(audioCtx.destination);
+        }
+
+        // Update DSP Node parameters according to selected tier with matched perceived speech loudness
+        function updateDSPParameters() {
+            if (!audioCtx) return;
+
+            const now = audioCtx.currentTime;
+            // Average speech-frequency loss (500Hz - 4000Hz) for balanced broadband reference
+            const speechAvgLoss = (audiogramLoss[1] + audiogramLoss[2] + audiogramLoss[3] + audiogramLoss[4]) / 4;
+
+            FREQUENCIES.forEach((freq, idx) => {
+                const loss = audiogramLoss[idx];
+
+                // Unaided attenuation: invert dB loss
+                lossFilterNodes[idx].gain.setTargetAtTime(-loss, now, 0.03);
+
+                if (currentTier === 'unaided') {
+                    aidGainNodes[idx].gain.setTargetAtTime(0, now, 0.03);
+                    aidGainNodes[idx].Q.setTargetAtTime(1.2, now, 0.03);
+                } else if (currentTier === 'basic') {
+                    // 2-Band broad linear amplification (low-band vs high-band tilt)
+                    const lowAvg = (audiogramLoss[0] + audiogramLoss[1] + audiogramLoss[2]) / 3;
+                    const highAvg = (audiogramLoss[3] + audiogramLoss[4] + audiogramLoss[5]) / 3;
+                    const bandGain = idx <= 2 ? lowAvg * 0.72 : highAvg * 0.72;
+                    aidGainNodes[idx].gain.setTargetAtTime(bandGain, now, 0.03);
+                    aidGainNodes[idx].Q.setTargetAtTime(0.85, now, 0.03); // Broad Q preserves energy
+                } else if (currentTier === 'essential') {
+                    // 4-Channel NAL-NL2 inspired insertion gain with calibrated speech-band loudness
+                    const channelGain = idx <= 1 ? loss * 0.65 : (idx <= 4 ? loss * 0.80 : loss * 0.75);
+                    aidGainNodes[idx].gain.setTargetAtTime(channelGain, now, 0.03);
+                    aidGainNodes[idx].Q.setTargetAtTime(1.1, now, 0.03);
+                } else if (currentTier === 'advanced') {
+                    // HD Multi-Band Precision NAL-NL2 target with crisp high-frequency consonant clarity
+                    const hdGain = idx <= 1 ? loss * 0.62 : loss * 0.85;
+                    aidGainNodes[idx].gain.setTargetAtTime(hdGain, now, 0.03);
+                    aidGainNodes[idx].Q.setTargetAtTime(1.3, now, 0.03);
+                }
+            });
+
+            // Directional Beamforming Filter (Speech clarity focus at 2.5 kHz)
+            if (currentTier === 'advanced') {
+                directionalFilterNode.gain.setTargetAtTime(4.5, now, 0.03);
+            } else if (currentTier === 'essential') {
+                directionalFilterNode.gain.setTargetAtTime(2.5, now, 0.03);
+            } else {
+                directionalFilterNode.gain.setTargetAtTime(0, now, 0.03);
+            }
+
+            // Noise Reduction Filter (Low-frequency rumble attenuation)
+            if (currentTier === 'advanced') {
+                noiseFilterNode.gain.setTargetAtTime(-10, now, 0.03);
+            } else if (currentTier === 'essential') {
+                noiseFilterNode.gain.setTargetAtTime(-5, now, 0.03);
+            } else {
+                noiseFilterNode.gain.setTargetAtTime(0, now, 0.03);
+            }
+
+            // Compression (WDRC) Parameters & Post-Compression Makeup Gain
+            // Ensures Basic, Essential, and Advanced maintain matched perceived speech volume
+            if (currentTier === 'advanced') {
+                compressorNode.threshold.setTargetAtTime(-28, now, 0.03);
+                compressorNode.knee.setTargetAtTime(12, now, 0.03);
+                compressorNode.ratio.setTargetAtTime(4.5, now, 0.03);
+                compressorNode.attack.setTargetAtTime(0.005, now, 0.03);
+                compressorNode.release.setTargetAtTime(0.15, now, 0.03);
+                tierMakeupGainNode.gain.setTargetAtTime(1.38, now, 0.03); // +2.8 dB makeup for NR & WDRC
+            } else if (currentTier === 'essential') {
+                compressorNode.threshold.setTargetAtTime(-24, now, 0.03);
+                compressorNode.knee.setTargetAtTime(10, now, 0.03);
+                compressorNode.ratio.setTargetAtTime(3.2, now, 0.03);
+                compressorNode.attack.setTargetAtTime(0.01, now, 0.03);
+                compressorNode.release.setTargetAtTime(0.2, now, 0.03);
+                // Compensate for -5dB lowshelf NR and WDRC gain reduction so loudness matches Basic & Advanced
+                const essentialMakeup = 1.48 + Math.min(0.25, speechAvgLoss * 0.003);
+                tierMakeupGainNode.gain.setTargetAtTime(essentialMakeup, now, 0.03);
+            } else if (currentTier === 'basic') {
+                compressorNode.threshold.setTargetAtTime(-16, now, 0.03);
+                compressorNode.knee.setTargetAtTime(6, now, 0.03);
+                compressorNode.ratio.setTargetAtTime(2.0, now, 0.03);
+                compressorNode.attack.setTargetAtTime(0.015, now, 0.03);
+                compressorNode.release.setTargetAtTime(0.25, now, 0.03);
+                tierMakeupGainNode.gain.setTargetAtTime(1.12, now, 0.03);
+            } else {
+                compressorNode.threshold.setTargetAtTime(0, now, 0.03);
+                compressorNode.ratio.setTargetAtTime(1, now, 0.03);
+                tierMakeupGainNode.gain.setTargetAtTime(1.0, now, 0.03);
+            }
+
+            updateAudiogramChart();
+            updateCompressionChart();
+            updateActiveFeaturesChips();
+        }
+
+        // Synthesize environment sound buffers
+        function createScenarioAudioBuffer(key) {
+            const sampleRate = audioCtx.sampleRate;
+            const duration = 5.0;
+            const buffer = audioCtx.createBuffer(2, sampleRate * duration, sampleRate);
+
+            for (let ch = 0; ch < 2; ch++) {
+                const data = buffer.getChannelData(ch);
+                for (let i = 0; i < buffer.length; i++) {
+                    const t = i / sampleRate;
+                    if (key === 'restaurant') {
+                        // Multi-vocal chatter + dish clatter simulation
+                        const speech1 = Math.sin(2 * Math.PI * 220 * t) * Math.sin(2 * Math.PI * 4 * t);
+                        const speech2 = Math.sin(2 * Math.PI * 500 * t) * (Math.random() * 0.2);
+                        const clatter = (Math.random() > 0.995) ? (Math.random() - 0.5) * 2.0 : 0;
+                        const background = (Math.random() - 0.5) * 0.2;
+                        data[i] = (speech1 * 0.3 + speech2 * 0.2 + clatter + background) * 0.8;
+                    } else if (key === 'traffic') {
+                        // Low rumble + wind gusting
+                        const engine = Math.sin(2 * Math.PI * 55 * t + Math.sin(t * 1.5)) * 0.4;
+                        const wind = (Math.random() - 0.5) * 0.3;
+                        data[i] = engine + wind;
+                    } else if (key === 'conversation') {
+                        // Clear living room soft conversation
+                        const voice = Math.sin(2 * Math.PI * 180 * t) * Math.sin(2 * Math.PI * 2.5 * t);
+                        data[i] = voice * 0.5;
+                    } else if (key === 'music') {
+                        // Acoustic melody harmonics
+                        const f1 = Math.sin(2 * Math.PI * 330 * t);
+                        const f2 = Math.sin(2 * Math.PI * 440 * t);
+                        const f3 = Math.sin(2 * Math.PI * 554 * t);
+                        data[i] = (f1 + f2 + f3) * 0.25;
+                    }
+                }
+            }
+            return buffer;
+        }
+
+        async function startAudio() {
+            initAudioContext();
+
+            if (currentSourceType === 'preset') {
+                const buf = createScenarioAudioBuffer(currentScenarioKey);
+                if (sourceNode) {
+                    try { sourceNode.stop(); } catch(e){}
+                }
+                sourceNode = audioCtx.createBufferSource();
+                sourceNode.buffer = buf;
+                sourceNode.loop = true;
+                reconnectAudioGraph();
+                sourceNode.start(0);
+            } else if (currentSourceType === 'file') {
+                if (!audioElement.src) {
+                    alert("Please select a valid custom audio file first.");
+                    return;
+                }
+                if (!sourceNode || !(sourceNode instanceof MediaElementAudioSourceNode)) {
+                    sourceNode = audioCtx.createMediaElementSource(audioElement);
+                }
+                reconnectAudioGraph();
+                await audioElement.play();
+            } else if (currentSourceType === 'mic') {
+                try {
+                    micStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+                    sourceNode = audioCtx.createMediaStreamSource(micStream);
+                    reconnectAudioGraph();
+                } catch(err) {
+                    alert("Microphone access denied or unavailable: " + err.message);
+                    return;
+                }
+            }
+
+            isPlaying = true;
+            updatePlayButtonUI();
+            drawSpectrumVisualizer();
+        }
+
+        function stopAudio() {
+            if (currentSourceType === 'preset' && sourceNode) {
+                try { sourceNode.stop(); } catch(e){}
+            } else if (currentSourceType === 'file') {
+                audioElement.pause();
+            } else if (currentSourceType === 'mic' && micStream) {
+                micStream.getTracks().forEach(track => track.stop());
+            }
+
+            isPlaying = false;
+            updatePlayButtonUI();
+            if (animFrameId) cancelAnimationFrame(animFrameId);
+        }
+
+        function toggleAudio() {
+            if (isPlaying) stopAudio();
+            else startAudio();
+        }
+
+        function updateMasterVolume(val) {
+            if (masterGainNode) {
+                masterGainNode.gain.value = parseFloat(val);
+            }
+        }
+
+        // Tier Selection Handler
+        function selectTier(tierKey) {
+            currentTier = tierKey;
+
+            const cards = ['unaided', 'basic', 'essential', 'advanced'];
+            cards.forEach(t => {
+                const btn = document.getElementById(`tier-btn-${t}`);
+                if (t === tierKey) {
+                    btn.className = "tier-card border-2 border-teal-600 bg-teal-50/50 rounded-xl p-4 text-left transition relative shadow-sm";
+                } else {
+                    btn.className = "tier-card border-2 border-slate-200 rounded-xl p-4 text-left transition hover:border-slate-300 relative bg-white";
+                }
+            });
+
+            const labels = {
+                'unaided': '1. No Amplification (Unaided Loss)',
+                'basic': '2. Basic Hearing Aid',
+                'essential': '3. Essential Hearing Aid',
+                'advanced': '4. Advanced Hearing Aid'
+            };
+            document.getElementById('active-mode-display-text').innerText = labels[tierKey];
+            document.getElementById('print-recommended-tier').innerText = labels[tierKey];
+
+            updateDSPParameters();
+        }
+
+        // Source Tab Switching
+        function switchSourceTab(type) {
+            currentSourceType = type;
+            stopAudio();
+
+            document.getElementById('tab-src-preset').className = type === 'preset' ? "py-2 rounded-lg bg-white text-slate-900 shadow-sm font-semibold" : "py-2 rounded-lg hover:text-slate-900";
+            document.getElementById('tab-src-file').className = type === 'file' ? "py-2 rounded-lg bg-white text-slate-900 shadow-sm font-semibold" : "py-2 rounded-lg hover:text-slate-900";
+            document.getElementById('tab-src-mic').className = type === 'mic' ? "py-2 rounded-lg bg-white text-slate-900 shadow-sm font-semibold" : "py-2 rounded-lg hover:text-slate-900";
+
+            document.getElementById('panel-src-preset').classList.toggle('hidden', type !== 'preset');
+            document.getElementById('panel-src-file').classList.toggle('hidden', type !== 'file');
+            document.getElementById('panel-src-mic').classList.toggle('hidden', type !== 'mic');
+        }
+
+        function selectAudioScenario(key, btn) {
+            currentScenarioKey = key;
+            document.querySelectorAll('.scenario-btn').forEach(b => {
+                b.className = "scenario-btn border-2 border-slate-200 hover:border-slate-300 p-2.5 rounded-xl text-left text-xs transition flex items-center space-x-2.5";
+            });
+            btn.className = "scenario-btn active border-2 border-teal-600 bg-teal-50 p-2.5 rounded-xl text-left text-xs transition flex items-center space-x-2.5";
+
+            // Update Scene Indicator Badge
+            const badgeMap = {
+                'restaurant': { icon: 'fa-utensils', label: 'Speech in Noise / Cafe' },
+                'traffic': { icon: 'fa-car', label: 'Outdoor Traffic Noise' },
+                'conversation': { icon: 'fa-comments', label: 'Speech in Quiet' },
+                'music': { icon: 'fa-music', label: 'Music Scene' }
+            };
+            document.getElementById('scene-icon').className = `fa-solid ${badgeMap[key].icon} mr-2 text-teal-400`;
+            document.getElementById('scene-label').innerText = badgeMap[key].label;
+
+            if (isPlaying && currentSourceType === 'preset') {
+                startAudio();
+            }
+        }
+
+        // Custom Audio File Uploader
+        document.getElementById('user-audio-file').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                audioElement.src = URL.createObjectURL(file);
+                if (isPlaying) startAudio();
+            }
+        });
+
+        // Audiogram Preset Profiles
+        function applyAudiogramPreset(preset) {
+            if (preset === 'normal') audiogramLoss = [5, 5, 5, 5, 10, 10];
+            else if (preset === 'mild-high') audiogramLoss = [10, 10, 15, 25, 40, 50];
+            else if (preset === 'sloping') audiogramLoss = [15, 20, 35, 55, 70, 80];
+            else if (preset === 'cookie') audiogramLoss = [10, 20, 45, 45, 20, 10];
+            else if (preset === 'flat') audiogramLoss = [40, 40, 45, 45, 50, 50];
+            else if (preset === 'profound') audiogramLoss = [30, 40, 60, 75, 85, 90];
+
+            FREQUENCIES.forEach((freq, idx) => {
+                document.getElementById(`slider-${freq}`).value = audiogramLoss[idx];
+                document.getElementById(`lbl-${freq}`).innerText = `${audiogramLoss[idx]} dB`;
+                document.getElementById(`p-${freq}`).innerText = audiogramLoss[idx];
+            });
+
+            updateDSPParameters();
+        }
+
+        function updateAudiogramFromSliders() {
+            FREQUENCIES.forEach((freq, idx) => {
+                const val = parseInt(document.getElementById(`slider-${freq}`).value);
+                audiogramLoss[idx] = val;
+                document.getElementById(`lbl-${freq}`).innerText = `${val} dB`;
+                document.getElementById(`p-${freq}`).innerText = val;
+            });
+
+            updateDSPParameters();
+        }
+
+        function setEarMode(mode) {
+            currentEarMode = mode;
+            ['left', 'right', 'binaural'].forEach(m => {
+                const btn = document.getElementById(`btn-ear-${m}`);
+                if (m === mode) {
+                    btn.className = "px-2 py-1 rounded bg-teal-600 text-white font-semibold shadow-sm";
+                } else {
+                    btn.className = "px-2 py-1 rounded bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold";
+                }
+            });
+        }
+
+        function updatePlayButtonUI() {
+            const btn = document.getElementById('btn-master-play');
+            const icon = document.getElementById('master-play-icon');
+            const text = document.getElementById('master-play-text');
+
+            if (isPlaying) {
+                btn.className = "bg-amber-600 hover:bg-amber-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow transition flex items-center space-x-2";
+                icon.className = "fa-solid fa-pause";
+                text.innerText = "Pause Simulation";
+            } else {
+                btn.className = "bg-teal-500 hover:bg-teal-600 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow transition flex items-center space-x-2";
+                icon.className = "fa-solid fa-play";
+                text.innerText = "Start Audio Simulation";
+            }
+        }
+
+        // Active Features Chips
+        function updateActiveFeaturesChips() {
+            const container = document.getElementById('active-features-chips');
+            let chips = [];
+
+            if (currentTier === 'unaided') {
+                chips = [
+                    { name: 'Raw Attenuation', color: 'bg-red-900/80 text-red-200 border-red-700' },
+                    { name: 'No Noise Reduction', color: 'bg-slate-800 text-slate-400 border-slate-700' }
+                ];
+            } else if (currentTier === 'basic') {
+                chips = [
+                    { name: '2-Band Fitting', color: 'bg-amber-900/80 text-amber-200 border-amber-700' },
+                    { name: 'Omnidirectional Mic', color: 'bg-slate-800 text-slate-300 border-slate-700' },
+                    { name: 'Basic Gain Boost', color: 'bg-amber-900/80 text-amber-200 border-amber-700' }
+                ];
+            } else if (currentTier === 'essential') {
+                chips = [
+                    { name: '4-Channel DSP', color: 'bg-blue-900/80 text-blue-200 border-blue-700' },
+                    { name: 'Front Beamforming Mic', color: 'bg-blue-900/80 text-blue-200 border-blue-700' },
+                    { name: '-6dB Static Noise Filter', color: 'bg-blue-900/80 text-blue-200 border-blue-700' },
+                    { name: 'Feedback Shield', color: 'bg-blue-900/80 text-blue-200 border-blue-700' }
+                ];
+            } else if (currentTier === 'advanced') {
+                chips = [
+                    { name: 'HD Multi-Band DSP', color: 'bg-teal-900/80 text-teal-200 border-teal-700' },
+                    { name: 'Narrow Binaural Beamformer', color: 'bg-teal-900/80 text-teal-200 border-teal-700' },
+                    { name: 'AI Deep Noise Suppression (-12dB)', color: 'bg-teal-900/80 text-teal-200 border-teal-700' },
+                    { name: 'Dual-Mic Wind Shield', color: 'bg-teal-900/80 text-teal-200 border-teal-700' },
+                    { name: 'Transient Sound Manager', color: 'bg-teal-900/80 text-teal-200 border-teal-700' }
+                ];
+            }
+
+            container.innerHTML = chips.map(c => `
+                <span class="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-medium border ${c.color}">
+                    <i class="fa-solid fa-circle-check mr-1.5 opacity-70"></i> ${c.name}
+                </span>
+            `).join('');
+        }
+
+        // Initialize Charts
+        function initAudiogramChart() {
+            const ctx = document.getElementById('chart-audiogram').getContext('2d');
+            audiogramChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['250 Hz', '500 Hz', '1000 Hz', '2000 Hz', '4000 Hz', '8000 Hz'],
+                    datasets: [
+                        {
+                            label: 'Hearing Loss (Unaided)',
+                            data: audiogramLoss,
+                            borderColor: '#ef4444',
+                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                            borderWidth: 3,
+                            pointRadius: 5,
+                            tension: 0.2
+                        },
+                        {
+                            label: 'Aided Response Target',
+                            data: calculateAidedCurve(),
+                            borderColor: '#0d9488',
+                            borderDash: [4, 4],
+                            borderWidth: 2,
+                            pointRadius: 4,
+                            tension: 0.2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            reverse: true,
+                            min: -10,
+                            max: 100,
+                            title: { display: true, text: 'dB HL Loss', font: { size: 10 } }
+                        },
+                        x: {
+                            title: { display: true, text: 'Frequency (Hz)', font: { size: 10 } }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        function calculateAidedCurve() {
+            return audiogramLoss.map((loss, idx) => {
+                if (currentTier === 'unaided') return loss;
+                if (currentTier === 'basic') {
+                    const lowAvg = (audiogramLoss[0] + audiogramLoss[1] + audiogramLoss[2]) / 3;
+                    const highAvg = (audiogramLoss[3] + audiogramLoss[4] + audiogramLoss[5]) / 3;
+                    const gain = idx <= 2 ? lowAvg * 0.72 : highAvg * 0.72;
+                    return Math.max(8, loss - gain);
+                }
+                if (currentTier === 'essential') {
+                    const gain = idx <= 1 ? loss * 0.65 : (idx <= 4 ? loss * 0.80 : loss * 0.75);
+                    return Math.max(5, loss - gain);
+                }
+                const hdGain = idx <= 1 ? loss * 0.62 : loss * 0.85;
+                return Math.max(5, loss - hdGain);
+            });
+        }
+
+        function updateAudiogramChart() {
+            if (audiogramChart) {
+                audiogramChart.data.datasets[0].data = [...audiogramLoss];
+                audiogramChart.data.datasets[1].data = calculateAidedCurve();
+                audiogramChart.update();
+            }
+        }
+
+        function initCompressionChart() {
+            const ctx = document.getElementById('chart-compression').getContext('2d');
+            compressionChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['30', '40', '50', '60', '70', '80', '90'],
+                    datasets: [{
+                        label: 'Output dB',
+                        data: calculateCompressionData(),
+                        borderColor: '#0d9488',
+                        borderWidth: 2,
+                        pointRadius: 3,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { min: 30, max: 100, title: { display: true, text: 'Out dB', font: { size: 9 } } },
+                        x: { title: { display: true, text: 'In dB', font: { size: 9 } } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        function calculateCompressionData() {
+            const inputs = [30, 40, 50, 60, 70, 80, 90];
+            return inputs.map(inDb => {
+                if (currentTier === 'unaided') return inDb - 20;
+                if (currentTier === 'basic') return inDb + 5;
+                if (currentTier === 'essential') return inDb > 65 ? 65 + (inDb - 65) * 0.4 : inDb + 10;
+                // Advanced WDRC
+                return inDb > 55 ? 55 + (inDb - 55) * 0.25 : inDb + 15;
+            });
+        }
+
+        function updateCompressionChart() {
+            if (compressionChart) {
+                compressionChart.data.datasets[0].data = calculateCompressionData();
+                compressionChart.update();
+            }
+        }
+
+        // Live Spectrum Canvas
+        function initSpectrumCanvas() {
+            const canvas = document.getElementById('canvas-spectrum');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            ctx.fillStyle = '#020617';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function drawSpectrumVisualizer() {
+            if (!isPlaying || !analyserNode) return;
+
+            const canvas = document.getElementById('canvas-spectrum');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            const bufferLength = analyserNode.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+
+            function render() {
+                if (!isPlaying) return;
+                animFrameId = requestAnimationFrame(render);
+
+                analyserNode.getByteFrequencyData(dataArray);
+
+                ctx.fillStyle = 'rgba(2, 6, 23, 0.3)';
+                ctx.fillRect(0, 0, width, height);
+
+                const barWidth = (width / bufferLength) * 2.2;
+                let barHeight;
+                let x = 0;
+
+                for (let i = 0; i < bufferLength; i++) {
+                    barHeight = (dataArray[i] / 255) * height;
+
+                    const grad = ctx.createLinearGradient(0, height, 0, 0);
+                    grad.addColorStop(0, '#0d9488');
+                    grad.addColorStop(1, '#2dd4bf');
+
+                    ctx.fillStyle = grad;
+                    ctx.fillRect(x, height - barHeight, barWidth - 1, barHeight);
+
+                    x += barWidth + 1;
+                }
+            }
+
+            render();
+        }
+
+        // Modal Handlers
+        function openAppointmentModal() {
+            document.getElementById('appointment-modal').classList.remove('hidden');
+        }
+
+        function closeAppointmentModal() {
+            document.getElementById('appointment-modal').classList.add('hidden');
+        }
+
+        function handleAppointmentSubmit(e) {
+            e.preventDefault();
+            alert("Thank you! Your appointment request has been scheduled with our audiology staff.");
+            closeAppointmentModal();
+        }
+    </script>
+</body>
+</html>

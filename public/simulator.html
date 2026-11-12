@@ -1,0 +1,1588 @@
+<title>Hearing Aid Simulator</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+
+<style>
+/* Layout: clinical instrument panel — compact header, tier strip, split audiogram + controls */
+:root {
+  --bg: #FAF6F0;
+  --bg-card: #FFFFFF;
+  --bg-panel: #F5F0E8;
+  --fg: #1a2e28;
+  --fg-muted: #5c6b66;
+  --fg-caption: #8a9590;
+  --teal: #1B4D3E;
+  --teal-light: #2a7560;
+  --teal-wash: #e8f0ed;
+  --teal-glow: #3a9b7e;
+  --gold: #B8892A;
+  --gold-wash: #f5ecd6;
+  --gold-light: #d4a63a;
+  --border: #e0dbd2;
+  --border-subtle: #ece8e0;
+  --danger: #c0392b;
+  --danger-wash: #fdf0ee;
+  --info: #2c6fa0;
+  --info-wash: #eaf2fa;
+  --success: #1B4D3E;
+  --success-wash: #e8f0ed;
+  --display: 'Space Grotesk', system-ui, sans-serif;
+  --body: 'Inter', system-ui, sans-serif;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 6px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1a16;
+    --bg-card: #162220;
+    --bg-panel: #1a2e28;
+    --fg: #e8ede9;
+    --fg-muted: #9aada5;
+    --fg-caption: #6b8078;
+    --teal: #3a9b7e;
+    --teal-light: #4dc09a;
+    --teal-wash: rgba(58,155,126,0.12);
+    --teal-glow: #5cd4ad;
+    --gold: #d4a63a;
+    --gold-wash: rgba(212,166,58,0.12);
+    --gold-light: #e8c05a;
+    --border: #2a3e38;
+    --border-subtle: #1f332c;
+    --danger: #e74c3c;
+    --danger-wash: rgba(231,76,60,0.1);
+    --info: #5a9fd4;
+    --info-wash: rgba(90,159,212,0.1);
+    --success: #4dc09a;
+    --success-wash: rgba(77,192,154,0.1);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1a16;
+  --bg-card: #162220;
+  --bg-panel: #1a2e28;
+  --fg: #e8ede9;
+  --fg-muted: #9aada5;
+  --fg-caption: #6b8078;
+  --teal: #3a9b7e;
+  --teal-light: #4dc09a;
+  --teal-wash: rgba(58,155,126,0.12);
+  --teal-glow: #5cd4ad;
+  --gold: #d4a63a;
+  --gold-wash: rgba(212,166,58,0.12);
+  --gold-light: #e8c05a;
+  --border: #2a3e38;
+  --border-subtle: #1f332c;
+  --danger: #e74c3c;
+  --danger-wash: rgba(231,76,60,0.1);
+  --info: #5a9fd4;
+  --info-wash: rgba(90,159,212,0.1);
+  --success: #4dc09a;
+  --success-wash: rgba(77,192,154,0.1);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+  min-height: 100vh;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+h1, h2, h3, h4 { font-family: var(--display); }
+
+.app-wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-block: 16px;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-header .logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.site-header .logo-icon {
+  width: 44px; height: 44px;
+  background: var(--teal);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.site-header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.2;
+}
+.site-header h1 .badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--gold-wash);
+  color: var(--gold);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.site-header .subtitle {
+  font-size: 11px;
+  color: var(--fg-caption);
+  margin-top: 1px;
+}
+.header-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.btn:hover { border-color: var(--teal); color: var(--teal); }
+.btn-primary {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+}
+.btn-primary:hover { background: var(--teal-light); border-color: var(--teal-light); }
+.btn-play {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+  padding: 10px 20px;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+}
+.btn-play:hover { background: var(--teal-light); }
+.btn-play.playing {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.btn-play.playing:hover { background: var(--gold-light); }
+
+/* Control Bar */
+.control-bar {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.control-bar .left { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.volume-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--fg-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 6px 12px;
+  border-radius: var(--radius-xs);
+}
+.scene-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--teal);
+  background: var(--teal-wash);
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+.scene-badge i { font-size: 12px; }
+
+/* Range Slider */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: var(--teal);
+  margin-top: -5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: transform 0.1s;
+}
+input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+input[type=range]::-moz-range-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+}
+input[type=range]::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: none;
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.card-title i { color: var(--teal); font-size: 14px; }
+
+/* Tier Strip */
+.tier-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+@media (max-width: 700px) {
+  .tier-strip { grid-template-columns: repeat(2, 1fr); }
+}
+.tier-card {
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-card);
+  text-align: left;
+  font-family: inherit;
+  color: var(--fg);
+}
+.tier-card:hover { border-color: var(--fg-muted); }
+.tier-card.active {
+  border-color: var(--teal);
+  background: var(--teal-wash);
+}
+.tier-card .tier-num {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg-caption);
+  margin-bottom: 6px;
+}
+.tier-card.active .tier-num { color: var(--teal); }
+.tier-card .tier-name {
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.tier-card .tier-desc {
+  font-size: 10px;
+  color: var(--fg-muted);
+  line-height: 1.4;
+}
+.tier-card .tier-tag {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+.tier-unaided .tier-tag { background: var(--danger-wash); color: var(--danger); }
+.tier-basic .tier-tag { background: var(--gold-wash); color: var(--gold); }
+.tier-essential .tier-tag { background: var(--info-wash); color: var(--info); }
+.tier-advanced .tier-tag { background: var(--success-wash); color: var(--success); }
+
+/* Main Grid */
+.main-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 20px;
+}
+@media (max-width: 860px) {
+  .main-grid { grid-template-columns: 1fr; }
+}
+.col-stack { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+/* Source Tabs */
+.source-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+}
+.source-tab {
+  padding: 7px;
+  border-radius: var(--radius-xs);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--body);
+  color: var(--fg-muted);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.source-tab.active {
+  background: var(--bg-card);
+  color: var(--fg);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* Scenario Buttons */
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.scenario-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+  font-family: inherit;
+  color: var(--fg);
+}
+.scenario-btn:hover { border-color: var(--fg-muted); }
+.scenario-btn.active { border-color: var(--teal); background: var(--teal-wash); }
+.scenario-btn i { font-size: 16px; color: var(--fg-caption); flex-shrink: 0; }
+.scenario-btn.active i { color: var(--teal); }
+.scenario-btn .s-name { font-size: 12px; font-weight: 600; }
+.scenario-btn .s-desc { font-size: 10px; color: var(--fg-caption); }
+
+/* Audiogram Presets */
+.preset-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.preset-btn {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  background: var(--bg-panel);
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--fg);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+}
+.preset-btn:hover { border-color: var(--teal); }
+.preset-btn.active {
+  border-color: var(--teal);
+  background: var(--teal-wash);
+  font-weight: 700;
+}
+
+/* Frequency Sliders */
+.freq-sliders {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+.freq-sliders .row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  text-align: center;
+}
+.freq-sliders .freq-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.freq-sliders .freq-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
+}
+.freq-sliders .freq-val {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--teal);
+  font-variant-numeric: tabular-nums;
+}
+.freq-sliders input[type=range] {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  width: 24px;
+  height: 72px;
+}
+
+/* Ear Mode Toggle */
+.ear-toggle {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  padding: 2px;
+}
+.ear-btn {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--body);
+  border: none;
+  background: transparent;
+  color: var(--fg-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.ear-btn.active {
+  background: var(--teal);
+  color: #fff;
+}
+
+/* Chart Containers */
+.chart-wrap {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  position: relative;
+}
+.chart-wrap canvas { width: 100% !important; }
+
+/* Spectrum Canvas */
+.spectrum-box {
+  background: #0a1612;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.spectrum-box canvas { width: 100%; height: 100%; display: block; }
+
+/* SII Meter */
+.sii-meter {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+.sii-ring {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 10px;
+  position: relative;
+}
+.sii-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.sii-ring .ring-bg { fill: none; stroke: var(--border); stroke-width: 8; }
+.sii-ring .ring-fg { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 0.6s, stroke 0.3s; }
+.sii-value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: none;
+}
+.sii-value .number {
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.sii-value .unit { font-size: 10px; font-weight: 600; color: var(--fg-muted); }
+.sii-label {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.sii-desc {
+  font-size: 10px;
+  color: var(--fg-muted);
+}
+
+/* Feature Chips */
+.features-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.features-panel .chip-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-caption);
+  margin-bottom: 10px;
+}
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg-muted);
+}
+.chip.on { background: var(--teal-wash); color: var(--teal); border-color: var(--teal); }
+.chip.off { opacity: 0.5; text-decoration: line-through; }
+
+/* Comparison Table */
+.cmp-table { width: 100%; font-size: 11px; border-collapse: collapse; }
+.cmp-table th {
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--bg-panel);
+  border-bottom: 2px solid var(--border);
+  color: var(--fg-muted);
+}
+.cmp-table th.col-adv { color: var(--teal); background: var(--teal-wash); }
+.cmp-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+.cmp-table td:first-child { font-weight: 600; color: var(--fg); }
+.cmp-table td.col-adv { background: var(--teal-wash); font-weight: 600; color: var(--teal); }
+.cmp-table .icon-x { color: var(--danger); }
+.cmp-table .icon-check { color: var(--teal); }
+
+/* Speech Banana info */
+.info-callout {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background: var(--gold-wash);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--fg);
+  line-height: 1.5;
+}
+.info-callout i { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+.modal-overlay[hidden] { display: none !important; }
+.modal-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  max-width: 420px;
+  width: 100%;
+  padding: 28px;
+  position: relative;
+}
+.modal-box .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--fg-caption);
+  cursor: pointer;
+  font-size: 16px;
+}
+.modal-box h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.modal-box .modal-sub {
+  font-size: 11px;
+  color: var(--fg-muted);
+  margin-bottom: 18px;
+}
+.form-field { margin-bottom: 12px; }
+.form-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  margin-bottom: 4px;
+}
+.form-field input, .form-field select {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-family: var(--body);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  background: var(--bg);
+  color: var(--fg);
+  outline: none;
+}
+.form-field input:focus, .form-field select:focus { border-color: var(--teal); box-shadow: 0 0 0 2px var(--teal-wash); }
+
+/* Two-col charts */
+.charts-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 600px) {
+  .charts-2col { grid-template-columns: 1fr; }
+}
+
+/* Legend row */
+.legend-row {
+  display: flex;
+  gap: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--fg-muted);
+}
+.legend-row .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* Overflow scroll for table */
+.table-scroll { overflow-x: auto; }
+
+/* Section label */
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.section-label i { color: var(--teal); }
+
+/* File input */
+.file-input-area {
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  text-align: center;
+}
+.file-input-area input[type=file] {
+  font-size: 12px;
+  font-family: var(--body);
+}
+
+/* Mic panel */
+.mic-panel {
+  text-align: center;
+  padding: 16px 10px;
+}
+.mic-panel i { font-size: 28px; color: var(--teal); margin-bottom: 8px; }
+.mic-panel p { font-size: 11px; color: var(--fg-muted); line-height: 1.5; }
+.mic-warn {
+  font-size: 10px;
+  background: var(--gold-wash);
+  color: var(--gold);
+  padding: 8px 12px;
+  border-radius: var(--radius-xs);
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+</style>
+
+<div class="app-wrap">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo-area">
+      <div class="logo-icon"><i class="fa-solid fa-ear-listen"></i></div>
+      <div>
+        <h1>Communiqué <span class="badge">Hearing Simulator</span></h1>
+        <div class="subtitle">Speech, Hearing &amp; Balance Clinic · Patient Counseling Tool</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn" onclick="openModal()"><i class="fa-solid fa-calendar-check"></i> Book Evaluation</button>
+    </div>
+  </header>
+
+  <!-- Control Bar -->
+  <div class="control-bar">
+    <div class="left">
+      <button id="btn-play" class="btn-play" onclick="toggleAudio()">
+        <i id="play-icon" class="fa-solid fa-play"></i>
+        <span id="play-text">Start Simulation</span>
+      </button>
+      <div class="volume-ctrl">
+        <i class="fa-solid fa-volume-high"></i>
+        <span>Vol</span>
+        <input type="range" id="master-vol" min="0" max="1" step="0.01" value="0.8" style="width:70px" oninput="setMasterVol(this.value)">
+      </div>
+    </div>
+    <div class="scene-badge">
+      <i id="scene-icon" class="fa-solid fa-utensils"></i>
+      <span id="scene-label">Café & Speech Noise</span>
+    </div>
+  </div>
+
+  <!-- Tier Strip -->
+  <div class="card" style="padding: 16px">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:12px">
+      <div>
+        <h2 style="font-size:14px; font-weight:700">Technology Processing Level</h2>
+        <p style="font-size:11px; color:var(--fg-caption)">Switch tiers in real time while audio plays to demonstrate benefits</p>
+      </div>
+      <span style="font-size:11px; font-weight:600; color:var(--fg-muted)">Active: <strong id="active-tier-label" style="color:var(--teal)">Advanced</strong></span>
+    </div>
+    <div class="tier-strip">
+      <button class="tier-card tier-unaided" data-tier="unaided" onclick="selectTier('unaided')">
+        <div class="tier-num">Tier 1</div>
+        <div class="tier-name">No Amplification</div>
+        <div class="tier-desc">Unaided loss profile — demonstrates high-frequency attenuation</div>
+        <div class="tier-tag">Impaired</div>
+      </button>
+      <button class="tier-card tier-basic" data-tier="basic" onclick="selectTier('basic')">
+        <div class="tier-num">Tier 2</div>
+        <div class="tier-name">Basic Aid</div>
+        <div class="tier-desc">2-band broad amplification, omnidirectional mic, static gain</div>
+        <div class="tier-tag">Basic Compression</div>
+      </button>
+      <button class="tier-card tier-essential" data-tier="essential" onclick="selectTier('essential')">
+        <div class="tier-num">Tier 3</div>
+        <div class="tier-name">Essential Aid</div>
+        <div class="tier-desc">4-channel DSP, front beamforming, feedback shield, −6 dB NR</div>
+        <div class="tier-tag">Directional + NR</div>
+      </button>
+      <button class="tier-card tier-advanced active" data-tier="advanced" onclick="selectTier('advanced')">
+        <div class="tier-num">Tier 4</div>
+        <div class="tier-name">Advanced Aid</div>
+        <div class="tier-desc">Multi-band DSP, binaural beamforming, AI noise suppression &amp; wind shield</div>
+        <div class="tier-tag">Adaptive AI DSP</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Dashboard Grid -->
+  <div class="main-grid">
+
+    <!-- LEFT: Audio Source + Audiogram Config -->
+    <div class="col-stack">
+
+      <!-- Audio Source -->
+      <div class="card">
+        <div class="card-title"><i class="fa-solid fa-compact-disc"></i> Audio Source</div>
+        <div class="source-tabs">
+          <button class="source-tab active" data-src="preset" onclick="switchSrc('preset',this)">Scenarios</button>
+          <button class="source-tab" data-src="file" onclick="switchSrc('file',this)">Custom Audio</button>
+          <button class="source-tab" data-src="mic" onclick="switchSrc('mic',this)">Live Mic</button>
+        </div>
+        <div id="panel-preset" style="margin-top:12px">
+          <div class="scenario-grid">
+            <button class="scenario-btn active" data-scene="restaurant" onclick="pickScene('restaurant',this)">
+              <i class="fa-solid fa-utensils"></i>
+              <div><div class="s-name">Café &amp; Chatter</div><div class="s-desc">Crowd background noise</div></div>
+            </button>
+            <button class="scenario-btn" data-scene="traffic" onclick="pickScene('traffic',this)">
+              <i class="fa-solid fa-car"></i>
+              <div><div class="s-name">Traffic &amp; Street</div><div class="s-desc">Low rumble + wind</div></div>
+            </button>
+            <button class="scenario-btn" data-scene="conversation" onclick="pickScene('conversation',this)">
+              <i class="fa-solid fa-house-user"></i>
+              <div><div class="s-name">Quiet Room</div><div class="s-desc">Soft conversation</div></div>
+            </button>
+            <button class="scenario-btn" data-scene="music" onclick="pickScene('music',this)">
+              <i class="fa-solid fa-guitar"></i>
+              <div><div class="s-name">Acoustic Music</div><div class="s-desc">Full spectral range</div></div>
+            </button>
+          </div>
+        </div>
+        <div id="panel-file" hidden style="margin-top:12px">
+          <div class="file-input-area">
+            <p style="font-size:11px;color:var(--fg-muted);margin-bottom:8px">Upload MP3, WAV or M4A</p>
+            <input type="file" id="audio-file" accept="audio/*">
+          </div>
+        </div>
+        <div id="panel-mic" hidden style="margin-top:12px">
+          <div class="mic-panel">
+            <i class="fa-solid fa-microphone-lines"></i>
+            <p>Speak into your microphone to hear your voice processed through the selected tier.</p>
+            <div class="mic-warn"><i class="fa-solid fa-headphones"></i> Headphones required to prevent feedback</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audiogram Config -->
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px">
+          <div class="card-title" style="margin-bottom:0"><i class="fa-solid fa-sliders"></i> Audiogram Configuration</div>
+          <div class="ear-toggle">
+            <button class="ear-btn" data-ear="left" onclick="setEar('left',this)">Left</button>
+            <button class="ear-btn" data-ear="right" onclick="setEar('right',this)">Right</button>
+            <button class="ear-btn active" data-ear="binaural" onclick="setEar('binaural',this)">Binaural</button>
+          </div>
+        </div>
+
+        <div class="section-label"><i class="fa-solid fa-stethoscope"></i> Audiometric Presets</div>
+        <div class="preset-grid" style="margin-bottom:14px">
+          <button class="preset-btn" onclick="applyPreset('normal',this)">Normal Hearing</button>
+          <button class="preset-btn" onclick="applyPreset('mild-high',this)">Mild High-Freq Loss</button>
+          <button class="preset-btn active" onclick="applyPreset('sloping',this)">Sloping Mod-Severe</button>
+          <button class="preset-btn" onclick="applyPreset('cookie',this)">Cookie-Bite Loss</button>
+          <button class="preset-btn" onclick="applyPreset('flat',this)">Flat Moderate Loss</button>
+          <button class="preset-btn" onclick="applyPreset('profound',this)">Severe High Loss</button>
+        </div>
+
+        <div class="freq-sliders">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span style="font-size:11px;font-weight:700;color:var(--fg)">Threshold Sliders (dB HL)</span>
+            <span style="font-size:9px;color:var(--fg-caption)">0 dB = Normal · 90 dB = Profound</span>
+          </div>
+          <div class="row" id="slider-row"></div>
+        </div>
+      </div>
+
+      <!-- Educational Callout -->
+      <div class="info-callout">
+        <i class="fa-solid fa-lightbulb"></i>
+        <div>
+          <strong>Speech Banana:</strong> Most speech sounds fall between 250–6000 Hz at 20–60 dB.
+          When your audiogram curve dips below this region, those sounds become inaudible without amplification.
+          The chart on the right shows how much each tier recovers.
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Charts & Visualizers -->
+    <div class="col-stack">
+
+      <!-- Audiogram Chart -->
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+          <div>
+            <h3 style="font-size:14px;font-weight:700">Audiogram &amp; Prescription Response</h3>
+            <p style="font-size:10px;color:var(--fg-caption)">Loss curve vs. aided target per selected tier</p>
+          </div>
+          <div class="legend-row">
+            <span><span class="dot" style="background:var(--danger)"></span>Unaided Loss</span>
+            <span><span class="dot" style="background:var(--teal)"></span>Aided Target</span>
+          </div>
+        </div>
+        <div class="chart-wrap" style="height:240px">
+          <canvas id="chart-audiogram"></canvas>
+        </div>
+      </div>
+
+      <!-- SII + Spectrum + Compression -->
+      <div class="charts-2col">
+
+        <!-- Speech Intelligibility Index -->
+        <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <div class="card-title" style="align-self:flex-start"><i class="fa-solid fa-brain"></i> Speech Clarity Index</div>
+          <div class="sii-ring">
+            <svg viewBox="0 0 120 120">
+              <circle class="ring-bg" cx="60" cy="60" r="50"/>
+              <circle class="ring-fg" id="sii-arc" cx="60" cy="60" r="50" stroke="var(--teal)" stroke-dasharray="314.16" stroke-dashoffset="94.25"/>
+            </svg>
+            <div class="sii-value">
+              <span class="number" id="sii-num" style="color:var(--teal)">70</span>
+              <span class="unit">%</span>
+            </div>
+          </div>
+          <div class="sii-label" id="sii-label" style="color:var(--teal)">Good</div>
+          <div class="sii-desc" id="sii-desc">Comfortable one-on-one conversation</div>
+        </div>
+
+        <!-- Spectrum Analyzer -->
+        <div class="card">
+          <div class="card-title"><i class="fa-solid fa-wave-square"></i> Live Spectrum</div>
+          <div class="spectrum-box" style="height:140px">
+            <canvas id="canvas-spectrum"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- WDRC Curve + Features -->
+      <div class="charts-2col">
+        <div class="card">
+          <div class="card-title"><i class="fa-solid fa-compress"></i> WDRC Compression</div>
+          <div class="chart-wrap" style="height:130px">
+            <canvas id="chart-wdrc"></canvas>
+          </div>
+        </div>
+        <div class="features-panel">
+          <div class="chip-label"><i class="fa-solid fa-microchip"></i> Active DSP Features</div>
+          <div class="chip-row" id="feature-chips"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="card">
+    <h2 style="font-size:15px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px">
+      <i class="fa-solid fa-table-columns" style="color:var(--teal)"></i> Technology Comparison
+    </h2>
+    <p style="font-size:11px;color:var(--fg-caption);margin-bottom:14px">Feature breakdown to help patients select the right technology level</p>
+    <div class="table-scroll">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th style="min-width:140px">Dimension</th>
+            <th>No Amplification</th>
+            <th>Basic</th>
+            <th>Essential</th>
+            <th class="col-adv">Advanced AI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Speech Clarity</td>
+            <td><i class="fa-solid fa-xmark icon-x"></i> Muffled</td>
+            <td>★ Standard</td>
+            <td>★★ 4-Ch Precision</td>
+            <td class="col-adv"><i class="fa-solid fa-circle-check icon-check"></i> HD Multi-Band</td>
+          </tr>
+          <tr>
+            <td>Speech in Noise</td>
+            <td><i class="fa-solid fa-xmark icon-x"></i> Very Difficult</td>
+            <td>Challenging</td>
+            <td>Good (Front Dir.)</td>
+            <td class="col-adv"><i class="fa-solid fa-circle-check icon-check"></i> Excellent (Binaural)</td>
+          </tr>
+          <tr>
+            <td>Listening Fatigue</td>
+            <td>Severe exhaustion</td>
+            <td>Moderate effort</td>
+            <td>Reduced fatigue</td>
+            <td class="col-adv">Minimal effort</td>
+          </tr>
+          <tr>
+            <td>Noise Suppression</td>
+            <td>None</td>
+            <td>None (Omni)</td>
+            <td>−6 dB Static</td>
+            <td class="col-adv"><i class="fa-solid fa-bolt icon-check"></i> −12 dB AI Adaptive</td>
+          </tr>
+          <tr>
+            <td>Wind Management</td>
+            <td>Natural buffet</td>
+            <td>Amplified harshness</td>
+            <td>Standard filter</td>
+            <td class="col-adv"><i class="fa-solid fa-wind icon-check"></i> Dual-Mic WindShield</td>
+          </tr>
+          <tr>
+            <td>Feedback Control</td>
+            <td>N/A</td>
+            <td>None</td>
+            <td>Basic cancellation</td>
+            <td class="col-adv"><i class="fa-solid fa-circle-check icon-check"></i> Phase-Cancel Pro</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="text-align:center;padding:12px 0;font-size:10px;color:var(--fg-caption)">
+    Communiqué Speech, Hearing &amp; Balance Clinic · For educational demonstration purposes · Not a diagnostic tool
+  </footer>
+</div>
+
+<!-- Appointment Modal -->
+<div class="modal-overlay" id="modal" hidden>
+  <div class="modal-box">
+    <button class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    <div style="text-align:center;margin-bottom:18px">
+      <div style="width:48px;height:48px;background:var(--teal-wash);color:var(--teal);border-radius:50%;display:grid;place-items:center;font-size:20px;margin:0 auto 10px"><i class="fa-solid fa-user-doctor"></i></div>
+      <h3>Schedule Consultation</h3>
+      <p class="modal-sub">Book your diagnostic audiogram &amp; personalized hearing aid trial</p>
+    </div>
+    <form onsubmit="submitForm(event)">
+      <div class="form-field">
+        <label>Full Name</label>
+        <input type="text" required placeholder="Patient name" id="f-name">
+      </div>
+      <div class="form-field">
+        <label>Contact (Email / Phone)</label>
+        <input type="text" required placeholder="phone or email" id="f-contact">
+      </div>
+      <div class="form-field">
+        <label>Interested Tier</label>
+        <select id="f-tier">
+          <option>Advanced AI Hearing Aid</option>
+          <option>Essential Hearing Aid</option>
+          <option>Basic Hearing Aid</option>
+          <option>Comprehensive Evaluation</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;padding:12px;font-size:13px;margin-top:6px;border-radius:var(--radius-sm)">
+        Confirm Appointment Request
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+// ─── State ───
+const FREQS = [250, 500, 1000, 2000, 4000, 8000];
+let loss = [15, 20, 35, 55, 70, 80];
+let tier = 'advanced';
+let srcType = 'preset';
+let sceneKey = 'restaurant';
+let playing = false;
+let earMode = 'binaural';
+
+// Audio nodes
+let ctx = null, masterGain = null, src = null, micStream = null;
+let lossFilters = [], aidFilters = [];
+let compressor = null, noiseFilter = null, dirFilter = null, makeupGain = null, analyser = null;
+let audioEl = new Audio(); audioEl.crossOrigin = 'anonymous'; audioEl.loop = true;
+let animId = null;
+
+// Charts
+let agChart = null, wdrcChart = null;
+
+// ─── Init ───
+window.addEventListener('DOMContentLoaded', () => {
+  buildSliders();
+  initAudiogramChart();
+  initWDRCChart();
+  initSpectrum();
+  updateAll();
+});
+
+// Build frequency slider columns
+function buildSliders() {
+  const row = document.getElementById('slider-row');
+  FREQS.forEach((f, i) => {
+    const col = document.createElement('div');
+    col.className = 'freq-col';
+    const lbl = f >= 1000 ? (f/1000)+'k' : f;
+    col.innerHTML = `
+      <span class="freq-label">${lbl} Hz</span>
+      <input type="range" id="sl-${f}" min="0" max="90" value="${loss[i]}" oninput="sliderChange()">
+      <span class="freq-val" id="lv-${f}">${loss[i]} dB</span>
+    `;
+    row.appendChild(col);
+  });
+}
+
+function sliderChange() {
+  FREQS.forEach((f, i) => {
+    loss[i] = parseInt(document.getElementById('sl-'+f).value);
+    document.getElementById('lv-'+f).textContent = loss[i]+' dB';
+  });
+  updateAll();
+}
+
+// ─── Audio Context ───
+function initCtx() {
+  if (!ctx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    ctx = new AC();
+    masterGain = ctx.createGain();
+    masterGain.gain.value = parseFloat(document.getElementById('master-vol').value);
+    analyser = ctx.createAnalyser();
+    analyser.fftSize = 256;
+    dirFilter = ctx.createBiquadFilter();
+    dirFilter.type = 'peaking'; dirFilter.frequency.value = 2500; dirFilter.gain.value = 0;
+    noiseFilter = ctx.createBiquadFilter();
+    noiseFilter.type = 'lowshelf'; noiseFilter.frequency.value = 400; noiseFilter.gain.value = 0;
+    compressor = ctx.createDynamicsCompressor();
+    makeupGain = ctx.createGain();
+    lossFilters = FREQS.map(f => { const n = ctx.createBiquadFilter(); n.type='peaking'; n.frequency.value=f; n.Q.value=1.2; n.gain.value=0; return n; });
+    aidFilters = FREQS.map(f => { const n = ctx.createBiquadFilter(); n.type='peaking'; n.frequency.value=f; n.Q.value=1.2; n.gain.value=0; return n; });
+    for (let i=0;i<lossFilters.length-1;i++) lossFilters[i].connect(lossFilters[i+1]);
+    for (let i=0;i<aidFilters.length-1;i++) aidFilters[i].connect(aidFilters[i+1]);
+    reconnect();
+  }
+  if (ctx.state==='suspended') ctx.resume();
+}
+
+function reconnect() {
+  if (!ctx) return;
+  applyDSP();
+  try { if(src) src.disconnect(); dirFilter.disconnect(); noiseFilter.disconnect(); lossFilters[lossFilters.length-1].disconnect(); aidFilters[aidFilters.length-1].disconnect(); compressor.disconnect(); makeupGain.disconnect(); } catch(e){}
+  if (src) src.connect(dirFilter);
+  dirFilter.connect(noiseFilter);
+  noiseFilter.connect(lossFilters[0]);
+  lossFilters[lossFilters.length-1].connect(aidFilters[0]);
+  aidFilters[aidFilters.length-1].connect(compressor);
+  compressor.connect(makeupGain);
+  makeupGain.connect(masterGain);
+  masterGain.connect(analyser);
+  analyser.connect(ctx.destination);
+}
+
+function applyDSP() {
+  if (!ctx) return;
+  const t = ctx.currentTime;
+  const speechAvg = (loss[1]+loss[2]+loss[3]+loss[4])/4;
+  FREQS.forEach((f, i) => {
+    const l = loss[i];
+    lossFilters[i].gain.setTargetAtTime(-l, t, 0.03);
+    if (tier==='unaided') { aidFilters[i].gain.setTargetAtTime(0, t, 0.03); aidFilters[i].Q.setTargetAtTime(1.2, t, 0.03); }
+    else if (tier==='basic') {
+      const lo=(loss[0]+loss[1]+loss[2])/3, hi=(loss[3]+loss[4]+loss[5])/3;
+      aidFilters[i].gain.setTargetAtTime(i<=2?lo*0.72:hi*0.72, t, 0.03);
+      aidFilters[i].Q.setTargetAtTime(0.85, t, 0.03);
+    } else if (tier==='essential') {
+      aidFilters[i].gain.setTargetAtTime(i<=1?l*0.65:(i<=4?l*0.80:l*0.75), t, 0.03);
+      aidFilters[i].Q.setTargetAtTime(1.1, t, 0.03);
+    } else {
+      aidFilters[i].gain.setTargetAtTime(i<=1?l*0.62:l*0.85, t, 0.03);
+      aidFilters[i].Q.setTargetAtTime(1.3, t, 0.03);
+    }
+  });
+  dirFilter.gain.setTargetAtTime(tier==='advanced'?4.5:tier==='essential'?2.5:0, t, 0.03);
+  noiseFilter.gain.setTargetAtTime(tier==='advanced'?-10:tier==='essential'?-5:0, t, 0.03);
+  if (tier==='advanced') {
+    compressor.threshold.setTargetAtTime(-28,t,0.03); compressor.knee.setTargetAtTime(12,t,0.03);
+    compressor.ratio.setTargetAtTime(4.5,t,0.03); compressor.attack.setTargetAtTime(0.005,t,0.03);
+    compressor.release.setTargetAtTime(0.15,t,0.03); makeupGain.gain.setTargetAtTime(1.38,t,0.03);
+  } else if (tier==='essential') {
+    compressor.threshold.setTargetAtTime(-24,t,0.03); compressor.knee.setTargetAtTime(10,t,0.03);
+    compressor.ratio.setTargetAtTime(3.2,t,0.03); compressor.attack.setTargetAtTime(0.01,t,0.03);
+    compressor.release.setTargetAtTime(0.2,t,0.03);
+    makeupGain.gain.setTargetAtTime(1.48+Math.min(0.25,speechAvg*0.003),t,0.03);
+  } else if (tier==='basic') {
+    compressor.threshold.setTargetAtTime(-16,t,0.03); compressor.knee.setTargetAtTime(6,t,0.03);
+    compressor.ratio.setTargetAtTime(2.0,t,0.03); compressor.attack.setTargetAtTime(0.015,t,0.03);
+    compressor.release.setTargetAtTime(0.25,t,0.03); makeupGain.gain.setTargetAtTime(1.12,t,0.03);
+  } else {
+    compressor.threshold.setTargetAtTime(0,t,0.03); compressor.ratio.setTargetAtTime(1,t,0.03);
+    makeupGain.gain.setTargetAtTime(1.0,t,0.03);
+  }
+}
+
+// ─── Synthesize scenes ───
+function makeBuf(key) {
+  const sr = ctx.sampleRate, dur = 5, buf = ctx.createBuffer(2, sr*dur, sr);
+  for (let ch=0; ch<2; ch++) {
+    const d = buf.getChannelData(ch);
+    for (let i=0; i<buf.length; i++) {
+      const t = i/sr;
+      if (key==='restaurant') {
+        d[i] = (Math.sin(6.28*220*t)*Math.sin(6.28*4*t)*0.3 + Math.sin(6.28*500*t)*Math.random()*0.2 + (Math.random()>0.995?(Math.random()-0.5)*2:0) + (Math.random()-0.5)*0.2)*0.8;
+      } else if (key==='traffic') {
+        d[i] = Math.sin(6.28*55*t+Math.sin(t*1.5))*0.4 + (Math.random()-0.5)*0.3;
+      } else if (key==='conversation') {
+        d[i] = Math.sin(6.28*180*t)*Math.sin(6.28*2.5*t)*0.5;
+      } else {
+        d[i] = (Math.sin(6.28*330*t)+Math.sin(6.28*440*t)+Math.sin(6.28*554*t))*0.25;
+      }
+    }
+  }
+  return buf;
+}
+
+async function startAudio() {
+  initCtx();
+  if (srcType==='preset') {
+    if (src) try{src.stop();}catch(e){}
+    src = ctx.createBufferSource();
+    src.buffer = makeBuf(sceneKey);
+    src.loop = true;
+    reconnect();
+    src.start(0);
+  } else if (srcType==='file') {
+    if (!audioEl.src) return;
+    if (!src || !(src instanceof MediaElementAudioSourceNode)) src = ctx.createMediaElementSource(audioEl);
+    reconnect();
+    await audioEl.play();
+  } else if (srcType==='mic') {
+    try {
+      micStream = await navigator.mediaDevices.getUserMedia({audio:true});
+      src = ctx.createMediaStreamSource(micStream);
+      reconnect();
+    } catch(e) { return; }
+  }
+  playing = true;
+  updatePlayBtn();
+  drawSpectrum();
+}
+
+function stopAudio() {
+  if (srcType==='preset' && src) try{src.stop();}catch(e){}
+  else if (srcType==='file') audioEl.pause();
+  else if (srcType==='mic' && micStream) micStream.getTracks().forEach(t=>t.stop());
+  playing = false;
+  updatePlayBtn();
+  if (animId) cancelAnimationFrame(animId);
+}
+
+function toggleAudio() { playing ? stopAudio() : startAudio(); }
+function setMasterVol(v) { if (masterGain) masterGain.gain.value = parseFloat(v); }
+
+function updatePlayBtn() {
+  const b = document.getElementById('btn-play');
+  const ic = document.getElementById('play-icon');
+  const tx = document.getElementById('play-text');
+  if (playing) { b.classList.add('playing'); ic.className='fa-solid fa-pause'; tx.textContent='Pause'; }
+  else { b.classList.remove('playing'); ic.className='fa-solid fa-play'; tx.textContent='Start Simulation'; }
+}
+
+// ─── Tier Selection ───
+function selectTier(t) {
+  tier = t;
+  document.querySelectorAll('.tier-card').forEach(c => c.classList.toggle('active', c.dataset.tier===t));
+  const labels = {unaided:'No Amplification',basic:'Basic',essential:'Essential',advanced:'Advanced'};
+  document.getElementById('active-tier-label').textContent = labels[t];
+  updateAll();
+}
+
+// ─── Source / Scene ───
+function switchSrc(type, btn) {
+  srcType = type;
+  stopAudio();
+  document.querySelectorAll('.source-tab').forEach(b => b.classList.toggle('active', b.dataset.src===type));
+  document.getElementById('panel-preset').hidden = type!=='preset';
+  document.getElementById('panel-file').hidden = type!=='file';
+  document.getElementById('panel-mic').hidden = type!=='mic';
+}
+
+function pickScene(key, btn) {
+  sceneKey = key;
+  document.querySelectorAll('.scenario-btn').forEach(b => b.classList.toggle('active', b.dataset.scene===key));
+  const map = {restaurant:{icon:'fa-utensils',label:'Café & Speech Noise'},traffic:{icon:'fa-car',label:'Traffic & Street'},conversation:{icon:'fa-comments',label:'Quiet Room'},music:{icon:'fa-music',label:'Acoustic Music'}};
+  document.getElementById('scene-icon').className = 'fa-solid '+map[key].icon;
+  document.getElementById('scene-label').textContent = map[key].label;
+  if (playing && srcType==='preset') startAudio();
+}
+
+document.getElementById('audio-file').addEventListener('change', function(e) {
+  const f = e.target.files[0];
+  if (f) { audioEl.src = URL.createObjectURL(f); if (playing) startAudio(); }
+});
+
+// ─── Presets ───
+function applyPreset(p, btn) {
+  const presets = {
+    'normal':[5,5,5,5,10,10], 'mild-high':[10,10,15,25,40,50],
+    'sloping':[15,20,35,55,70,80], 'cookie':[10,20,45,45,20,10],
+    'flat':[40,40,45,45,50,50], 'profound':[30,40,60,75,85,90]
+  };
+  loss = [...presets[p]];
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  FREQS.forEach((f,i) => {
+    document.getElementById('sl-'+f).value = loss[i];
+    document.getElementById('lv-'+f).textContent = loss[i]+' dB';
+  });
+  updateAll();
+}
+
+function setEar(mode, btn) {
+  earMode = mode;
+  document.querySelectorAll('.ear-btn').forEach(b => b.classList.toggle('active', b.dataset.ear===mode));
+}
+
+// ─── Master Update ───
+function updateAll() {
+  if (ctx) applyDSP();
+  updateAudiogramChart();
+  updateWDRC();
+  updateSII();
+  updateChips();
+}
+
+// ─── SII Calculation ───
+function updateSII() {
+  const weights = [0.05, 0.10, 0.25, 0.30, 0.20, 0.10]; // speech importance by freq
+  let score = 0;
+  const aided = calcAided();
+  FREQS.forEach((f, i) => {
+    const threshold = aided[i];
+    // Approximate: 0dB=100% audible, 60dB+=0% audible at that freq
+    const audibility = Math.max(0, Math.min(1, 1 - threshold/60));
+    score += audibility * weights[i];
+  });
+  const pct = Math.round(score * 100);
+  document.getElementById('sii-num').textContent = pct;
+
+  const arc = document.getElementById('sii-arc');
+  const circumference = 314.16;
+  arc.setAttribute('stroke-dashoffset', circumference - (circumference * pct / 100));
+
+  let label, desc, color;
+  if (pct >= 80) { label='Excellent'; desc='Near-normal speech understanding'; color='var(--teal)'; }
+  else if (pct >= 60) { label='Good'; desc='Comfortable one-on-one conversation'; color='var(--teal)'; }
+  else if (pct >= 40) { label='Fair'; desc='Difficulty in group settings'; color='var(--gold)'; }
+  else if (pct >= 20) { label='Poor'; desc='Significant speech difficulty'; color='var(--danger)'; }
+  else { label='Very Poor'; desc='Minimal speech perception'; color='var(--danger)'; }
+
+  document.getElementById('sii-label').textContent = label;
+  document.getElementById('sii-label').style.color = color;
+  document.getElementById('sii-desc').textContent = desc;
+  document.getElementById('sii-num').style.color = color;
+  arc.setAttribute('stroke', color);
+}
+
+// ─── Feature Chips ───
+function updateChips() {
+  const c = document.getElementById('feature-chips');
+  const allFeatures = [
+    {name:'Multi-Band DSP', tiers:['advanced']},
+    {name:'4-Ch DSP', tiers:['essential']},
+    {name:'2-Band Fitting', tiers:['basic']},
+    {name:'Binaural Beamformer', tiers:['advanced']},
+    {name:'Front Directional', tiers:['essential']},
+    {name:'Omnidirectional', tiers:['basic']},
+    {name:'AI Noise Suppression', tiers:['advanced']},
+    {name:'−6 dB Static NR', tiers:['essential']},
+    {name:'Feedback Shield', tiers:['essential','advanced']},
+    {name:'Wind Shield', tiers:['advanced']},
+    {name:'Transient Manager', tiers:['advanced']},
+  ];
+  if (tier === 'unaided') {
+    c.innerHTML = '<span class="chip" style="border-color:var(--danger);color:var(--danger)"><i class="fa-solid fa-xmark"></i> No Processing</span>';
+    return;
+  }
+  c.innerHTML = allFeatures.map(f => {
+    const on = f.tiers.includes(tier);
+    return `<span class="chip ${on?'on':'off'}"><i class="fa-solid fa-${on?'check':'minus'}"></i> ${f.name}</span>`;
+  }).join('');
+}
+
+// ─── Charts ───
+function getChartColors() {
+  const s = getComputedStyle(document.documentElement);
+  return {
+    loss: s.getPropertyValue('--danger').trim() || '#c0392b',
+    aided: s.getPropertyValue('--teal').trim() || '#1B4D3E',
+    border: s.getPropertyValue('--border').trim() || '#e0dbd2',
+    fg: s.getPropertyValue('--fg-muted').trim() || '#5c6b66',
+    banana: 'rgba(184,137,42,0.12)',
+  };
+}
+
+function calcAided() {
+  return loss.map((l, i) => {
+    if (tier==='unaided') return l;
+    if (tier==='basic') { const lo=(loss[0]+loss[1]+loss[2])/3,hi=(loss[3]+loss[4]+loss[5])/3; return Math.max(8,l-(i<=2?lo*0.72:hi*0.72)); }
+    if (tier==='essential') { return Math.max(5,l-(i<=1?l*0.65:(i<=4?l*0.80:l*0.75))); }
+    return Math.max(5,l-(i<=1?l*0.62:l*0.85));
+  });
+}
+
+function initAudiogramChart() {
+  const c = getChartColors();
+  const el = document.getElementById('chart-audiogram');
+  agChart = new Chart(el, {
+    type: 'line',
+    data: {
+      labels: ['250','500','1k','2k','4k','8k'],
+      datasets: [
+        // Speech banana area
+        { label:'Speech Zone', data:[20,20,25,30,40,50], fill:'+1', backgroundColor:c.banana,
+          borderColor:'transparent', pointRadius:0, order:3 },
+        { label:'Speech Zone Lower', data:[55,55,55,55,55,55], fill:false,
+          borderColor:'transparent', pointRadius:0, order:3 },
+        // Loss curve
+        { label:'Unaided Loss', data:[...loss], borderColor:c.loss, backgroundColor:c.loss+'22',
+          borderWidth:2.5, pointRadius:4, pointBackgroundColor:c.loss, tension:0.2, order:1 },
+        // Aided curve
+        { label:'Aided Target', data:calcAided(), borderColor:c.aided, borderDash:[5,4],
+          borderWidth:2, pointRadius:3, pointBackgroundColor:c.aided, tension:0.2, order:2 },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        y: { reverse:true, min:-10, max:100,
+          title:{display:true,text:'dB HL',font:{size:10,family:'Inter'},color:c.fg},
+          grid:{color:c.border+'40'}, ticks:{font:{size:9},color:c.fg} },
+        x: { title:{display:true,text:'Frequency',font:{size:10,family:'Inter'},color:c.fg},
+          grid:{color:c.border+'30'}, ticks:{font:{size:9},color:c.fg} }
+      },
+      plugins: { legend:{display:false} }
+    }
+  });
+}
+
+function updateAudiogramChart() {
+  if (!agChart) return;
+  const c = getChartColors();
+  agChart.data.datasets[2].data = [...loss];
+  agChart.data.datasets[2].borderColor = c.loss;
+  agChart.data.datasets[2].pointBackgroundColor = c.loss;
+  agChart.data.datasets[3].data = calcAided();
+  agChart.data.datasets[3].borderColor = c.aided;
+  agChart.data.datasets[3].pointBackgroundColor = c.aided;
+  agChart.data.datasets[0].backgroundColor = c.banana;
+  agChart.options.scales.y.grid.color = c.border+'40';
+  agChart.options.scales.x.grid.color = c.border+'30';
+  agChart.options.scales.y.ticks.color = c.fg;
+  agChart.options.scales.x.ticks.color = c.fg;
+  agChart.update();
+}
+
+function initWDRCChart() {
+  const c = getChartColors();
+  wdrcChart = new Chart(document.getElementById('chart-wdrc'), {
+    type: 'line',
+    data: {
+      labels: ['30','40','50','60','70','80','90'],
+      datasets: [{ label:'Output dB', data:calcWDRC(), borderColor:c.aided, borderWidth:2, pointRadius:2, fill:false, tension:0.3 }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      scales: {
+        y: { min:30, max:100, title:{display:true,text:'Out dB',font:{size:9,family:'Inter'},color:c.fg}, grid:{color:c.border+'30'}, ticks:{font:{size:8},color:c.fg} },
+        x: { title:{display:true,text:'In dB',font:{size:9,family:'Inter'},color:c.fg}, grid:{color:c.border+'30'}, ticks:{font:{size:8},color:c.fg} }
+      },
+      plugins: { legend:{display:false} }
+    }
+  });
+}
+
+function calcWDRC() {
+  return [30,40,50,60,70,80,90].map(d => {
+    if (tier==='unaided') return d-20;
+    if (tier==='basic') return d+5;
+    if (tier==='essential') return d>65?65+(d-65)*0.4:d+10;
+    return d>55?55+(d-55)*0.25:d+15;
+  });
+}
+
+function updateWDRC() {
+  if (!wdrcChart) return;
+  const c = getChartColors();
+  wdrcChart.data.datasets[0].data = calcWDRC();
+  wdrcChart.data.datasets[0].borderColor = c.aided;
+  wdrcChart.update();
+}
+
+// ─── Spectrum ───
+function initSpectrum() {
+  const cv = document.getElementById('canvas-spectrum');
+  cv.width = cv.offsetWidth * 2; cv.height = cv.offsetHeight * 2;
+  const x = cv.getContext('2d');
+  x.fillStyle = '#0a1612'; x.fillRect(0,0,cv.width,cv.height);
+}
+
+function drawSpectrum() {
+  if (!playing || !analyser) return;
+  const cv = document.getElementById('canvas-spectrum');
+  const x = cv.getContext('2d');
+  const w = cv.width, h = cv.height;
+  const buf = analyser.frequencyBinCount;
+  const data = new Uint8Array(buf);
+  function render() {
+    if (!playing) return;
+    animId = requestAnimationFrame(render);
+    analyser.getByteFrequencyData(data);
+    x.fillStyle = 'rgba(10,22,18,0.3)';
+    x.fillRect(0,0,w,h);
+    const bw = (w/buf)*2.2;
+    let px = 0;
+    for (let i=0;i<buf;i++) {
+      const bh = (data[i]/255)*h;
+      const g = x.createLinearGradient(0,h,0,0);
+      g.addColorStop(0,'#1B4D3E'); g.addColorStop(1,'#3a9b7e');
+      x.fillStyle = g;
+      x.fillRect(px, h-bh, bw-1, bh);
+      px += bw+1;
+    }
+  }
+  render();
+}
+
+// ─── Modal ───
+function openModal() { document.getElementById('modal').hidden = false; }
+function closeModal() { document.getElementById('modal').hidden = true; }
+function submitForm(e) {
+  e.preventDefault();
+  const box = e.target.closest('.modal-box');
+  box.innerHTML = '<div style="text-align:center;padding:20px"><i class="fa-solid fa-circle-check" style="font-size:36px;color:var(--teal);margin-bottom:12px"></i><h3 style="margin-bottom:6px">Request Sent</h3><p style="font-size:12px;color:var(--fg-muted)">Our audiology team will contact you shortly to confirm your appointment.</p><button class="btn" style="margin-top:16px" onclick="closeModal()">Close</button></div>';
+}
+
+// Theme observer — update chart colors when theme changes
+const themeObs = new MutationObserver(() => { updateAudiogramChart(); updateWDRC(); });
+themeObs.observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { updateAudiogramChart(); updateWDRC(); });
+</script>
