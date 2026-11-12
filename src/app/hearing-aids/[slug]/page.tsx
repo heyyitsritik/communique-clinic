@@ -1,17 +1,22 @@
-import { notFound } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import type { Metadata } from 'next'
 import products from '@/data/products.json'
 import ProductPageClient from './ProductPageClient'
 
 type PageProps = { params: Promise<{ slug: string }> }
 
+// Product URLs from before the catalogue was matched to the price lists still work:
+// each product lists the slugs it replaces in legacy_slugs, and those redirect to its current page.
+const findProduct = (slug: string) =>
+  products.find((p) => p.slug === slug) ?? products.find((p) => p.legacy_slugs.includes(slug))
+
 export async function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }))
+  return products.flatMap((p) => [p.slug].concat(p.legacy_slugs).map((slug) => ({ slug })))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  const product = products.find((p) => p.slug === slug)
+  const product = findProduct(slug)
   if (!product) return { title: 'Product Not Found' }
   return {
     title: `${product.model_name} | Communiqué Clinic Gurugram`,
@@ -21,8 +26,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ProductPage({ params }: PageProps) {
   const { slug } = await params
-  const product = products.find((p) => p.slug === slug)
+  const product = findProduct(slug)
   if (!product) notFound()
+  if (product.slug !== slug) permanentRedirect(`/hearing-aids/${product.slug}`)
 
   const TIER_ORDER: Record<string, number> = { Premium: 0, Advanced: 1, Standard: 2, Essential: 3, Basic: 4, Economy: 5 }
 

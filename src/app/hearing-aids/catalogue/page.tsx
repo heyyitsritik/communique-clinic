@@ -311,8 +311,10 @@ function CataloguePageInner() {
   const filtered = useMemo(() => {
     return products.filter((p) => {
       if (brand       !== 'All' && p.brand          !== brand)       return false
-      if (formFactor  !== 'All' && p.form_factor     !== formFactor)  return false
-      if (hearingLoss !== 'All' && p.hearing_loss_label !== hearingLoss) return false
+      // form_factors lists every style a model is made in (e.g. custom Insio: ITC / ITE / CIC)
+      if (formFactor  !== 'All' && !p.form_factors.includes(formFactor)) return false
+      // hearing_loss_levels lists every degree of loss the fitting range covers
+      if (hearingLoss !== 'All' && !p.hearing_loss_levels.includes(hearingLoss)) return false
       if (tier        !== 'All' && p.technology_tier !== tier)        return false
       if (lifestyle   !== 'All' && !p.lifestyle_tags.some(
         (t: string) => t === lifestyle || (lifestyle === 'Budget Friendly' && t === 'Budget-Friendly')

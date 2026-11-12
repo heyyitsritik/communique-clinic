@@ -477,6 +477,7 @@ export default function ProductPageClient({
                         <p className={`text-sm font-bold ${p.slug === product.slug ? 'text-[#B8892A]' : 'text-[#1B4D3E]'}`}>
                           {p.technology_tier}
                         </p>
+                        <p className="text-[10px] font-normal text-gray-400 mt-0.5 leading-tight">{p.model_name}</p>
                       </th>
                     ))}
                   </tr>
