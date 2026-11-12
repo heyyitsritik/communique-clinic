@@ -26,7 +26,8 @@ const megaMenu = {
   help: [
     { label: 'Hearing Aid Services',  desc: 'Styles, brands, trial & fitting',       href: '/hearing-aids',           icon: '🎧' },
     { label: 'Browse Catalogue',      desc: 'All models with transparent prices',     href: '/hearing-aids/catalogue', icon: '📋' },
-        { label: 'Hearing Simulator',     desc: 'Try hearing aids virtually in real time', href: '/hearing-aids/simulator', icon: '🔊' },
+    { label: 'Hearing Simulator',     desc: 'Try hearing aids virtually in real time', href: '/hearing-aids/simulator', icon: '🔊' },
+    { label: 'Online Hearing Test',   desc: 'Free 4-minute screening from home',      href: '/hearing-screening',      icon: '🩺' },
     { label: 'How to Choose',         desc: 'Assessment, lifestyle & guidance',        href: '/right-hearing-aid',      icon: '🎓' },
   ],
 }

@@ -1,0 +1,62 @@
+═══════════════════════════════════════════════
+  COMMUNIQUÉ SPEECH, HEARING & BALANCE CLINIC
+  Online Hearing Screening Report
+═══════════════════════════════════════════════
+
+Date: 13 November 2026
+
+── PATIENT INFORMATION ──
+Name:       Rahul Sharma
+Phone:      +91 8700138433
+Age:        42 years
+Concern:    Speech Understanding
+
+── SCREENING RESULT ──
+Verdict:    REFER — Professional evaluation recommended
+
+── HEARING RESPONSE MAP ──
+
+Frequency    Left Ear                Right Ear
+             Low    Med    Soft       Low    Med    Soft
+─────────────────────────────────────────────────────────
+500 Hz         ✗      ✗      ✗        ✗      ✗      ✗    
+1000 Hz        ✓      ✗      ✗        ✗      ✗      ✗    
+2000 Hz        ✗      ✗      ✗        ✓      ✓      ✗    
+4000 Hz        ✗      ✗      ✗        ✓      ✓      ✗    
+
+── DETAILED RESPONSES ──
+
+1. Left Ear · 500 Hz · Low (60 dB) → Not Heard
+2. Left Ear · 500 Hz · Medium (40 dB) → Not Heard
+3. Left Ear · 500 Hz · Soft (25 dB) → Not Heard
+4. Left Ear · 1 kHz · Low (60 dB) → Heard
+5. Left Ear · 1 kHz · Medium (40 dB) → Not Heard
+6. Left Ear · 1 kHz · Soft (25 dB) → Not Heard
+7. Left Ear · 2 kHz · Low (60 dB) → Not Heard
+8. Left Ear · 2 kHz · Medium (40 dB) → Not Heard
+9. Left Ear · 2 kHz · Soft (25 dB) → Not Heard
+10. Left Ear · 4 kHz · Low (60 dB) → Not Heard
+11. Left Ear · 4 kHz · Medium (40 dB) → Not Heard
+12. Left Ear · 4 kHz · Soft (25 dB) → Not Heard
+13. Right Ear · 500 Hz · Low (60 dB) → Not Heard
+14. Right Ear · 500 Hz · Medium (40 dB) → Not Heard
+15. Right Ear · 500 Hz · Soft (25 dB) → Not Heard
+16. Right Ear · 1 kHz · Low (60 dB) → Not Heard
+17. Right Ear · 1 kHz · Medium (40 dB) → Not Heard
+18. Right Ear · 1 kHz · Soft (25 dB) → Not Heard
+19. Right Ear · 2 kHz · Low (60 dB) → Heard
+20. Right Ear · 2 kHz · Medium (40 dB) → Heard
+21. Right Ear · 2 kHz · Soft (25 dB) → Not Heard
+22. Right Ear · 4 kHz · Low (60 dB) → Heard
+23. Right Ear · 4 kHz · Medium (40 dB) → Heard
+24. Right Ear · 4 kHz · Soft (25 dB) → Not Heard
+
+── DISCLAIMER ──
+This online screening is not a substitute for a professional
+audiological evaluation. Results are indicative only and may be
+affected by ambient noise, headphone quality, and device volume.
+Please consult a licensed audiologist for a comprehensive
+diagnostic assessment.
+
+Communiqué Speech, Hearing & Balance Clinic
+https://communiqueclinic.com

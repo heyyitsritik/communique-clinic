@@ -1,0 +1,1315 @@
+<title>Communiqué Hearing Screening</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+
+<style>
+:root {
+  --bg: #FAF6F0;
+  --bg-card: #FFFFFF;
+  --bg-panel: #F5F0E8;
+  --fg: #1a2e28;
+  --fg-muted: #5c6b66;
+  --fg-caption: #8a9590;
+  --teal: #1B4D3E;
+  --teal-light: #2a7560;
+  --teal-wash: #e8f0ed;
+  --teal-glow: #3a9b7e;
+  --gold: #B8892A;
+  --gold-wash: #f5ecd6;
+  --gold-light: #d4a63a;
+  --border: #e0dbd2;
+  --border-subtle: #ece8e0;
+  --danger: #c0392b;
+  --danger-wash: #fdf0ee;
+  --success: #1B4D3E;
+  --success-wash: #e8f0ed;
+  --info: #2c6fa0;
+  --info-wash: #eaf2fa;
+  --wa-green: #25D366;
+  --wa-dark: #128C7E;
+  --display: 'Space Grotesk', system-ui, sans-serif;
+  --serif: 'Playfair Display', Georgia, serif;
+  --body: 'Inter', system-ui, sans-serif;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1a16; --bg-card: #162220; --bg-panel: #1a2e28;
+    --fg: #e8ede9; --fg-muted: #9aada5; --fg-caption: #6b8078;
+    --teal: #3a9b7e; --teal-light: #4dc09a; --teal-wash: rgba(58,155,126,0.12); --teal-glow: #5cd4ad;
+    --gold: #d4a63a; --gold-wash: rgba(212,166,58,0.12); --gold-light: #e8c05a;
+    --border: #2a3e38; --border-subtle: #1f332c;
+    --danger: #e74c3c; --danger-wash: rgba(231,76,60,0.1);
+    --success: #4dc09a; --success-wash: rgba(77,192,154,0.1);
+    --info: #5a9fd4; --info-wash: rgba(90,159,212,0.1);
+    --wa-green: #25D366; --wa-dark: #128C7E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1a16; --bg-card: #162220; --bg-panel: #1a2e28;
+  --fg: #e8ede9; --fg-muted: #9aada5; --fg-caption: #6b8078;
+  --teal: #3a9b7e; --teal-light: #4dc09a; --teal-wash: rgba(58,155,126,0.12); --teal-glow: #5cd4ad;
+  --gold: #d4a63a; --gold-wash: rgba(212,166,58,0.12); --gold-light: #e8c05a;
+  --border: #2a3e38; --border-subtle: #1f332c;
+  --danger: #e74c3c; --danger-wash: rgba(231,76,60,0.1);
+  --success: #4dc09a; --success-wash: rgba(77,192,154,0.1);
+  --info: #5a9fd4; --info-wash: rgba(90,159,212,0.1);
+  --wa-green: #25D366; --wa-dark: #128C7E;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0; min-height: 100vh;
+}
+* { box-sizing: border-box; margin: 0; }
+h1,h2,h3,h4 { font-family: var(--display); }
+
+.app { max-width: 680px; margin: 0 auto; padding-block: 12px; }
+
+/* ─── Clinic Header ─── */
+.clinic-header {
+  text-align: center; padding: 18px 16px 14px; margin-bottom: 8px;
+}
+.clinic-logo-img {
+  width: 80px; height: auto; margin: 0 auto 8px; display: block;
+}
+
+/* ─── Step Indicator ─── */
+.step-bar { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 20px; padding: 0 8px; }
+.step-dot {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 11px; font-weight: 700; font-family: var(--display);
+  border: 2px solid var(--border); background: var(--bg-card); color: var(--fg-caption);
+  flex-shrink: 0; transition: all 0.3s;
+}
+.step-dot.active { border-color: var(--teal); background: var(--teal); color: #fff; }
+.step-dot.done { border-color: var(--teal); background: var(--teal-wash); color: var(--teal); }
+.step-line { flex: 1; height: 2px; background: var(--border); max-width: 60px; transition: background 0.3s; }
+.step-line.done { background: var(--teal); }
+
+/* ─── Card ─── */
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px;
+}
+@media (max-width: 500px) { .card { padding: 20px 16px; } }
+
+/* ─── Steps ─── */
+.step { display: none; animation: fadeUp 0.35s ease; }
+.step.active { display: block; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--body); font-size: 14px; font-weight: 600;
+  padding: 12px 24px; border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border); background: var(--bg-card); color: var(--fg);
+  cursor: pointer; transition: all 0.15s; white-space: nowrap;
+}
+.btn:hover { border-color: var(--teal); color: var(--teal); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-primary { background: var(--teal); color: #fff; border-color: var(--teal); }
+.btn-primary:hover { background: var(--teal-light); border-color: var(--teal-light); }
+.btn-primary:disabled { background: var(--fg-caption); border-color: var(--fg-caption); }
+.btn-wa { background: var(--wa-green); color: #fff; border-color: var(--wa-green); }
+.btn-wa:hover { background: var(--wa-dark); border-color: var(--wa-dark); }
+.btn-lg { padding: 14px 32px; font-size: 15px; border-radius: var(--radius); }
+.btn-block { width: 100%; }
+
+/* ─── Welcome ─── */
+.welcome-icon {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--teal-wash); color: var(--teal);
+  display: grid; place-items: center; font-size: 28px;
+  margin: 0 auto 16px; animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(27,77,62,0.25); }
+  50% { box-shadow: 0 0 0 16px rgba(27,77,62,0); }
+}
+.info-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
+@media (max-width: 500px) { .info-cards { grid-template-columns: 1fr; } }
+.info-card {
+  background: var(--bg-panel); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 14px; text-align: center;
+}
+.info-card i { font-size: 18px; color: var(--teal); margin-bottom: 6px; display: block; }
+.info-card .ic-title { font-size: 11px; font-weight: 700; margin-bottom: 2px; }
+.info-card .ic-desc { font-size: 10px; color: var(--fg-muted); }
+
+/* ─── Test ─── */
+.test-header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px; margin-bottom: 20px;
+}
+.ear-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 700; padding: 6px 14px;
+  border-radius: 20px;
+}
+.ear-badge.left { background: var(--info-wash); color: var(--info); }
+.ear-badge.right { background: var(--gold-wash); color: var(--gold); }
+.tone-info {
+  text-align: center; padding: 20px 0;
+  border-bottom: 1px solid var(--border-subtle); margin-bottom: 20px;
+}
+.tone-info .freq { font-family: var(--display); font-size: 28px; font-weight: 800; }
+.tone-info .level { font-size: 12px; font-weight: 600; color: var(--fg-muted); margin-top: 2px; }
+.tone-actions { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 24px; }
+.play-ring {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: var(--teal); color: #fff; border: none;
+  display: grid; place-items: center; font-size: 28px;
+  cursor: pointer; transition: all 0.2s; position: relative;
+}
+.play-ring:hover { background: var(--teal-light); transform: scale(1.05); }
+.play-ring:disabled { background: var(--fg-caption); cursor: not-allowed; transform: none; }
+.play-ring.playing { animation: ring-pulse 1.5s ease infinite; }
+@keyframes ring-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(27,77,62,0.3); }
+  50% { box-shadow: 0 0 0 20px rgba(27,77,62,0); }
+}
+.response-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+.resp-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px; border-radius: var(--radius-sm); font-family: var(--body);
+  font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.15s;
+  border: 2px solid var(--border); background: var(--bg-card); color: var(--fg);
+}
+.resp-btn:hover:not(:disabled) { transform: translateY(-1px); }
+.resp-btn.yes:hover:not(:disabled) { border-color: var(--success); background: var(--success-wash); color: var(--success); }
+.resp-btn.no:hover:not(:disabled) { border-color: var(--danger); background: var(--danger-wash); color: var(--danger); }
+.resp-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.resp-btn.selected-yes { border-color: var(--success); background: var(--success-wash); color: var(--success); }
+.resp-btn.selected-no { border-color: var(--danger); background: var(--danger-wash); color: var(--danger); }
+.progress-section { margin-top: 6px; }
+.progress-track {
+  width: 100%; height: 6px; background: var(--bg-panel);
+  border-radius: 3px; overflow: hidden; margin-bottom: 8px;
+  border: 1px solid var(--border-subtle);
+}
+.progress-fill { height: 100%; background: var(--teal); border-radius: 3px; transition: width 0.4s ease; }
+.progress-text { font-size: 11px; color: var(--fg-caption); text-align: center; }
+.freq-dots { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
+.freq-dot { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.freq-dot .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  border: 2px solid var(--border); background: var(--bg-card); transition: all 0.3s;
+}
+.freq-dot .dot.done { background: var(--teal); border-color: var(--teal); }
+.freq-dot .dot.active { border-color: var(--gold); background: var(--gold-wash); }
+.freq-dot .dot.fail { background: var(--danger); border-color: var(--danger); }
+.freq-dot span { font-size: 9px; color: var(--fg-caption); font-weight: 600; }
+
+/* Ear transition overlay */
+.ear-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px); z-index: 50;
+  display: grid; place-items: center; padding: 16px;
+}
+.ear-overlay[hidden] { display: none !important; }
+.ear-overlay-box {
+  background: var(--bg-card); border-radius: var(--radius);
+  padding: 36px; text-align: center; max-width: 360px;
+  border: 1px solid var(--border);
+}
+.ear-overlay-box i { font-size: 36px; color: var(--gold); margin-bottom: 12px; }
+.ear-overlay-box h3 { font-size: 18px; margin-bottom: 6px; }
+.ear-overlay-box p { font-size: 13px; color: var(--fg-muted); margin-bottom: 20px; }
+
+/* ─── Demographics ─── */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
+.form-field { margin-bottom: 0; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field label {
+  display: block; font-size: 12px; font-weight: 600;
+  color: var(--fg-muted); margin-bottom: 5px;
+}
+.form-field label .req { color: var(--danger); }
+.form-input {
+  width: 100%; padding: 10px 14px; font-size: 14px;
+  font-family: var(--body); border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm); background: var(--bg);
+  color: var(--fg); outline: none; transition: border-color 0.15s;
+}
+.form-input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-wash); }
+.form-input.error { border-color: var(--danger); }
+.field-error { font-size: 11px; color: var(--danger); margin-top: 3px; display: none; }
+.field-error.show { display: block; }
+.phone-row { display: flex; gap: 8px; }
+.phone-code {
+  width: 110px; flex-shrink: 0; padding: 10px 8px; font-size: 13px;
+  font-family: var(--body); border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm); background: var(--bg);
+  color: var(--fg); outline: none; cursor: pointer;
+}
+.phone-code:focus { border-color: var(--teal); }
+.wa-toggle {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--fg-muted); margin-top: 6px;
+}
+.wa-toggle input[type=checkbox] { display: none; }
+.wa-switch {
+  width: 36px; height: 20px; background: var(--border);
+  border-radius: 10px; position: relative; cursor: pointer;
+  transition: background 0.2s; flex-shrink: 0;
+}
+.wa-switch::after {
+  content: ''; position: absolute; top: 2px; left: 2px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #fff; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.wa-toggle input:checked + .wa-switch { background: var(--wa-green); }
+.wa-toggle input:checked + .wa-switch::after { transform: translateX(16px); }
+
+.difficulty-label { font-size: 12px; font-weight: 600; color: var(--fg-muted); margin-bottom: 8px; }
+.difficulty-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+@media (max-width: 400px) { .difficulty-grid { grid-template-columns: 1fr; } }
+.diff-card {
+  padding: 14px; border: 2px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--bg-card); cursor: pointer; transition: all 0.15s;
+  text-align: left; font-family: inherit; color: var(--fg);
+}
+.diff-card:hover { border-color: var(--fg-muted); }
+.diff-card.active { border-color: var(--teal); background: var(--teal-wash); }
+.diff-card i { font-size: 18px; color: var(--fg-caption); margin-bottom: 6px; display: block; }
+.diff-card.active i { color: var(--teal); }
+.diff-card .dc-name { font-size: 13px; font-weight: 700; }
+.diff-card .dc-desc { font-size: 10px; color: var(--fg-muted); margin-top: 2px; }
+
+/* ─── Results ─── */
+.verdict-banner {
+  text-align: center; padding: 24px; border-radius: var(--radius);
+  margin-bottom: 20px;
+}
+.verdict-banner.pass { background: var(--success-wash); border: 2px solid var(--success); }
+.verdict-banner.refer { background: var(--danger-wash); border: 2px solid var(--danger); }
+.verdict-banner .v-icon { font-size: 36px; margin-bottom: 8px; }
+.verdict-banner.pass .v-icon { color: var(--success); }
+.verdict-banner.refer .v-icon { color: var(--danger); }
+.verdict-banner h2 { font-size: 20px; margin-bottom: 4px; }
+.verdict-banner p { font-size: 13px; color: var(--fg-muted); }
+
+.hearing-map { margin-bottom: 20px; }
+.hearing-map h3 { font-size: 14px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.hearing-map h3 i { color: var(--teal); }
+.map-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.map-table th {
+  padding: 8px 6px; text-align: center; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  background: var(--bg-panel); border-bottom: 2px solid var(--border); color: var(--fg-muted);
+}
+.map-table th:first-child { text-align: left; }
+.map-table td {
+  padding: 8px 6px; text-align: center;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.map-table td:first-child { text-align: left; font-weight: 600; font-size: 12px; }
+.map-table .ear-header { font-weight: 700; color: var(--fg); }
+.dot-pass { color: var(--success); font-size: 16px; }
+.dot-fail { color: var(--danger); font-size: 16px; }
+
+.summary-card {
+  background: var(--bg-panel); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 16px; margin-bottom: 20px;
+}
+.summary-card h4 { font-size: 12px; font-weight: 700; color: var(--fg-muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
+.summary-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; border-bottom: 1px solid var(--border-subtle); }
+.summary-row:last-child { border-bottom: none; }
+.summary-row .sr-label { color: var(--fg-muted); }
+.summary-row .sr-value { font-weight: 600; }
+
+/* WhatsApp confirmation */
+.wa-confirmation {
+  background: linear-gradient(135deg, #dcf8c6 0%, #e8ffd9 100%);
+  border: 1px solid #b5dea0; border-radius: var(--radius-sm);
+  padding: 16px; margin-bottom: 16px; text-align: center;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .wa-confirmation {
+    background: linear-gradient(135deg, rgba(37,211,102,0.12) 0%, rgba(18,140,126,0.1) 100%);
+    border-color: rgba(37,211,102,0.25);
+  }
+}
+:root[data-theme="dark"] .wa-confirmation {
+  background: linear-gradient(135deg, rgba(37,211,102,0.12) 0%, rgba(18,140,126,0.1) 100%);
+  border-color: rgba(37,211,102,0.25);
+}
+.wa-confirmation i { font-size: 24px; color: var(--wa-green); margin-bottom: 6px; }
+.wa-confirmation .wa-title { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.wa-confirmation .wa-desc { font-size: 11px; color: var(--fg-muted); }
+
+.result-actions { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.disclaimer {
+  font-size: 10px; color: var(--fg-caption); text-align: center;
+  padding: 12px; background: var(--bg-panel); border-radius: var(--radius-xs);
+  border: 1px solid var(--border-subtle); line-height: 1.5;
+}
+
+/* ─── Footer ─── */
+.footer {
+  text-align: center; padding: 16px 0 8px; font-size: 10px;
+  color: var(--fg-caption); margin-top: 8px;
+}
+.footer-links {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+  font-size: 10px; color: var(--fg-caption); margin-top: 6px;
+}
+.footer-links a { color: var(--teal); text-decoration: none; }
+.footer-links a:hover { text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+</style>
+
+<div class="app">
+
+  <!-- Clinic Header -->
+  <div class="clinic-header">
+    <img src="/logo.png" alt="Communiqué Clinic" class="clinic-logo-img">
+  </div>
+
+  <!-- Step Indicator -->
+  <div class="step-bar">
+    <div class="step-dot active" id="sd-1">1</div>
+    <div class="step-line" id="sl-1"></div>
+    <div class="step-dot" id="sd-2">2</div>
+    <div class="step-line" id="sl-2"></div>
+    <div class="step-dot" id="sd-3">3</div>
+    <div class="step-line" id="sl-3"></div>
+    <div class="step-dot" id="sd-4">4</div>
+  </div>
+
+  <!-- STEP 1: Welcome -->
+  <section id="step-1" class="step active">
+    <div class="card" style="text-align:center">
+      <div class="welcome-icon"><i class="fa-solid fa-headphones"></i></div>
+      <h1 style="font-size:22px;font-weight:800;margin-bottom:4px">Online Hearing Screening</h1>
+      <p style="font-size:13px;color:var(--fg-muted);max-width:420px;margin:0 auto">
+        A quick check of how well you hear across key speech frequencies.
+        This is <strong>not</strong> a diagnostic test — it helps identify whether a full evaluation is recommended.
+      </p>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <i class="fa-solid fa-headphones-simple"></i>
+          <div class="ic-title">Headphones Required</div>
+          <div class="ic-desc">Use wired or wireless headphones for accurate left/right ear testing</div>
+        </div>
+        <div class="info-card">
+          <i class="fa-solid fa-lock"></i>
+          <div class="ic-title">Private &amp; Secure</div>
+          <div class="ic-desc">Your results are shared only with our audiologists to assist you</div>
+        </div>
+        <div class="info-card">
+          <i class="fa-solid fa-clock"></i>
+          <div class="ic-title">~4 Minutes</div>
+          <div class="ic-desc">24 tones across both ears — quick, simple, and guided</div>
+        </div>
+      </div>
+
+      <div style="margin:16px 0 8px">
+        <p style="font-size:12px;color:var(--fg-muted);margin-bottom:10px">
+          <i class="fa-solid fa-volume-high" style="color:var(--gold);margin-right:4px"></i>
+          Put on your headphones and tap below to adjust your volume to a <strong>comfortable</strong> level.
+        </p>
+        <button class="btn" id="sample-btn" onclick="playSample()">
+          <i class="fa-solid fa-play"></i> Play Sample Tone
+        </button>
+      </div>
+
+      <button class="btn-primary btn-lg btn-block" style="margin-top:16px" onclick="goStep(2)">
+        Begin Screening <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- STEP 2: Hearing Test -->
+  <section id="step-2" class="step">
+    <div class="card">
+      <div class="test-header">
+        <h2 style="font-size:16px;font-weight:700">Hearing Screening</h2>
+        <div class="ear-badge" id="ear-badge"><i class="fa-solid fa-ear-listen"></i> <span id="ear-label">Left Ear</span></div>
+      </div>
+
+      <div class="tone-info">
+        <div class="freq" id="tone-freq">500 Hz</div>
+        <div class="level" id="tone-level">Level: Low (60 dB)</div>
+      </div>
+
+      <div class="tone-actions">
+        <button class="play-ring" id="play-btn" onclick="playTestTone()">
+          <i class="fa-solid fa-play" id="play-ico"></i>
+        </button>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span style="font-size:12px;color:var(--fg-caption)">Tap to play tone</span>
+          <button class="btn" style="font-size:11px;padding:6px 12px" onclick="playTestTone()">
+            <i class="fa-solid fa-rotate-right"></i> Replay
+          </button>
+        </div>
+      </div>
+
+      <p style="font-size:13px;font-weight:600;text-align:center;margin-bottom:12px">Did you hear the tone?</p>
+      <div class="response-row">
+        <button class="resp-btn yes" id="btn-yes" onclick="respond(true)" disabled>
+          <i class="fa-solid fa-check"></i> Yes, I heard it
+        </button>
+        <button class="resp-btn no" id="btn-no" onclick="respond(false)" disabled>
+          <i class="fa-solid fa-xmark"></i> No, I didn't
+        </button>
+      </div>
+
+      <div class="progress-section">
+        <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+        <div class="progress-text" id="prog-text">Tone 1 of 24</div>
+        <div class="freq-dots" id="freq-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 3: Demographics -->
+  <section id="step-3" class="step">
+    <div class="card">
+      <h2 style="font-size:17px;font-weight:700;margin-bottom:4px">Your Details</h2>
+      <p style="font-size:12px;color:var(--fg-muted);margin-bottom:20px">
+        <i class="fa-brands fa-whatsapp" style="color:var(--wa-green);margin-right:4px"></i>
+        Your screening report will be sent to your WhatsApp. Please provide your details below.
+      </p>
+
+      <div class="form-grid">
+        <div class="form-field full">
+          <label>Full Name <span class="req">*</span></label>
+          <input class="form-input" id="f-name" type="text" placeholder="e.g. Rahul Sharma">
+          <div class="field-error" id="err-name">Please enter your name</div>
+        </div>
+
+        <div class="form-field">
+          <label>WhatsApp Number <span class="req">*</span></label>
+          <div class="phone-row">
+            <select class="phone-code" id="f-code">
+              <option value="+91">🇮🇳 +91</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+971">🇦🇪 +971</option>
+              <option value="+65">🇸🇬 +65</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+81">🇯🇵 +81</option>
+              <option value="+49">🇩🇪 +49</option>
+              <option value="+33">🇫🇷 +33</option>
+              <option value="+86">🇨🇳 +86</option>
+              <option value="+966">🇸🇦 +966</option>
+              <option value="+977">🇳🇵 +977</option>
+              <option value="+880">🇧🇩 +880</option>
+              <option value="+94">🇱🇰 +94</option>
+              <option value="+60">🇲🇾 +60</option>
+            </select>
+            <input class="form-input" id="f-phone" type="tel" placeholder="98765 43210">
+          </div>
+          <div class="field-error" id="err-phone">Please enter a valid WhatsApp number</div>
+        </div>
+
+        <div class="form-field">
+          <label>Email</label>
+          <input class="form-input" id="f-email" type="email" placeholder="you@email.com">
+          <div class="field-error" id="err-email">Please enter a valid email</div>
+        </div>
+
+        <div class="form-field">
+          <label>Age <span class="req">*</span></label>
+          <input class="form-input" id="f-age" type="number" min="1" max="120" placeholder="45">
+          <div class="field-error" id="err-age">Please enter your age</div>
+        </div>
+
+        <div class="form-field full" style="margin-top:4px">
+          <label>Primary Hearing Difficulty</label>
+          <div class="difficulty-grid" id="diff-grid">
+            <button class="diff-card" data-diff="noise" onclick="pickDiff('noise',this)">
+              <i class="fa-solid fa-users"></i>
+              <div class="dc-name">Difficulty in Noise</div>
+              <div class="dc-desc">Trouble hearing in crowded or noisy places</div>
+            </button>
+            <button class="diff-card" data-diff="tv" onclick="pickDiff('tv',this)">
+              <i class="fa-solid fa-tv"></i>
+              <div class="dc-name">Trouble with TV</div>
+              <div class="dc-desc">Need to raise TV volume higher than others</div>
+            </button>
+            <button class="diff-card" data-diff="speech" onclick="pickDiff('speech',this)">
+              <i class="fa-solid fa-comments"></i>
+              <div class="dc-name">Speech Understanding</div>
+              <div class="dc-desc">Frequently asking people to repeat themselves</div>
+            </button>
+            <button class="diff-card" data-diff="ringing" onclick="pickDiff('ringing',this)">
+              <i class="fa-solid fa-bell"></i>
+              <div class="dc-name">Ear Ringing</div>
+              <div class="dc-desc">Persistent ringing, buzzing or hissing in ears</div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-primary btn-lg btn-block" style="margin-top:24px" onclick="submitDemographics()">
+        Get My Results <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- STEP 4: Results -->
+  <section id="step-4" class="step">
+    <div class="card">
+      <div class="verdict-banner" id="verdict-banner">
+        <div class="v-icon"><i id="verdict-icon" class="fa-solid fa-circle-check"></i></div>
+        <h2 id="verdict-title">Screening Complete</h2>
+        <p id="verdict-desc">Your results summary is below.</p>
+      </div>
+
+      <!-- WhatsApp Confirmation -->
+      <div class="wa-confirmation" id="wa-confirm">
+        <i class="fa-brands fa-whatsapp"></i>
+        <div class="wa-title">Report Shared on WhatsApp</div>
+        <div class="wa-desc">Your screening report has been sent to your WhatsApp number. Our audiologist will also be notified.</div>
+      </div>
+
+      <div class="hearing-map">
+        <h3><i class="fa-solid fa-table-cells"></i> Hearing Response Map</h3>
+        <div style="overflow-x:auto">
+          <table class="map-table" id="map-table"></table>
+        </div>
+        <div style="display:flex;gap:16px;justify-content:center;margin-top:10px;font-size:11px;color:var(--fg-muted)">
+          <span><i class="fa-solid fa-circle-check dot-pass"></i> Heard</span>
+          <span><i class="fa-solid fa-circle-xmark dot-fail"></i> Not Heard</span>
+        </div>
+      </div>
+
+      <div class="summary-card" id="summary-card"></div>
+
+      <div class="result-actions">
+        <button class="btn-wa btn-lg btn-block" onclick="shareOnWhatsApp()">
+          <i class="fa-brands fa-whatsapp"></i> Share Report on WhatsApp
+        </button>
+        <a id="book-btn" class="btn-primary btn-lg btn-block" href="https://communiqueclinic.com/contact" target="_blank" style="text-decoration:none">
+          <i class="fa-solid fa-calendar-check"></i> Book In-Clinic Evaluation
+        </a>
+        <button class="btn btn-block" onclick="downloadReport()">
+          <i class="fa-solid fa-file-arrow-down"></i> Download Report
+        </button>
+        <button class="btn btn-block" onclick="retake()" style="font-size:12px;color:var(--fg-caption)">
+          <i class="fa-solid fa-rotate-left"></i> Retake Screening
+        </button>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Medical Disclaimer:</strong> This online screening is not a substitute for a professional audiological evaluation.
+        Results are indicative only and may be affected by ambient noise, headphone quality, and device volume.
+        If you have any hearing concerns, please consult a licensed audiologist for a comprehensive diagnostic assessment.
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div>Communiqué Speech, Hearing &amp; Balance Clinic</div>
+    <div class="footer-links">
+      <span>📞 8796270575</span>
+      <span>·</span>
+      <a href="https://communiqueclinic.com" target="_blank">communiqueclinic.com</a>
+      <span>·</span>
+      <span>📍 SCO 90, M3M Market, Sector 113, Gurugram</span>
+    </div>
+  </div>
+</div>
+
+<!-- Ear Transition Overlay -->
+<div class="ear-overlay" id="ear-overlay" hidden>
+  <div class="ear-overlay-box">
+    <i class="fa-solid fa-arrow-right"></i>
+    <h3>Now Testing Right Ear</h3>
+    <p>Make sure your headphones are on correctly. The tones will now play only in your <strong>right</strong> ear.</p>
+    <button class="btn-primary" onclick="dismissEarOverlay()">Continue <i class="fa-solid fa-arrow-right"></i></button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════
+const WEBHOOK_URL = 'https://your-webhook-url.com/hearing-screening';
+const BOOKING_URL = 'https://communiqueclinic.com/contact';
+const CLINIC_WA   = '918796270575';  // Clinic WhatsApp with country code
+const CLINIC_NAME = 'Communiqué Speech, Hearing & Balance Clinic';
+const CLINIC_PHONE = '8796270575';
+const CLINIC_EMAIL = 'Communique.clinic@gmail.com';
+const CLINIC_WEB  = 'communiqueclinic.com';
+const CLINIC_ADDR = 'SCO 90, M3M Market, Sector 113, Gurugram';
+const CLINIC_IG   = 'communiq.in';
+const LOGO_B64    = 'data:image/jpeg;base64,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';
+
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+let ctx = null;
+let currentStep = 1;
+let testIndex = 0;
+let tonePlayed = false;
+let difficulty = null;
+const responses = [];
+
+const FREQS = [500, 1000, 2000, 4000];
+const LEVELS = [
+  { name: 'Low',    db: 60, gain: 0.15 },
+  { name: 'Medium', db: 40, gain: 0.018 },
+  { name: 'Soft',   db: 25, gain: 0.003 },
+];
+
+// Build test sequence: left ear all, then right ear all
+const testSeq = [];
+['left','right'].forEach(ear => {
+  FREQS.forEach(freq => {
+    LEVELS.forEach(lv => {
+      testSeq.push({ ear, freq, level: lv.name, db: lv.db, gain: lv.gain });
+    });
+  });
+});
+
+// ═══════════════════════════════════════════
+// AUDIO
+// ═══════════════════════════════════════════
+function initAudio() {
+  if (!ctx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    ctx = new AC();
+  }
+  if (ctx.state === 'suspended') ctx.resume();
+}
+
+function playSample() {
+  initAudio();
+  const btn = document.getElementById('sample-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-volume-high"></i> Playing…';
+  [261.6, 329.6, 392.0].forEach(f => {
+    const osc = ctx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.value = f;
+    const g = ctx.createGain();
+    const t = ctx.currentTime;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(0.07, t + 0.08);
+    g.gain.setValueAtTime(0.07, t + 1.4);
+    g.gain.linearRampToValueAtTime(0, t + 1.6);
+    osc.connect(g); g.connect(ctx.destination);
+    osc.start(t); osc.stop(t + 1.6);
+  });
+  setTimeout(() => {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa-solid fa-play"></i> Play Sample Tone';
+  }, 1700);
+}
+
+function playTone(freq, gain, pan) {
+  initAudio();
+  const osc = ctx.createOscillator();
+  osc.type = 'sine';
+  osc.frequency.value = freq;
+  const gn = ctx.createGain();
+  const panner = ctx.createStereoPanner();
+  panner.pan.value = pan;
+  const t = ctx.currentTime;
+  gn.gain.setValueAtTime(0, t);
+  gn.gain.linearRampToValueAtTime(gain, t + 0.04);
+  gn.gain.setValueAtTime(gain, t + 1.46);
+  gn.gain.linearRampToValueAtTime(0, t + 1.5);
+  osc.connect(gn); gn.connect(panner); panner.connect(ctx.destination);
+  osc.start(t); osc.stop(t + 1.5);
+}
+
+// ═══════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════
+function goStep(n) {
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  document.getElementById('step-' + n).classList.add('active');
+  for (let i = 1; i <= 4; i++) {
+    const dot = document.getElementById('sd-' + i);
+    dot.classList.remove('active', 'done');
+    if (i < n) dot.classList.add('done');
+    else if (i === n) dot.classList.add('active');
+    if (i < 4) {
+      const line = document.getElementById('sl-' + i);
+      line.classList.toggle('done', i < n);
+    }
+  }
+  currentStep = n;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (n === 2) initTest();
+  if (n === 4) showResults();
+}
+
+// ═══════════════════════════════════════════
+// TEST FLOW
+// ═══════════════════════════════════════════
+function initTest() {
+  testIndex = 0;
+  responses.length = 0;
+  tonePlayed = false;
+  buildFreqDots();
+  renderTone();
+}
+
+function renderTone() {
+  if (testIndex >= testSeq.length) {
+    goStep(3);
+    return;
+  }
+  const t = testSeq[testIndex];
+  const freqLabel = t.freq >= 1000 ? (t.freq / 1000) + ' kHz' : t.freq + ' Hz';
+  document.getElementById('tone-freq').textContent = freqLabel;
+  document.getElementById('tone-level').textContent = 'Level: ' + t.level + ' (' + t.db + ' dB)';
+  const badge = document.getElementById('ear-badge');
+  const earLabel = document.getElementById('ear-label');
+  badge.className = 'ear-badge ' + t.ear;
+  earLabel.textContent = t.ear === 'left' ? 'Left Ear' : 'Right Ear';
+
+  tonePlayed = false;
+  document.getElementById('btn-yes').disabled = true;
+  document.getElementById('btn-no').disabled = true;
+  document.getElementById('btn-yes').className = 'resp-btn yes';
+  document.getElementById('btn-no').className = 'resp-btn no';
+  document.getElementById('play-btn').disabled = false;
+  document.getElementById('play-ico').className = 'fa-solid fa-play';
+  document.getElementById('play-btn').classList.remove('playing');
+
+  const pct = (testIndex / testSeq.length) * 100;
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-text').textContent = 'Tone ' + (testIndex + 1) + ' of ' + testSeq.length;
+  updateFreqDots();
+}
+
+function playTestTone() {
+  if (!testSeq[testIndex]) return;
+  const t = testSeq[testIndex];
+  const pan = t.ear === 'left' ? -1 : 1;
+  const pb = document.getElementById('play-btn');
+  pb.disabled = true;
+  pb.classList.add('playing');
+  document.getElementById('play-ico').className = 'fa-solid fa-volume-high';
+  playTone(t.freq, t.gain, pan);
+  setTimeout(() => {
+    pb.classList.remove('playing');
+    pb.disabled = false;
+    document.getElementById('play-ico').className = 'fa-solid fa-play';
+    tonePlayed = true;
+    document.getElementById('btn-yes').disabled = false;
+    document.getElementById('btn-no').disabled = false;
+  }, 1600);
+}
+
+function respond(heard) {
+  if (!tonePlayed) return;
+  const t = testSeq[testIndex];
+  responses.push({ ear: t.ear, freq: t.freq, level: t.level, db: t.db, heard: heard });
+
+  if (heard) document.getElementById('btn-yes').classList.add('selected-yes');
+  else document.getElementById('btn-no').classList.add('selected-no');
+  document.getElementById('btn-yes').disabled = true;
+  document.getElementById('btn-no').disabled = true;
+
+  const nextIndex = testIndex + 1;
+  const switchingEars = nextIndex < testSeq.length && testSeq[nextIndex].ear !== t.ear;
+
+  setTimeout(() => {
+    testIndex = nextIndex;
+    if (switchingEars) {
+      document.getElementById('ear-overlay').hidden = false;
+    } else {
+      renderTone();
+    }
+  }, 400);
+}
+
+function dismissEarOverlay() {
+  document.getElementById('ear-overlay').hidden = true;
+  renderTone();
+}
+
+function buildFreqDots() {
+  const container = document.getElementById('freq-dots');
+  container.innerHTML = '';
+  ['left','right'].forEach(ear => {
+    const earLabel = document.createElement('span');
+    earLabel.style.cssText = 'font-size:9px;color:var(--fg-caption);font-weight:700;margin-right:2px';
+    earLabel.textContent = ear === 'left' ? 'L:' : 'R:';
+    container.appendChild(earLabel);
+    FREQS.forEach(f => {
+      const d = document.createElement('div');
+      d.className = 'freq-dot';
+      d.innerHTML = '<div class="dot" id="fd-' + ear + '-' + f + '"></div><span>' + (f >= 1000 ? f/1000 + 'k' : f) + '</span>';
+      container.appendChild(d);
+    });
+    if (ear === 'left') {
+      const spacer = document.createElement('span');
+      spacer.style.width = '8px';
+      container.appendChild(spacer);
+    }
+  });
+}
+
+function updateFreqDots() {
+  ['left','right'].forEach(ear => {
+    FREQS.forEach(f => {
+      const dot = document.getElementById('fd-' + ear + '-' + f);
+      if (!dot) return;
+      const done = responses.filter(r => r.ear === ear && r.freq === f);
+      const current = testSeq[testIndex];
+      if (done.length === 3) {
+        const anyFail = done.some(r => !r.heard);
+        dot.className = 'dot ' + (anyFail ? 'fail' : 'done');
+      } else if (current && current.ear === ear && current.freq === f) {
+        dot.className = 'dot active';
+      } else {
+        dot.className = 'dot';
+      }
+    });
+  });
+}
+
+// ═══════════════════════════════════════════
+// DEMOGRAPHICS
+// ═══════════════════════════════════════════
+function pickDiff(key, btn) {
+  difficulty = key;
+  document.querySelectorAll('.diff-card').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function submitDemographics() {
+  let valid = true;
+  const name = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const age = document.getElementById('f-age').value.trim();
+
+  document.querySelectorAll('.field-error').forEach(e => e.classList.remove('show'));
+  document.querySelectorAll('.form-input').forEach(e => e.classList.remove('error'));
+
+  if (!name) {
+    document.getElementById('err-name').classList.add('show');
+    document.getElementById('f-name').classList.add('error');
+    valid = false;
+  }
+  if (!phone || phone.replace(/\s/g,'').length < 6) {
+    document.getElementById('err-phone').classList.add('show');
+    document.getElementById('f-phone').classList.add('error');
+    valid = false;
+  }
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('err-email').classList.add('show');
+    document.getElementById('f-email').classList.add('error');
+    valid = false;
+  }
+  if (!age || parseInt(age) < 1 || parseInt(age) > 120) {
+    document.getElementById('err-age').classList.add('show');
+    document.getElementById('f-age').classList.add('error');
+    valid = false;
+  }
+  if (!valid) return;
+  goStep(4);
+}
+
+// ═══════════════════════════════════════════
+// RESULTS
+// ═══════════════════════════════════════════
+function getDemographics() {
+  return {
+    name: document.getElementById('f-name').value.trim(),
+    code: document.getElementById('f-code').value,
+    phone: document.getElementById('f-phone').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    age: document.getElementById('f-age').value.trim(),
+  };
+}
+
+function getResult() {
+  const softMisses = responses.filter(r => r.level === 'Soft' && !r.heard);
+  return softMisses.length > 0 ? 'refer' : 'pass';
+}
+
+function showResults() {
+  const result = getResult();
+  const demo = getDemographics();
+  const diffLabels = { noise: 'Difficulty in Noise', tv: 'Trouble with TV', speech: 'Speech Understanding', ringing: 'Ear Ringing' };
+
+  // Verdict banner
+  const banner = document.getElementById('verdict-banner');
+  const icon = document.getElementById('verdict-icon');
+  const title = document.getElementById('verdict-title');
+  const desc = document.getElementById('verdict-desc');
+
+  if (result === 'pass') {
+    banner.className = 'verdict-banner pass';
+    icon.className = 'fa-solid fa-circle-check';
+    title.textContent = 'Pass — Normal Screening';
+    desc.textContent = 'You responded to all soft-level tones. Your hearing appears within normal screening limits.';
+  } else {
+    banner.className = 'verdict-banner refer';
+    icon.className = 'fa-solid fa-triangle-exclamation';
+    title.textContent = 'Refer — Evaluation Recommended';
+    desc.textContent = 'You missed one or more soft-level tones. We recommend a professional in-clinic audiological evaluation.';
+  }
+
+  // Hearing map table
+  buildHearingMap();
+
+  // Summary card
+  const sc = document.getElementById('summary-card');
+  sc.innerHTML = '<h4><i class="fa-solid fa-user" style="margin-right:6px"></i> Patient Summary</h4>';
+  const rows = [
+    ['Name', demo.name],
+    ['Phone', demo.code + ' ' + demo.phone],
+  ];
+  if (demo.email) rows.push(['Email', demo.email]);
+  rows.push(['Age', demo.age + ' years']);
+  if (difficulty) rows.push(['Primary Concern', diffLabels[difficulty] || difficulty]);
+  rows.push(['Screening Result', result === 'pass' ? '✅ Pass' : '⚠️ Refer']);
+  rows.forEach(([l, v]) => {
+    sc.innerHTML += '<div class="summary-row"><span class="sr-label">' + l + '</span><span class="sr-value">' + v + '</span></div>';
+  });
+
+  document.getElementById('prog-fill').style.width = '100%';
+  document.getElementById('book-btn').href = BOOKING_URL;
+
+  // Send webhook (fires to backend which handles WhatsApp to doc + patient)
+  sendWebhook(result);
+
+  // Send WhatsApp message to clinic/doc automatically
+  sendToDocWhatsApp(result, demo);
+}
+
+function buildHearingMap() {
+  const table = document.getElementById('map-table');
+  let html = '<thead><tr><th></th>';
+  html += '<th colspan="3" class="ear-header" style="color:var(--info)">Left Ear</th>';
+  html += '<th colspan="3" class="ear-header" style="color:var(--gold)">Right Ear</th>';
+  html += '</tr><tr><th>Frequency</th>';
+  ['Low','Med','Soft','Low','Med','Soft'].forEach(l => { html += '<th>' + l + '</th>'; });
+  html += '</tr></thead><tbody>';
+
+  FREQS.forEach(f => {
+    const freqLabel = f >= 1000 ? (f / 1000) + ' kHz' : f + ' Hz';
+    html += '<tr><td>' + freqLabel + '</td>';
+    ['left','right'].forEach(ear => {
+      LEVELS.forEach(lv => {
+        const r = responses.find(x => x.ear === ear && x.freq === f && x.level === lv.name);
+        if (r && r.heard) {
+          html += '<td><i class="fa-solid fa-circle-check dot-pass"></i></td>';
+        } else {
+          html += '<td><i class="fa-solid fa-circle-xmark dot-fail"></i></td>';
+        }
+      });
+    });
+    html += '</tr>';
+  });
+  html += '</tbody>';
+  table.innerHTML = html;
+}
+
+// ═══════════════════════════════════════════
+// WHATSAPP INTEGRATION
+// ═══════════════════════════════════════════
+function buildWhatsAppMessage(result, demo) {
+  const date = new Date().toLocaleDateString('en-IN', { year:'numeric', month:'long', day:'numeric' });
+  const diffLabels = { noise: 'Difficulty in Noise', tv: 'Trouble with TV', speech: 'Speech Understanding', ringing: 'Ear Ringing' };
+
+  // Build hearing map for WhatsApp (text-based)
+  let map = '';
+  FREQS.forEach(f => {
+    const fLabel = f >= 1000 ? (f / 1000) + 'kHz' : f + 'Hz';
+    let leftResult = '✅';
+    let rightResult = '✅';
+    // Check if any level was missed for that ear+freq
+    const leftSoft = responses.find(x => x.ear === 'left' && x.freq === f && x.level === 'Soft');
+    const rightSoft = responses.find(x => x.ear === 'right' && x.freq === f && x.level === 'Soft');
+    if (leftSoft && !leftSoft.heard) leftResult = '⚠️';
+    if (rightSoft && !rightSoft.heard) rightResult = '⚠️';
+    map += fLabel + ':  L ' + leftResult + '  R ' + rightResult + '\n';
+  });
+
+  let msg = '🏥 *COMMUNIQUÉ CLINIC*\n';
+  msg += '_Hearing Screening Report_\n';
+  msg += '━━━━━━━━━━━━━━━━━━\n\n';
+  msg += '👤 *Patient:* ' + demo.name + '\n';
+  msg += '📅 *Date:* ' + date + '\n';
+  if (demo.age) msg += '🎂 *Age:* ' + demo.age + ' years\n';
+  if (difficulty) msg += '🔔 *Concern:* ' + (diffLabels[difficulty] || difficulty) + '\n';
+  msg += '\n';
+
+  if (result === 'pass') {
+    msg += '📋 *Result: ✅ PASS*\n';
+    msg += '_Your hearing appears within normal screening limits._\n';
+  } else {
+    msg += '📋 *Result: ⚠️ REFER*\n';
+    msg += '_Professional audiological evaluation recommended._\n';
+  }
+
+  msg += '\n🔊 *Hearing Map:*\n';
+  msg += map;
+  msg += '\n📞 Book evaluation: ' + CLINIC_WEB + '/contact\n';
+  msg += '🌐 ' + CLINIC_WEB + '\n';
+  msg += '\n_This is a screening tool, not a diagnostic test. Please consult a licensed audiologist for comprehensive evaluation._';
+
+  return msg;
+}
+
+function shareOnWhatsApp() {
+  const result = getResult();
+  const demo = getDemographics();
+  const msg = buildWhatsAppMessage(result, demo);
+  const url = 'https://wa.me/?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+}
+
+function sendToDocWhatsApp(result, demo) {
+  // Build a message for the doc/clinic with patient info + results
+  const date = new Date().toLocaleDateString('en-IN', { year:'numeric', month:'long', day:'numeric' });
+  const diffLabels = { noise: 'Difficulty in Noise', tv: 'Trouble with TV', speech: 'Speech Understanding', ringing: 'Ear Ringing' };
+
+  let map = '';
+  FREQS.forEach(f => {
+    const fLabel = (f >= 1000 ? (f / 1000) + 'kHz' : f + 'Hz').padEnd(6);
+    let row = fLabel;
+    ['left','right'].forEach(ear => {
+      LEVELS.forEach(lv => {
+        const r = responses.find(x => x.ear === ear && x.freq === f && x.level === lv.name);
+        row += (r && r.heard) ? ' ✅' : ' ❌';
+      });
+      row += '  ';
+    });
+    map += row.trim() + '\n';
+  });
+
+  let msg = '🏥 *New Screening Result*\n';
+  msg += '━━━━━━━━━━━━━━━━━━\n\n';
+  msg += '👤 *Patient:* ' + demo.name + '\n';
+  msg += '📱 *Phone:* ' + demo.code + ' ' + demo.phone + '\n';
+  if (demo.email) msg += '📧 *Email:* ' + demo.email + '\n';
+  msg += '🎂 *Age:* ' + demo.age + ' years\n';
+  if (difficulty) msg += '🔔 *Concern:* ' + (diffLabels[difficulty] || difficulty) + '\n';
+  msg += '\n';
+  msg += '📋 *Result:* ' + (result === 'pass' ? '✅ PASS' : '⚠️ REFER') + '\n';
+  msg += '\n🔊 *Hearing Map (L/R × Low/Med/Soft):*\n';
+  msg += map;
+  msg += '\n📅 ' + date + '\n';
+  msg += '🌐 via ' + CLINIC_WEB + ' screening tool';
+
+  // Open WhatsApp to clinic number with pre-filled message
+  const url = 'https://wa.me/' + CLINIC_WA + '?text=' + encodeURIComponent(msg);
+
+  // Auto-open in a hidden way by creating a link — we don't pop it up
+  // Instead, fire it via the webhook. The wa.me link is available as backup.
+  // Store the URL for manual use
+  window._docWaUrl = url;
+}
+
+// ═══════════════════════════════════════════
+// WEBHOOK
+// ═══════════════════════════════════════════
+function sendWebhook(result) {
+  const demo = getDemographics();
+  const diffLabels = { noise: 'Difficulty in Noise', tv: 'Trouble with TV', speech: 'Speech Understanding', ringing: 'Ear Ringing' };
+
+  const payload = {
+    timestamp: new Date().toISOString(),
+    source: 'communique-hearing-screening',
+    demographics: {
+      name: demo.name,
+      phone: demo.code + ' ' + demo.phone,
+      phoneRaw: demo.phone.replace(/\s/g, ''),
+      countryCode: demo.code,
+      email: demo.email,
+      age: parseInt(demo.age),
+      primaryDifficulty: difficulty,
+      primaryDifficultyLabel: difficulty ? (diffLabels[difficulty] || difficulty) : null,
+    },
+    result: result,
+    resultLabel: result === 'pass' ? 'Pass — Normal Screening' : 'Refer — Evaluation Recommended',
+    perFrequency: {},
+    whatsappMessage: buildWhatsAppMessage(result, demo),
+  };
+
+  // Build per-frequency summary
+  ['left','right'].forEach(ear => {
+    payload.perFrequency[ear] = {};
+    FREQS.forEach(f => {
+      payload.perFrequency[ear][f] = {};
+      LEVELS.forEach(lv => {
+        const r = responses.find(x => x.ear === ear && x.freq === f && x.level === lv.name);
+        payload.perFrequency[ear][f][lv.name] = r ? r.heard : null;
+      });
+    });
+  });
+
+  try {
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).catch(function() {});
+  } catch (e) {}
+}
+
+// ═══════════════════════════════════════════
+// HTML REPORT DOWNLOAD
+// ═══════════════════════════════════════════
+function downloadReport() {
+  const result = getResult();
+  const demo = getDemographics();
+  const date = new Date().toLocaleDateString('en-IN', { year:'numeric', month:'long', day:'numeric' });
+  const time = new Date().toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+  const diffLabels = { noise: 'Difficulty in Noise', tv: 'Trouble with TV', speech: 'Speech Understanding', ringing: 'Ear Ringing' };
+
+  // Build hearing map rows
+  let mapRows = '';
+  FREQS.forEach(f => {
+    const freqLabel = f >= 1000 ? (f / 1000) + ' kHz' : f + ' Hz';
+    mapRows += '<tr><td style="padding:10px 14px;font-weight:600;border-bottom:1px solid #e8e2d8;text-align:left">' + freqLabel + '</td>';
+    ['left','right'].forEach(ear => {
+      LEVELS.forEach(lv => {
+        const r = responses.find(x => x.ear === ear && x.freq === f && x.level === lv.name);
+        const icon = (r && r.heard)
+          ? '<span style="color:#1B4D3E;font-size:18px">✓</span>'
+          : '<span style="color:#c0392b;font-size:18px">✗</span>';
+        const bg = (r && r.heard) ? '#e8f0ed' : '#fdf0ee';
+        mapRows += '<td style="padding:10px 8px;text-align:center;border-bottom:1px solid #e8e2d8;background:' + bg + '">' + icon + '</td>';
+      });
+    });
+    mapRows += '</tr>';
+  });
+
+  const resultBg = result === 'pass' ? '#e8f0ed' : '#fdf0ee';
+  const resultBorder = result === 'pass' ? '#1B4D3E' : '#c0392b';
+  const resultColor = result === 'pass' ? '#1B4D3E' : '#c0392b';
+  const resultText = result === 'pass' ? 'PASS' : 'REFER';
+  const resultDesc = result === 'pass'
+    ? 'Your hearing appears within normal screening limits. No immediate concerns detected.'
+    : 'One or more soft-level tones were not detected. A professional in-clinic audiological evaluation is recommended.';
+
+  const html = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+    + '<title>Hearing Screening Report - ' + demo.name + '</title>'
+    + '<style>'
+    + 'body{margin:0;padding:0;font-family:Georgia,"Times New Roman",serif;background:#FAF6F0;color:#1a2e28;}'
+    + '.page{max-width:700px;margin:0 auto;padding:40px 32px;}'
+    + '@media print{.page{padding:20px;max-width:100%} .no-print{display:none!important}}'
+    + '@media(max-width:600px){.page{padding:24px 16px}}'
+    + '</style></head><body>'
+    + '<div class="page">'
+    // Header
+    + '<div style="text-align:center;padding-bottom:24px;border-bottom:2px solid #B8892A;margin-bottom:28px">'
+    + '<img src="' + LOGO_B64 + '" alt="Communiqué Clinic" style="width:120px;height:auto;margin:0 auto 8px;display:block">'
+    + '<div style="font-size:10px;color:#8a9590;margin-top:6px">Dr. Saurabh Chitoshiya · Clinical Director · M.Aud. (AIISH), BASLP</div>'
+    + '</div>'
+    // Title
+    + '<div style="text-align:center;margin-bottom:28px">'
+    + '<div style="font-size:18px;font-weight:bold;color:#1B4D3E;margin-bottom:4px">Online Hearing Screening Report</div>'
+    + '<div style="font-size:12px;color:#8a9590">' + date + ' at ' + time + '</div>'
+    + '</div>'
+    // Patient Info
+    + '<div style="background:#fff;border:1px solid #e0dbd2;border-radius:10px;padding:20px;margin-bottom:24px">'
+    + '<div style="font-size:11px;font-weight:700;color:#8a9590;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;border-bottom:1px solid #ece8e0;padding-bottom:8px">Patient Information</div>'
+    + '<table style="width:100%;font-size:13px;border-collapse:collapse">'
+    + '<tr><td style="padding:5px 0;color:#5c6b66;width:120px">Name</td><td style="padding:5px 0;font-weight:600">' + demo.name + '</td></tr>'
+    + '<tr><td style="padding:5px 0;color:#5c6b66">Phone</td><td style="padding:5px 0;font-weight:600">' + demo.code + ' ' + demo.phone + '</td></tr>'
+    + (demo.email ? '<tr><td style="padding:5px 0;color:#5c6b66">Email</td><td style="padding:5px 0;font-weight:600">' + demo.email + '</td></tr>' : '')
+    + '<tr><td style="padding:5px 0;color:#5c6b66">Age</td><td style="padding:5px 0;font-weight:600">' + demo.age + ' years</td></tr>'
+    + (difficulty ? '<tr><td style="padding:5px 0;color:#5c6b66">Primary Concern</td><td style="padding:5px 0;font-weight:600">' + (diffLabels[difficulty] || difficulty) + '</td></tr>' : '')
+    + '</table></div>'
+    // Result
+    + '<div style="background:' + resultBg + ';border:2px solid ' + resultBorder + ';border-radius:10px;padding:24px;text-align:center;margin-bottom:24px">'
+    + '<div style="font-size:32px;margin-bottom:6px">' + (result === 'pass' ? '✅' : '⚠️') + '</div>'
+    + '<div style="font-size:22px;font-weight:bold;color:' + resultColor + ';margin-bottom:6px">Screening Result: ' + resultText + '</div>'
+    + '<div style="font-size:13px;color:#5c6b66;max-width:480px;margin:0 auto">' + resultDesc + '</div>'
+    + '</div>'
+    // Hearing Map
+    + '<div style="margin-bottom:24px">'
+    + '<div style="font-size:14px;font-weight:bold;color:#1B4D3E;margin-bottom:12px">🔊 Hearing Response Map</div>'
+    + '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px;background:#fff;border:1px solid #e0dbd2;border-radius:8px;overflow:hidden">'
+    + '<thead><tr style="background:#F5F0E8">'
+    + '<th style="padding:10px 14px;text-align:left;font-size:10px;font-weight:700;color:#5c6b66;text-transform:uppercase;letter-spacing:0.04em"></th>'
+    + '<th colspan="3" style="padding:10px 8px;text-align:center;font-size:10px;font-weight:700;color:#2c6fa0;text-transform:uppercase;letter-spacing:0.04em;border-left:2px solid #e0dbd2">Left Ear</th>'
+    + '<th colspan="3" style="padding:10px 8px;text-align:center;font-size:10px;font-weight:700;color:#B8892A;text-transform:uppercase;letter-spacing:0.04em;border-left:2px solid #e0dbd2">Right Ear</th>'
+    + '</tr><tr style="background:#F5F0E8">'
+    + '<th style="padding:6px 14px;text-align:left;font-size:9px;color:#8a9590">Frequency</th>'
+    + '<th style="padding:6px 8px;text-align:center;font-size:9px;color:#8a9590;border-left:2px solid #e0dbd2">Low</th><th style="padding:6px 8px;text-align:center;font-size:9px;color:#8a9590">Med</th><th style="padding:6px 8px;text-align:center;font-size:9px;color:#8a9590">Soft</th>'
+    + '<th style="padding:6px 8px;text-align:center;font-size:9px;color:#8a9590;border-left:2px solid #e0dbd2">Low</th><th style="padding:6px 8px;text-align:center;font-size:9px;color:#8a9590">Med</th><th style="padding:6px 8px;text-align:center;font-size:9px;color:#8a9590">Soft</th>'
+    + '</tr></thead><tbody>'
+    + mapRows
+    + '</tbody></table></div>'
+    + '<div style="display:flex;gap:16px;justify-content:center;margin-top:8px;font-size:10px;color:#8a9590">'
+    + '<span><span style="color:#1B4D3E">✓</span> Heard</span>'
+    + '<span><span style="color:#c0392b">✗</span> Not Heard</span>'
+    + '</div></div>'
+    // Recommendation
+    + (result === 'refer' ? '<div style="background:#fff;border:1px solid #e0dbd2;border-radius:10px;padding:20px;margin-bottom:24px">'
+    + '<div style="font-size:14px;font-weight:bold;color:#1B4D3E;margin-bottom:8px">📋 Recommendation</div>'
+    + '<div style="font-size:13px;color:#5c6b66;line-height:1.6">'
+    + 'Based on your screening results, we recommend scheduling an in-clinic audiological evaluation for a comprehensive assessment. '
+    + 'Our team of experienced audiologists at Communiqué Clinic can provide a thorough diagnostic evaluation and discuss options personalized to your hearing needs.'
+    + '</div>'
+    + '<div style="margin-top:12px;padding:12px;background:#e8f0ed;border-radius:8px;font-size:12px;text-align:center">'
+    + '📞 Call us at <strong>' + CLINIC_PHONE + '</strong> or visit <strong>' + CLINIC_WEB + '/contact</strong> to book your evaluation'
+    + '</div></div>' : '')
+    // Footer
+    + '<div style="border-top:2px solid #B8892A;padding-top:20px;margin-top:8px;text-align:center">'
+    + '<div style="font-size:11px;font-weight:600;color:#1B4D3E;margin-bottom:8px">' + CLINIC_NAME + '</div>'
+    + '<div style="font-size:10px;color:#8a9590;line-height:1.8">'
+    + '📞 ' + CLINIC_PHONE + ' · 📧 ' + CLINIC_EMAIL + '<br>'
+    + '🌐 ' + CLINIC_WEB + ' · 📸 @' + CLINIC_IG + '<br>'
+    + '📍 ' + CLINIC_ADDR
+    + '</div></div>'
+    // Disclaimer
+    + '<div style="margin-top:20px;padding:14px;background:#F5F0E8;border-radius:8px;font-size:9px;color:#8a9590;text-align:center;line-height:1.5">'
+    + '<strong>Medical Disclaimer:</strong> This online hearing screening is not a substitute for a professional audiological evaluation. '
+    + 'Results are indicative only and may be affected by ambient noise, headphone quality, and device volume settings. '
+    + 'Please consult a licensed audiologist for a comprehensive diagnostic assessment.'
+    + '</div>'
+    + '</div></body></html>';
+
+  // Create blob and trigger download
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Hearing-Report-' + demo.name.replace(/\s+/g, '-') + '.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ═══════════════════════════════════════════
+// RETAKE
+// ═══════════════════════════════════════════
+function retake() {
+  testIndex = 0;
+  responses.length = 0;
+  tonePlayed = false;
+  difficulty = null;
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-phone').value = '';
+  document.getElementById('f-email').value = '';
+  document.getElementById('f-age').value = '';
+  document.querySelectorAll('.diff-card').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.field-error').forEach(e => e.classList.remove('show'));
+  document.querySelectorAll('.form-input').forEach(e => e.classList.remove('error'));
+  goStep(1);
+}
+</script>
