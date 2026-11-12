@@ -59,7 +59,7 @@ function ProductFamilyCard({ family, compareList, onToggleCompare }: {
   compareList: string[]
   onToggleCompare: (slug: string) => void
 }) {
-  const [selectedTierIdx, setSelectedTierIdx] = useState(0)
+  const [selectedTierIdx, setSelectedTierIdx] = useState(family.tiers.length - 1)
   const selectedTier = family.tiers[selectedTierIdx]
   // Pick the cheapest product in the selected tier as the "representative"
   const rep = selectedTier.products.reduce((best, p) => {
@@ -281,15 +281,25 @@ function CataloguePageInner() {
   const [formFactor,     setFormFactor]     = useState(() =>
     initialStyle && STYLE_KEYS.includes(initialStyle) ? initialStyle : 'All'
   )
-  const [hearingLoss,    setHearingLoss]    = useState('All')
-  const [tier,           setTier]           = useState('All')
-  const [lifestyle,      setLifestyle]      = useState('All')
-  const [maxPrice,       setMaxPrice]       = useState(1000000)
-  const [search,         setSearch]         = useState('')
-  const [showBluetooth,  setShowBluetooth]  = useState(false)
-  const [showRechargeable, setShowRechargeable] = useState(false)
-  const [heroSearch,     setHeroSearch]     = useState('')
-  const [sortBy,         setSortBy]         = useState<'default' | 'price-asc' | 'price-desc'>('default')
+  const [hearingLoss,    setHearingLoss]    = useState(() => {
+    const v = searchParams.get('hearingLoss'); return v && HEARING_LOSS.includes(v) ? v : 'All'
+  })
+  const [tier,           setTier]           = useState(() => {
+    const v = searchParams.get('tier'); return v && TIERS.includes(v) ? v : 'All'
+  })
+  const [lifestyle,      setLifestyle]      = useState(() => {
+    const v = searchParams.get('lifestyle'); return v && LIFESTYLES.includes(v) ? v : 'All'
+  })
+  const [maxPrice,       setMaxPrice]       = useState(() => {
+    const v = searchParams.get('maxPrice'); return v ? Number(v) : 1000000
+  })
+  const [search,         setSearch]         = useState(() => searchParams.get('search') || '')
+  const [showBluetooth,  setShowBluetooth]  = useState(() => searchParams.get('bluetooth') === '1')
+  const [showRechargeable, setShowRechargeable] = useState(() => searchParams.get('rechargeable') === '1')
+  const [heroSearch,     setHeroSearch]     = useState(() => searchParams.get('search') || '')
+  const [sortBy,         setSortBy]         = useState<'default' | 'price-asc' | 'price-desc'>(() => {
+    const v = searchParams.get('sortBy'); return v === 'price-asc' || v === 'price-desc' ? v : 'default'
+  })
   const [compareList,    setCompareList]    = useState<string[]>([])
   const [showCompare,    setShowCompare]    = useState(false)
   const [showFilters,    setShowFilters]    = useState(false)
@@ -302,11 +312,22 @@ function CataloguePageInner() {
   const compareProducts = compareList.map((slug) => products.find((p) => p.slug === slug)!).filter(Boolean)
   const searchInputRef = useRef<HTMLInputElement>(null)
 
-  // Sync hero search → sidebar search
+  // Sync filter state → URL so Back button restores filters
   useEffect(() => {
-    if (heroSearch) setSearch(heroSearch)
-  }, [heroSearch])
-
+    const params = new URLSearchParams()
+    if (brand !== 'All') params.set('brand', brand)
+    if (formFactor !== 'All') params.set('style', formFactor)
+    if (hearingLoss !== 'All') params.set('hearingLoss', hearingLoss)
+    if (tier !== 'All') params.set('tier', tier)
+    if (lifestyle !== 'All') params.set('lifestyle', lifestyle)
+    if (maxPrice < 1000000) params.set('maxPrice', String(maxPrice))
+    if (search) params.set('search', search)
+    if (sortBy !== 'default') params.set('sortBy', sortBy)
+    if (showBluetooth) params.set('bluetooth', '1')
+    if (showRechargeable) params.set('rechargeable', '1')
+    const qs = params.toString()
+    window.history.replaceState(null, '', qs ? `?${qs}` : window.location.pathname)
+  }, [brand, formFactor, hearingLoss, tier, lifestyle, maxPrice, search, sortBy, showBluetooth, showRechargeable])
   // Filter individual products first
   const filtered = useMemo(() => {
     return products.filter((p) => {
